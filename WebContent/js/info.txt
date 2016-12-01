@@ -1,0 +1,2 @@
+Qui ci mettiamo tutte le funzioni js non credo sarà necessario
+suddividerle in sotto cartella dato il numero esiguo.

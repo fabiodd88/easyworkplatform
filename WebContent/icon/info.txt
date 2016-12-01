@@ -1,0 +1,2 @@
+In questa cartella vanno tutte le icone del sito suddivise per categorie,
+ho fatto per ora solo due cartelle di esempio poi vedremo quante farne 
