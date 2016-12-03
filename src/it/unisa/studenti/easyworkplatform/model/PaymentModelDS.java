@@ -1,5 +1,5 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-public class PaymentControllerDS {
+public class PaymentModelDS {
 
 }
