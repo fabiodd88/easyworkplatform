@@ -30,26 +30,33 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	
 	@Override
 	public void insert(Activity activity) throws SQLException {
-//		
-//		String insertSql="INSERT INTO "+ActivityModelDS.TABLE_NAME+
-//				"(idActivity,vatNumber,nameActivity,tipology,addressActivity,userId)"
-//				+ "VALUES (?,?,?,?,?,?)";
-//		try {
-//			connection = ds.getConnection();
-//			preparedStatement = connection.prepareStatement(insertSql);
-//			preparedStatement.setString(1, activity.);
-//
-//			preparedStatement.executeUpdate();
-//			connection.commit();
-//		} 
-//		catch (Exception e) {
-//			e.printStackTrace();
-//		} 
-//		finally
-//		{
-//			if (preparedStatement != null)  preparedStatement.close();
-//			if (connection != null) 		connection.close();			
-//		}
+		
+		String insertSql="INSERT INTO "+ActivityModelDS.TABLE_NAME+
+				"(idActivity,vatNumber,name,type,address,city,province,cap,userId)"
+				+ "VALUES (?,?,?,?,?,?,?,?,?)";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSql);
+			preparedStatement.setInt(1, activity.getIdActivity());
+			preparedStatement.setString(2, activity.getVatNumber());
+			preparedStatement.setString(3, activity.getName());
+			preparedStatement.setString(4, activity.getType());
+			preparedStatement.setString(5, activity.getAddress());
+			preparedStatement.setString(6, activity.getCity());
+			preparedStatement.setString(7, activity.getProvince());
+			preparedStatement.setInt(8, activity.getCap());
+			preparedStatement.setInt(9, activity.getUserId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		} 
+		finally
+		{
+			if (preparedStatement != null)  preparedStatement.close();
+			if (connection != null) 		connection.close();			
+		}
 	}
 
 	@Override

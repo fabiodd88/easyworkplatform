@@ -1,13 +1,16 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 public class Activity implements Cloneable{
+	
+	private int idActivity;
+	private String vatNumber;
 	private String name;
 	private String type;
 	private String address;
 	private String city;
 	private String province;
 	private int cap;
-	private String vatNumber;
+	private int userId;
 	
 	
 	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber) {
@@ -62,6 +65,18 @@ public class Activity implements Cloneable{
 	}
 	public void setVatNumber(String vatNumber) {
 		this.vatNumber = vatNumber;
+	}
+	public int getIdActivity() {
+		return idActivity;
+	}
+	public void setIdActivity(int idActivity) {
+		this.idActivity = idActivity;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 
