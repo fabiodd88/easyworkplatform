@@ -1,1 +1,29 @@
 @CHARSET "ISO-8859-1";
+
+body{
+	background-color: #fafafa;
+}
+
+.color{
+	background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+	color: white;
+	font-family: lato;
+}
+
+.div-box{
+    background-color: #FFF;
+    padding: 8px;
+    border: 1px solid #DDD;
+    margin-bottom: 10px;
+    
+}
+
+.horizontal{
+	display: flex !important;  
+	
+}
+
+
+.icon{
+	size: 20px !important;
+}
