@@ -13,25 +13,30 @@ import javax.sql.DataSource;
 public class ActivityModelDS implements ModelInterface<Activity> {
 
 	
-	private static final String TABLE_NAME = "event";
-	private String activityName;
+	private static final String TABLE_NAME = "activity";
 	private static DataSource ds;
-	private static Connection connection = null;
-	private static PreparedStatement preparedStatement = null;
+	private static Connection connection;
+	private static PreparedStatement preparedStatement;
 
-	 {
+	static{
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/"+activityName);
+			ds = (DataSource) envCtx.lookup("jdbc/easy_work_platform");
 		} catch (NamingException e) {
-
+			e.printStackTrace();
 		}
 	}
 	
+	
 	@Override
 	public void insert(Activity entity) throws SQLException {
-		// TODO Auto-generated method stub
+		
+		String selectSql="INSERT INTO "+ActivityModelDS.TABLE_NAME+
+				"(idActivity,vatNumber,nameActivity,tipology,addressActivity,userId)"
+				+ "VALUES (?,?,?,?,?,?)";
+		
+		
 		
 	}
 
