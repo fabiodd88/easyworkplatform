@@ -28,16 +28,28 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 	
-	
 	@Override
-	public void insert(Activity entity) throws SQLException {
-		
-		String selectSql="INSERT INTO "+ActivityModelDS.TABLE_NAME+
-				"(idActivity,vatNumber,nameActivity,tipology,addressActivity,userId)"
-				+ "VALUES (?,?,?,?,?,?)";
-		
-		
-		
+	public void insert(Activity activity) throws SQLException {
+//		
+//		String insertSql="INSERT INTO "+ActivityModelDS.TABLE_NAME+
+//				"(idActivity,vatNumber,nameActivity,tipology,addressActivity,userId)"
+//				+ "VALUES (?,?,?,?,?,?)";
+//		try {
+//			connection = ds.getConnection();
+//			preparedStatement = connection.prepareStatement(insertSql);
+//			preparedStatement.setString(1, activity.);
+//
+//			preparedStatement.executeUpdate();
+//			connection.commit();
+//		} 
+//		catch (Exception e) {
+//			e.printStackTrace();
+//		} 
+//		finally
+//		{
+//			if (preparedStatement != null)  preparedStatement.close();
+//			if (connection != null) 		connection.close();			
+//		}
 	}
 
 	@Override

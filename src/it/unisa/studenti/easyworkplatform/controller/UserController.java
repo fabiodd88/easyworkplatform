@@ -17,9 +17,6 @@ import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.User;
 
-/**
- * Servlet implementation class UserControl
- */
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
 
@@ -48,9 +45,7 @@ public class UserController extends HttpServlet {
 			e.printStackTrace();
 		} 
 		return new String(md.digest(convertme));
-	}
-
-
+	}	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -58,9 +53,10 @@ public class UserController extends HttpServlet {
 	}
 
 
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException 
-	{
+			throws ServletException, IOException {
+
 
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession();
@@ -177,7 +173,7 @@ public class UserController extends HttpServlet {
 		} catch (SQLException e) {
 			this.sendMessage("genericError", response);
 		}
-	}
+}
 
 
 
