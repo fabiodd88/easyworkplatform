@@ -1,40 +1,71 @@
 package it.unisa.studenti.easyworkplatform.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ActivityController
- */
+import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
+import it.unisa.studenti.easyworkplatform.model.Activity;
+import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
+import it.unisa.studenti.easyworkplatform.model.ModelInterface;
+import it.unisa.studenti.easyworkplatform.model.User;
+
 @WebServlet("/ActivityController")
 public class ActivityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static ModelInterface<Activity> model = new ActivityModelDS();
+	private ActivityModelDS modelDs = (ActivityModelDS) model;
 
-    /**
-     * Default constructor. 
-     */
     public ActivityController() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+    private void sendMessage(String message,HttpServletResponse response) throws IOException{
+		PrintWriter out = response.getWriter();
+		out.print(message);
+	}
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String action = request.getParameter("action");
+//		try {
+//			if(action != null){
+//				//INSERT
+//				if (action.equalsIgnoreCase("insert"))
+//				{
+//					String	email 	 = request.getParameter("email");
+//					String	password = request.getParameter("password");
+//					User user = new User(null,null,null);
+//					user.setEmail(email);
+//					user.setPassword(password);
+//					ActivityModelDS modelDs = (ActivityModelDS) model;					
+//					if(modelDs.findByName(email) != null ){
+//						sendMessage("exist", response);
+//						return;
+//					}
+//					try{
+//						model.insert(user);
+//						sendMessage("insertOk", response);
+//						return;
+//					}catch(Exception e){
+//						sendMessage("cError", response);
+//						return;
+//					}
+//					
+//				}
+//			}
+//		} catch (SQLException e) {
+//			this.sendMessage("genericError", response);
+//		}
 	}
 
 }

@@ -35,7 +35,6 @@ public class AccountModelDS  implements ModelInterface<User>{
 	@Override
 	public void insert(User user) throws SQLException {
 		String insertSQL;
-
 		insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME + " (EMAIL, PASSWORD) VALUES (?, ?)";		
 		try {
 			connection = ds.getConnection();
