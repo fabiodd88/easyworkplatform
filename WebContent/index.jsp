@@ -7,11 +7,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- File necessari per utilizzare BOOTSTRAP -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="css/browser.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<label>Hello World</label>
+	<div class="container div-box">
+		<div class="jumbotron color">
+			<div>
+				<h1>Benvenuto in Easy Work Platform</h1>
+			</div>
+			<div>
+				<img alt="" src="">
+			</div>
+		</div>
+		<div class="container-fluid text-center padding">
+			<div>
+				<img alt="" src="icon/addUser.png">
+				<h1>Add User</h1>
+			</div>
+
+
+			<div>
+				<img alt="" src="icon/login.png">
+				<h1>Insert User</h1>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -164,9 +164,9 @@ public class UserController extends HttpServlet {
 					else sendMessage("accessDenied", response); //non sono loggato o non sono admin 
 				}				
 			}
-		} catch (SQLException e) {
-			this.sendMessage("genericError", response);
-		}
+			} catch (SQLException e) {
+				this.sendMessage("genericError", response);
+			}
 	}
 
 
