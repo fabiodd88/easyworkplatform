@@ -16,25 +16,24 @@
 <link href="css/browser.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<!-- Contenitore della pagina -->
 	<div class="container div-box">
+	<!-- Un jumbotron è il quadratone blu -->
 		<div class="jumbotron color">
 			<div>
 				<h1>Benvenuto in Easy Work Platform</h1>
-			</div>
-			<div>
-				<img alt="" src="">
 			</div>
 		</div>
 		<div class="container-fluid text-center padding">
 			<div>
 				<img alt="" src="icon/addUser.png">
-				<h1>Add User</h1>
+				<h1>Insert</h1>
 			</div>
 
 
 			<div>
 				<img alt="" src="icon/login.png">
-				<h1>Insert User</h1>
+				<h1>Login</h1>
 			</div>
 		</div>
 	</div>
