@@ -7,11 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+
 
 
 public class AccountModelDS  implements ModelInterface<User>{
@@ -74,7 +74,8 @@ public class AccountModelDS  implements ModelInterface<User>{
 			preparedStatement.executeUpdate();
 			connection.commit();
 		}catch(SQLException e){
-			e.printStackTrace();
+			//e.printStackTrace(); per debug
+			return;
 		}
 		finally
 		{
@@ -95,7 +96,8 @@ public class AccountModelDS  implements ModelInterface<User>{
 			  connection.commit();
 		 }
 		 catch(SQLException e){
-			 e.printStackTrace();
+			 //e.printStackTrace();
+			 return;
 		 }
 		 finally {
 			try {
@@ -172,6 +174,44 @@ public class AccountModelDS  implements ModelInterface<User>{
 		 
 	}
 
+	
+	public User findByName(String name) throws SQLException {
+		
+		try{
+			connection=ds.getConnection();
+			
+			String sql="SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE EMAIL = ?";
+			
+			
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1, name);
+			ResultSet rs = preparedStatement.executeQuery();
+			User user = new User(null,null,null);
+			if(rs.next()){
+				user.setId(rs.getInt(1));
+				user.setEmail(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setSecondKey(rs.getString(4));
+				return user;
+			}
+			else{
+				return null;
+			}
+		}
+		catch(SQLException e){
+			return null;
+		}
+		finally {
+				try {
+					if (preparedStatement != null) preparedStatement.close();
+				 } 
+				finally {
+					 if (connection != null) connection.close();
+				 }
+		}
+	}
+	
+	
 	
 	private static String toSHA1(byte[] convertMe) {
 		MessageDigest md = null;
