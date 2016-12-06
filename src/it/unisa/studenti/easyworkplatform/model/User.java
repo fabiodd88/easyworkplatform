@@ -2,7 +2,8 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.util.Date;
 
-public class User {
+
+public class User extends Account{
 	
 	private String name;
 	private String surename;
@@ -17,9 +18,9 @@ public class User {
 	
 
 	
-	public User(String name, String surename, Date birthdate, Date burthplace, String address, String city,
+	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, Date burthplace, String address, String city,
 			int province, int cap, String fiscalCode, String activity) {
-		super();
+		super(email, password, secondKey);
 		this.name = name;
 		this.surename = surename;
 		this.birthdate = birthdate;
@@ -34,6 +35,29 @@ public class User {
 
 
 	
+	public User(Account account, String name, String surename, Date birthdate,
+			Date birthPlace, String address, String city, int province, int cap, String fiscalCode, String activity) {
+		super(account.getEmail(), account.getPassword(), account.getSecondKey());
+		this.name = name;
+		this.surename = surename;
+		this.birthdate = birthdate;
+		this.birthPlace = birthPlace;
+		this.address = address;
+		this.city = city;
+		this.province = province;
+		this.cap = cap;
+		this.fiscalCode = fiscalCode;
+		this.activity = activity;
+	}
+
+
+
+	public User(String email, String password, String secondKey) {
+		super(email, password, secondKey);
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
