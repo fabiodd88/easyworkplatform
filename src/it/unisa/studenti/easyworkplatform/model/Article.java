@@ -60,12 +60,11 @@ public class Article implements Cloneable{
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Article article = (Article) object;
-		return	article.description == this.description	&& 
-				article.duration== this.duration &&
-				article.name	== this.name && 
-				article.price	== this.price;
+		return	this.description.equals(article.getDescription())	&& 
+				this.duration.equals(article.getDuration()) 		&&
+				this.name.equals(article.getName())					&& 
+				this.price == article.price;
 	}
-	
 	
 	@Override
 	public Article clone(){

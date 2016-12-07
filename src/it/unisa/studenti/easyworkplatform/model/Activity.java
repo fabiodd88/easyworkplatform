@@ -107,13 +107,13 @@ public class Activity implements Cloneable{
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Activity activity = (Activity) object;
-		return 	activity.address	== this.address		&& 
-				activity.province	== this.province	&&
-				activity.vatNumber	== this.vatNumber	&&
-				activity.cap 	== this.cap		&&
-				activity.city 	== this.city	&& 
-				activity.name	== this.name	&&
-				activity.type 	== this.type;
+		return 	this.address.equals(activity.getAddress())		&& 
+				this.province.equals(activity.getProvince())	&&
+				this.vatNumber.equals(activity.getVatNumber())	&&
+				this.cap == activity.getCap()					&&
+				this.city.equals(activity.getCity())			&& 
+				this.name.equals(activity.getName())			&&
+				this.type.equals(activity.getType());
 	}
 	
 	@Override

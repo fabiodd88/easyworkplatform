@@ -46,5 +46,23 @@ public class Account {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName()+"[id=" + id + ", email=" + email + ", password=" + password + ", secondKey=" + secondKey + "]";
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if(object == null) return false;
+		if(object.getClass() != this.getClass()) return false;
+		Account account = (Account) object;
+		return	this.email.equals(account.getEmail()) 		&&
+				this.password.equals(account.getPassword()) &&
+				this.secondKey.equals(account.getSecondKey());
+				
+	}
+	
+	
 	
 }

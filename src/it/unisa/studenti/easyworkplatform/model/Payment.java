@@ -61,10 +61,10 @@ public class Payment implements Cloneable {
 		if(object == null) return false;
 		if(object.getClass() !=  this.getClass()) return false;
 		Payment payment = (Payment) object;
-		return 	payment.amount	== this.amount	&&
-				payment.customer== this.customer&&
-				payment.date	== this.date 	&&
-				payment.itemInvolved == this.itemInvolved;
+		return 	this.date.equals(payment.getDate())	&&
+				this.itemInvolved.equals(payment.getItemInvolved())	&&
+				this.amount == payment.getAmount()	&&
+				this.customer.equals(payment.getCustomer());
 	} 
 	
 	@Override

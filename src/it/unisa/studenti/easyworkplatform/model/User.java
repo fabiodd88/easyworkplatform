@@ -10,7 +10,7 @@ public class User extends Account{
 	private String birthPlace;
 	private String address;
 	private String city;
-	private int province;
+	private String province;
 	private int cap;
 	private String taxCode;
 	private String activity;
@@ -18,7 +18,7 @@ public class User extends Account{
 	public User() {}
 	
 	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
-			int province, int cap, String taxCode, String activity) {
+			String province, int cap, String taxCode, String activity) {
 		super(email, password, secondKey);
 		this.name = name;
 		this.surename = surename;
@@ -33,7 +33,7 @@ public class User extends Account{
 	}
 	
 	public User(Account account, String name, String surename, Date birthdate,
-			String birthplace, String address, String city, int province, int cap, String taxCode, String activity) {
+			String birthplace, String address, String city, String province, int cap, String taxCode, String activity) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
 		this.name = name;
 		this.surename = surename;
@@ -99,11 +99,11 @@ public class User extends Account{
 		this.city = city;
 	}
 
-	public int getProvince() {
+	public String getProvince() {
 		return province;
 	}
 
-	public void setProvince(int province) {
+	public void setProvince(String province) {
 		this.province = province;
 	}
 
@@ -133,7 +133,7 @@ public class User extends Account{
 	
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", burthplace="
+		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", burthplace="
 				+ birthPlace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
 				+ ", taxCode=" + taxCode + ", activity=" + activity + "]";
 	}
@@ -142,17 +142,18 @@ public class User extends Account{
 	public boolean equals(Object object){
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
+		if(!super.equals(object)) return false; 
 		User user = (User) object;
-		return	user.activity	== this.activity	&&
-				user.address	== this.address		&&
-				user.birthdate	== this.birthdate	&&
-				user.birthPlace == this.birthPlace	&&
-				user.taxCode	== this.taxCode 	&&
-				user.province	== this.province	&&
-				user.cap	== this.cap		&&
-				user.city	== this.city	&&
-				user.name	== this.name	&&
-				user.surename == this.surename;
+		return	this.name.equals(user.getName())	&& 
+				this.surename.equals(user.getSurename())	&&
+				this.birthdate.equals(user.getBirthdate())	&&
+				this.birthPlace.equals(user.getBirthplace())	&&
+				this.address.equals(user.getAddress())	&&
+				this.city.equals(user.getCity())	&&
+				this.province.equals(user.getProvince())	&&
+				this.cap == user.getCap()	&&
+				this.taxCode.equals(user.getTaxCode())	&&
+				this.activity.equals(user.getActivity());
 	}
 	
 	@Override

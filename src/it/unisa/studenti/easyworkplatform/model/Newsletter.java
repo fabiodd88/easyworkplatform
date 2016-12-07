@@ -3,16 +3,16 @@ package it.unisa.studenti.easyworkplatform.model;
 public class Newsletter implements Cloneable {
 
 	private String sender;
-	private String reciver;
+	private String receiver;
 	private String object;
 	private String message;
 	
 	public Newsletter(){}
 	
-	public Newsletter(String sender, String reciver, String object, String message) {
+	public Newsletter(String sender, String receiver, String object, String message) {
 		super();
 		this.sender = sender;
-		this.reciver = reciver;
+		this.receiver = receiver;
 		this.object = object;
 		this.message = message;
 	}
@@ -25,12 +25,12 @@ public class Newsletter implements Cloneable {
 		this.sender = sender;
 	}
 
-	public String getReciver() {
-		return reciver;
+	public String getReceiver() {
+		return receiver;
 	}
 
-	public void setReciver(String reciver) {
-		this.reciver = reciver;
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 
 	public String getObject() {
@@ -53,7 +53,7 @@ public class Newsletter implements Cloneable {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+" [sender=" + sender + ", reciver=" + reciver + ", object=" + object + ", message=" + message
+		return getClass().getSimpleName()+" [sender=" + sender + ", receiver=" + receiver + ", object=" + object + ", message=" + message
 				+ "]";
 	}
 	
@@ -63,10 +63,10 @@ public class Newsletter implements Cloneable {
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Newsletter newsletter = (Newsletter) object;
-		return  newsletter.message	== this.message &&
-				newsletter.reciver	== this.reciver &&
-				newsletter.object	== this.object	&&
-				newsletter.sender	== this.sender;
+		return  this.message.equals(newsletter.getMessage()) &&
+				this.receiver.equals(newsletter.getReceiver()) &&
+				this.object.equals(newsletter.getObject())	&&
+				this.sender.equals(newsletter.getSender());
 	}
 	
 	

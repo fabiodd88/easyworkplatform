@@ -123,16 +123,16 @@ public class Customer implements Cloneable{
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Customer customer = (Customer) object;
-		return	customer.address	== this.address 	&&
-				customer.birthdate	== this.birthdate 	&&
-				customer.birthplace == this.birthplace 	&&
-				customer.phoneNumber== this.phoneNumber	&&
-				customer.province 	== this.province	&&
-				customer.cap	== this.cap 	&&
-				customer.city	== this.city	&&
-				customer.email	== this.address &&
-				customer.name	== this.name	&&
-				customer.surename== this.surename;
+		return	this.name.equals(customer.getName())		&&
+				this.surename.equals(customer.getSurename())		&&
+				this.birthdate.equals(customer.getBirthdate())		&&
+				this.birthplace.equals(customer.getBirthplace())		&&
+				this.address.equals(customer.getAddress())		&&
+				this.city.equals(customer.getCity())		&&
+				this.province.equals(customer.getProvince())		&&
+				this.cap == customer.getCap()		&&
+				this.phoneNumber.equals(customer.getPhoneNumber())		&&
+				this.email.equals(customer.getEmail());
 	}
 	
 	@Override
