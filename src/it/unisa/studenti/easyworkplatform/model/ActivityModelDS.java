@@ -61,12 +61,12 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 
 	@Override
 	public void update(Activity activity) throws SQLException {
-		String insertSql = "UPDATE" + ActivityModelDS.TABLE_NAME
-				+ "SET vatNumber = ?,name = ?,type = ?,address = ?,city = ?,province = ?,cap = ?)"
-				+ "WHERE (idActivity == ? && userId == ?)";
+		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
+				+ " SET vatNumber = ?,name = ?,type = ?,address = ?,city = ?,province = ?,cap = ?)"
+				+ " WHERE (idActivity == ? && userId == ?)";
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
+			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
 			preparedStatement.setString(3, activity.getType());
@@ -91,13 +91,13 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 
 	}
-
+	
 	@Override
 	public void remove(int id) throws SQLException {
-		String insertSql = "DELETE" + ActivityModelDS.TABLE_NAME + "WHERE (idActivity == ?)";
+		String removeSql = "DELETE " + ActivityModelDS.TABLE_NAME + " WHERE (idActivity == ?)";
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
+			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -115,12 +115,12 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = new Activity();
-		String insertSql = "SELECT * FROM" + ActivityModelDS.TABLE_NAME + "WHERE (idActivity = ?)";
+		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (idActivity = ?)";
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
+			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery(insertSql);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				activity.setIdActivity(id);
 				activity.setName(rs.getString("name"));
@@ -149,11 +149,11 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public LinkedList<Activity> findAll() throws SQLException {
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
-		String insertSql = "SELECT * FROM" + ActivityModelDS.TABLE_NAME;
+		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME;
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
-			ResultSet rs = preparedStatement.executeQuery(insertSql);
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				Activity activity = new Activity();
 				activity.setIdActivity(rs.getInt("idActivity"));
