@@ -12,6 +12,7 @@ public class Activity implements Cloneable{
 	private int cap;
 	private int userId;
 	
+	public Activity() {}
 	
 	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber) {
 		this.name = name;
