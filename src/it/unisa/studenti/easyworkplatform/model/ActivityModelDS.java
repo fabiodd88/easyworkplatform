@@ -32,19 +32,18 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	public void insert(Activity activity) throws SQLException {
 
 		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
-				+ "(idActivity,vatNumber,name,type,address,city,province,cap,userId)" + "VALUES (?,?,?,?,?,?,?,?,?)";
+				+ "(vatNumber,name,type,address,city,province,cap,userId)" + "VALUES (?,?,?,?,?,?,?,?,?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setInt(1, activity.getIdActivity());
-			preparedStatement.setString(2, activity.getVatNumber());
-			preparedStatement.setString(3, activity.getName());
-			preparedStatement.setString(4, activity.getType());
-			preparedStatement.setString(5, activity.getAddress());
-			preparedStatement.setString(6, activity.getCity());
-			preparedStatement.setString(7, activity.getProvince());
-			preparedStatement.setInt(8, activity.getCap());
-			preparedStatement.setInt(9, activity.getUserId());
+			preparedStatement.setString(1, activity.getVatNumber());
+			preparedStatement.setString(2, activity.getName());
+			preparedStatement.setString(3, activity.getType());
+			preparedStatement.setString(4, activity.getAddress());
+			preparedStatement.setString(5, activity.getCity());
+			preparedStatement.setString(6, activity.getProvince());
+			preparedStatement.setInt(7, activity.getCap());
+			preparedStatement.setInt(8, activity.getUserId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (Exception e) {
