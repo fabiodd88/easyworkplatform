@@ -15,7 +15,7 @@
 						<label for="inputUser">Email</label>
 						<input type="text" size="40" maxlength="40" name="email"
 							id="inputUser" placeholder="Email" class="form-control" /><br>
-						<p for="inputPassword" id="pwdLabel" type="">Password</p> <input
+						<div class="inutile" for="inputPassword" name="pwdLabel" type="">Password</div> <input
 								type="password" size="40" maxlength="40" name="password"
 								id="inputPassword" class="form-control" placeholder="Password" /><br>
 						<div class="modal-footer">

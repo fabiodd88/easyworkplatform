@@ -54,13 +54,16 @@ function setAction(action){
 			$('#mySubmit').val('Retrive');
 			var psw=document.getElementById('inputPassword');
 			psw.setAttribute("type", "hidden");
-			var lb=document.getElementById('pwdLabel');
-			lb.setAttribute("type", "hidden");
+			$(".inutile").css({"display":"none"});
+			
 		break;
 	
 		case 'login':
 			$('#modalTitle').text('Login User');
 			$('#mySubmit').val('Log-In');
+			$(".inutile").css({"display":"inline"});
+			var psw=document.getElementById('inputPassword');
+			psw.setAttribute("type", "");
 		break;
 	}	
 }
