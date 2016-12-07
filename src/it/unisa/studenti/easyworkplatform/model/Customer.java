@@ -3,6 +3,7 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 public class Customer implements Cloneable{
+	private int idCustomer;
 	private String name;
 	private String surename;
 	private Date birthdate;
@@ -10,6 +11,7 @@ public class Customer implements Cloneable{
 	private String address;
 	private String city;
 	private String province;
+	private int newsletter;
 	private int cap;
 	private String phoneNumber;
 	private String email;
@@ -17,7 +19,7 @@ public class Customer implements Cloneable{
 	public Customer(){}
 	
 	public Customer(String name, String surename, Date birthdate, String birthplace, String address, String city,
-			String province, int cap, String phoneNumber, String email) {
+			String province, int cap, int newsletter, String phoneNumber, String email) {
 		super();
 		this.name = name;
 		this.surename = surename;
@@ -27,6 +29,7 @@ public class Customer implements Cloneable{
 		this.city = city;
 		this.province = province;
 		this.cap = cap;
+		this.newsletter = newsletter;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 	}
@@ -95,6 +98,14 @@ public class Customer implements Cloneable{
 		this.cap = cap;
 	}
 
+	public int getNewsletter() {
+		return newsletter;
+	}
+
+	public void setNewsletter(int newsletter) {
+		this.newsletter = newsletter;
+	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -110,6 +121,16 @@ public class Customer implements Cloneable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public int getIdCustomer() {
+		return idCustomer;
+	}
+
+	public void setIdCustomer(int idCustomer) {
+		this.idCustomer = idCustomer;
+	}
+
+	
 	
 	@Override
 	public String toString() {
