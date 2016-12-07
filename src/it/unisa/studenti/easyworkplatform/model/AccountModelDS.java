@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -69,103 +70,132 @@ public class AccountModelDS implements ModelInterface<User> {
 	@Override
 	public void update(User user) throws SQLException {
 
-		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME + " SET password=? WHERE id=?"; // MOD
-																									// SPAZI
-																									// IN
-																									// QUERY
+		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME
+				+ " SET (taxCode = ?, nameUser = ?, sureNameUser = ?, dateOfBirthUser = ?, birthOfPlaceUser = ?, addressUser = ?, emailUser = ?, password = ?, secondaryKey = ?)"
+				+ " WHERE (idUser=?)";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
-			String password = user.getPassword(); // MOD
-			String cryptedPassword = toSHA1(password.getBytes()); // MOD
-			System.out.println(cryptedPassword);
-			preparedStatement.setString(1, cryptedPassword); // MOD
-			preparedStatement.setInt(2, user.getId());
+			preparedStatement.setString(1, user.getTaxCode());
+			preparedStatement.setString(2, user.getName());
+			preparedStatement.setString(3, user.getSurename());
+			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
+			preparedStatement.setString(5, user.getBirthplace());
+			preparedStatement.setString(6, user.getAddress());
+			preparedStatement.setString(7, user.getEmail());
+			String password = user.getPassword();
+			String cryptedPassword = toSHA1(password.getBytes());
+			preparedStatement.setString(8, cryptedPassword);
+			String secondKey = user.getPassword();
+			String cryptedSecondKey = toSHA1(secondKey.getBytes());
+			preparedStatement.setString(9, cryptedSecondKey);
+			preparedStatement.setInt(10, user.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
 			// e.printStackTrace(); per debug
 			return;
 		} finally {
-			if (preparedStatement != null)
-				preparedStatement.close(); // MOD
-			if (connection != null)
-				connection.close();
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
 		}
 
 	}
 
 	@Override
 	public void remove(int id) throws SQLException {
+		String removeSql = "DELETE " + AccountModelDS.TABLE_NAME + " WHERE (idUser == ?)";
 		try {
 			connection = ds.getConnection();
-			String removeSql = "DELETE FROM " + AccountModelDS.TABLE_NAME + " WHERE ID = ?";
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (SQLException e) {
-			// e.printStackTrace();
-			return;
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+			if (preparedStatement != null)
+				preparedStatement.close();
+			if (connection != null)
+				connection.close();
 		}
 
 	}
 
 	@Override
 	public User findByKey(int id) throws SQLException {
-		User bean = new User(null, null, null);
-		String selectSQL = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE ID = ?";
+		User user = new User();
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (idUser = ?)";
 		try {
 			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
-				bean.setId(rs.getInt("id"));
-				bean.setEmail(rs.getString("email"));
-				bean.setPassword(rs.getString("password"));
+				user.setId(id);
+				user.setEmail(rs.getString("emailUser"));
+				user.setPassword(rs.getString("password"));
+				user.setSecondKey(rs.getString("secondaryKey"));
+				user.setName(rs.getString("nameUser"));
+				user.setSurename(rs.getString("surnameUser"));
+				user.setBirthdate(rs.getDate("dateOfBirthUser"));
+				user.setBirthplace(rs.getString("birthOfPlace"));
+				user.setAddress(rs.getString("addressUser"));
+				user.setCity(rs.getString("cityUser"));
+				user.setProvince(rs.getString("provinceUser"));
+				user.setCap(rs.getInt("capUser"));
+				user.setTaxCode(rs.getString("taxCode"));
+				
 			}
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
-
-			if (preparedStatement != null)
-				preparedStatement.close();
-			if (connection != null)
-				connection.close();
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
 		}
-		return bean;
+		return user;
 	}
 
 	@Override
 	public LinkedList<User> findAll() throws SQLException {
+		LinkedList<User> listAccount = new LinkedList<User>();
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME;
 		try {
-			LinkedList<User> toReturn = new LinkedList<User>();
 			connection = ds.getConnection();
-
-			String sql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + ";";
-
-			preparedStatement = connection.prepareStatement(sql);
-			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
-				User user = new User(null, null, null);
-				user.setId(rs.getInt(1));
-				user.setEmail(rs.getString(2));
-				user.setPassword(rs.getString(3));
-				user.setSecondKey(rs.getString(4));
-				toReturn.add(user);
+				User user = new User();
+				user.setId(rs.getInt("idUser"));
+				user.setEmail(rs.getString("emailUser"));
+				user.setPassword(rs.getString("password"));
+				user.setSecondKey(rs.getString("secondaryKey"));
+				user.setName(rs.getString("nameUser"));
+				user.setSurename(rs.getString("surnameUser"));
+				user.setBirthdate(rs.getDate("dateOfBirthUser"));
+				user.setBirthplace(rs.getString("birthOfPlace"));
+				user.setAddress(rs.getString("addressUser"));
+				user.setCity(rs.getString("cityUser"));
+				user.setProvince(rs.getString("provinceUser"));
+				user.setCap(rs.getInt("capUser"));
+				user.setTaxCode(rs.getString("taxCode"));
+				listAccount.add(user);
 			}
-
-			return toReturn;
-		} catch (SQLException e) {
-			return null;
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -175,31 +205,35 @@ public class AccountModelDS implements ModelInterface<User> {
 					connection.close();
 			}
 		}
-
+		return listAccount;
 	}
 
-	public User findByName(String name) throws SQLException {
-
+	public User findByEmail(String email) throws SQLException {
+		User user = new User();
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (emailUser = ?)";
 		try {
 			connection = ds.getConnection();
-
-			String sql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE EMAIL = ?";
-
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, name);
-			ResultSet rs = preparedStatement.executeQuery();
-			User user = new User(null, null, null);
-			if (rs.next()) {
-				user.setId(rs.getInt(1));
-				user.setEmail(rs.getString(2));
-				user.setPassword(rs.getString(3));
-				user.setSecondKey(rs.getString(4));
-				return user;
-			} else {
-				return null;
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, email);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			while (rs.next()) {
+				user.setId(rs.getInt("id"));
+				user.setEmail(email);
+				user.setPassword(rs.getString("password"));
+				user.setSecondKey(rs.getString("secondaryKey"));
+				user.setName(rs.getString("nameUser"));
+				user.setSurename(rs.getString("surnameUser"));
+				user.setBirthdate(rs.getDate("dateOfBirthUser"));
+				user.setBirthplace(rs.getString("birthOfPlace"));
+				user.setAddress(rs.getString("addressUser"));
+				user.setCity(rs.getString("cityUser"));
+				user.setProvince(rs.getString("provinceUser"));
+				user.setCap(rs.getInt("capUser"));
+				user.setTaxCode(rs.getString("taxCode"));
 			}
-		} catch (SQLException e) {
-			return null;
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -209,6 +243,7 @@ public class AccountModelDS implements ModelInterface<User> {
 					connection.close();
 			}
 		}
+		return user;
 	}
 
 	private static String toSHA1(byte[] convertMe) {
