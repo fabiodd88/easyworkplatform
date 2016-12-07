@@ -14,6 +14,8 @@ public class Customer implements Cloneable{
 	private String phoneNumber;
 	private String email;
 	
+	public Customer(){}
+	
 	public Customer(String name, String surename, Date birthdate, String birthplace, String address, String city,
 			String province, int cap, String phoneNumber, String email) {
 		super();
@@ -108,8 +110,6 @@ public class Customer implements Cloneable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 	
 	@Override
 	public String toString() {
@@ -117,8 +117,6 @@ public class Customer implements Cloneable{
 				+ birthplace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
 				+ ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 	}
-	
-	
 	
 	@Override
 	public boolean equals(Object object){
@@ -136,7 +134,6 @@ public class Customer implements Cloneable{
 				customer.name	== this.name	&&
 				customer.surename== this.surename;
 	}
-	
 	
 	@Override
 	public Customer clone(){
