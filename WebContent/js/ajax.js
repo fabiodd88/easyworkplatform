@@ -49,14 +49,21 @@ function setAction(action){
 
 	switch(action)
 	{
-		case 'insert':
-			$('#modalTitle').text('Insert User');
-			$('#mySubmit').val('Sign-In');
+		case 'retrive':
+			$('#modalTitle').text('Recupera password');
+			$('#mySubmit').val('Retrive');
+			var psw=document.getElementById('inputPassword');
+			psw.setAttribute("type", "hidden");
+			$(".inutile").css({"display":"none"});
+			
 		break;
 	
 		case 'login':
 			$('#modalTitle').text('Login User');
 			$('#mySubmit').val('Log-In');
+			$(".inutile").css({"display":"inline"});
+			var psw=document.getElementById('inputPassword');
+			psw.setAttribute("type", "");
 		break;
 	}	
 }
