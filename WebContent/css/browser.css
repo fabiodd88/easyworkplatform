@@ -46,3 +46,24 @@ body{
 .inutile{
 	display: inline;
 }
+
+.recPsw{
+	color:#2370c5;
+}
+
+.recPsw:hover{
+	cursor:pointer;	
+	color:#154579;
+	text-decoration:underline;
+	
+}
+
+.table{
+	color:#2370c5;
+}
+
+.table:hover{
+	cursor:pointer;
+	color:#154579;
+	text-decoration:underline;	
+}

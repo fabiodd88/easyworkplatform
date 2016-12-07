@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@include file="format.jsp" %>
 <html>
 <head>
 <!-- Esempio di metadati file di appoggio necessari per il nostro progetto -->
@@ -15,7 +14,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link href="css/browser.css" rel="stylesheet" type="text/css">
-<script src="js/ajax.js"></script>
 </head>
 <body>
 <!-- Contenitore della pagina -->
@@ -29,7 +27,7 @@
 		</div>
 		<div class="container-fluid text-center padding">
 			<div class="table-responsive">
-  				<table class="table" id="tbUser">
+  				<table class="table">
     				<th type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('login');">
 		   				<img alt="" src="icon/login.png"></br>Login</a>
 					</th>
@@ -41,8 +39,8 @@
   				
 			</div>		
 				
-			<div type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('retrive');">
-				<p> Password dimenticata?</p>
+			<div class="recPsw" type="button" data-toggle="modal" data-target="#myModal" style="text-align:center"  onclick="setAction('retrive');">
+				<p><b>Password dimenticata?</b></p>
 			</div>
 			
 		</div>
