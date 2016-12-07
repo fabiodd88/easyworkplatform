@@ -18,6 +18,7 @@
 						<div class="inutile" for="inputPassword" name="pwdLabel" type="">Password</div> <input
 								type="password" size="40" maxlength="40" name="password"
 								id="inputPassword" class="form-control" placeholder="Password" /><br>
+						<div id="status">Messaggio: </div>
 						<div class="modal-footer">
 							<a href="#" data-dismiss="modal" class="btn">Close</a> <input
 								type="submit" class="btn btn-primary" id='mySubmit'/>

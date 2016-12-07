@@ -30,19 +30,19 @@
 		<div class="container-fluid text-center padding">
 			<div class="table-responsive">
   				<table class="table" id="tbUser">
-    				<th type="button" data-toggle="modal" data-target="#myModal" style="text-align:center"  onclick="setAction('login');">
-		   				<img  alt="" src="icon/login.png" ></br>Login</a>
+    				<th type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('login');">
+		   				<img alt="" src="icon/login.png"></br>Login</a>
 					</th>
 			   		
 	    			<th style="text-align:center">
-	    				<a href="registrazione.html"><img alt="" src="icon/addUser.png" id="imgAdd"></br>Registrazione</a>
+	    				<a href="registrazione.jsp"><img alt="" src="icon/addUser.png" id="imgAdd"></br>Registrazione</a>
 					</th>
   				</table>
   				
 			</div>		
 				
 			<div type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('retrive');">
-				<p> Recupera password</p>
+				<p> Password dimenticata?</p>
 			</div>
 			
 		</div>
