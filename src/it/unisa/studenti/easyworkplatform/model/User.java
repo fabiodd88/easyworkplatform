@@ -13,12 +13,11 @@ public class User extends Account{
 	private String province;
 	private int cap;
 	private String taxCode;
-	private String activity;
 	
 	public User() {}
 	
 	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
-			String province, int cap, String taxCode, String activity) {
+			String province, int cap, String taxCode) {
 		super(email, password, secondKey);
 		this.name = name;
 		this.surename = surename;
@@ -29,11 +28,10 @@ public class User extends Account{
 		this.province = province;
 		this.cap = cap;
 		this.taxCode = taxCode;
-		this.activity = activity;
 	}
 	
 	public User(Account account, String name, String surename, Date birthdate,
-			String birthplace, String address, String city, String province, int cap, String taxCode, String activity) {
+			String birthplace, String address, String city, String province, int cap, String taxCode) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
 		this.name = name;
 		this.surename = surename;
@@ -44,7 +42,6 @@ public class User extends Account{
 		this.province = province;
 		this.cap = cap;
 		this.taxCode = taxCode;
-		this.activity = activity;
 	}
 
 	public User(String email, String password, String secondKey) {
@@ -123,19 +120,12 @@ public class User extends Account{
 		this.taxCode = taxCode;
 	}
 
-	public String getActivity() {
-		return activity;
-	}
-
-	public void setActivity(String activity) {
-		this.activity = activity;
-	}
 	
 	@Override
 	public String toString() {
 		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", burthplace="
 				+ birthPlace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
-				+ ", taxCode=" + taxCode + ", activity=" + activity + "]";
+				+ ", taxCode=" + taxCode + "]";
 	}
 	
 	@Override
@@ -152,8 +142,7 @@ public class User extends Account{
 				this.city.equals(user.getCity())	&&
 				this.province.equals(user.getProvince())	&&
 				this.cap == user.getCap()	&&
-				this.taxCode.equals(user.getTaxCode())	&&
-				this.activity.equals(user.getActivity());
+				this.taxCode.equals(user.getTaxCode());
 	}
 	
 	@Override
