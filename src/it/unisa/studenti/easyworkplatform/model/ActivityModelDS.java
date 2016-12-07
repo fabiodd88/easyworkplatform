@@ -115,7 +115,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = new Activity();
-		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (idActivity = ?)";
+		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (idActivity == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);

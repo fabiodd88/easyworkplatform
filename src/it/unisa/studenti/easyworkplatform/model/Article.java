@@ -3,6 +3,7 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 public class Article implements Cloneable{
+	private int idArticle;
 	private String name;
 	private double price;
 	private String description;
@@ -49,6 +50,14 @@ public class Article implements Cloneable{
 		this.duration = duration;
 	} 
 	
+	public int getIdArticle() {
+		return idArticle;
+	}
+
+	public void setIdArticle(int idArticle) {
+		this.idArticle = idArticle;
+	}
+
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()+" [name=" + name + ", price=" + price + ", description=" + description + ", duration=" + duration
