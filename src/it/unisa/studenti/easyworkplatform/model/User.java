@@ -7,43 +7,43 @@ public class User extends Account{
 	private String name;
 	private String surename;
 	private Date birthdate;
-	private Date birthPlace;
+	private String birthPlace;
 	private String address;
 	private String city;
 	private int province;
 	private int cap;
-	private String fiscalCode;
+	private String taxCode;
 	private String activity;
 	
 	public User() {}
 	
-	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, Date burthplace, String address, String city,
-			int province, int cap, String fiscalCode, String activity) {
+	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
+			int province, int cap, String taxCode, String activity) {
 		super(email, password, secondKey);
 		this.name = name;
 		this.surename = surename;
 		this.birthdate = birthdate;
-		this.birthPlace = burthplace;
+		this.birthPlace = birthplace;
 		this.address = address;
 		this.city = city;
 		this.province = province;
 		this.cap = cap;
-		this.fiscalCode = fiscalCode;
+		this.taxCode = taxCode;
 		this.activity = activity;
 	}
 	
 	public User(Account account, String name, String surename, Date birthdate,
-			Date birthPlace, String address, String city, int province, int cap, String fiscalCode, String activity) {
+			String birthplace, String address, String city, int province, int cap, String taxCode, String activity) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
 		this.name = name;
 		this.surename = surename;
 		this.birthdate = birthdate;
-		this.birthPlace = birthPlace;
+		this.birthPlace = birthplace;
 		this.address = address;
 		this.city = city;
 		this.province = province;
 		this.cap = cap;
-		this.fiscalCode = fiscalCode;
+		this.taxCode = taxCode;
 		this.activity = activity;
 	}
 
@@ -75,12 +75,12 @@ public class User extends Account{
 		this.birthdate = birthdate;
 	}
 
-	public Date getBurthplace() {
+	public String getBirthplace() {
 		return birthPlace;
 	}
 
-	public void setBurthplace(Date burthplace) {
-		this.birthPlace = burthplace;
+	public void setBirthplace(String birthplace) {
+		this.birthPlace = birthplace;
 	}
 
 	public String getAddress() {
@@ -115,12 +115,12 @@ public class User extends Account{
 		this.cap = cap;
 	}
 
-	public String getFiscalCode() {
-		return fiscalCode;
+	public String getTaxCode() {
+		return taxCode;
 	}
 
-	public void setFiscalCode(String fiscalCode) {
-		this.fiscalCode = fiscalCode;
+	public void setTaxCode(String taxCode) {
+		this.taxCode = taxCode;
 	}
 
 	public String getActivity() {
@@ -135,7 +135,7 @@ public class User extends Account{
 	public String toString() {
 		return getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", burthplace="
 				+ birthPlace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
-				+ ", fiscalCode=" + fiscalCode + ", activity=" + activity + "]";
+				+ ", taxCode=" + taxCode + ", activity=" + activity + "]";
 	}
 	
 	@Override
@@ -147,7 +147,7 @@ public class User extends Account{
 				user.address	== this.address		&&
 				user.birthdate	== this.birthdate	&&
 				user.birthPlace == this.birthPlace	&&
-				user.fiscalCode	== this.fiscalCode 	&&
+				user.taxCode	== this.taxCode 	&&
 				user.province	== this.province	&&
 				user.cap	== this.cap		&&
 				user.city	== this.city	&&
