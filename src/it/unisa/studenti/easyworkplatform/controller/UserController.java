@@ -78,7 +78,7 @@ public class UserController extends HttpServlet {
 				user.setPassword(password);
 				user.setSecondKey(secondKey);
 				AccountModelDS modelDs = (AccountModelDS) model;					
-				if(modelDs.findByName(email) != null )
+				if(modelDs.findByEmail(email) != null )
 				{
 					sendMessage("exist", response);
 					return;
@@ -123,7 +123,7 @@ public class UserController extends HttpServlet {
 			{
 				String 	email 		= (String) request.getParameter("email"); 
 				String 	password 	= (String) request.getParameter("password"); 
-				User 	user 		= modelDs.findByName(email);
+				User 	user 		= modelDs.findByEmail(email);
 				if(user == null)
 				{
 					sendMessage("noUser", response);
