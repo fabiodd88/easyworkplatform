@@ -12,16 +12,15 @@
 						<input type="text" size="40" maxlength="40" name="action"
 								id="inputAction" placeholder="Action" class="form-control"
 								style="display: none;" /><br> 
-						<label for="inputUser">User</label>
+						<label for="inputUser">Email</label>
 						<input type="text" size="40" maxlength="40" name="email"
-							id="inputUser" placeholder="Username" class="form-control" /><br>
-						<label for="inputPassword">Password</label> <input
+							id="inputUser" placeholder="Email" class="form-control" /><br>
+						<p for="inputPassword" id="pwdLabel" type="">Password</p> <input
 								type="password" size="40" maxlength="40" name="password"
 								id="inputPassword" class="form-control" placeholder="Password" /><br>
-						<div id="status">Messaggio:</div>
 						<div class="modal-footer">
 							<a href="#" data-dismiss="modal" class="btn">Close</a> <input
-								type="submit" class="btn btn-primary" id='mySubmit' />
+								type="submit" class="btn btn-primary" id='mySubmit'/>
 						</div>
 					</form>
 				</div>

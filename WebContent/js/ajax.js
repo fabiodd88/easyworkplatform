@@ -49,9 +49,13 @@ function setAction(action){
 
 	switch(action)
 	{
-		case 'insert':
-			$('#modalTitle').text('Insert User');
-			$('#mySubmit').val('Sign-In');
+		case 'retrive':
+			$('#modalTitle').text('Recupera password');
+			$('#mySubmit').val('Retrive');
+			var psw=document.getElementById('inputPassword');
+			psw.setAttribute("type", "hidden");
+			var lb=document.getElementById('pwdLabel');
+			lb.setAttribute("type", "hidden");
 		break;
 	
 		case 'login':
