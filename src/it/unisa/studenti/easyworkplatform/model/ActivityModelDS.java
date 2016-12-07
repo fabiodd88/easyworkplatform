@@ -94,7 +94,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE " + ActivityModelDS.TABLE_NAME + " WHERE (idActivity == ?)";
+		String removeSql = "DELETE FROM" + ActivityModelDS.TABLE_NAME + " WHERE (idActivity == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);

@@ -34,7 +34,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 	@Override
 	public void insert(Article article) throws SQLException {
 		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
-				+ "(article, price, desciption, duration)" + "VALUES (?,?,?,?)";
+				+ "(article, price, desciption, duration)" + " VALUES (?,?,?,?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
@@ -88,7 +88,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE " + ArticleModelDS.TABLE_NAME + " WHERE (idArticle == ?)";
+		String removeSql = "DELETE FROM" + ArticleModelDS.TABLE_NAME + " WHERE (idArticle == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);

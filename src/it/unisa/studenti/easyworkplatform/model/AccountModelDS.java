@@ -110,7 +110,7 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE " + AccountModelDS.TABLE_NAME + " WHERE (idUser == ?)";
+		String removeSql = "DELETE FROM" + AccountModelDS.TABLE_NAME + " WHERE (idUser == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
