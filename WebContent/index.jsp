@@ -40,33 +40,22 @@
 			</div>		
 				
 			<div><a href="recuperaPassword.jsp">Password dimenticata?</a></div>
-			<div>
-				<img alt="" src="icon/addUser.png">
-				<h1>Insert</h1>
-			</div>
-
-
-			<div>
-				<img alt="" src="icon/login.png">
-				<h1>Login</h1>
-			</div>
+			
 		</div>
-		
-		<div class="table-responsive">
-  			<table class="table">	
-  				<th>
-  					<h4><b>Informazioni</b></h4>
-  					<p>Il sito è stato progettato per gestire piccole aziende.</br> L'utente non dovrà far altro che registrarsi,inserendo</br> i propri
-  					dati anagrafici e i dati della propria attività.</br>Una vota effettuata la registrazione, potrà usufruire</br> di tutte le 
-  					operazioni che offre la piattaforma.</p>
-  				</th>
-  				<th>
-  					<h4><b>Contatti</b></h4>
-  					<p>Indirizzo: Via Giovanni Paolo II, 132, 84084 Fisciano SA;</br>Numero telefonico: 0541239874</br>Email: g-platform@gmail.com</p>
-  				</th>
-  			</table>
-  		</div>
-  		
+			<div class="divHorizontal">
+				<div>	
+					<h4><b>Informazioni</b></h4>
+	  				<p>Il sito è stato progettato per gestire piccole aziende.</br> L'utente non dovrà far altro che registrarsi,inserendo</br> i propri
+	  				dati anagrafici e i dati della propria attività.</br>Una vota effettuata la registrazione, potrà usufruire</br> di tutte le 
+	  				operazioni che offre la piattaforma.</p>
+  				</div>
+  				
+  				<div>  					
+	  				<h4><b>Contatti</b></h4>
+	  				<p>Indirizzo: Via Giovanni Paolo II, 132, 84084 Fisciano SA;</br>Numero telefonico: 0541239874</br>Email: g-platform@gmail.com</p>
+	  			</div> 
+			</div>
+			
   		<div class="footer">
 			<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
 		</div>			
