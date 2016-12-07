@@ -3,7 +3,7 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class CustermModelDS implements ModelInterface<Customer>{
+public class CustomerModelDS implements ModelInterface<Customer>{
 
 	@Override
 	public void insert(Customer entity) throws SQLException {

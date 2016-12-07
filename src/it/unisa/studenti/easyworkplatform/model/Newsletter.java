@@ -7,6 +7,7 @@ public class Newsletter implements Cloneable {
 	private String object;
 	private String message;
 	
+	public Newsletter(){}
 	
 	public Newsletter(String sender, String reciver, String object, String message) {
 		super();
@@ -16,36 +17,29 @@ public class Newsletter implements Cloneable {
 		this.message = message;
 	}
 
-
 	public String getSender() {
 		return sender;
 	}
-
 
 	public void setSender(String sender) {
 		this.sender = sender;
 	}
 
-
 	public String getReciver() {
 		return reciver;
 	}
-
 
 	public void setReciver(String reciver) {
 		this.reciver = reciver;
 	}
 
-
 	public String getObject() {
 		return object;
 	}
 
-
 	public void setObject(String object) {
 		this.object = object;
 	}
-
 
 	public String getMessage() {
 		return message;

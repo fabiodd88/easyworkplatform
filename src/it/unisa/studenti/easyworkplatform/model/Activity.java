@@ -24,62 +24,77 @@ public class Activity implements Cloneable{
 		this.vatNumber = vatNumber;
 	}
 	
-	
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getProvince() {
 		return province;
 	}
+
 	public void setProvince(String province) {
 		this.province = province;
 	}
+
 	public int getCap() {
 		return cap;
 	}
+
 	public void setCap(int cap) {
 		this.cap = cap;
 	}
+
 	public String getVatNumber() {
 		return vatNumber;
 	}
+
 	public void setVatNumber(String vatNumber) {
 		this.vatNumber = vatNumber;
 	}
+
 	public int getIdActivity() {
 		return idActivity;
 	}
+
 	public void setIdActivity(int idActivity) {
 		this.idActivity = idActivity;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-
 
 	@Override
 	public String toString() {
@@ -101,7 +116,6 @@ public class Activity implements Cloneable{
 				activity.type 	== this.type;
 	}
 	
-	
 	@Override
 	public Article clone(){
 		try{
@@ -111,9 +125,5 @@ public class Activity implements Cloneable{
 			return null;
 		}
 	}
-	
-	
-	
-	
 	
 }

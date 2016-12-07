@@ -13,8 +13,7 @@ public class Service implements Cloneable {
 	private Date returnDate;
 	private String note;
 	
-	
-	
+	public Service() {}
 	
 	public Service(String customer, String itemIvolved, Date date, double amount, String variations, String employee,
 			Date returnDate, String note) {
@@ -29,9 +28,6 @@ public class Service implements Cloneable {
 		this.note = note;
 	}
 
-	
-	
-	
 	public String getCustomer() {
 		return customer;
 	}
@@ -95,16 +91,12 @@ public class Service implements Cloneable {
 	public void setNote(String note) {
 		this.note = note;
 	}
-
-	
-	
 	
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()+" [customer=" + customer + ", itemIvolved=" + itemIvolved + ", amount=" + amount + ", variations="
 				+ variations + ", employee=" + employee + ", note=" + note + "]";
 	}
-	
 	
 	@Override
 	public boolean equals(Object object){
@@ -120,7 +112,6 @@ public class Service implements Cloneable {
 				service.variations 	== this.variations &&
 				service.note == this.note;
 	} 
-	
 	
 	@Override
 	public Service clone(){
