@@ -31,15 +31,25 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	@Override
 	public void insert(User user) throws SQLException {
-		String insertSQL;
-		insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME + " (EMAIL, PASSWORD) VALUES (?, ?)";
+		String insertSQL = "INSERT INTO " 
+		+ AccountModelDS.TABLE_NAME + " (taxCode, nameUser, sureNameUser, dateOfBirthUser, birthOfPlaceUser, addressUser, emailUser, password, secondaryKey)"
+		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, user.getEmail());
+			preparedStatement.setString(1, user.getTaxCode());
+			preparedStatement.setString(2, user.getName());
+			preparedStatement.setString(3, user.getSurename());
+			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
+			preparedStatement.setString(5, user.getBirthplace());
+			preparedStatement.setString(6, user.getAddress());
+			preparedStatement.setString(7, user.getEmail());
 			String password = user.getPassword();
 			String cryptedPassword = toSHA1(password.getBytes());
-			preparedStatement.setString(2, cryptedPassword);
+			preparedStatement.setString(8, cryptedPassword);
+			String secondKey = user.getPassword();
+			String cryptedSecondKey = toSHA1(secondKey.getBytes());
+			preparedStatement.setString(9, cryptedSecondKey);
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (Exception e) {
