@@ -67,3 +67,8 @@ body{
 	color:#154579;
 	text-decoration:underline;	
 }
+
+
+.form-control{
+	width: 80% !important;
+}
