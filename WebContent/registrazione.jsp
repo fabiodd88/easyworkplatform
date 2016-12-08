@@ -72,7 +72,7 @@
   						</table>
   					</div>
   					<div>
-						<input type="button" onclick="index.jsp" value="Annulla"> <input type="submit" value="Avanti" margin-top="10%">
+						<input type="button" onclick="WebContent/index.jsp" value="Annulla"> <input type="submit" value="Avanti" margin-top="10%">
 					</div>
 				</form>
 			</div>
