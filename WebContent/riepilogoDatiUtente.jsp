@@ -22,14 +22,14 @@
 		<div class="jumbotron color">
 		</div>
 		<div class="container-fluid text-center padding">
-			<h2>Registrazione Utente</h2>
+			<h2>Riepilogo dati utente</h2>
 			<div class="progress">
 				<div class="progress-bar" role="progressbar" aria-valuenow="0"
-					aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+					aria-valuemin="0" aria-valuemax="100" style="width: 60%">
 				</div>
 			</div>
 			<div>
-				<form action="registrazioneDatiLogin.jsp" style="text-align:center">
+				<form action="riepilogoDatiLogin.jsp" style="text-align:center">
 					<div class="table-responsive">
   						<table class="tableUser" align="center">
   							<tr>

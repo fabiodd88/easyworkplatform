@@ -22,39 +22,31 @@
 		<div class="jumbotron color">
 		</div>
 		<div class="container-fluid text-center padding">
-			<h2>Registrazione Utente</h2>
+			<h2>Riepilogo dati utente</h2>
 			<div class="progress">
 				<div class="progress-bar" role="progressbar" aria-valuenow="0"
-					aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+					aria-valuemin="0" aria-valuemax="100" style="width: 100%">
 				</div>
 			</div>
 			<div>
-				<form action="registrazioneDatiLogin.jsp" style="text-align:center">
+				<form action="#mioModal" style="text-align:center">
 					<div class="table-responsive">
   						<table class="tableUser" align="center">
   							<tr>
-  								<td><label>Nome</label></td>
-  								<td><input type="text" name="nome" value=""></td>
+  								<td><label>Nome attività</label></td>
+  								<td><input type="text" name="nome_attività" value=""></td>
   							</tr>
   							<tr>
-  								<td><label>Cognome</label></td>
-  								<td><input type="text" name="cognome" value=""></td>
+  								<td><label>Partita iva</label></td>
+  								<td><input type="text" name="partita_iva" value=""></td>
   							</tr>
   							<tr>
-  								<td><label>Codice fiscale</label></td>
-  								<td><input type="text" name="codice_fiscale" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Data di nascita</label></td>
-  								<td><input type="text" name="data_di_nascita" placeholder="gg/mm/aaaa"></td>
-  							</tr>
-  							<tr>
-  								<td><label>Luogo di nascita</label></td>
-  								<td><input type="text" name="luogo_di_nascita" value=""></td>
+  								<td><label>Tipologia</label></td>
+  								<td><input type="text" name="tipologia" value=""></td>
   							</tr>
   							<tr>
   								<td><label>Indirizzo</label></td>
-  								<td><input type="text" name="indirizzo" value=""></td>
+  								<td><input type="text" name="indirizzo" placeholder="gg/mm/aaaa"></td>
   							</tr>
   							<tr>
   								<td><label>Città</label></td>
@@ -68,13 +60,23 @@
   								<td><label>Cap</label></td>
   								<td><input type="text" name="cap" value=""></td>
   							</tr>
-  							
-  						</table>
+   						</table>
   					</div>
   					<div>
-						<input type="button" onclick="index.jsp" value="Annulla"> <input type="submit" value="Avanti" margin-top="10%">
+						<input type="button" onclick="index.jsp" value="Annulla"> <input type="button" value="Conferma" data-toggle="modal" data-target="#mioModal">
 					</div>
 				</form>
+				<div class="modal fase" id="mioModal" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4>Registrazione avvenuta con successo</h4>
+							</div>
+							<button type="button" data-dismiss="modal" onclick="index.jsp">Ok</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="footer">
