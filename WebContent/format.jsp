@@ -20,8 +20,10 @@
 								id="inputPassword" class="form-control" placeholder="Password" /><br>
 						<div id="status">Messaggio: </div>
 						<div class="modal-footer">
-							<a href="#" data-dismiss="modal" class="btn">Close</a> <input
-								type="submit" class="btn btn-primary" id='mySubmit'/>
+							<a href="#" data-dismiss="modal" class="btn">Close</a> 
+						<!--  <input type="submit" class="btn btn-primary" id='mySubmit'/> -->
+							<a href="homePage.jsp" data-dismiss="modal" class="btn">Conferma</a> 
+
 						</div>
 					</form>
 				</div>

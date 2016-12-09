@@ -20,61 +20,6 @@
 	<div class="container div-box">
 		<!-- Un jumbotron è il quadratone blu -->
 		<div class="jumbotron color"></div>
-		<!-- 		<div class="container-fluid text-center padding"> -->
-		<!-- 			<h2>Registrazione Utente</h2> -->
-		<!-- 			<div class="progress"> -->
-		<!-- 				<div class="progress-bar" role="progressbar" aria-valuenow="0" -->
-		<!-- 					aria-valuemin="0" aria-valuemax="100" style="width: 0%"> -->
-		<!-- 				</div> -->
-		<!-- 			</div> -->
-		<!-- 			<div> -->
-		<!-- 				<form action="registrazioneDatiLogin.jsp" style="text-align:center"> -->
-		<!-- 					<div class="table-responsive"> -->
-		<!--   						<table class="tableUser" align="center"> -->
-		<!--   							<tr> -->
-		<!--   								<div class="form-group"> -->
-		<!--   								<td><label>Nome</label></td> -->
-		<!--   								<td><input type="text" name="nome" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Cognome</label></td> -->
-		<!--   								<td><input type="text" name="cognome" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Codice fiscale</label></td> -->
-		<!--   								<td><input type="text" name="codice_fiscale" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Data di nascita</label></td> -->
-		<!--   								<td><input type="text" name="data_di_nascita" placeholder="gg/mm/aaaa"></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Luogo di nascita</label></td> -->
-		<!--   								<td><input type="text" name="luogo_di_nascita" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Indirizzo</label></td> -->
-		<!--   								<td><input type="text" name="indirizzo" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Città</label></td> -->
-		<!--   								<td><input type="text" name="città" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Provincia</label></td> -->
-		<!--   								<td><input type="text" name="provincia" value=""></td> -->
-		<!--   							</tr> -->
-		<!--   							<tr> -->
-		<!--   								<td><label>Cap</label></td> -->
-		<!--   								<td><input type="text" name="cap" value=""></td> -->
-		<!--   							</tr> -->
-
-		<!--   						</table> -->
-		<!--   					</div> -->
-		<!--   					<div> -->
-		<!-- 						<input type="button" onclick="WebContent/index.jsp" value="Annulla"> <input type="submit" value="Avanti" margin-top="10%"> -->
-		<!-- 					</div> -->
-		<!-- 				</form> -->
 		<form id="InsertForm" action="UserController" method="post"
 			style="visibility: hidden;">
 			<input type="hidden" name="action" value="insert"></input>
@@ -87,160 +32,303 @@
 							<div class="container ">
 								<h2>Registrazione Utente</h2>
 								<div class="progress">
-								<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+									<div class="progress-bar" role="progressbar" aria-valuenow="0"
+										aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+									</div>
 								</div>
-								</div>
-								<form id="newUserForm" style="text-align: center;" role="form" action="userController" method="post">
-									<input type="text" name="typeOfRequest" id="inputAction" value="insert" style="display: none;" />
-									<div class="form-group">
-										<label for="">Nome</label> 
-										<input type="text" required="required" class="form-control" name="nome">
+								<form class="form" id="newUserForm" style="text-align: center;" role="form" action="registrazioneDatiLogin.jsp" method="post">
+									<input type="text" name="typeOfRequest" id="inputAction" value="insert" style="display: none" />
+									<div class="table-responsive">
+  										<table class="table" >
+  											<tr>
+												<div class="form-group">
+													<th><label for="">Nome</label></th>
+													<th><input type="text" required="required" class="form-control" name="nome"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Cognome</label></th>
+													<th><input type="text" class="form-control" name="surename" required="required"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Codice Fiscale</label></th> 
+													<th><input type="text" required="required" class="form-control" name="taxCode"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="description size">Data di Nascita</label></th>
+													<th><input type="date" required="required" class="form-control" name="birthDate" placeholder="gg/mm/aaaa"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="category">Luogo di Nascita</label></th> 
+													<th><select class="form-control" name="province" required="required">
+														<option value=""></option>
+														<option value="AG">AGRIGENTO</option>
+														<option value="AL">ALESSANDRIA</option>
+														<option value="AN">ANCONA</option>
+														<option value="AO">AOSTA</option>
+														<option value="AR">AREZZO</option>
+														<option value="AP">ASCOLI PICENO</option>
+														<option value="AT">ASTI</option>
+														<option value="AV">AVELLINO</option>
+														<option value="BA">BARI</option>
+														<option value="BT">Barletta-Andria-Trani</option>
+														<option value="BL">BELLUNO</option>
+														<option value="BN">BENEVENTO</option>
+														<option value="BG">BERGAMO</option>
+														<option value="BI">BIELLA</option>
+														<option value="BO">BOLOGNA</option>
+														<option value="BZ">BOLZANO</option>
+														<option value="BS">BRESCIA</option>
+														<option value="BR">BRINDISI</option>
+														<option value="CA">CAGLIARI</option>
+														<option value="CL">CALTANISSETTA</option>
+														<option value="CB">CAMPOBASSO</option>
+														<option value="CI">Carbonia-Iglesias</option>
+														<option value="CE">CASERTA</option>
+														<option value="CT">CATANIA</option>
+														<option value="CZ">CATANZARO</option>
+														<option value="CH">CHIETI</option>
+														<option value="CO">COMO</option>
+														<option value="CS">COSENZA</option>
+														<option value="CR">CREMONA</option>
+														<option value="KR">CROTONE</option>
+														<option value="CN">CUNEO</option>
+														<option value="EN">ENNA</option>
+														<option value="FM">FERMO</option>
+														<option value="FE">FERRARA</option>
+														<option value="FI">FIRENZE</option>
+														<option value="FG">FOGGIA</option>
+														<option value="FC">FORLI'-CESENA</option>
+														<option value="FR">FROSINONE</option>
+														<option value="GE">GENOVA</option>
+														<option value="GO">GORIZIA</option>
+														<option value="GR">GROSSETO</option>
+														<option value="IM">IMPERIA</option>
+														<option value="IS">ISERNIA</option>
+														<option value="SP">LA SPEZIA</option>
+														<option value="AQ">L'AQUILA</option>
+														<option value="LT">LATINA</option>
+														<option value="LE">LECCE</option>
+														<option value="LC">LECCO</option>
+														<option value="LI">LIVORNO</option>
+														<option value="LO">LODI</option>
+														<option value="LU">LUCCA</option>
+														<option value="MC">MACERATA</option>
+														<option value="MN">MANTOVA</option>
+														<option value="MS">MASSA-CARRARA</option>
+														<option value="MT">MATERA</option>
+														<option value="VS">MEDIO CAMPIDANO</option>
+														<option value="ME">MESSINA</option>
+														<option value="MI">MILANO</option>
+														<option value="MO">MODENA</option>
+														<option value="MB">MONZA E DELLA BRIANZA</option>
+														<option value="NA">NAPOLI</option>
+														<option value="NO">NOVARA</option>
+														<option value="NU">NUORO</option>
+														<option value="OG">OGLIASTRA</option>
+														<option value="OT">OLBIA-TEMPIO</option>
+														<option value="OR">ORISTANO</option>
+														<option value="PD">PADOVA</option>
+														<option value="PA">PALERMO</option>
+														<option value="PR">PARMA</option>
+														<option value="PV">PAVIA</option>
+														<option value="PG">PERUGIA</option>
+														<option value="PU">PESARO E URBINO</option>
+														<option value="PE">PESCARA</option>
+														<option value="PC">PIACENZA</option>
+														<option value="PI">PISA</option>
+														<option value="PT">PISTOIA</option>
+														<option value="PN">PORDENONE</option>
+														<option value="PZ">POTENZA</option>
+														<option value="PO">PRATO</option>
+														<option value="RG">RAGUSA</option>
+														<option value="RA">RAVENNA</option>
+														<option value="RC">REGGIO DI CALABRIA</option>
+														<option value="RE">REGGIO NELL'EMILIA</option>
+														<option value="RI">RIETI</option>
+														<option value="RN">RIMINI</option>
+														<option value="RM">ROMA</option>
+														<option value="RO">ROVIGO</option>
+														<option value="SA">SALERNO</option>
+														<option value="SS">SASSARI</option>
+														<option value="SV">SAVONA</option>
+														<option value="SI">SIENA</option>
+														<option value="SR">SIRACUSA</option>
+														<option value="SO">SONDRIO</option>
+														<option value="TA">TARANTO</option>
+														<option value="TE">TERAMO</option>
+														<option value="TR">TERNI</option>
+														<option value="TO">TORINO</option>
+														<option value="TP">TRAPANI</option>
+														<option value="TN">TRENTO</option>
+														<option value="TV">TREVISO</option>
+														<option value="TS">TRIESTE</option>
+														<option value="UD">UDINE</option>
+														<option value="VA">VARESE</option>
+														<option value="VE">VENEZIA</option>
+														<option value="VB">VERBANO-CUSIO-OSSOLA</option>
+														<option value="VC">VERCELLI</option>
+														<option value="VR">VERONA</option>
+														<option value="VV">VIBO VALENTIA</option>
+														<option value="VI">VICENZA</option>
+														<option value="VT">VITERBO</option>
+													</select></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="street">Indirizzo</label></th>
+													<th><input type="text" required="required" class="form-control" name="address"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="civicNumber">Numero civico</label></th>
+												 	<th><input type="number" min="1" required="required" class="form-control" name="civicNumber" placeholder="Only number"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="city">Città</label></th>
+													<th><input type="text" required="required" class="form-control" name="city"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="category">Provincia</label></th>
+													<th><select class="form-control" name="province" required="required">
+														<option value=""></option>
+														<option value="AG">AGRIGENTO</option>
+														<option value="AL">ALESSANDRIA</option>
+														<option value="AN">ANCONA</option>
+														<option value="AO">AOSTA</option>
+														<option value="AR">AREZZO</option>
+														<option value="AP">ASCOLI PICENO</option>
+														<option value="AT">ASTI</option>
+														<option value="AV">AVELLINO</option>
+														<option value="BA">BARI</option>
+														<option value="BT">Barletta-Andria-Trani</option>
+														<option value="BL">BELLUNO</option>
+														<option value="BN">BENEVENTO</option>
+														<option value="BG">BERGAMO</option>
+														<option value="BI">BIELLA</option>
+														<option value="BO">BOLOGNA</option>
+														<option value="BZ">BOLZANO</option>
+														<option value="BS">BRESCIA</option>
+														<option value="BR">BRINDISI</option>
+														<option value="CA">CAGLIARI</option>
+														<option value="CL">CALTANISSETTA</option>
+														<option value="CB">CAMPOBASSO</option>
+														<option value="CI">Carbonia-Iglesias</option>
+														<option value="CE">CASERTA</option>
+														<option value="CT">CATANIA</option>
+														<option value="CZ">CATANZARO</option>
+														<option value="CH">CHIETI</option>
+														<option value="CO">COMO</option>
+														<option value="CS">COSENZA</option>
+														<option value="CR">CREMONA</option>
+														<option value="KR">CROTONE</option>
+														<option value="CN">CUNEO</option>
+														<option value="EN">ENNA</option>
+														<option value="FM">FERMO</option>
+														<option value="FE">FERRARA</option>
+														<option value="FI">FIRENZE</option>
+														<option value="FG">FOGGIA</option>
+														<option value="FC">FORLI'-CESENA</option>
+														<option value="FR">FROSINONE</option>
+														<option value="GE">GENOVA</option>
+														<option value="GO">GORIZIA</option>
+														<option value="GR">GROSSETO</option>
+														<option value="IM">IMPERIA</option>
+														<option value="IS">ISERNIA</option>
+														<option value="SP">LA SPEZIA</option>
+														<option value="AQ">L'AQUILA</option>
+														<option value="LT">LATINA</option>
+														<option value="LE">LECCE</option>
+														<option value="LC">LECCO</option>
+														<option value="LI">LIVORNO</option>
+														<option value="LO">LODI</option>
+														<option value="LU">LUCCA</option>
+														<option value="MC">MACERATA</option>
+														<option value="MN">MANTOVA</option>
+														<option value="MS">MASSA-CARRARA</option>
+														<option value="MT">MATERA</option>
+														<option value="VS">MEDIO CAMPIDANO</option>
+														<option value="ME">MESSINA</option>
+														<option value="MI">MILANO</option>
+														<option value="MO">MODENA</option>
+														<option value="MB">MONZA E DELLA BRIANZA</option>
+														<option value="NA">NAPOLI</option>
+														<option value="NO">NOVARA</option>
+														<option value="NU">NUORO</option>
+														<option value="OG">OGLIASTRA</option>
+														<option value="OT">OLBIA-TEMPIO</option>
+														<option value="OR">ORISTANO</option>
+														<option value="PD">PADOVA</option>
+														<option value="PA">PALERMO</option>
+														<option value="PR">PARMA</option>
+														<option value="PV">PAVIA</option>
+														<option value="PG">PERUGIA</option>
+														<option value="PU">PESARO E URBINO</option>
+														<option value="PE">PESCARA</option>
+														<option value="PC">PIACENZA</option>
+														<option value="PI">PISA</option>
+														<option value="PT">PISTOIA</option>
+														<option value="PN">PORDENONE</option>
+														<option value="PZ">POTENZA</option>
+														<option value="PO">PRATO</option>
+														<option value="RG">RAGUSA</option>
+														<option value="RA">RAVENNA</option>
+														<option value="RC">REGGIO DI CALABRIA</option>
+														<option value="RE">REGGIO NELL'EMILIA</option>
+														<option value="RI">RIETI</option>
+														<option value="RN">RIMINI</option>
+														<option value="RM">ROMA</option>
+														<option value="RO">ROVIGO</option>
+														<option value="SA">SALERNO</option>
+														<option value="SS">SASSARI</option>
+														<option value="SV">SAVONA</option>
+														<option value="SI">SIENA</option>
+														<option value="SR">SIRACUSA</option>
+														<option value="SO">SONDRIO</option>
+														<option value="TA">TARANTO</option>
+														<option value="TE">TERAMO</option>
+														<option value="TR">TERNI</option>
+														<option value="TO">TORINO</option>
+														<option value="TP">TRAPANI</option>
+														<option value="TN">TRENTO</option>
+														<option value="TV">TREVISO</option>
+														<option value="TS">TRIESTE</option>
+														<option value="UD">UDINE</option>
+														<option value="VA">VARESE</option>
+														<option value="VE">VENEZIA</option>
+														<option value="VB">VERBANO-CUSIO-OSSOLA</option>
+														<option value="VC">VERCELLI</option>
+														<option value="VR">VERONA</option>
+														<option value="VV">VIBO VALENTIA</option>
+														<option value="VI">VICENZA</option>
+														<option value="VT">VITERBO</option>
+													</select></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="description size">Cap</label></th>
+													<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
+													<th><input type="number" required="required" class="form-control" name="cap" placeholder="Es. 80053"></th>
+												</div>
+											</tr>
+										</table>
 									</div>
-									<div class="form-group">
-										<label for="">Cognome</label> 
-										<input type="url" class="form-control" name="surename" required="required">
-									</div>
-									<div class="form-group">
-										<label for="city">Codice Fiscale</label> 
-										<input type="text" required="required" class="form-control" name="taxCode">
-									</div>
-									<div class="form-group">
-										<label for="description size">Data di Nascita</label>
-										 <input type="date" required="required" class="form-control" name="birthDate" placeholder="gg/mm/aaaa">
-									</div>
-									<div class="form-group">
-										<label for="description size">Luogo di Nascita</label> 
-										<input type="date" required="required" class="form-control" name="birthPlace">
-									</div>
-									<div class="form-group">
-										<label for="street">Indirizzo</label> 
-										<input type="text" required="required" class="form-control" name="address">
-									</div>
-									<div class="form-group">
-										<label for="civicNumber">Civic Number</label>
-										 <input type="number" min="1" required="required" class="form-control" name="civicNumber" placeholder="Only number">
-									</div>
-									<div class="form-group">
-										<label for="category">Provincia</label> <select
-											class="form-control" name="province">
-											<option value="AG">AGRIGENTO</option>
-											<option value="AL">ALESSANDRIA</option>
-											<option value="AN">ANCONA</option>
-											<option value="AO">AOSTA</option>
-											<option value="AR">AREZZO</option>
-											<option value="AP">ASCOLI PICENO</option>
-											<option value="AT">ASTI</option>
-											<option value="AV">AVELLINO</option>
-											<option value="BA">BARI</option>
-											<option value="BT">Barletta-Andria-Trani</option>
-											<option value="BL">BELLUNO</option>
-											<option value="BN">BENEVENTO</option>
-											<option value="BG">BERGAMO</option>
-											<option value="BI">BIELLA</option>
-											<option value="BO">BOLOGNA</option>
-											<option value="BZ">BOLZANO</option>
-											<option value="BS">BRESCIA</option>
-											<option value="BR">BRINDISI</option>
-											<option value="CA">CAGLIARI</option>
-											<option value="CL">CALTANISSETTA</option>
-											<option value="CB">CAMPOBASSO</option>
-											<option value="CI">Carbonia-Iglesias</option>
-											<option value="CE">CASERTA</option>
-											<option value="CT">CATANIA</option>
-											<option value="CZ">CATANZARO</option>
-											<option value="CH">CHIETI</option>
-											<option value="CO">COMO</option>
-											<option value="CS">COSENZA</option>
-											<option value="CR">CREMONA</option>
-											<option value="KR">CROTONE</option>
-											<option value="CN">CUNEO</option>
-											<option value="EN">ENNA</option>
-											<option value="FM">FERMO</option>
-											<option value="FE">FERRARA</option>
-											<option value="FI">FIRENZE</option>
-											<option value="FG">FOGGIA</option>
-											<option value="FC">FORLI'-CESENA</option>
-											<option value="FR">FROSINONE</option>
-											<option value="GE">GENOVA</option>
-											<option value="GO">GORIZIA</option>
-											<option value="GR">GROSSETO</option>
-											<option value="IM">IMPERIA</option>
-											<option value="IS">ISERNIA</option>
-											<option value="SP">LA SPEZIA</option>
-											<option value="AQ">L'AQUILA</option>
-											<option value="LT">LATINA</option>
-											<option value="LE">LECCE</option>
-											<option value="LC">LECCO</option>
-											<option value="LI">LIVORNO</option>
-											<option value="LO">LODI</option>
-											<option value="LU">LUCCA</option>
-											<option value="MC">MACERATA</option>
-											<option value="MN">MANTOVA</option>
-											<option value="MS">MASSA-CARRARA</option>
-											<option value="MT">MATERA</option>
-											<option value="VS">MEDIO CAMPIDANO</option>
-											<option value="ME">MESSINA</option>
-											<option value="MI">MILANO</option>
-											<option value="MO">MODENA</option>
-											<option value="MB">MONZA E DELLA BRIANZA</option>
-											<option value="NA">NAPOLI</option>
-											<option value="NO">NOVARA</option>
-											<option value="NU">NUORO</option>
-											<option value="OG">OGLIASTRA</option>
-											<option value="OT">OLBIA-TEMPIO</option>
-											<option value="OR">ORISTANO</option>
-											<option value="PD">PADOVA</option>
-											<option value="PA">PALERMO</option>
-											<option value="PR">PARMA</option>
-											<option value="PV">PAVIA</option>
-											<option value="PG">PERUGIA</option>
-											<option value="PU">PESARO E URBINO</option>
-											<option value="PE">PESCARA</option>
-											<option value="PC">PIACENZA</option>
-											<option value="PI">PISA</option>
-											<option value="PT">PISTOIA</option>
-											<option value="PN">PORDENONE</option>
-											<option value="PZ">POTENZA</option>
-											<option value="PO">PRATO</option>
-											<option value="RG">RAGUSA</option>
-											<option value="RA">RAVENNA</option>
-											<option value="RC">REGGIO DI CALABRIA</option>
-											<option value="RE">REGGIO NELL'EMILIA</option>
-											<option value="RI">RIETI</option>
-											<option value="RN">RIMINI</option>
-											<option value="RM">ROMA</option>
-											<option value="RO">ROVIGO</option>
-											<option value="SA">SALERNO</option>
-											<option value="SS">SASSARI</option>
-											<option value="SV">SAVONA</option>
-											<option value="SI">SIENA</option>
-											<option value="SR">SIRACUSA</option>
-											<option value="SO">SONDRIO</option>
-											<option value="TA">TARANTO</option>
-											<option value="TE">TERAMO</option>
-											<option value="TR">TERNI</option>
-											<option value="TO">TORINO</option>
-											<option value="TP">TRAPANI</option>
-											<option value="TN">TRENTO</option>
-											<option value="TV">TREVISO</option>
-											<option value="TS">TRIESTE</option>
-											<option value="UD">UDINE</option>
-											<option value="VA">VARESE</option>
-											<option value="VE">VENEZIA</option>
-											<option value="VB">VERBANO-CUSIO-OSSOLA</option>
-											<option value="VC">VERCELLI</option>
-											<option value="VR">VERONA</option>
-											<option value="VV">VIBO VALENTIA</option>
-											<option value="VI">VICENZA</option>
-											<option value="VT">VITERBO</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="description size">Cap</label> 
-										<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
-										<input type="number" required="required" class="form-control" name="cap" placeholder="Es. 80053">
-									</div>
-									<button type="submit" class="btn btn-default">Submit</button>
+									<button type="reset" class="btn btn-default" onClick="history.go(-1);return true;">Annulla</button>
+									<button type="submit" class="btn btn-default">Avanti</button>
 								</form>
 							</div>
 						</div>

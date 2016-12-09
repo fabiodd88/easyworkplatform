@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Esempio di metadati file di appoggio necessari per il nostro progetto -->
-<title>EasyWorkPlatForm</title>
+<title>Easy Work PlatForm</title>
 <!-- Tipo di cofica usato per il documento -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,67 +18,107 @@
 <body>
 	<!-- Contenitore della pagina -->
 	<div class="container div-box">
-	<!-- Un jumbotron è il quadratone blu -->
-		<div class="jumbotron color">
-		</div>
+		<!-- Un jumbotron è il quadratone blu -->
+		<div class="jumbotron color"></div>
+		<form id="InsertForm" action="UserController" method="post"
+			style="visibility: hidden;">
+			<input type="hidden" name="action" value="insert"></input>
+		</form>
 		<div class="container-fluid text-center padding">
-			<h2>Riepilogo dati utente</h2>
-			<div class="progress">
-				<div class="progress-bar" role="progressbar" aria-valuenow="0"
-					aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-				</div>
-			</div>
-			<div>
-				<form action="riepilogoDatiLogin.jsp" style="text-align:center">
-					<div class="table-responsive">
-  						<table class="tableUser" align="center">
-  							<tr>
-  								<td><label>Nome</label></td>
-  								<td><input type="text" name="nome" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Cognome</label></td>
-  								<td><input type="text" name="cognome" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Codice fiscale</label></td>
-  								<td><input type="text" name="codice_fiscale" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Data di nascita</label></td>
-  								<td><input type="text" name="data_di_nascita" placeholder="gg/mm/aaaa"></td>
-  							</tr>
-  							<tr>
-  								<td><label>Luogo di nascita</label></td>
-  								<td><input type="text" name="luogo_di_nascita" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Indirizzo</label></td>
-  								<td><input type="text" name="indirizzo" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Città</label></td>
-  								<td><input type="text" name="città" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Provincia</label></td>
-  								<td><input type="text" name="provincia" value=""></td>
-  							</tr>
-  							<tr>
-  								<td><label>Cap</label></td>
-  								<td><input type="text" name="cap" value=""></td>
-  							</tr>
-  							
-  						</table>
-  					</div>
-  					<div>
-						<input type="button" onclick="index.jsp" value="Annulla"> <input type="submit" value="Avanti" margin-top="10%">
+			<div class="row content ">
+				<div class="col-sm-12">
+					<div class="panel-group ">
+						<div class="panel panel-default ">
+							<div class="container ">
+								<h2>Riepilogo dati utente</h2>
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" aria-valuenow="0"
+										aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+									</div>
+								</div>
+								<form class="form" id="newUserForm" style="text-align: center;" role="form" action="riepilogoDatiLogin.jsp" method="post">
+									<input type="text" name="typeOfRequest" id="inputAction" value="insert" style="display: none" />
+									<div class="table-responsive">
+  										<table class="table" >
+  											<tr>
+												<div class="form-group">
+													<th><label for="">Nome</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="name"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Cognome</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="cognome"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Codice Fiscale</label></th> 
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="taxCode"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="description size">Data di Nascita</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="dateBirth"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="category">Luogo di Nascita</label></th> 
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="placeBirth"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="street">Indirizzo</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="adress"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="civicNumber">Numero civico</label></th>
+												 	<th><input readonly="readonly" maxlength="50" size="100" value="" name="civicNumber"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="city">Città</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="city"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="category">Provincia</label></th>
+													<th><input readonly="readonly" maxlength="50" size="100" value="" name="provincia"></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="description size">Cap</label></th>
+													<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
+													<th><input input readonly="readonly" maxlength="50" size="100" value="" name="cap"></th>
+												</div>
+											</tr>
+										</table>
+									</div>
+									<button type="reset" class="btn btn-default" onClick="history.go(-1);return true;">Indietro</button>
+									<button type="submit" class="btn btn-default" onclick="WebContent/index.jsp">Avanti</button>
+								</form>
+							</div>
+						</div>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 		<div class="footer">
-			<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
+			<p>
+				<img src="icon/logo.png" height="50px" width="70px"> &nbsp
+				&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
+					href="index.html">Privacy Policy</a> <a href="index.html">Terms
+					and Conditions</a>
+			</p>
 		</div>
 	</div>
 
