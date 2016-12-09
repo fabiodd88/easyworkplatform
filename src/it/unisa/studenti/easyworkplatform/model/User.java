@@ -16,9 +16,9 @@ public class User extends Account{
 	
 	public User() {}
 	
-	public User(String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
+	public User(int id,String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
 			String province, int cap, String taxCode) {
-		super(email, password, secondKey);
+		super(id,email, password, secondKey);
 		this.name = name;
 		this.surename = surename;
 		this.birthdate = birthdate;
@@ -128,31 +128,38 @@ public class User extends Account{
 				+ ", taxCode=" + taxCode + "]";
 	}
 	
+	
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		if(!super.equals(object)) return false; 
 		User user = (User) object;
-		return	this.name.equals(user.getName())	&& 
+		return	this.name.equals(user.getName())			&& 
 				this.surename.equals(user.getSurename())	&&
 				this.birthdate.equals(user.getBirthdate())	&&
-				this.birthPlace.equals(user.getBirthplace())	&&
-				this.address.equals(user.getAddress())	&&
-				this.city.equals(user.getCity())	&&
+				this.birthPlace.equals(user.getBirthplace())&&
+				this.address.equals(user.getAddress())		&&
+				this.city.equals(user.getCity())			&&
 				this.province.equals(user.getProvince())	&&
-				this.cap == user.getCap()	&&
+				this.cap == user.getCap()					&&
 				this.taxCode.equals(user.getTaxCode());
 	}
 	
+	
 	@Override
 	public User clone(){
-		try{
-			return (User) super.clone();
-		}
-		catch(CloneNotSupportedException e){
-			return null;
-		}
+		User user = (User) super.clone();
+		user.name = name;
+		user.city = city;
+		user.cap  = cap;
+		user.surename 	= surename;
+		user.birthdate 	= birthdate;
+		user.birthPlace = birthPlace;
+		user.address	= address;
+		user.province 	= province;
+		user.taxCode 	= taxCode;
+		return user;
 	}
 	
 }

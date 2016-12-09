@@ -1,6 +1,6 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-public class Account {
+public class Account implements Cloneable{
 
 	private int id;
 	private String email;
@@ -9,6 +9,17 @@ public class Account {
 	
 	public Account() {}
 	
+	
+	
+	
+	public Account(int id, String email, String password, String secondKey) {
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.secondKey = secondKey;
+	}
+
+
 	public Account(String email, String password, String secondKey) {
 		this.email = email;
 		this.password = password;
@@ -63,6 +74,13 @@ public class Account {
 				
 	}
 	
-	
+	public Account clone(){
+		try{
+			return (Account)super.clone();
+		}
+		catch(CloneNotSupportedException e){
+			return null;
+		}
+	}
 	
 }
