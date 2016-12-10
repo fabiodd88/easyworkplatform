@@ -4,113 +4,137 @@ import java.util.Date;
 
 public class Service implements Cloneable {
 
-	private String customer;
-	private String itemIvolved;
-	private Date date;
-	private double amount;
-	private String variations;
 	private String employee;
-	private Date returnDate;
+	private int quantity;
+	private String variation;
 	private String note;
+	private Date recepitDate;
+	private Date returnDate;
+	private int articleId;
+	private int customerId;
+
 	
 	public Service() {}
 	
-	public Service(String customer, String itemIvolved, Date date, double amount, String variations, String employee,
-			Date returnDate, String note) {
+	
+	public Service(String employee, int quantity, String variation, String note, Date recepitdate, Date returnDate,
+			int articleId, int customerId) {
 		super();
-		this.customer = customer;
-		this.itemIvolved = itemIvolved;
-		this.date = date;
-		this.amount = amount;
-		this.variations = variations;
 		this.employee = employee;
-		this.returnDate = returnDate;
+		this.quantity = quantity;
+		this.variation = variation;
 		this.note = note;
+		this.recepitDate = recepitdate;
+		this.returnDate = returnDate;
+		this.articleId = articleId;
+		this.customerId = customerId;
 	}
 
-	public String getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
-	}
-
-	public String getItemIvolved() {
-		return itemIvolved;
-	}
-
-	public void setItemIvolved(String itemIvolved) {
-		this.itemIvolved = itemIvolved;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	public String getVariations() {
-		return variations;
-	}
-
-	public void setVariations(String variations) {
-		this.variations = variations;
-	}
-
+	
 	public String getEmployee() {
 		return employee;
 	}
+
 
 	public void setEmployee(String employee) {
 		this.employee = employee;
 	}
 
-	public Date getReturnDate() {
-		return returnDate;
+
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
+
+
+	public String getVariation() {
+		return variation;
+	}
+
+
+	public void setVariation(String variation) {
+		this.variation = variation;
+	}
+
 
 	public String getNote() {
 		return note;
 	}
 
+
 	public void setNote(String note) {
 		this.note = note;
 	}
+
+
+	public Date getRecepitDate() {
+		return recepitDate;
+	}
+
+
+	public void setRecepitDate(Date recepitDate) {
+		this.recepitDate = recepitDate;
+	}
+
+
+	public Date getReturnDate() {
+		return returnDate;
+	}
+
+
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+
+
+	public int getArticleId() {
+		return articleId;
+	}
+
+
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
+	}
+
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+
 	
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+" [customer=" + customer + ", itemIvolved=" + itemIvolved + ", amount=" + amount + ", variations="
-				+ variations + ", employee=" + employee + ", note=" + note + "]";
+		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
+				+ note + ", recepitDate=" + recepitDate + ", returnDate=" + returnDate + ", articleId=" + articleId
+				+ ", customerId=" + customerId + "]";
 	}
-	
+
+
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Service service = (Service) object;
-		return 	this.customer.equals(service.getCustomer())	&&	
-			this.itemIvolved.equals(service.getItemIvolved())	&&
-			this.date.equals(service.getDate())	&&
-			this.amount == service.getAmount()	&&
-			this.variations.equals(service.getVariations())	&&
-			this.employee.equals(service.getEmployee())	&&
-			this.returnDate.equals(service.getReturnDate())	&&
-			this.note.equals(service.getNote());
+		return 	(employee).equals(service.employee)	&&
+				this.quantity == service.quantity	&&
+				variation.equals(service.variation)	&&
+				note.equals(service.note)			&&
+				recepitDate.equals(service.recepitDate)	&&
+				returnDate.equals(service.returnDate)	&&
+				articleId	== service.articleId		&&
+				customerId	== service.customerId;
+				
 	} 
 	
 	@Override

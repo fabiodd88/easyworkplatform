@@ -28,14 +28,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 
-	@Override
-	public void insert(Activity activity) throws SQLException {
 
-		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
-				+ "(vatNumber,name,type,address,city,province,cap,userId)" + "VALUES (?,?,?,?,?,?,?,?,?)";
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
+	private void preparedStat(Activity activity){
+		try{
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
 			preparedStatement.setString(3, activity.getType());
@@ -46,51 +41,44 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			preparedStatement.setInt(8, activity.getUserId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
+		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
 			}
+			catch(SQLException e){	}
 		}
 	}
 
+
+
+	@Override
+	public void insert(Activity activity) throws SQLException {
+
+		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
+				+ "(vatNumber,name,type,address,city,province,cap,userId)" + "VALUES (?,?,?,?,?,?,?,?,?)";
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(insertSql);
+		preparedStat(activity);
+
+	}
+
+	
+	
 	@Override
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
 				+ " SET vatNumber = ?,name = ?,type = ?,address = ?,city = ?,province = ?,cap = ?)"
 				+ " WHERE (idActivity == ? && userId == ?)";
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, activity.getVatNumber());
-			preparedStatement.setString(2, activity.getName());
-			preparedStatement.setString(3, activity.getType());
-			preparedStatement.setString(4, activity.getAddress());
-			preparedStatement.setString(5, activity.getCity());
-			preparedStatement.setString(6, activity.getProvince());
-			preparedStatement.setInt(7, activity.getCap());
-			preparedStatement.setInt(8, activity.getIdActivity());
-			preparedStatement.setInt(9, activity.getUserId());
-			preparedStatement.executeUpdate();
-			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(updateSql);
+		preparedStat(activity);
 	}
+
+	
 	
 	@Override
 	public void remove(int id) throws SQLException {
@@ -104,14 +92,14 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if (preparedStatement != null)
-				preparedStatement.close();
-			if (connection != null)
-				connection.close();
+			if (preparedStatement != null)	preparedStatement.close();
+			if (connection != null) connection.close();
 		}
 
 	}
 
+	
+	
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = new Activity();

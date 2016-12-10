@@ -3,9 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -61,6 +61,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 	}
 
 
+
 	@Override
 	public void insert(Customer customer) throws SQLException {
 
@@ -71,6 +72,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		preparedStat(customer);	
 	}
 
+	
 
 	@Override
 	public void update(Customer customer) throws SQLException {
@@ -81,26 +83,111 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		connection = ds.getConnection();
 		preparedStatement = connection.prepareStatement(selectSql);
 		preparedStat(customer);
-
-
 	}
 
+	
+	
+	
 	@Override
 	public void remove(int id) throws SQLException {
-		// TODO Auto-generated method stub
+		String removeSql = "DELETE FROM" + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(removeSql);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null) preparedStatement.close();
+			} finally {
+				if (connection != null)	connection.close();
+			}
+		}
 
 	}
 
+	
+	
 	@Override
 	public Customer findByKey(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
+		Customer customer = new Customer();
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setInt(1, id);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			while (rs.next()) {
+				customer.setName(rs.getString("name"));
+				customer.setSurename(rs.getString("surename"));
+				customer.setBirthdate(rs.getDate("birth_date"));
+				customer.setBirthplace(rs.getString("birth_place"));
+				customer.setAddress(rs.getString("address"));
+				customer.setCity(rs.getString("city"));
+				customer.setProvince(rs.getString("province"));
+				customer.setCap(rs.getInt("cap"));
+				customer.setPhoneNumber(rs.getString("phone_number"));
+				customer.setNewsletter(rs.getInt("newsletter"));
+				customer.setEmail(rs.getString("email"));
+			}
+			connection.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return customer;
 	}
 
+	
+	
+	
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+";";
+		Customer  customer = new Customer();
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSql);
+			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			while (rs.next()) {
+				customer.setName(rs.getString("name"));
+				customer.setSurename(rs.getString("surename"));
+				customer.setBirthdate(rs.getDate("birth_date"));
+				customer.setBirthplace(rs.getString("birth_place"));
+				customer.setAddress(rs.getString("address"));
+				customer.setCity(rs.getString("city"));
+				customer.setProvince(rs.getString("province"));
+				customer.setCap(rs.getInt("cap"));
+				customer.setPhoneNumber(rs.getString("phone_number"));
+				customer.setNewsletter(rs.getInt("newsletter"));
+				customer.setEmail(rs.getString("email"));
+				listCustomer.add(customer);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return listCustomer;
 	}
+
+
 
 }

@@ -17,10 +17,10 @@ public class ArticleModelDS implements ModelInterface<Article>{
 	private static DataSource ds;
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-	
+
 	//Costruttore ausiliare prima dell'ideazione della Classe Astratta per la connessione a database con nomi diversi
 	public ArticleModelDS() {	}
-	
+
 	public ArticleModelDS(String nomeDb) {
 		try {
 			Context initCtx = new InitialContext();
@@ -30,31 +30,40 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			e.printStackTrace();
 		}
 	}
-	
-	@Override
-	public void insert(Article article) throws SQLException {
-		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
-				+ "(article, price, desciption, duration)" + " VALUES (?,?,?,?)";
+
+
+	private void preparedStat(Article article){
 		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
 			preparedStatement.setString(3, article.getDescription());
 			preparedStatement.setDate(4, (java.sql.Date)article.getDuration());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
 		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
+
+
+	}
+
+
+
+	@Override
+	public void insert(Article article) throws SQLException {
+		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
+				+ "(article, price, desciption, duration)" + " VALUES (?,?,?,?)";
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(insertSql);
+		preparedStat(article);
+
 	}
 
 	@Override
@@ -62,29 +71,12 @@ public class ArticleModelDS implements ModelInterface<Article>{
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
 				+ " SET(article = ?, price = ?, desciption = ?, duration = ?)" 
 				+ " WHERE (idArticle == ?)";
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, article.getName());
-			preparedStatement.setDouble(2, article.getPrice());
-			preparedStatement.setString(3, article.getDescription());
-			preparedStatement.setDate(4, (java.sql.Date)article.getDuration());
-			preparedStatement.setInt(5, article.getIdArticle());
-			preparedStatement.executeUpdate();
-			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(updateSql);
+		preparedStat(article);
 	}
+
+
 
 	@Override
 	public void remove(int id) throws SQLException {
@@ -147,8 +139,8 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			Article article = new Article();
 			while (rs.next()) {
-				Article article = new Article();
 				article.setIdArticle(rs.getInt("idArticle"));
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));

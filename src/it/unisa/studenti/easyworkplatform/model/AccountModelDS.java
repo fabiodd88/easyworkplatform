@@ -30,14 +30,8 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	@Override
-	public void insert(User user) throws SQLException {
-		String insertSQL = "INSERT INTO " 
-		+ AccountModelDS.TABLE_NAME + " (taxCode, nameUser, sureNameUser, dateOfBirthUser, birthOfPlaceUser, addressUser, emailUser, password, secondaryKey)"
-		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(insertSQL);
+	private void prepareStat(User user){
+		try{
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
 			preparedStatement.setString(3, user.getSurename());
@@ -53,17 +47,28 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setString(9, cryptedSecondKey);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
 		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
+	}
+
+
+	@Override
+	public void insert(User user) throws SQLException {
+		String insertSQL = "INSERT INTO " 
+				+ AccountModelDS.TABLE_NAME + " (taxCode, nameUser, sureNameUser, dateOfBirthUser, birthOfPlaceUser, addressUser, emailUser, password, secondaryKey)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(insertSQL);
+		prepareStat(user);
 
 	}
 
@@ -74,38 +79,10 @@ public class AccountModelDS implements ModelInterface<User> {
 				+ " SET (taxCode = ?, nameUser = ?, sureNameUser = ?, dateOfBirthUser = ?, birthOfPlaceUser = ?, addressUser = ?, emailUser = ?, password = ?, secondaryKey = ?)"
 				+ " WHERE (idUser=?)";
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, user.getTaxCode());
-			preparedStatement.setString(2, user.getName());
-			preparedStatement.setString(3, user.getSurename());
-			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
-			preparedStatement.setString(5, user.getBirthplace());
-			preparedStatement.setString(6, user.getAddress());
-			preparedStatement.setString(7, user.getEmail());
-			String password = user.getPassword();
-			String cryptedPassword = toSHA1(password.getBytes());
-			preparedStatement.setString(8, cryptedPassword);
-			String secondKey = user.getPassword();
-			String cryptedSecondKey = toSHA1(secondKey.getBytes());
-			preparedStatement.setString(9, cryptedSecondKey);
-			preparedStatement.setInt(10, user.getId());
-			preparedStatement.executeUpdate();
-			connection.commit();
-		} catch (SQLException e) {
-			// e.printStackTrace(); per debug
-			return;
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
 
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(updateSql);
+		prepareStat(user);
 	}
 
 	@Override
@@ -151,7 +128,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				user.setProvince(rs.getString("provinceUser"));
 				user.setCap(rs.getInt("capUser"));
 				user.setTaxCode(rs.getString("taxCode"));
-				
+
 			}
 			connection.commit();
 		} catch (Exception e) {

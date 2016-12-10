@@ -5,33 +5,30 @@ import java.util.Date;
 public class Payment implements Cloneable {
 
 	private Date date;
-	private String itemInvolved;
 	private double amount;
-	private String customer;
+	private int serviceCustomerId;
+	private int serviceId;
+	private int serviceArticleId;
+	
 
 	public Payment(){}
 	
-	public Payment(Date date, String itemInvolved, double amount, String customer) {	
-		this.date = date;
-		this.itemInvolved = itemInvolved;
-		this.amount = amount;
-		this.customer = customer;
+	public Payment(double amount, Date date, int serviceId , int serviceCustomerId, int serviceArticleId) {	
+		this.date				= date;
+		this.amount				= amount;
+		this.serviceId			= serviceId;
+		this.serviceCustomerId	= serviceCustomerId;
+		this.serviceArticleId	= serviceArticleId;
 	}
 	
+	
+		
 	public Date getDate() {
 		return date;
 	}
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public String getItemInvolved() {
-		return itemInvolved;
-	}
-
-	public void setItemInvolved(String itemInvolved) {
-		this.itemInvolved = itemInvolved;
 	}
 
 	public double getAmount() {
@@ -42,19 +39,39 @@ public class Payment implements Cloneable {
 		this.amount = amount;
 	}
 
-	public String getCustomer() {
-		return customer;
+	public int getServiceCustomerId() {
+		return serviceCustomerId;
 	}
 
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setServiceCustomerId(int serviceCustomerId) {
+		this.serviceCustomerId = serviceCustomerId;
 	}
+
+	public int getServiceId() {
+		return serviceId;
+	}
+
+	public void setServiceId(int serviceId) {
+		this.serviceId = serviceId;
+	}
+
+	public int getServiceArticleId() {
+		return serviceArticleId;
+	}
+
+	public void setServiceArticleId(int serviceArticleId) {
+		this.serviceArticleId = serviceArticleId;
+	}
+
+	
+	
 	
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+" [date=" + date + ", itemInvolved=" + itemInvolved + ", amount=" + amount + ", customer="
-				+ customer + "]";
+		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerId
+				+ ", serviceId=" + serviceId + ", serviceArticleId=" + serviceArticleId + "]";
 	}
+
 	
 	@Override
 	public boolean equals(Object object){
@@ -62,9 +79,10 @@ public class Payment implements Cloneable {
 		if(object.getClass() !=  this.getClass()) return false;
 		Payment payment = (Payment) object;
 		return 	this.date.equals(payment.getDate())	&&
-				this.itemInvolved.equals(payment.getItemInvolved())	&&
-				this.amount == payment.getAmount()	&&
-				this.customer.equals(payment.getCustomer());
+				this.amount == payment.amount		&&
+				this.serviceId == payment.serviceId	&&
+				this.serviceArticleId	== payment.serviceArticleId  &&
+				this.serviceCustomerId	== payment.serviceCustomerId ;
 	} 
 	
 	@Override
