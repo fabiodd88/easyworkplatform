@@ -63,7 +63,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, recepit_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
+				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
 		connection = ds.getConnection();
 		preparedStatement = connection.prepareStatement(insertSql);
 		preparedStat(service);	
@@ -75,7 +75,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 	public void update(Service payment) throws SQLException {
 		String selectSql="UPDATE"+ServiceModelDS.TABLE_NAME+
 				"SET (employeee=?, quantity=?, variation=?, note=?," 
-				+"recepit_date=?, return_date=?, article_id=?, customer_id=?) WHERE id=?";
+				+"receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE id=?";
 		connection = ds.getConnection();
 		preparedStatement = connection.prepareStatement(selectSql);
 		preparedStat(payment);
@@ -119,7 +119,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setRecepitDate(rs.getDate("recepit_data"));
+				service.setRecepitDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
@@ -154,7 +154,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setRecepitDate(rs.getDate("recepit_data"));
+				service.setRecepitDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
