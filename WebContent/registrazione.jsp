@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Esempio di metadati file di appoggio necessari per il nostro progetto -->
-<title>EasyWorkPlatForm</title>
+<title>Easy Work PlatForm</title>
 <!-- Tipo di cofica usato per il documento -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
