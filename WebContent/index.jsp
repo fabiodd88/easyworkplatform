@@ -31,7 +31,7 @@
 			<div class="table-responsive">
   				<table class="table" >
     				<th type="button" id="log" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('login');">
-		   				<img alt="" src="icon/login.png"></br>Login</a>
+		   				<img alt="" src="icon/login.png"></br>Login
 					</th>
 			   		
 	    			<th style="text-align:center">
@@ -41,7 +41,7 @@
   				
 			</div>		
 				
-			<div class="recPsw" type="button" data-toggle="modal" data-target="#myModal" style="text-align:center"  onclick="setAction('retrive');">
+			<div class="recPsw" type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('retrive');">
 				<p><b>Password dimenticata?</b></p>
 			</div>
 			
@@ -58,11 +58,10 @@
 	  				<h4><b>Contatti</b></h4>
 	  				<p>Indirizzo: Via Giovanni Paolo II, 132, 84084 Fisciano SA;</br>Numero telefonico: 0541239874</br>Email: g-platform@gmail.com</p>
 	  			</div> 
-			</div>
-			
-  		<div class="footer">
-			<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
-		</div>			
+			</div>		
 	</div>
+	<div class="footer">
+		<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
+	</div>	
 </body>
 </html>

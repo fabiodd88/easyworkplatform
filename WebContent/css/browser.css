@@ -71,3 +71,12 @@ body{
 .form-control{
 	width: 80% !important;
 }
+
+
+.container{
+	width: 100% !important;
+}
+
+#newUserForm{
+	text-align:center;
+}

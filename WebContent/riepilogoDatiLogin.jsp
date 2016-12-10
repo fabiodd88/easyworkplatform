@@ -36,7 +36,7 @@
 										aria-valuemin="0" aria-valuemax="100" style="width: 70%">
 									</div>
 								</div>
-								<form id="newLoginForm" style="text-align: center;" role="form" action="riepilogoDatiAttività.jsp" method="post">
+								<form id="newUserForm" style="text-align: center;" role="form" action="riepilogoDatiAttività.jsp" method="post">
 									<input type="text" name="typeOfRequest" id="inputAction" value="insert" style="display: none;" />
 									<div class="table-responsive">
   										<table class="table" >
@@ -81,15 +81,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<p>
-				<img src="icon/logo.png" height="50px" width="70px"> &nbsp
-				&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
-					href="index.html">Privacy Policy</a> <a href="index.html">Terms
-					and Conditions</a>
-			</p>
-		</div>
 	</div>
-
+	<div class="footer">
+		<p><img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
+	</div>
 </body>
 </html>

@@ -38,18 +38,23 @@
 			</div>
 			<div class="table-responsive">
   				<table class="table">
-  					<tr align="center">
-  						<td><a href="cliente.jsp"><img alt="" src="icon/cliente.png"></td>
-  						<td><a href="articolo.jsp"><img alt="" src="icon/trattamento.png"></td>
-  						<td><a href="servizio.jsp"><img alt="" src="icon/appuntamento.png"></td>
-  						<td><a href="pagamento.jsp"><img alt="" src="icon/pagamento2.png"></td>
+  					<tr text-align="center">
+  						<td><a href="cliente.jsp"><img alt="" src="icon/cliente.png"></a></td>
+  						<td><a href="articolo.jsp"><img alt="" src="icon/trattamento.png"></a></br>
+  							<button class="bt" style="border:0px; background:#FFFFFF"><a href="addCliente.jsp"><img alt="" src="icon/add.png"></br>Aggiungi</a></button>
+  							<button class="bt" style="border:0px; background:#FFFFFF"><a href="modificaCliente.jsp"><img alt="" src="icon/modifica.png"></br>Modifica</a></button>
+  							<button class="bt" style="border:0px; background:#FFFFFF"><a href="removeCliente.jsp"><img alt="" src="icon/remove.png"></br>Elimina</a></button>
+  							<button class="bt" style="border:0px; background:#FFFFFF"><a href="searchCliente.jsp"><img alt="" src="icon/search.png"></br>Cerca</a></button>
+  						</td>
+  						<td><a href="servizio.jsp"><img alt="" src="icon/appuntamento.png"></a></td>
+  						<td><a href="pagamento.jsp"><img alt="" src="icon/pagamento2.png"></a></td>
   					</tr>
   				</table>
   			</div>
-		</div>		
+		</div>			
 	</div>
 	<div class="footer">
-		<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
-	</div>	
+			<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
+	</div>
 </body>
 </html>
