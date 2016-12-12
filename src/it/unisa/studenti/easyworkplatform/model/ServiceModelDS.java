@@ -38,7 +38,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			preparedStatement.setInt(2, service.getQuantity());
 			preparedStatement.setString(3, service.getVariation());
 			preparedStatement.setString(4, service.getNote());
-			preparedStatement.setDate(5, (Date) service.getRecepitDate());
+			preparedStatement.setDate(5, (Date) service.getReceiptDate());
 			preparedStatement.setDate(6, (Date) service.getReturnDate());
 			preparedStatement.setInt(7, service.getArticleId());
 			preparedStatement.setInt(8, service.getCustomerId());
@@ -119,7 +119,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setRecepitDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
@@ -154,7 +154,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setRecepitDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
