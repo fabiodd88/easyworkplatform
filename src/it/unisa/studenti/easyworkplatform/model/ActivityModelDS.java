@@ -86,8 +86,6 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			catch(SQLException e){	}
 		}
 	}
-
-	
 	
 	@Override
 	public void remove(int id) throws SQLException {
@@ -106,12 +104,10 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 
 	}
-
-	
 	
 	@Override
 	public Activity findByKey(int id) throws SQLException {
-		Activity activity = new Activity();
+		Activity activity = null;
 		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
 			connection = ds.getConnection();
@@ -119,6 +115,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				activity = new Activity();
 				activity.setId(id);
 				activity.setName(rs.getString("name"));
 				activity.setType(rs.getString("type"));

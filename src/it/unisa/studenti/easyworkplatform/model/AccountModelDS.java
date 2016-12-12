@@ -128,7 +128,7 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	@Override
 	public User findByKey(int id) throws SQLException {
-		User user = new User();
+		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (idUser = ?)";
 		try {
 			connection = ds.getConnection();
@@ -136,6 +136,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				user = new User();
 				user.setId(id);
 				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));
@@ -206,7 +207,7 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	public User findByEmail(String email) throws SQLException {
-		User user = new User();
+		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (emailUser = ?)";
 		try {
 			connection = ds.getConnection();
@@ -214,6 +215,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				user = new User();
 				user.setId(rs.getInt("id"));
 				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));

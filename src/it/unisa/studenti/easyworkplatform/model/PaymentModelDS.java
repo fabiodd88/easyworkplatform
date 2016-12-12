@@ -112,13 +112,14 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 	@Override
 	public Payment findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id == ?)";
-		Payment payment = new Payment();
+		Payment payment = null;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				payment = new Payment();
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));
 				payment.setServiceId(rs.getInt("service_id"));

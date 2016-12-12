@@ -116,13 +116,14 @@ public class ServiceModelDS implements ModelInterface<Service>{
 	@Override
 	public Service findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id == ?)";
-		Service service = new Service();
+		Service service = null;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				service = new Service();
 				service.setEmployee(rs.getString("employee"));
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));

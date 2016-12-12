@@ -130,13 +130,14 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 	@Override
 	public Customer findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
-		Customer customer = new Customer();
+		Customer customer = null;
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				customer = new Customer();
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));

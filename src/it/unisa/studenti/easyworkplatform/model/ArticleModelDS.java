@@ -107,7 +107,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 
 	@Override
 	public Article findByKey(int id) throws SQLException {
-		Article article = new Article();
+		Article article = null;
 		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
 			connection = ds.getConnection();
@@ -115,6 +115,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				article = new Article();
 				article.setId(id);
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));
