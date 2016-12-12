@@ -9,9 +9,6 @@ public class Account implements Cloneable{
 	
 	public Account() {}
 	
-	
-	
-	
 	public Account(int id, String email, String password, String secondKey) {
 		this.id = id;
 		this.email = email;

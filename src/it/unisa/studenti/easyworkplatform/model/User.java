@@ -5,7 +5,7 @@ import java.util.Date;
 public class User extends Account{
 	
 	private String name;
-	private String surename;
+	private String surname;
 	private Date birthdate;
 	private String birthPlace;
 	private String address;
@@ -16,11 +16,11 @@ public class User extends Account{
 	
 	public User() {}
 	
-	public User(int id,String email,String password,String secondKey, String name, String surename, Date birthdate, String birthplace, String address, String city,
+	public User(int id,String email,String password,String secondKey, String name, String surname, Date birthdate, String birthplace, String address, String city,
 			String province, int cap, String taxCode) {
 		super(id,email, password, secondKey);
 		this.name = name;
-		this.surename = surename;
+		this.surname = surname;
 		this.birthdate = birthdate;
 		this.birthPlace = birthplace;
 		this.address = address;
@@ -30,11 +30,11 @@ public class User extends Account{
 		this.taxCode = taxCode;
 	}
 	
-	public User(Account account, String name, String surename, Date birthdate,
+	public User(Account account, String name, String surname, Date birthdate,
 			String birthplace, String address, String city, String province, int cap, String taxCode) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
 		this.name = name;
-		this.surename = surename;
+		this.surname = surname;
 		this.birthdate = birthdate;
 		this.birthPlace = birthplace;
 		this.address = address;
@@ -57,11 +57,11 @@ public class User extends Account{
 	}
 
 	public String getSurename() {
-		return surename;
+		return surname;
 	}
 
-	public void setSurename(String surename) {
-		this.surename = surename;
+	public void setSurename(String surname) {
+		this.surname = surname;
 	}
 
 	public Date getBirthdate() {
@@ -123,7 +123,7 @@ public class User extends Account{
 	
 	@Override
 	public String toString() {
-		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", burthplace="
+		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surname + ", birthdate=" + birthdate + ", burthplace="
 				+ birthPlace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
 				+ ", taxCode=" + taxCode + "]";
 	}
@@ -136,7 +136,7 @@ public class User extends Account{
 		if(!super.equals(object)) return false; 
 		User user = (User) object;
 		return	this.name.equals(user.getName())			&& 
-				this.surename.equals(user.getSurename())	&&
+				this.surname.equals(user.getSurename())	&&
 				this.birthdate.equals(user.getBirthdate())	&&
 				this.birthPlace.equals(user.getBirthplace())&&
 				this.address.equals(user.getAddress())		&&
@@ -153,7 +153,7 @@ public class User extends Account{
 		user.name = name;
 		user.city = city;
 		user.cap  = cap;
-		user.surename 	= surename;
+		user.surname 	= surname;
 		user.birthdate 	= birthdate;
 		user.birthPlace = birthPlace;
 		user.address	= address;
