@@ -1,7 +1,7 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 public class Article implements Cloneable{
-	private int idArticle;
+	private int id;
 	private String name;
 	private double price;
 	private String description;
@@ -48,12 +48,12 @@ public class Article implements Cloneable{
 		this.duration = duration;
 	} 
 	
-	public int getIdArticle() {
-		return idArticle;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdArticle(int idArticle) {
-		this.idArticle = idArticle;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override

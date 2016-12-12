@@ -3,7 +3,7 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 public class Customer implements Cloneable{
-	private int idCustomer;
+	private int id;
 	private String name;
 	private String surename;
 	private Date birthdate;
@@ -122,12 +122,12 @@ public class Customer implements Cloneable{
 		this.email = email;
 	}
 	
-	public int getIdCustomer() {
-		return idCustomer;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	

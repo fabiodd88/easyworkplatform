@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Service implements Cloneable {
 
+	private int id;
 	private String employee;
 	private int quantity;
 	private String variation;
@@ -111,8 +112,16 @@ public class Service implements Cloneable {
 		this.customerId = customerId;
 	}
 
+	public int getId() {
+		return id;
+	}
 
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
