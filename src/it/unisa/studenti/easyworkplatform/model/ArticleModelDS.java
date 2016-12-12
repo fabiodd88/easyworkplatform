@@ -37,7 +37,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
 			preparedStatement.setString(3, article.getDescription());
-			preparedStatement.setDate(4, (java.sql.Date)article.getDuration());
+			preparedStatement.setInt(4, article.getDuration());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		}
@@ -114,7 +114,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));
 				article.setDescription(rs.getString("description"));
-				article.setDuration(rs.getDate("duration"));
+				article.setDuration(rs.getInt("duration"));
 			}
 			connection.commit();
 		} catch (Exception e) {
@@ -145,7 +145,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));
 				article.setDescription(rs.getString("description"));
-				article.setDuration(rs.getDate("duration"));
+				article.setDuration(rs.getInt("duration"));
 				listArticle.add(article);
 			}
 			connection.commit();

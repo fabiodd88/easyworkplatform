@@ -1,17 +1,15 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-import java.util.Date;
-
 public class Article implements Cloneable{
 	private int idArticle;
 	private String name;
 	private double price;
 	private String description;
-	private Date duration;
+	private int duration;
 	
 	public Article(){}
 	
-	public Article(String name, double price, String description, Date duration){
+	public Article(String name, double price, String description, int duration){
 		this.name = name;
 		this.price = price;
 		this.description= description;
@@ -42,11 +40,11 @@ public class Article implements Cloneable{
 		this.description = description;
 	}
 
-	public Date getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Date duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	} 
 	
@@ -70,7 +68,7 @@ public class Article implements Cloneable{
 		if(object.getClass() != this.getClass()) return false;
 		Article article = (Article) object;
 		return	this.description.equals(article.getDescription())	&& 
-				this.duration.equals(article.getDuration()) 		&&
+				this.duration == article.getDuration()		 		&&
 				this.name.equals(article.getName())					&& 
 				this.price == article.price;
 	}
