@@ -14,7 +14,7 @@ public class Activity implements Cloneable{
 	
 	public Activity() {}
 	
-	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber) {
+	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber, int userId) {
 		this.name = name;
 		this.type = type;
 		this.address = address;
@@ -22,6 +22,7 @@ public class Activity implements Cloneable{
 		this.province = province;
 		this.cap = cap;
 		this.vatNumber = vatNumber;
+		this.userId = userId;
 	}
 	
 	public String getName() {
@@ -113,7 +114,8 @@ public class Activity implements Cloneable{
 				this.cap == activity.getCap()					&&
 				this.city.equals(activity.getCity())			&& 
 				this.name.equals(activity.getName())			&&
-				this.type.equals(activity.getType());
+				this.type.equals(activity.getType())			&&
+				this.userId == activity.getUserId();
 	}
 	
 	@Override
