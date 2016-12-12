@@ -30,10 +30,14 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			e.printStackTrace();
 		}
 	}
-
-
-	private void preparedStat(Service service){
+	
+	@Override
+	public void insert(Service service) throws SQLException {
+		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
+				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
 		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, service.getEmployee());
 			preparedStatement.setInt(2, service.getQuantity());
 			preparedStatement.setString(3, service.getVariation());
@@ -54,33 +58,37 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			}
 			catch(SQLException e){	}
 		}
-
-
-	}
-
-	
-	
-	@Override
-	public void insert(Service service) throws SQLException {
-		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(insertSql);
-		preparedStat(service);	
-
-		
 	}
 
 	@Override
-	public void update(Service payment) throws SQLException {
-		String selectSql="UPDATE"+ServiceModelDS.TABLE_NAME+
+	public void update(Service service) throws SQLException {
+		String updateSql="UPDATE"+ServiceModelDS.TABLE_NAME+
 				"SET (employeee=?, quantity=?, variation=?, note=?," 
-				+"receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE id=?";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(selectSql);
-		preparedStat(payment);
-
-		
+				+"receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id==?)";
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setString(1, service.getEmployee());
+			preparedStatement.setInt(2, service.getQuantity());
+			preparedStatement.setString(3, service.getVariation());
+			preparedStatement.setString(4, service.getNote());
+			preparedStatement.setDate(5, (Date) service.getReceiptDate());
+			preparedStatement.setDate(6, (Date) service.getReturnDate());
+			preparedStatement.setInt(7, service.getArticleId());
+			preparedStatement.setInt(8, service.getCustomerId());
+			preparedStatement.setInt(9, service.getId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
 	}
 
 	@Override

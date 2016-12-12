@@ -31,9 +31,13 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 		}
 	}
 
-
-	private void preparedStat(Payment payment){
+	@Override
+	public void insert(Payment payment) throws SQLException {
+		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
+				+ "(amount, date_payment, service_id, service_customer_id, service_article_id)" + " VALUES (?,?,?,?,?)";
 		try{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
 			preparedStatement.setInt(3, payment.getServiceId());
@@ -50,34 +54,35 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 				if (connection != null) 		connection.close();	
 			}
 			catch(SQLException e){	}
-		}
-
-	}
-
-	
-	
-	
-	
-	@Override
-	public void insert(Payment payment) throws SQLException {
-		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
-				+ "(amount, date_payment, service_id, service_customer_id, service_article_id)" + " VALUES (?,?,?,?,?)";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(insertSql);
-		preparedStat(payment);	
-
-		
+		}	
 	}
 
 	@Override
 	public void update(Payment payment) throws SQLException {
-		String selectSql="UPDATE"+PaymentModelDS.TABLE_NAME+
+		String updateSql="UPDATE"+PaymentModelDS.TABLE_NAME+
 				"SET (amount=?, date_payment=?, service_id=?, service_customer_id=?," 
-				+"service_article_id=?) WHERE id=?";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(selectSql);
-		preparedStat(payment);
-		
+				+"service_article_id=?) WHERE (id==?)";
+		try{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setDouble(1, payment.getAmount());
+			preparedStatement.setDate(2, (Date) payment.getDate());
+			preparedStatement.setInt(3, payment.getServiceId());
+			preparedStatement.setInt(4, payment.getServiceCustomerId());
+			preparedStatement.setInt(5, payment.getServiceArticleId());
+			preparedStatement.setInt(5, payment.getId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
 	}
 
 	@Override

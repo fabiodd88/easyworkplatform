@@ -30,27 +30,35 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	private void prepareStat(User user){
+	@Override
+	public void insert(User user) throws SQLException {
+		String insertSQL = "INSERT INTO " 
+				+ AccountModelDS.TABLE_NAME + " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
 			preparedStatement.setString(3, user.getSurename());
 			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
 			preparedStatement.setString(5, user.getBirthplace());
 			preparedStatement.setString(6, user.getAddress());
-			preparedStatement.setString(7, user.getEmail());
+			preparedStatement.setString(7, user.getCity());
+			preparedStatement.setString(8, user.getProvince());
+			preparedStatement.setInt(9, user.getCap());
+			preparedStatement.setString(10, user.getEmail());
 			String password = user.getPassword();
 			String cryptedPassword = toSHA1(password.getBytes());
-			preparedStatement.setString(8, cryptedPassword);
+			preparedStatement.setString(11, cryptedPassword);
 			String secondKey = user.getPassword();
 			String cryptedSecondKey = toSHA1(secondKey.getBytes());
-			preparedStatement.setString(9, cryptedSecondKey);
+			preparedStatement.setString(12, cryptedSecondKey);
 			preparedStatement.executeUpdate();
 			connection.commit();
 		}
 		catch(SQLException e){	}
-		finally
-		{
+		finally{
 			try{
 				if (preparedStatement != null)  preparedStatement.close();
 				if (connection != null) 		connection.close();	
@@ -59,30 +67,43 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-
-	@Override
-	public void insert(User user) throws SQLException {
-		String insertSQL = "INSERT INTO " 
-				+ AccountModelDS.TABLE_NAME + " (taxCode, nameUser, sureNameUser, dateOfBirthUser, birthOfPlaceUser, addressUser, emailUser, password, secondaryKey)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(insertSQL);
-		prepareStat(user);
-
-	}
-
 	@Override
 	public void update(User user) throws SQLException {
 
 		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME
-				+ " SET (taxCode = ?, nameUser = ?, sureNameUser = ?, dateOfBirthUser = ?, birthOfPlaceUser = ?, addressUser = ?, emailUser = ?, password = ?, secondaryKey = ?)"
-				+ " WHERE (idUser=?)";
-
-
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(updateSql);
-		prepareStat(user);
+				+ " SET (tax_code = ?, name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, email = ?, password = ?, secondaryKey = ?)"
+				+ " WHERE (id=?)";
+		try{
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setString(1, user.getTaxCode());
+			preparedStatement.setString(2, user.getName());
+			preparedStatement.setString(3, user.getSurename());
+			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
+			preparedStatement.setString(5, user.getBirthplace());
+			preparedStatement.setString(6, user.getAddress());
+			preparedStatement.setString(7, user.getCity());
+			preparedStatement.setString(8, user.getProvince());
+			preparedStatement.setInt(9, user.getCap());
+			preparedStatement.setString(10, user.getEmail());
+			String password = user.getPassword();
+			String cryptedPassword = toSHA1(password.getBytes());
+			preparedStatement.setString(11, cryptedPassword);
+			String secondKey = user.getPassword();
+			String cryptedSecondKey = toSHA1(secondKey.getBytes());
+			preparedStatement.setString(12, cryptedSecondKey);
+			preparedStatement.setInt(13, user.getId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		}
+		catch(SQLException e){	}
+		finally{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
 	}
 
 	@Override
@@ -116,19 +137,18 @@ public class AccountModelDS implements ModelInterface<User> {
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				user.setId(id);
-				user.setEmail(rs.getString("emailUser"));
+				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));
-				user.setSecondKey(rs.getString("secondaryKey"));
-				user.setName(rs.getString("nameUser"));
-				user.setSurename(rs.getString("surnameUser"));
-				user.setBirthdate(rs.getDate("dateOfBirthUser"));
-				user.setBirthplace(rs.getString("birthOfPlace"));
-				user.setAddress(rs.getString("addressUser"));
-				user.setCity(rs.getString("cityUser"));
-				user.setProvince(rs.getString("provinceUser"));
-				user.setCap(rs.getInt("capUser"));
-				user.setTaxCode(rs.getString("taxCode"));
-
+				user.setSecondKey(rs.getString("secondary_key"));
+				user.setName(rs.getString("name"));
+				user.setSurename(rs.getString("surname"));
+				user.setBirthdate(rs.getDate("birth_date"));
+				user.setBirthplace(rs.getString("birth_place"));
+				user.setAddress(rs.getString("address"));
+				user.setCity(rs.getString("city"));
+				user.setProvince(rs.getString("province"));
+				user.setCap(rs.getInt("cap"));
+				user.setTaxCode(rs.getString("tax_code"));
 			}
 			connection.commit();
 		} catch (Exception e) {
@@ -155,19 +175,19 @@ public class AccountModelDS implements ModelInterface<User> {
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				User user = new User();
-				user.setId(rs.getInt("idUser"));
-				user.setEmail(rs.getString("emailUser"));
+				user.setId(rs.getInt("id"));
+				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));
-				user.setSecondKey(rs.getString("secondaryKey"));
-				user.setName(rs.getString("nameUser"));
-				user.setSurename(rs.getString("surnameUser"));
-				user.setBirthdate(rs.getDate("dateOfBirthUser"));
-				user.setBirthplace(rs.getString("birthOfPlace"));
-				user.setAddress(rs.getString("addressUser"));
-				user.setCity(rs.getString("cityUser"));
-				user.setProvince(rs.getString("provinceUser"));
-				user.setCap(rs.getInt("capUser"));
-				user.setTaxCode(rs.getString("taxCode"));
+				user.setSecondKey(rs.getString("secondary_key"));
+				user.setName(rs.getString("name"));
+				user.setSurename(rs.getString("surname"));
+				user.setBirthdate(rs.getDate("birth_date"));
+				user.setBirthplace(rs.getString("birth_place"));
+				user.setAddress(rs.getString("address"));
+				user.setCity(rs.getString("city"));
+				user.setProvince(rs.getString("province"));
+				user.setCap(rs.getInt("cap"));
+				user.setTaxCode(rs.getString("tax_code"));
 				listAccount.add(user);
 			}
 			connection.commit();
@@ -195,18 +215,18 @@ public class AccountModelDS implements ModelInterface<User> {
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				user.setId(rs.getInt("id"));
-				user.setEmail(email);
+				user.setEmail(rs.getString("email"));
 				user.setPassword(rs.getString("password"));
-				user.setSecondKey(rs.getString("secondaryKey"));
-				user.setName(rs.getString("nameUser"));
-				user.setSurename(rs.getString("surnameUser"));
-				user.setBirthdate(rs.getDate("dateOfBirthUser"));
-				user.setBirthplace(rs.getString("birthOfPlace"));
-				user.setAddress(rs.getString("addressUser"));
-				user.setCity(rs.getString("cityUser"));
-				user.setProvince(rs.getString("provinceUser"));
-				user.setCap(rs.getInt("capUser"));
-				user.setTaxCode(rs.getString("taxCode"));
+				user.setSecondKey(rs.getString("secondary_key"));
+				user.setName(rs.getString("name"));
+				user.setSurename(rs.getString("surname"));
+				user.setBirthdate(rs.getDate("birth_date"));
+				user.setBirthplace(rs.getString("birth_place"));
+				user.setAddress(rs.getString("address"));
+				user.setCity(rs.getString("city"));
+				user.setProvince(rs.getString("province"));
+				user.setCap(rs.getInt("cap"));
+				user.setTaxCode(rs.getString("tax_code"));
 			}
 			connection.commit();
 		} catch (Exception e) {

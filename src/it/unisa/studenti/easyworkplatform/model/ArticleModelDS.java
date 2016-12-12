@@ -31,9 +31,13 @@ public class ArticleModelDS implements ModelInterface<Article>{
 		}
 	}
 
-
-	private void preparedStat(Article article){
-		try {
+	@Override
+	public void insert(Article article) throws SQLException {
+		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
+				+ "(name, price, desciption, duration)" + " VALUES (?,?,?,?)";
+		try {	
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
 			preparedStatement.setString(3, article.getDescription());
@@ -50,37 +54,38 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			}
 			catch(SQLException e){	}
 		}
-
-
-	}
-
-
-
-	@Override
-	public void insert(Article article) throws SQLException {
-		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
-				+ "(article, price, desciption, duration)" + " VALUES (?,?,?,?)";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(insertSql);
-		preparedStat(article);
-
 	}
 
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
-				+ " SET(article = ?, price = ?, desciption = ?, duration = ?)" 
-				+ " WHERE (idArticle == ?)";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(updateSql);
-		preparedStat(article);
+				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" 
+				+ " WHERE (id == ?)";
+		try {	
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setString(1, article.getName());
+			preparedStatement.setDouble(2, article.getPrice());
+			preparedStatement.setString(3, article.getDescription());
+			preparedStatement.setInt(4, article.getDuration());
+			preparedStatement.setInt(5, article.getId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
 	}
-
-
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + ArticleModelDS.TABLE_NAME + " WHERE (idArticle == ?)";
+		String removeSql = "DELETE FROM" + ArticleModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -103,14 +108,14 @@ public class ArticleModelDS implements ModelInterface<Article>{
 	@Override
 	public Article findByKey(int id) throws SQLException {
 		Article article = new Article();
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (idArticle == ?)";
+		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
-				article.setIdArticle(id);
+				article.setId(id);
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));
 				article.setDescription(rs.getString("description"));
@@ -141,7 +146,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			Article article = new Article();
 			while (rs.next()) {
-				article.setIdArticle(rs.getInt("idArticle"));
+				article.setId(rs.getInt("id"));
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));
 				article.setDescription(rs.getString("description"));

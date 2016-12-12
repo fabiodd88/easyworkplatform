@@ -31,11 +31,16 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		}
 	}
 
+	@Override
+	public void insert(Customer customer) throws SQLException {
 
-	private void preparedStat(Customer customer){
-		try{
+		String insertSql = "INSERT INTO " + CustomerModelDS.TABLE_NAME
+				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		try{		
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
-			preparedStatement.setString(2, customer.getSurename());
+			preparedStatement.setString(2, customer.getSurname());
 			preparedStatement.setDate(3, (Date) customer.getBirthdate());
 			preparedStatement.setString(4, customer.getBirthplace());
 			preparedStatement.setString(5, customer.getAddress());
@@ -57,32 +62,43 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			}
 			catch(SQLException e){	}
 		}
-
-	}
-
-
-
-	@Override
-	public void insert(Customer customer) throws SQLException {
-
-		String insertSql = "INSERT INTO " + CustomerModelDS.TABLE_NAME
-				+ "(name, surename, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(insertSql);
-		preparedStat(customer);	
 	}
 
 	
 
 	@Override
 	public void update(Customer customer) throws SQLException {
-		String selectSql="UPDATE"+CustomerModelDS.TABLE_NAME+
-				"SET name=?,surename=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
+		String updateSql="UPDATE"+CustomerModelDS.TABLE_NAME+
+				"SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
 				+ "cap=?,phone_number=?,newsletter=?,email=?)"
-				+ "WHERE id=?";
-		connection = ds.getConnection();
-		preparedStatement = connection.prepareStatement(selectSql);
-		preparedStat(customer);
+				+ "WHERE (id==?)";
+		try{		
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(updateSql);
+			preparedStatement.setString(1, customer.getName());
+			preparedStatement.setString(2, customer.getSurname());
+			preparedStatement.setDate(3, (Date) customer.getBirthdate());
+			preparedStatement.setString(4, customer.getBirthplace());
+			preparedStatement.setString(5, customer.getAddress());
+			preparedStatement.setString(6, customer.getCity());
+			preparedStatement.setString(7, customer.getProvince());
+			preparedStatement.setInt(8, customer.getCap());
+			preparedStatement.setString(9, customer.getPhoneNumber());
+			preparedStatement.setInt(10, customer.getNewsletter());
+			preparedStatement.setString(11, customer.getEmail());
+			preparedStatement.setInt(12, customer.getId());
+			preparedStatement.executeUpdate();
+			connection.commit();
+		}
+		catch(SQLException e){	}
+		finally
+		{
+			try{
+				if (preparedStatement != null)  preparedStatement.close();
+				if (connection != null) 		connection.close();	
+			}
+			catch(SQLException e){	}
+		}
 	}
 
 	
@@ -122,7 +138,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				customer.setName(rs.getString("name"));
-				customer.setSurename(rs.getString("surename"));
+				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));
 				customer.setBirthplace(rs.getString("birth_place"));
 				customer.setAddress(rs.getString("address"));
@@ -162,7 +178,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
 				customer.setName(rs.getString("name"));
-				customer.setSurename(rs.getString("surename"));
+				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));
 				customer.setBirthplace(rs.getString("birth_place"));
 				customer.setAddress(rs.getString("address"));
