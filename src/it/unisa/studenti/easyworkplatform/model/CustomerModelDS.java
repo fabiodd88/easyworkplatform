@@ -7,44 +7,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
+public class CustomerModelDS implements ModelInterface<Customer> {
 
-public class CustomerModelDS implements ModelInterface<Customer>{
-
-//	private static DataSource ds;
+	// private static DataSource ds;
 	private static final String TABLE_NAME = "customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	public CustomerModelDS(){	}
+	public CustomerModelDS() {
+	}
 
 	public CustomerModelDS(String nomeDb) {
 		try {
-//			Context initCtx = new InitialContext();
-//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-			
+			// Context initCtx = new InitialContext();
+			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			// ds = (DataSource)
+			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
+
+		// } catch (NamingException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	@Override
 	public void insert(Customer customer) throws SQLException {
 
 		String insertSql = "INSERT INTO " + CustomerModelDS.TABLE_NAME
-				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-		try{		
+				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)"
+				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
@@ -60,27 +58,16 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			preparedStatement.setString(11, customer.getEmail());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
-	
-
 	@Override
 	public void update(Customer customer) throws SQLException {
-		String updateSql="UPDATE"+CustomerModelDS.TABLE_NAME+
-				"SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
-				+ "cap=?,phone_number=?,newsletter=?,email=?)"
-				+ "WHERE (id==?)";
-		try{		
+		String updateSql = "UPDATE" + CustomerModelDS.TABLE_NAME
+				+ "SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
+				+ "cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id==?)";
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, customer.getName());
@@ -97,21 +84,10 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			preparedStatement.setInt(12, customer.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
-	
-	
-	
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
@@ -121,20 +97,10 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null) preparedStatement.close();
-			} finally {
-				if (connection != null)	connection.close();
-			}
+		} catch (SQLException e) {
 		}
-
 	}
 
-	
-	
 	@Override
 	public Customer findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
@@ -159,28 +125,16 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 				customer.setEmail(rs.getString("email"));
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return customer;
 	}
 
-	
-	
-	
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+";";
-		Customer  customer = new Customer();
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + ";";
+		Customer customer = new Customer();
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
@@ -199,20 +153,19 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 				customer.setEmail(rs.getString("email"));
 				listCustomer.add(customer);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return listCustomer;
 	}
 
-
+	public void closeConnection() throws SQLException {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			if (connection != null)
+				connection.close();
+		}
+	}
 
 }

@@ -7,42 +7,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
-public class ServiceModelDS implements ModelInterface<Service>{
+public class ServiceModelDS implements ModelInterface<Service> {
 
-//	private static DataSource ds;
+	// private static DataSource ds;
 	private static final String TABLE_NAME = "service";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	//Costruttore ausiliare prima dell'ideazione della Classe Astratta per la connessione a database con nomi diversi
-	public ServiceModelDS() {	}
+	// Costruttore ausiliare prima dell'ideazione della Classe Astratta per la
+	// connessione a database con nomi diversi
+	public ServiceModelDS() {
+	}
 
 	public ServiceModelDS(String nomeDb) {
 		try {
-//			Context initCtx = new InitialContext();
-//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-			
+			// Context initCtx = new InitialContext();
+			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			// ds = (DataSource)
+			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
+
+		// } catch (NamingException e) {
+		// e.printStackTrace();
+		// }
 	}
-	
+
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
+				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
+				+ " VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
@@ -56,23 +56,14 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			preparedStatement.setInt(8, service.getCustomerId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql="UPDATE"+ServiceModelDS.TABLE_NAME+
-				"SET (employeee=?, quantity=?, variation=?, note=?," 
-				+"receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id==?)";
+		String updateSql = "UPDATE" + ServiceModelDS.TABLE_NAME + "SET (employeee=?, quantity=?, variation=?, note=?,"
+				+ "receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id==?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -87,15 +78,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			preparedStatement.setInt(9, service.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -108,16 +91,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -142,16 +116,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setCustomerId(rs.getInt("customer_id"));
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return service;
 
@@ -160,7 +125,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 	@Override
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
-		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME+";";
+		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
 		Service service = new Service();
 		try {
 			connection.setAutoCommit(false);
@@ -177,18 +142,19 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				service.setCustomerId(rs.getInt("customer_id"));
 				listService.add(service);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return listService;
+	}
+
+	public void closeConnection() throws SQLException {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			if (connection != null)
+				connection.close();
+		}
 	}
 
 }

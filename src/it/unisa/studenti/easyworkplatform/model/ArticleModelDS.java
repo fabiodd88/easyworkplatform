@@ -7,43 +7,41 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+public class ArticleModelDS implements ModelInterface<Article> {
 
-public class ArticleModelDS implements ModelInterface<Article>{
-
-//	private static DataSource ds;
+	// private static DataSource ds;
 	private static final String TABLE_NAME = "article";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	//Costruttore ausiliare prima dell'ideazione della Classe Astratta per la connessione a database con nomi diversi
-	public ArticleModelDS() {	}
+	// Costruttore ausiliare prima dell'ideazione della Classe Astratta per la
+	// connessione a database con nomi diversi
+	public ArticleModelDS() {
+	}
 
 	public ArticleModelDS(String nomeDb) {
 		try {
-//			Context initCtx = new InitialContext();
-//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-			
+			// Context initCtx = new InitialContext();
+			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			// ds = (DataSource)
+			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
+
+		// } catch (NamingException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	@Override
 	public void insert(Article article) throws SQLException {
-		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME
-				+ "(name, price, desciption, duration)" + " VALUES (?,?,?,?)";
-		try {	
+		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, desciption, duration)"
+				+ " VALUES (?,?,?,?)";
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, article.getName());
@@ -52,24 +50,15 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			preparedStatement.setInt(4, article.getDuration());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
-				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" 
-				+ " WHERE (id == ?)";
-		try {	
+				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" + " WHERE (id == ?)";
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, article.getName());
@@ -79,15 +68,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			preparedStatement.setInt(5, article.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally
-		{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -100,16 +81,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -131,16 +103,7 @@ public class ArticleModelDS implements ModelInterface<Article>{
 				article.setDuration(rs.getInt("duration"));
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return article;
 	}
@@ -163,18 +126,19 @@ public class ArticleModelDS implements ModelInterface<Article>{
 				listArticle.add(article);
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return listArticle;
+	}
+
+	public void closeConnection() throws SQLException {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			if (connection != null)
+				connection.close();
+		}
 	}
 
 }

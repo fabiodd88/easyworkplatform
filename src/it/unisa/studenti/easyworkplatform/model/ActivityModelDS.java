@@ -7,33 +7,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 public class ActivityModelDS implements ModelInterface<Activity> {
 
-//	private static DataSource ds;
+	// private static DataSource ds;
 	private static final String TABLE_NAME = "activity";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
 	static {
 		try {
-//			Context initCtx = new InitialContext();
-//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-			
+			// Context initCtx = new InitialContext();
+			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			// ds = (DataSource)
+			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
+
+		// } catch (NamingException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	@Override
@@ -41,7 +37,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 
 		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
 				+ "(vat_number, name, type, address, city, province, cap, user_id)" + "VALUES (?,?,?,?,?,?,?,?)";
-		try{
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, activity.getVatNumber());
@@ -54,14 +50,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			preparedStatement.setInt(8, activity.getUserId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -70,7 +59,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
 				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?)"
 				+ " WHERE (id == ? && user_id == ?)";
-		try{
+		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, activity.getVatNumber());
@@ -84,17 +73,10 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			preparedStatement.setInt(9, activity.getUserId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
-	
+
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + ActivityModelDS.TABLE_NAME + " WHERE (id == ?)";
@@ -104,15 +86,11 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (preparedStatement != null)	preparedStatement.close();
-			if (connection != null) connection.close();
+		} catch (SQLException e) {
 		}
 
 	}
-	
+
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = null;
@@ -134,16 +112,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 				activity.setVatNumber(rs.getString("vat_number"));
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return activity;
 	}
@@ -170,18 +139,19 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 				listActivity.add(activity);
 			}
 			connection.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
+		} catch (SQLException e) {
 		}
 		return listActivity;
 	}
 
+	@Override
+	public void closeConnection() throws SQLException {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			if (connection != null)
+				connection.close();
+		}
+	}
 }

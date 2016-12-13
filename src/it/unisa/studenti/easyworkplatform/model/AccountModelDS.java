@@ -11,35 +11,36 @@ import java.util.LinkedList;
 
 public class AccountModelDS implements ModelInterface<User> {
 
-//	private static DataSource ds;
+	// private static DataSource ds;
 	private static final String TABLE_NAME = "user";
 	private static Connection connection = null;
 	private static PreparedStatement preparedStatement = null;
 
 	static {
 		try {
-//			Context initCtx = new InitialContext();
-//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-			
+			// Context initCtx = new InitialContext();
+			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			// ds = (DataSource)
+			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
+
+		// } catch (NamingException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	@Override
 	public void insert(User user) throws SQLException {
-		String insertSQL = "INSERT INTO " 
-				+ AccountModelDS.TABLE_NAME + " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
+		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
+				+ " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		try{
-            connection.setAutoCommit(false);
+		try {
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
@@ -59,14 +60,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setString(12, cryptedSecondKey);
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -76,7 +70,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME
 				+ " SET (tax_code = ?, name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, email = ?, password = ?, secondaryKey = ?)"
 				+ " WHERE (id=?)";
-		try{
+		try {
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
@@ -97,14 +91,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setInt(13, user.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
-		}
-		catch(SQLException e){	}
-		finally{
-			try{
-				if (preparedStatement != null)  preparedStatement.close();
-				if (connection != null) 		connection.close();	
-			}
-			catch(SQLException e){	}
+		} catch (SQLException e) {
 		}
 	}
 
@@ -117,14 +104,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (preparedStatement != null)
-				preparedStatement.close();
-			if (connection != null)
-				connection.close();
 		}
-
 	}
 
 	@Override
@@ -153,15 +133,6 @@ public class AccountModelDS implements ModelInterface<User> {
 			}
 			connection.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
 		}
 		return user;
 	}
@@ -192,15 +163,6 @@ public class AccountModelDS implements ModelInterface<User> {
 			}
 			connection.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
 		}
 		return listAccount;
 	}
@@ -231,16 +193,19 @@ public class AccountModelDS implements ModelInterface<User> {
 			connection.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
 		}
 		return user;
+	}
+
+	@Override
+	public void closeConnection() throws SQLException {
+		try {
+			if (preparedStatement != null)
+				preparedStatement.close();
+		} finally {
+			if (connection != null)
+				connection.close();
+		}
 	}
 
 	private static String toSHA1(byte[] convertMe) {
