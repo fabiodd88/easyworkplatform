@@ -9,4 +9,5 @@ public interface ModelInterface<A> {
 	public void remove(int id) throws SQLException;
 	public A findByKey(int id) throws SQLException;
 	public LinkedList<A> findAll() throws SQLException;
+	public void closeConnection() throws SQLException;
 }
