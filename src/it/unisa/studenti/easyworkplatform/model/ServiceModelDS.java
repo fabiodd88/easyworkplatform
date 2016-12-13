@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ import javax.sql.DataSource;
 
 public class ServiceModelDS implements ModelInterface<Service>{
 
+//	private static DataSource ds;
 	private static final String TABLE_NAME = "service";
-	private static DataSource ds;
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -23,12 +24,19 @@ public class ServiceModelDS implements ModelInterface<Service>{
 
 	public ServiceModelDS(String nomeDb) {
 		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		} catch (NamingException e) {
+//			Context initCtx = new InitialContext();
+//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	@Override
@@ -36,7 +44,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
 				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)" + " VALUES (?,?,?,?,?,?,?,?)";
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, service.getEmployee());
 			preparedStatement.setInt(2, service.getQuantity());
@@ -66,7 +74,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 				"SET (employeee=?, quantity=?, variation=?, note=?," 
 				+"receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id==?)";
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, service.getEmployee());
 			preparedStatement.setInt(2, service.getQuantity());
@@ -95,7 +103,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + ServiceModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -118,10 +126,10 @@ public class ServiceModelDS implements ModelInterface<Service>{
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id == ?)";
 		Service service = null;
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				service = new Service();
 				service.setEmployee(rs.getString("employee"));
@@ -155,7 +163,7 @@ public class ServiceModelDS implements ModelInterface<Service>{
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME+";";
 		Service service = new Service();
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {

@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +15,8 @@ import javax.sql.DataSource;
 
 public class CustomerModelDS implements ModelInterface<Customer>{
 
+//	private static DataSource ds;
 	private static final String TABLE_NAME = "customer";
-	private static DataSource ds;
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -23,12 +24,19 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 
 	public CustomerModelDS(String nomeDb) {
 		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		} catch (NamingException e) {
+//			Context initCtx = new InitialContext();
+//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override
@@ -37,7 +45,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		String insertSql = "INSERT INTO " + CustomerModelDS.TABLE_NAME
 				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		try{		
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -73,7 +81,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 				+ "cap=?,phone_number=?,newsletter=?,email=?)"
 				+ "WHERE (id==?)";
 		try{		
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -108,7 +116,7 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -132,10 +140,10 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
 		Customer customer = null;
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				customer = new Customer();
 				customer.setName(rs.getString("name"));
@@ -174,9 +182,9 @@ public class CustomerModelDS implements ModelInterface<Customer>{
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+";";
 		Customer  customer = new Customer();
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));

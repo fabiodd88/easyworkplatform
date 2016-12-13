@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +15,8 @@ import javax.sql.DataSource;
 
 public class PaymentModelDS implements ModelInterface<Payment>{
 
+//	private static DataSource ds;
 	private static final String TABLE_NAME = "customer";
-	private static DataSource ds;
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -23,12 +24,19 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 
 	public PaymentModelDS(String nomeDb) {
 		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		} catch (NamingException e) {
+//			Context initCtx = new InitialContext();
+//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override
@@ -36,7 +44,7 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
 				+ "(amount, date_payment, service_id, service_customer_id, service_article_id)" + " VALUES (?,?,?,?,?)";
 		try{
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
@@ -63,7 +71,7 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 				"SET (amount=?, date_payment=?, service_id=?, service_customer_id=?," 
 				+"service_article_id=?) WHERE (id==?)";
 		try{
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
@@ -89,7 +97,7 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + PaymentModelDS.TABLE_NAME + " WHERE (id == ?)";
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -114,10 +122,10 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id == ?)";
 		Payment payment = null;
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				payment = new Payment();
 				payment.setAmount(rs.getDouble("amount"));
@@ -149,9 +157,9 @@ public class PaymentModelDS implements ModelInterface<Payment>{
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME+";";
 		Payment payment = new Payment();
 		try {
-			connection = ds.getConnection();
+			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));

@@ -3,31 +3,34 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 public class AccountModelDS implements ModelInterface<User> {
 
-	private static DataSource ds;
+//	private static DataSource ds;
 	private static final String TABLE_NAME = "user";
 	private static Connection connection = null;
 	private static PreparedStatement preparedStatement = null;
 
 	static {
 		try {
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/easy_work_platform");
-		} catch (NamingException e) {
-
+//			Context initCtx = new InitialContext();
+//			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+//			ds = (DataSource) initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform","root","");
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
 		}
+		
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	@Override
@@ -36,7 +39,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				+ AccountModelDS.TABLE_NAME + " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try{
-			connection = ds.getConnection();
+            connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
@@ -74,7 +77,6 @@ public class AccountModelDS implements ModelInterface<User> {
 				+ " SET (tax_code = ?, name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, email = ?, password = ?, secondaryKey = ?)"
 				+ " WHERE (id=?)";
 		try{
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
@@ -110,7 +112,6 @@ public class AccountModelDS implements ModelInterface<User> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM" + AccountModelDS.TABLE_NAME + " WHERE (idUser == ?)";
 		try {
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -131,10 +132,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (idUser = ?)";
 		try {
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				user = new User();
 				user.setId(id);
@@ -171,9 +171,8 @@ public class AccountModelDS implements ModelInterface<User> {
 		LinkedList<User> listAccount = new LinkedList<User>();
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME;
 		try {
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				User user = new User();
 				user.setId(rs.getInt("id"));
@@ -210,10 +209,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (emailUser = ?)";
 		try {
-			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, email);
-			ResultSet rs = preparedStatement.executeQuery(selectSql);
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
