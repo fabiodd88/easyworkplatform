@@ -17,12 +17,12 @@ import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
 @WebServlet("/ArticleServlet")
-public class ArticleServlet extends HttpServlet {
+public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static ModelInterface<Article> model = new ArticleModelDS();
 	private ArticleModelDS modelDs = (ArticleModelDS) model;
     
-    public ArticleServlet() {
+    public ArticleController() {
     	super();
     }
     
@@ -38,7 +38,10 @@ public class ArticleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		try{
-			if(action != null){
+			if(action == null){
+				sendMessage("noAction", response);
+				return;
+			}else{
 				//INSERT
 				if(action.equalsIgnoreCase("insert")){
 					String name = request.getParameter("name");
