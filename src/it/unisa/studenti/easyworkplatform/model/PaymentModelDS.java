@@ -39,7 +39,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public void insert(Payment payment) throws SQLException {
 		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
-				+ "(amount, date_payment, service_id, service_customer_id, service_article_id)" + " VALUES (?,?,?,?,?)";
+				+ "(amount, date_payment, service_id, service_customer_id, service_article_id) VALUES (?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
@@ -56,9 +56,9 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	@Override
 	public void update(Payment payment) throws SQLException {
-		String updateSql = "UPDATE" + PaymentModelDS.TABLE_NAME
-				+ "SET (amount=?, date_payment=?, service_id=?, service_customer_id=?,"
-				+ "service_article_id=?) WHERE (id==?)";
+		String updateSql = "UPDATE " + PaymentModelDS.TABLE_NAME
+				+ " SET (amount=?, date_payment=?, service_id=?, service_customer_id=?,"
+				+ " service_article_id=?) WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -76,7 +76,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + PaymentModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String removeSql = "DELETE FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -89,7 +89,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	@Override
 	public Payment findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Payment payment = null;
 		try {
 			connection.setAutoCommit(false);
@@ -114,7 +114,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public LinkedList<Payment> findAll() throws SQLException {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
-		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + ";";
+		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME;
 		Payment payment = new Payment();
 		try {
 			connection.setAutoCommit(false);

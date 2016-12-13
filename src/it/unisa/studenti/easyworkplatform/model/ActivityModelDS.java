@@ -36,7 +36,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	public void insert(Activity activity) throws SQLException {
 
 		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
-				+ "(vat_number, name, type, address, city, province, cap, user_id)" + "VALUES (?,?,?,?,?,?,?,?)";
+				+ "(vat_number, name, type, address, city, province, cap, user_id) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
@@ -58,7 +58,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
 				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?)"
-				+ " WHERE (id == ? && user_id == ?)";
+				+ " WHERE (id = ? && user_id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -79,7 +79,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + ActivityModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String removeSql = "DELETE FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -94,7 +94,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = null;
-		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);

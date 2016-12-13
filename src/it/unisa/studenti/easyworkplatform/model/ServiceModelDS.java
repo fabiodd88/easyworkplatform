@@ -62,8 +62,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE" + ServiceModelDS.TABLE_NAME + "SET (employeee=?, quantity=?, variation=?, note=?,"
-				+ "receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id==?)";
+		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (employeee=?, quantity=?, variation=?, note=?,"
+				+ " receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -84,7 +84,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + ServiceModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -97,7 +97,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	@Override
 	public Service findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Service service = null;
 		try {
 			connection.setAutoCommit(false);

@@ -64,9 +64,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 
 	@Override
 	public void update(Customer customer) throws SQLException {
-		String updateSql = "UPDATE" + CustomerModelDS.TABLE_NAME
-				+ "SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
-				+ "cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id==?)";
+		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
+				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
+				+ " cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -90,7 +90,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -103,7 +103,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 
 	@Override
 	public Customer findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Customer customer = null;
 		try {
 			connection.setAutoCommit(false);
@@ -133,7 +133,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + ";";
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME;
 		Customer customer = new Customer();
 		try {
 			connection.setAutoCommit(false);

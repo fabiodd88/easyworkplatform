@@ -57,7 +57,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
-				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" + " WHERE (id == ?)";
+				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -74,7 +74,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + ArticleModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -88,7 +88,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public Article findByKey(int id) throws SQLException {
 		Article article = null;
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id == ?)";
+		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(selectSql);

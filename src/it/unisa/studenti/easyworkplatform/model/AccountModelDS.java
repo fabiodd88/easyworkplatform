@@ -38,7 +38,7 @@ public class AccountModelDS implements ModelInterface<User> {
 	public void insert(User user) throws SQLException {
 		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
 				+ " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
@@ -69,7 +69,7 @@ public class AccountModelDS implements ModelInterface<User> {
 
 		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME
 				+ " SET (tax_code = ?, name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, email = ?, password = ?, secondaryKey = ?)"
-				+ " WHERE (id=?)";
+				+ " WHERE (id = ?)";
 		try {
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, user.getTaxCode());
@@ -97,7 +97,7 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM" + AccountModelDS.TABLE_NAME + " WHERE (idUser == ?)";
+		String removeSql = "DELETE FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
@@ -110,7 +110,7 @@ public class AccountModelDS implements ModelInterface<User> {
 	@Override
 	public User findByKey(int id) throws SQLException {
 		User user = null;
-		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (idUser = ?)";
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
@@ -169,7 +169,7 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	public User findByEmail(String email) throws SQLException {
 		User user = null;
-		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (emailUser = ?)";
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (email = ?)";
 		try {
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, email);
