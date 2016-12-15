@@ -2,7 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 public class Activity implements Cloneable{
 	
-	private int idActivity;
+	private int id;
 	private String vatNumber;
 	private String name;
 	private String type;
@@ -14,7 +14,7 @@ public class Activity implements Cloneable{
 	
 	public Activity() {}
 	
-	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber) {
+	public Activity(String name, String type, String address, String city, String province, int cap, String vatNumber, int userId) {
 		this.name = name;
 		this.type = type;
 		this.address = address;
@@ -22,6 +22,7 @@ public class Activity implements Cloneable{
 		this.province = province;
 		this.cap = cap;
 		this.vatNumber = vatNumber;
+		this.userId = userId;
 	}
 	
 	public String getName() {
@@ -80,12 +81,12 @@ public class Activity implements Cloneable{
 		this.vatNumber = vatNumber;
 	}
 
-	public int getIdActivity() {
-		return idActivity;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdActivity(int idActivity) {
-		this.idActivity = idActivity;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getUserId() {
@@ -113,7 +114,8 @@ public class Activity implements Cloneable{
 				this.cap == activity.getCap()					&&
 				this.city.equals(activity.getCity())			&& 
 				this.name.equals(activity.getName())			&&
-				this.type.equals(activity.getType());
+				this.type.equals(activity.getType())			&&
+				this.userId == activity.getUserId();
 	}
 	
 	@Override

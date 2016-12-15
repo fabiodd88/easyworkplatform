@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Payment implements Cloneable {
 
+	private int id;
 	private Date date;
 	private double amount;
 	private int serviceCustomerId;
@@ -20,8 +21,6 @@ public class Payment implements Cloneable {
 		this.serviceCustomerId	= serviceCustomerId;
 		this.serviceArticleId	= serviceArticleId;
 	}
-	
-	
 		
 	public Date getDate() {
 		return date;
@@ -64,8 +63,14 @@ public class Payment implements Cloneable {
 	}
 
 	
-	
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerId

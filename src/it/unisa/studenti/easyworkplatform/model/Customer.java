@@ -3,9 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 public class Customer implements Cloneable{
-	private int idCustomer;
+	private int id;
 	private String name;
-	private String surename;
+	private String surname;
 	private Date birthdate;
 	private String birthplace;
 	private String address;
@@ -18,11 +18,11 @@ public class Customer implements Cloneable{
 	
 	public Customer(){}
 	
-	public Customer(String name, String surename, Date birthdate, String birthplace, String address, String city,
+	public Customer(String name, String surname, Date birthdate, String birthplace, String address, String city,
 			String province, int cap, int newsletter, String phoneNumber, String email) {
 		super();
 		this.name = name;
-		this.surename = surename;
+		this.surname = surname;
 		this.birthdate = birthdate;
 		this.birthplace = birthplace;
 		this.address = address;
@@ -42,12 +42,12 @@ public class Customer implements Cloneable{
 		this.name = name;
 	}
 
-	public String getSurename() {
-		return surename;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setSurename(String surename) {
-		this.surename = surename;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public Date getBirthdate() {
@@ -122,19 +122,19 @@ public class Customer implements Cloneable{
 		this.email = email;
 	}
 	
-	public int getIdCustomer() {
-		return idCustomer;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	
 	
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+" [name=" + name + ", surename=" + surename + ", birthdate=" + birthdate + ", birthplace="
+		return getClass().getSimpleName()+" [name=" + name + ", surname=" + surname + ", birthdate=" + birthdate + ", birthplace="
 				+ birthplace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
 				+ ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 	}
@@ -145,7 +145,7 @@ public class Customer implements Cloneable{
 		if(object.getClass() != this.getClass()) return false;
 		Customer customer = (Customer) object;
 		return	this.name.equals(customer.getName())		&&
-				this.surename.equals(customer.getSurename())		&&
+				this.surname.equals(customer.getSurname())		&&
 				this.birthdate.equals(customer.getBirthdate())		&&
 				this.birthplace.equals(customer.getBirthplace())		&&
 				this.address.equals(customer.getAddress())		&&

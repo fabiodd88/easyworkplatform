@@ -4,11 +4,12 @@ import java.util.Date;
 
 public class Service implements Cloneable {
 
+	private int id;
 	private String employee;
 	private int quantity;
 	private String variation;
 	private String note;
-	private Date recepitDate;
+	private Date receiptDate;
 	private Date returnDate;
 	private int articleId;
 	private int customerId;
@@ -17,14 +18,14 @@ public class Service implements Cloneable {
 	public Service() {}
 	
 	
-	public Service(String employee, int quantity, String variation, String note, Date recepitdate, Date returnDate,
+	public Service(String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
 			int articleId, int customerId) {
 		super();
 		this.employee = employee;
 		this.quantity = quantity;
 		this.variation = variation;
 		this.note = note;
-		this.recepitDate = recepitdate;
+		this.receiptDate = receiptdate;
 		this.returnDate = returnDate;
 		this.articleId = articleId;
 		this.customerId = customerId;
@@ -72,13 +73,13 @@ public class Service implements Cloneable {
 	}
 
 
-	public Date getRecepitDate() {
-		return recepitDate;
+	public Date getReceiptDate() {
+		return receiptDate;
 	}
 
 
-	public void setRecepitDate(Date recepitDate) {
-		this.recepitDate = recepitDate;
+	public void setReceiptDate(Date receiptDate) {
+		this.receiptDate = receiptDate;
 	}
 
 
@@ -111,12 +112,20 @@ public class Service implements Cloneable {
 		this.customerId = customerId;
 	}
 
+	public int getId() {
+		return id;
+	}
 
-	
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
-				+ note + ", recepitDate=" + recepitDate + ", returnDate=" + returnDate + ", articleId=" + articleId
+				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleId
 				+ ", customerId=" + customerId + "]";
 	}
 
@@ -130,7 +139,7 @@ public class Service implements Cloneable {
 				this.quantity == service.quantity	&&
 				variation.equals(service.variation)	&&
 				note.equals(service.note)			&&
-				recepitDate.equals(service.recepitDate)	&&
+				receiptDate.equals(service.receiptDate)	&&
 				returnDate.equals(service.returnDate)	&&
 				articleId	== service.articleId		&&
 				customerId	== service.customerId;
