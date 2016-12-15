@@ -16,25 +16,32 @@ import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
+/*	ArticleController
+ * 	Class that handles requests from the browser to the database of an Article
+ */
 @WebServlet("/ArticleServlet")
 public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static ModelInterface<Article> model = new ArticleModelDS();
 	private ArticleModelDS modelDs = (ArticleModelDS) model;
-    
+
+	// Empty Constructor    
     public ArticleController() {
     	super();
     }
     
+    // Response of the server to the browser 
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
+    // Handle the request in "GET" method
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	// Handle the request in "POST" method
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		try{

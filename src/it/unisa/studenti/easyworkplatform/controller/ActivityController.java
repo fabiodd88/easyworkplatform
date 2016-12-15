@@ -13,25 +13,32 @@ import it.unisa.studenti.easyworkplatform.model.Activity;
 import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
+/*	ActivityController
+ * 	Class that handles requests from the browser to the database of an Activity
+ */
 @WebServlet("/ActivityController")
 public class ActivityController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static ModelInterface<Activity> model = new ActivityModelDS();
 	private ActivityModelDS modelDs = (ActivityModelDS) model;
 
+	// Empty Constructor
     public ActivityController() {
     	super();
     }
     
+    // Response of the server to the browser 
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
+    // Handle the request in "GET" method
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
+	// Handle the request in "POST" method
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 //		try {
