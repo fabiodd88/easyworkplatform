@@ -25,7 +25,7 @@ public class ProxyImage implements Image{
 
 		// create the Image Object only when the image is required to be shown
 		
-		proxifiedImage = new HighResolutionImage(imageFilePath);
+		proxifiedImage = new RealImage(imageFilePath);
 		
 		// now call showImage on realSubject
 		proxifiedImage.showImage();

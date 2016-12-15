@@ -3,10 +3,10 @@ package it.unisa.studenti.easyworkplatform.proxy;
 /**
  * RealSubject
  */
-public class HighResolutionImage implements Image{
+public class RealImage implements Image{
 
 	
-public HighResolutionImage(String imageFilePath) {
+public RealImage(String imageFilePath) {
 		
 		loadImage(imageFilePath);
 	}
