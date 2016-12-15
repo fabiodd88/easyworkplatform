@@ -1,5 +1,8 @@
 package it.unisa.studenti.easyworkplatform.model;
 
+/*	Account 	
+ *	Class that collects account information for authentication of a User
+*/
 public class Account implements Cloneable{
 
 	private int id;
@@ -7,59 +10,63 @@ public class Account implements Cloneable{
 	private String password;
 	private String secondKey;
 	
+	// Empty constructor 
 	public Account() {}
 	
-	public Account(int id, String email, String password, String secondKey) {
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.secondKey = secondKey;
-	}
-
-
+	// Parametric constructor 
 	public Account(String email, String password, String secondKey) {
 		this.email = email;
 		this.password = password;
 		this.secondKey = secondKey;
 	}
 
+	// Get the email
 	public String getEmail() {
 		return email;
 	}
 
+	// Set an email
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	// Get the password
 	public String getPassword() {
 		return password;
 	}
 
+	// Set a password
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	// Get the second key
 	public String getSecondKey() {
 		return secondKey;
 	}
 
+	// Set a second key
 	public void setSecondKey(String secondKey) {
 		this.secondKey = secondKey;
 	}
 
+	// Get the id
 	public int getId() {
 		return id;
 	}
 
+	// Set an id
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	// Return all the information in string format
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()+"[id=" + id + ", email=" + email + ", password=" + password + ", secondKey=" + secondKey + "]";
 	}
 
+	// Compares 2 "account" object
 	@Override
 	public boolean equals(Object object) {
 		if(object == null) return false;
@@ -71,6 +78,7 @@ public class Account implements Cloneable{
 				
 	}
 	
+	// Duplicate an account
 	public Account clone(){
 		try{
 			return (Account)super.clone();

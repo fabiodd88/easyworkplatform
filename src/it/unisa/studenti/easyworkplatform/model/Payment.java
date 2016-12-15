@@ -2,6 +2,9 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.util.Date;
 
+/*	Payment 	
+ *	Class that collects payment information
+*/
 public class Payment implements Cloneable {
 
 	private int id;
@@ -11,9 +14,10 @@ public class Payment implements Cloneable {
 	private int serviceId;
 	private int serviceArticleId;
 	
-
+	// Empty constructor
 	public Payment(){}
 	
+	// Parametric constructor
 	public Payment(double amount, Date date, int serviceId , int serviceCustomerId, int serviceArticleId) {	
 		this.date				= date;
 		this.amount				= amount;
@@ -22,62 +26,74 @@ public class Payment implements Cloneable {
 		this.serviceArticleId	= serviceArticleId;
 	}
 		
+	// Get the date
 	public Date getDate() {
 		return date;
 	}
 
+	// Set a date
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
+	// Get the amount
 	public double getAmount() {
 		return amount;
 	}
 
+	// Set an amount
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-
+	
+	// Get the service customer id
 	public int getServiceCustomerId() {
 		return serviceCustomerId;
 	}
 
+	// Set a service customer id
 	public void setServiceCustomerId(int serviceCustomerId) {
 		this.serviceCustomerId = serviceCustomerId;
 	}
-
+	
+	// Get the service id
 	public int getServiceId() {
 		return serviceId;
 	}
 
+	// Set a service id
 	public void setServiceId(int serviceId) {
 		this.serviceId = serviceId;
 	}
-
+	
+	// Get the service article id
 	public int getServiceArticleId() {
 		return serviceArticleId;
 	}
 
+	// Set a service article id
 	public void setServiceArticleId(int serviceArticleId) {
 		this.serviceArticleId = serviceArticleId;
 	}
-
 	
+	// Get the id
 	public int getId() {
 		return id;
 	}
 
+	// Set an id
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	// Return all the information in string format
 	@Override
 	public String toString() {
 		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerId
 				+ ", serviceId=" + serviceId + ", serviceArticleId=" + serviceArticleId + "]";
 	}
 
-	
+	// Compares 2 "payment" object
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
@@ -90,6 +106,7 @@ public class Payment implements Cloneable {
 				this.serviceCustomerId	== payment.serviceCustomerId ;
 	} 
 	
+	// Duplicate a payment
 	@Override
 	public Payment clone(){
 		try{

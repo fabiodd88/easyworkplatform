@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	ArticleModelDs
+ *	Class that interacts with the database through the information of Article
+*/
 public class ArticleModelDS implements ModelInterface<Article> {
 
 	// private static DataSource ds;
@@ -14,11 +17,10 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	// Costruttore ausiliare prima dell'ideazione della Classe Astratta per la
-	// connessione a database con nomi diversi
-	public ArticleModelDS() {
-	}
+	// Empty constructor
+	public ArticleModelDS() {}
 
+	// Parametric constructor with the name of the database
 	public ArticleModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -37,6 +39,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		// }
 	}
 
+	// Insert a new instance of an article
 	@Override
 	public void insert(Article article) throws SQLException {
 		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, desciption, duration)"
@@ -54,6 +57,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
+	// Update an existing article
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
@@ -72,6 +76,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
+	// Remove an article with a specific id
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -85,6 +90,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
+	// Find an article by its id
 	@Override
 	public Article findByKey(int id) throws SQLException {
 		Article article = null;
@@ -108,6 +114,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		return article;
 	}
 
+	//Return a list with all the article
 	@Override
 	public LinkedList<Article> findAll() throws SQLException {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
@@ -131,6 +138,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		return listArticle;
 	}
 
+	// Close connection to the database
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

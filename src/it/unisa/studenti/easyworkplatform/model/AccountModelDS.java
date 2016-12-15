@@ -9,13 +9,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	AccountModelDs
+ *	Class that interacts with the database through the information of Account and User
+*/
 public class AccountModelDS implements ModelInterface<User> {
 
-	// private static DataSource ds;
+//	 private static DataSource ds;
 	private static final String TABLE_NAME = "user";
 	private static Connection connection = null;
 	private static PreparedStatement preparedStatement = null;
 
+	// Static connection to the database
 	static {
 		try {
 			// Context initCtx = new InitialContext();
@@ -34,6 +38,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		// }
 	}
 
+	// Insert a new instance of a user
 	@Override
 	public void insert(User user) throws SQLException {
 		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
@@ -64,6 +69,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
+	// Update an existing user
 	@Override
 	public void update(User user) throws SQLException {
 
@@ -95,6 +101,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
+	// Remove a user with a specific id
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -107,6 +114,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
+	// Find a user by his id
 	@Override
 	public User findByKey(int id) throws SQLException {
 		User user = null;
@@ -137,6 +145,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		return user;
 	}
 
+	// Return a list with all the user
 	@Override
 	public LinkedList<User> findAll() throws SQLException {
 		LinkedList<User> listAccount = new LinkedList<User>();
@@ -167,6 +176,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		return listAccount;
 	}
 
+	// Find a user by his email
 	public User findByEmail(String email) throws SQLException {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (email = ?)";
@@ -197,6 +207,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		return user;
 	}
 
+	// Close connection to the database
 	@Override
 	public void closeConnection() throws SQLException {
 		try {
@@ -208,6 +219,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
+	// Encrypts a byte array
 	private static String toSHA1(byte[] convertMe) {
 		MessageDigest md = null;
 		try {

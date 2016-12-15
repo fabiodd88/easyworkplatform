@@ -7,13 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	ActivityModelDs
+ *	Class that interacts with the database through the information of Activity
+*/
 public class ActivityModelDS implements ModelInterface<Activity> {
 
-	// private static DataSource ds;
+//	private static DataSource ds;
 	private static final String TABLE_NAME = "activity";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
+	// Static connection to the database
 	static {
 		try {
 			// Context initCtx = new InitialContext();
@@ -32,6 +36,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		// }
 	}
 
+	// Insert a new instance of an activity into the Database
 	@Override
 	public void insert(Activity activity) throws SQLException {
 
@@ -54,6 +59,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 
+	// Update an existing activity
 	@Override
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
@@ -77,6 +83,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 
+	// Remove an activity with a specific id
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -91,6 +98,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 
 	}
 
+	// Find an activity by its id
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = null;
@@ -117,6 +125,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return activity;
 	}
 
+	// Return a list with all the activity
 	@Override
 	public LinkedList<Activity> findAll() throws SQLException {
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
@@ -144,6 +153,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return listActivity;
 	}
 
+	// Close connection to the database
 	@Override
 	public void closeConnection() throws SQLException {
 		try {

@@ -2,6 +2,9 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.util.Date;
 
+/*	User 	
+ *	Class that collects user information
+*/
 public class User extends Account{
 	
 	private String name;
@@ -14,22 +17,10 @@ public class User extends Account{
 	private int cap;
 	private String taxCode;
 	
+	// Empty constructor
 	public User() {}
 	
-	public User(int id,String email,String password,String secondKey, String name, String surname, Date birthdate, String birthplace, String address, String city,
-			String province, int cap, String taxCode) {
-		super(id,email, password, secondKey);
-		this.name = name;
-		this.surname = surname;
-		this.birthdate = birthdate;
-		this.birthPlace = birthplace;
-		this.address = address;
-		this.city = city;
-		this.province = province;
-		this.cap = cap;
-		this.taxCode = taxCode;
-	}
-	
+	// Parametric constructor
 	public User(Account account, String name, String surname, Date birthdate,
 			String birthplace, String address, String city, String province, int cap, String taxCode) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
@@ -44,83 +35,97 @@ public class User extends Account{
 		this.taxCode = taxCode;
 	}
 
-	public User(String email, String password, String secondKey) {
-		super(email, password, secondKey);
-	}
-
+	// Get the name
 	public String getName() {
 		return name;
 	}
 
+	// Set a name
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	// Get the surname
 	public String getSurename() {
 		return surname;
 	}
 
+	// Set a surname
 	public void setSurename(String surname) {
 		this.surname = surname;
 	}
 
+	// Get the birthdate
 	public Date getBirthdate() {
 		return birthdate;
 	}
 
+	// Set a birthdate
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
+	// Get the birthplace
 	public String getBirthplace() {
 		return birthPlace;
 	}
 
+	// Set a birthplace
 	public void setBirthplace(String birthplace) {
 		this.birthPlace = birthplace;
 	}
 
+	// Get the address
 	public String getAddress() {
 		return address;
 	}
 
+	// Set an address
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	// Get the city
 	public String getCity() {
 		return city;
 	}
 
+	// Set a city
 	public void setCity(String city) {
 		this.city = city;
 	}
 
+	// Get the province
 	public String getProvince() {
 		return province;
 	}
 
+	// Set a province
 	public void setProvince(String province) {
 		this.province = province;
 	}
 
+	// Get the cap
 	public int getCap() {
 		return cap;
 	}
 
+	// Set a cap
 	public void setCap(int cap) {
 		this.cap = cap;
 	}
 
+	// Get the tax code
 	public String getTaxCode() {
 		return taxCode;
 	}
 
+	// Set a tax code
 	public void setTaxCode(String taxCode) {
 		this.taxCode = taxCode;
 	}
 
-	
+	// Return all the information in string format
 	@Override
 	public String toString() {
 		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surname + ", birthdate=" + birthdate + ", burthplace="
@@ -128,7 +133,7 @@ public class User extends Account{
 				+ ", taxCode=" + taxCode + "]";
 	}
 	
-	
+	// Compares 2 "user" object
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
@@ -146,7 +151,7 @@ public class User extends Account{
 				this.taxCode.equals(user.getTaxCode());
 	}
 	
-	
+	// Duplicate a user
 	@Override
 	public User clone(){
 		User user = (User) super.clone();

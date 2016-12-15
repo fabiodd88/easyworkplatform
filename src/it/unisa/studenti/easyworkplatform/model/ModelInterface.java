@@ -3,6 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	ModelInterface <A>
+ *	Interface that collects all the common methods 
+ */
 public interface ModelInterface<A> {
 	public void insert(A entity) throws SQLException;
 	public void update(A entity) throws SQLException;

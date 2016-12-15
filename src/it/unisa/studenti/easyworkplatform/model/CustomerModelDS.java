@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	CustomerModelDs
+ *	Class that interacts with the database through the information of Customer
+*/
 public class CustomerModelDS implements ModelInterface<Customer> {
 
 	// private static DataSource ds;
@@ -15,9 +18,11 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
+	// Empty constructor
 	public CustomerModelDS() {
 	}
 
+	// Parametric constructor with the name of the database
 	public CustomerModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -36,6 +41,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		// }
 	}
 
+	// Insert a new instance of a customer
 	@Override
 	public void insert(Customer customer) throws SQLException {
 
@@ -62,6 +68,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
+	// Update an existing customer
 	@Override
 	public void update(Customer customer) throws SQLException {
 		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
@@ -88,6 +95,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
+	// Remove a customer with a specific id
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -101,6 +109,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
+	// Find a customer by his id
 	@Override
 	public Customer findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -130,6 +139,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		return customer;
 	}
 
+	// Return a list with all the customer
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
@@ -158,6 +168,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		return listCustomer;
 	}
 
+	// Close connection to the database
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

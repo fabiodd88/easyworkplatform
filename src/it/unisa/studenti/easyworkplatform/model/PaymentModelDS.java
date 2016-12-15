@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+/*	PaymentModelDs
+ *	Class that interacts with the database through the information of Payment
+*/
 public class PaymentModelDS implements ModelInterface<Payment> {
 
 	// private static DataSource ds;
@@ -15,9 +18,11 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
+	// Empty constructor
 	public PaymentModelDS() {
 	}
 
+	// Parametric constructor with the name of the database
 	public PaymentModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -36,6 +41,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		// }
 	}
 
+	// Insert a new instance of a payment
 	@Override
 	public void insert(Payment payment) throws SQLException {
 		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
@@ -54,6 +60,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		}
 	}
 
+	// Update an existing payment
 	@Override
 	public void update(Payment payment) throws SQLException {
 		String updateSql = "UPDATE " + PaymentModelDS.TABLE_NAME
@@ -74,6 +81,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		}
 	}
 
+	//Remove a payment with a specific id
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -87,6 +95,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		}
 	}
 
+	// Find a payment by its id
 	@Override
 	public Payment findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -111,6 +120,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	}
 
+	// Return a list of all the payment
 	@Override
 	public LinkedList<Payment> findAll() throws SQLException {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
@@ -133,6 +143,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		return listPayment;
 	}
 
+	// Close connection to the database
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)
