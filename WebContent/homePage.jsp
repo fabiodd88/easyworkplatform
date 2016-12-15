@@ -16,9 +16,9 @@
 <link href="css/browser.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<!-- Contenitore della pagina -->
+	<!-- Contenitore della pagina -->
 	<div class="container div-box">
-	<!-- Un jumbotron è il quadratone blu -->
+		<!-- Un jumbotron è il quadratone blu -->
 		<div class="jumbotron color">
 			<div align="center">
 				<img src="icon/logo.png" width="200px" height="150px">
@@ -28,28 +28,41 @@
 			<div>
 				<h2>Nome attività</h2>
 			</div>
-			<div style="float:right; margin-top:-80px; margin-right:30px;">
-				<img src="icon/user.png" width="50px" height="50px"><br>
-				<select class="user" name="utente">
-					<option value="nome">nome</option>
-					<option value="modificaDatiUser">Modifica dati</option>
-					<option value="logout"><a href="index.jsp">Logout</a></option>
-				</select>
+			<div style="float: right; margin-top: -80px; margin-right: 30px;">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" style="background: transparent"><img
+							src="icon/user.png" width="50px" height="50px" /><br> Nome
+							utente loggato <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Modifica dati</a></li>
+							<li><a href="index.jsp">Logout</a></li>
+						</ul></li>
+				</ul>
 			</div>
 			<div class="table-responsive">
-  				<table class="table">
-  					<tr align="center">
-  						<td><a href="cliente.jsp"><img alt="" src="icon/cliente.png"></td>
-  						<td><a href="articolo.jsp"><img alt="" src="icon/trattamento.png"></td>
-  						<td><a href="servizio.jsp"><img alt="" src="icon/appuntamento.png"></td>
-  						<td><a href="pagamento.jsp"><img alt="" src="icon/pagamento2.png"></td>
-  					</tr>
-  				</table>
-  			</div>
-		</div>		
+				<table class="table">
+					<tr align="center">
+						<td><a href="cliente.jsp"><img alt=""
+								src="icon/cliente.png"></a></td>
+						<td><a href="articolo.jsp"><img alt=""
+								src="icon/trattamento.png"></a></td>
+						<td><a href="servizio.jsp"><img alt=""
+								src="icon/appuntamento.png"></a></td>
+						<td><a href="pagamento.jsp"><img alt=""
+								src="icon/pagamento2.png"></a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
 	</div>
 	<div class="footer">
-		<p> <img src="icon/logo.png" height="50px" width="70px"> &nbsp &copy 2016 EasyWorkPlatform. All Rights Reserved. <a href="index.html">Privacy Policy</a> <a href="index.html">Terms and Conditions</a></p>
-	</div>	
+		<p>
+			<img src="icon/logo.png" height="50px" width="70px"> &nbsp
+			&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
+				href="index.html">Privacy Policy</a> <a href="index.html">Terms
+				and Conditions</a>
+		</p>
+	</div>
 </body>
 </html>
