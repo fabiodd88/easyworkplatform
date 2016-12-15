@@ -3,7 +3,7 @@ package it.unisa.studenti.easyworkplatform.proxy;
 /**
  * Proxy
  */
-public class ImageProxy implements Image{
+public class ProxyImage implements Image{
 
 	/**
 	 * Private Proxy data 
@@ -16,7 +16,7 @@ public class ImageProxy implements Image{
 	private Image proxifiedImage;
 	
 	
-	public ImageProxy(String imageFilePath) {
+	public ProxyImage(String imageFilePath) {
 		this.imageFilePath= imageFilePath;	
 	}
 	

@@ -349,7 +349,7 @@
 									</div>
 									<button type="reset" class="btn btn-default"
 										onclick="history.go(-1);return true;">Annulla</button>
-									<button type="submit" class="btn btn-default"
+									<button type="button" class="btn btn-default"
 										onclick="forward('reg2')">Avanti</button>
 									<div class="container-fluid text-center padding"></div>
 								</div>
@@ -367,10 +367,10 @@
 					<div class="panel-group ">
 						<div class="panel panel-default ">
 							<div class="container ">
-								<h2>Registrazione Utente</h2>
+								<h2>Registrazione Account</h2>
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" aria-valuenow="0"
-										aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+										aria-valuemin="0" aria-valuemax="100" style="width: 50%">
 									</div>
 								</div>
 								<input type="text" name="typeOfRequest" id="inputAction"
@@ -418,7 +418,7 @@
 								</div>
 								<button type="reset" class="btn btn-default"
 									onClick="forward('reg1')">Indietro</button>
-								<button type="submit" class="btn btn-default"
+								<button type="button" class="btn btn-default"
 									onclick="forward('reg3')">Avanti</button>
 
 							</div>
@@ -437,55 +437,53 @@
 						<div class="panel-group ">
 							<div class="panel panel-default ">
 								<div class="container ">
-									<h2>Registrazione Utente</h2>
+									<h2>Registrazione Attività</h2>
 									<div class="progress">
 										<div class="progress-bar" role="progressbar" aria-valuenow="0"
 											aria-valuemin="0" aria-valuemax="100" style="width: 100%">
 										</div>
 									</div>
-									<input type="text" name="typeOfRequest" id="inputAction"
-										value="insert" style="display: none;" />
 									<div class="table-responsive">
 										<table class="table">
 											<tr>
 												<div class="form-group">
 													<th><label for="">Nome</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="name"></th>
 												</div>
 											</tr>
 											<tr>
 												<div class="form-group">
 													<th><label for="">Partita iva</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="vatCode"></th>
 												</div>
 											</tr>
 											<tr>
 												<div class="form-group">
 													<th><label for="">Tipologia</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="tipology"></th>
 												</div>
 											</tr>
 											<tr>
 												<div class="form-group">
 													<th><label for="description size">Indirizzo</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="adress"></th>
 												</div>
 											</tr>
 											<tr>
 												<div class="form-group">
 													<th><label for="description size">Città</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="city"></th>
 												</div>
 											</tr>
 											<tr>
 												<div class="form-group">
 													<th><label for="civic number">Numero civico</label></th>
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="civicNumber"></th>
 												</div>
 											</tr>
@@ -493,7 +491,7 @@
 												<div class="form-group">
 													<th><label for="description size">Cap</label></th>
 													<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
-													<th><input readonly="readonly" maxlength="50"
+													<th><input class="form-control" maxlength="50"
 														size="100" value="" name="cap"></th>
 												</div>
 											</tr>
@@ -501,7 +499,7 @@
 									</div>
 									<button type="reset" class="btn btn-default"
 										onClick="forward('reg2')">Indietro</button>
-									<button type="submit" class="btn btn-default"
+									<button type="button" class="btn btn-default"
 										data-toggle="modal" data-target="#mioModal">Conferma</button>
 								</div>
 							</div>
@@ -525,11 +523,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
+
 
 	<div class="footer">
 		<p>
