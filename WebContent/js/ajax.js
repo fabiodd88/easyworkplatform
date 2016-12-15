@@ -68,3 +68,22 @@ function setAction(action){
 	}	
 }
 
+
+
+
+function forward(value){
+	document.getElementById(value).style.display="block";
+	if(value == "reg1"){
+		document.getElementById("reg2").style.display="none";
+		document.getElementById("reg3").style.display="none";
+	}
+	else if(value == "reg2"){
+		document.getElementById("reg1").style.display="none";
+		document.getElementById("reg3").style.display="none";
+	}
+	else if(value == "reg3"){
+		document.getElementById("reg1").style.display="none";
+		document.getElementById("reg2").style.display="none";
+	}
+	e.preventDefault();
+}

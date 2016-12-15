@@ -28,14 +28,18 @@ body{
 	size: 20px !important;
 }
 
+
 @media screen and (min-width: 300px){
+	
 	.divHorizontal{
 	    display: -webkit-flex; /* Safari */
 	    -webkit-justify-content: space-around; /* Safari 6.1+ */
 	    display: flex;
 	    justify-content: space-around;
 	}
+	
 }
+
 
 .footer{
 	background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
@@ -75,4 +79,8 @@ body{
 
 .container{
 	width: 100% !important;
+}
+
+.hide{
+	display:none;
 }
