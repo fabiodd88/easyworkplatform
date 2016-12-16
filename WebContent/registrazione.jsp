@@ -649,6 +649,7 @@
 				</div>
 			</div>
 			
+			<!-- Terza parte del riepilogo registrazione -->
 			<div class="container-fluid text-center padding"
 				style="display: none;" id="rec3">
 				<div class="row content ">
