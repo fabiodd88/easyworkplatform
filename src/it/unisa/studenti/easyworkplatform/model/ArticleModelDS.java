@@ -17,10 +17,15 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 */
 	public ArticleModelDS() {}
 
-	// Parametric constructor with the name of the database
+	/**
+	 * Parametric constructor with the name of the database
+	 * @param nomeDb of the database
+	 */
 	public ArticleModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -39,7 +44,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		// }
 	}
 
-	// Insert a new instance of an article
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Article article) throws SQLException {
 		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, desciption, duration)"
@@ -57,7 +64,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
-	// Update an existing article
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
@@ -76,7 +85,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
-	// Remove an article with a specific id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -90,7 +101,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		}
 	}
 
-	// Find an article by its id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public Article findByKey(int id) throws SQLException {
 		Article article = null;
@@ -114,7 +127,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		return article;
 	}
 
-	//Return a list with all the article
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<Article> findAll() throws SQLException {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
@@ -138,7 +153,9 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		return listArticle;
 	}
 
-	// Close connection to the database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

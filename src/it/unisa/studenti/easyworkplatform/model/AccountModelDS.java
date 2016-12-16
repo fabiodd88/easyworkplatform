@@ -9,8 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/*	AccountModelDs
+/**
+ * 	AccountModelDs
  *	Class that interacts with the database through the information of Account and User
+ * 	@author AdminEWP
 */
 public class AccountModelDS implements ModelInterface<User> {
 
@@ -38,7 +40,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		// }
 	}
 
-	// Insert a new instance of a user
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(User user) throws SQLException {
 		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
@@ -69,7 +73,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	// Update an existing user
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(User user) throws SQLException {
 
@@ -101,7 +107,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	// Remove a user with a specific id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -114,7 +122,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	// Find a user by his id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public User findByKey(int id) throws SQLException {
 		User user = null;
@@ -145,7 +155,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		return user;
 	}
 
-	// Return a list with all the user
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<User> findAll() throws SQLException {
 		LinkedList<User> listAccount = new LinkedList<User>();
@@ -176,7 +188,12 @@ public class AccountModelDS implements ModelInterface<User> {
 		return listAccount;
 	}
 
-	// Find a user by his email
+	/**
+	 * Find a user by his email
+	 * @param email of the user
+	 * @return User
+	 * @throws SQLException
+	 */
 	public User findByEmail(String email) throws SQLException {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (email = ?)";
@@ -207,7 +224,9 @@ public class AccountModelDS implements ModelInterface<User> {
 		return user;
 	}
 
-	// Close connection to the database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	@Override
 	public void closeConnection() throws SQLException {
 		try {
@@ -219,7 +238,11 @@ public class AccountModelDS implements ModelInterface<User> {
 		}
 	}
 
-	// Encrypts a byte array
+	/**
+	 * Encrypt date
+	 * @param convertMe
+	 * @return encrypted String
+	 */
 	private static String toSHA1(byte[] convertMe) {
 		MessageDigest md = null;
 		try {

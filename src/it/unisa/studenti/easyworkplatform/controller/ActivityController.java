@@ -13,8 +13,11 @@ import it.unisa.studenti.easyworkplatform.model.Activity;
 import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
-/*	ActivityController
+/**
+ * 	ActivityController
  * 	Class that handles requests from the browser to the database of an Activity
+ * 	@author AdminEWP
+ *
  */
 @WebServlet("/ActivityController")
 public class ActivityController extends HttpServlet {
@@ -22,23 +25,34 @@ public class ActivityController extends HttpServlet {
 	static ModelInterface<Activity> model = new ActivityModelDS();
 	private ActivityModelDS modelDs = (ActivityModelDS) model;
 
-	// Empty Constructor
+	/** 
+	 *	Empty Constructor
+	 */
     public ActivityController() {
     	super();
     }
     
-    // Response of the server to the browser 
+    /**
+	 * Response of the server to the browser
+     * @param message to be send to the browser
+     * @param response HTTP from server to browser
+     * @throws IOException
+     */
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
-    // Handle the request in "GET" method
+    /**
+     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	// Handle the request in "POST" method
+	/**
+     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 //		try {

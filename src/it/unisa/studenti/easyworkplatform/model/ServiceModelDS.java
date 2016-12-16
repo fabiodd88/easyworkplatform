@@ -8,8 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/*	ServiceModelDs
+/**	
+ * 	ServiceModelDs
  *	Class that interacts with the database through the information of Service
+ *	@author AdminEWP
 */
 public class ServiceModelDS implements ModelInterface<Service> {
 
@@ -18,11 +20,16 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 */
 	public ServiceModelDS() {
 	}
 
-	// Parametric constructor with the name of the database
+	/**
+	 * Parametric constructor with the name of the database
+	 * @param nomeDb of the database
+	 */
 	public ServiceModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -42,6 +49,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Insert a new instance of a service
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
@@ -65,6 +76,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Update an existing service
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Service service) throws SQLException {
 		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (employeee=?, quantity=?, variation=?, note=?,"
@@ -88,6 +103,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Remove a service with a specific id
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -102,6 +121,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Find a service by its id
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public Service findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -130,6 +153,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Return a list with all the service
+
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
@@ -156,6 +183,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	// Close connection to the database
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

@@ -20,8 +20,11 @@ import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.User;
 
-/*	UserController
+/**
+ * 	UserController
  * 	Class that handles requests from the browser to the database of a User
+ * 	@author AdminEWP
+ *
  */
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
@@ -30,24 +33,35 @@ public class UserController extends HttpServlet {
 	static ModelInterface<User> model = new AccountModelDS();
 	private AccountModelDS modelDs = (AccountModelDS) model;
 
-	// Empty Constructor
+	/** 
+	 *	Empty Constructor
+	 */
 	public UserController() {
 		super();
 	}
 
-	// Response of the server to the browser 
+	/**
+	 * Response of the server to the browser
+     * @param message to be send to the browser
+     * @param response HTTP from server to browser
+     * @throws IOException
+     */
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
-    // Handle the request in "GET" method
+    /**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	// Handle the request in "POST" method
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -203,7 +217,10 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	//Encrypt data
+	/** Encrypt data
+	 * @param convertme bytes array to be encrypt
+	 * @return
+	 */
 	public static String toSHA1(byte[] convertme) {
 		MessageDigest md = null;
 		try {

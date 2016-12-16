@@ -8,8 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/*	CustomerModelDs
+/**
+ * 	CustomerModelDs
  *	Class that interacts with the database through the information of Customer
+ *	@author AdminEWP
 */
 public class CustomerModelDS implements ModelInterface<Customer> {
 
@@ -18,11 +20,16 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 */
 	public CustomerModelDS() {
 	}
 
-	// Parametric constructor with the name of the database
+	/**
+	 * Parametric constructor with the name of the database
+	 * @param nomeDb of the database
+	 */
 	public CustomerModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -41,7 +48,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		// }
 	}
 
-	// Insert a new instance of a customer
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Customer customer) throws SQLException {
 
@@ -68,7 +77,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
-	// Update an existing customer
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Customer customer) throws SQLException {
 		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
@@ -95,7 +106,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
-	// Remove a customer with a specific id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -109,7 +122,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		}
 	}
 
-	// Find a customer by his id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public Customer findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -139,7 +154,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		return customer;
 	}
 
-	// Return a list with all the customer
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
@@ -168,7 +185,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		return listCustomer;
 	}
 
-	// Close connection to the database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

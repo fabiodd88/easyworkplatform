@@ -2,8 +2,10 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.util.Date;
 
-/*	Customer 	
+/**
+ * 	Customer 	
  *	Class that collects customer information
+ *	@author AdminEWP
 */
 public class Customer implements Cloneable{
 	private int id;
@@ -14,15 +16,31 @@ public class Customer implements Cloneable{
 	private String address;
 	private String city;
 	private String province;
-	private int newsletter;
 	private int cap;
+	private int newsletter;
 	private String phoneNumber;
 	private String email;
 	
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 * 
+	 */
 	public Customer(){}
 	
-	// Parametric constructor
+	/**
+	 * Parametric constructor
+	 * @param name of the customer
+	 * @param surname of the customer
+	 * @param birthdate of the customer
+	 * @param birthplace of the customer
+	 * @param address of the customer
+	 * @param city of the customer
+	 * @param province of the customer
+	 * @param cap of the customer
+	 * @param newsletter of the customer
+	 * @param phoneNumber of the customer
+	 * @param email of the customer
+	 */
 	public Customer(String name, String surname, Date birthdate, String birthplace, String address, String city,
 			String province, int cap, int newsletter, String phoneNumber, String email) {
 		super();
@@ -39,127 +57,202 @@ public class Customer implements Cloneable{
 		this.email = email;
 	}
 
-	//Get the name
+	/**
+	 * Get the name
+	 * @return this name
+	 */
 	public String getName() {
 		return name;
 	}
 
-	// Set a name
+	/**
+	 * Set a name
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	//Get the surname
+	/**
+	 * Get the surname
+	 * @return this surname
+	 */
 	public String getSurname() {
 		return surname;
 	}
 
-	// Set a surname
+	/**
+	 * Set a surname
+	 * @param surname
+	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
-	//Get the birthdate
+	/**
+	 * Get the birthdate
+	 * @return this birthdate
+	 */
 	public Date getBirthdate() {
 		return birthdate;
 	}
 
-	// Set a birthdate
+	/**
+	 * Set a birthdate
+	 * @param birthdate
+	 */
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
-	//Get the birthplace
+	/**
+	 * Get the birthplace
+	 * @return this birthplace
+	 */
 	public String getBirthplace() {
 		return birthplace;
 	}
 
-	// Set a birthplace
+	/**
+	 * Set a birthplace
+	 * @param birthplace
+	 */
 	public void setBirthplace(String birthplace) {
 		this.birthplace = birthplace;
 	}
 
-	//Get the address
+	/**
+	 * Get the address
+	 * @return this address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
-	// Set an address
+	/**
+	 * Set an address
+	 * @param address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	//Get the city
+	/**
+	 * Get the city
+	 * @return this city
+	 */
 	public String getCity() {
 		return city;
 	}
 
-	// Set a city
+	/**
+	 * Set a city
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	//Get the province
+	/**
+	 * Get the province
+	 * @return this province
+	 */
 	public String getProvince() {
 		return province;
 	}
 
-	// Set a province
+	/**
+	 * Set a province
+	 * @param province
+	 */
 	public void setProvince(String province) {
 		this.province = province;
 	}
 
-	//Get the cap
+	/**
+	 * Get the cap
+	 * @return this cap
+	 */
 	public int getCap() {
 		return cap;
 	}
 
-	// Set a cap
+	/**
+	 * Set a cap
+	 * @param cap
+	 */
 	public void setCap(int cap) {
 		this.cap = cap;
 	}
 
-	//Get the newsletter
+	/**
+	 * Get the newsletter
+	 * @return this newsletter
+	 */
 	public int getNewsletter() {
 		return newsletter;
 	}
 
-	// Set a newsletter
+	/**
+	 * Set a newsletter
+	 * @param newsletter
+	 */
 	public void setNewsletter(int newsletter) {
 		this.newsletter = newsletter;
 	}
 
-	//Get the phone number
+	/**
+	 * Get the phone number
+	 * @return this phone number
+	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	// Set a phone number
+	/**
+	 * Set a phone number
+	 * @param phoneNumber
+	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	//Get the email
+	/**
+	 * Get the email
+	 * @return email
+	 */
 	public String getEmail() {
 		return email;
 	}
 
-	// Set an email
+	/**
+	 * Set an email
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	//Get the id	
+	/**
+	 * Get the id
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
 
-	// Set an id
+	/**
+	 * Set an id
+	 * @param id
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	// Return all the information in string format
+	/**
+	 * Return all the information in string format
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return getClass().getSimpleName()+" [name=" + name + ", surname=" + surname + ", birthdate=" + birthdate + ", birthplace="
@@ -167,7 +260,10 @@ public class Customer implements Cloneable{
 				+ ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 	}
 	
-	// Compares 2 "customer" object
+	/**
+	 * Compares 2 "customer" object
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
@@ -185,7 +281,10 @@ public class Customer implements Cloneable{
 				this.email.equals(customer.getEmail());
 	}
 	
-	// Duplicate a customer
+	/**
+	 * Duplicate a customer
+	 * @see java.lang.Object#clone()
+	 */
 	@Override
 	public Customer clone(){
 		try{

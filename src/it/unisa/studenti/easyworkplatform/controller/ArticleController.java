@@ -16,8 +16,9 @@ import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
-/*	ArticleController
+/**	ArticleController
  * 	Class that handles requests from the browser to the database of an Article
+ *  @author AdminEWP
  */
 @WebServlet("/ArticleServlet")
 public class ArticleController extends HttpServlet {
@@ -25,23 +26,34 @@ public class ArticleController extends HttpServlet {
 	static ModelInterface<Article> model = new ArticleModelDS();
 	private ArticleModelDS modelDs = (ArticleModelDS) model;
 
-	// Empty Constructor    
+	/** 
+	 *	Empty Constructor
+	 */
     public ArticleController() {
     	super();
     }
     
-    // Response of the server to the browser 
+    /**
+	 * Response of the server to the browser
+     * @param message to be send to the browser
+     * @param response HTTP from server to browser
+     * @throws IOException
+     */
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
-    // Handle the request in "GET" method
+    /**
+     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	// Handle the request in "POST" method
+	/**
+     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		try{

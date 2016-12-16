@@ -10,24 +10,38 @@ public class User extends Account{
 	private String name;
 	private String surname;
 	private Date birthdate;
-	private String birthPlace;
+	private String birthplace;
 	private String address;
 	private String city;
 	private String province;
 	private int cap;
 	private String taxCode;
 	
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 */
 	public User() {}
 	
-	// Parametric constructor
+	/**
+	 * Parametric constructor
+	 * @param account of the user
+	 * @param name of the user
+	 * @param surname of the user
+	 * @param birthdate of the user
+	 * @param birthplace of the user
+	 * @param address of the user
+	 * @param city of the user
+	 * @param province of the user
+	 * @param cap of the user
+	 * @param taxCode of the user
+	 */
 	public User(Account account, String name, String surname, Date birthdate,
 			String birthplace, String address, String city, String province, int cap, String taxCode) {
 		super(account.getEmail(), account.getPassword(), account.getSecondKey());
 		this.name = name;
 		this.surname = surname;
 		this.birthdate = birthdate;
-		this.birthPlace = birthplace;
+		this.birthplace = birthplace;
 		this.address = address;
 		this.city = city;
 		this.province = province;
@@ -35,105 +49,165 @@ public class User extends Account{
 		this.taxCode = taxCode;
 	}
 
-	// Get the name
+	/**
+	 * Get the name
+	 * @return this name
+	 */
 	public String getName() {
 		return name;
 	}
 
-	// Set a name
+	/**
+	 * Set a name
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	// Get the surname
+	/**
+	 * Get the surname
+	 * @return
+	 */
 	public String getSurename() {
 		return surname;
 	}
 
-	// Set a surname
+	/**
+	 * Set a surname
+	 * @param surname
+	 */
 	public void setSurename(String surname) {
 		this.surname = surname;
 	}
 
-	// Get the birthdate
+	/**
+	 * Get the birthdate
+	 * @return this birthdate
+	 */
 	public Date getBirthdate() {
 		return birthdate;
 	}
 
-	// Set a birthdate
+	/**
+	 * Set a birthdate
+	 * @param birthdate
+	 */
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
 
-	// Get the birthplace
+	/**
+	 * Get the birthplace
+	 * @return this birthplace
+	 */
 	public String getBirthplace() {
-		return birthPlace;
+		return birthplace;
 	}
 
-	// Set a birthplace
+	/**
+	 * Set a birthplace
+	 * @param birthplace
+	 */
 	public void setBirthplace(String birthplace) {
-		this.birthPlace = birthplace;
+		this.birthplace = birthplace;
 	}
 
-	// Get the address
+	/**
+	 * Get the address
+	 * @return this address
+	 */
 	public String getAddress() {
 		return address;
 	}
 
-	// Set an address
+	/**
+	 * Set an address
+	 * @param address
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	// Get the city
+	/**
+	 * Get the city
+	 * @return this city
+	 */
 	public String getCity() {
 		return city;
 	}
 
-	// Set a city
+	/**
+	 * Set a city
+	 * @param city
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	// Get the province
+	/**
+	 * Get the province
+	 * @return this province
+	 */
 	public String getProvince() {
 		return province;
 	}
 
-	// Set a province
+	/**
+	 * Set a province
+	 * @param province
+	 */
 	public void setProvince(String province) {
 		this.province = province;
 	}
 
-	// Get the cap
+	/**
+	 * Get the cap
+	 * @return this cap
+	 */
 	public int getCap() {
 		return cap;
 	}
 
-	// Set a cap
+	/**
+	 * Set a cap
+	 * @param cap
+	 */
 	public void setCap(int cap) {
 		this.cap = cap;
 	}
 
-	// Get the tax code
+	/**
+	 * Get the tax code
+	 * @return this tax code
+	 */
 	public String getTaxCode() {
 		return taxCode;
 	}
 
-	// Set a tax code
+	/**
+	 * Set a tax code
+	 * @param taxCode
+	 */
 	public void setTaxCode(String taxCode) {
 		this.taxCode = taxCode;
 	}
 
-	// Return all the information in string format
+	/**
+	 * Return all the information in string format
+	 * @see it.unisa.studenti.easyworkplatform.model.Account#toString()
+	 */
 	@Override
 	public String toString() {
 		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surname + ", birthdate=" + birthdate + ", burthplace="
-				+ birthPlace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
+				+ birthplace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
 				+ ", taxCode=" + taxCode + "]";
 	}
 	
-	// Compares 2 "user" object
+	/**
+	 * Compares 2 "user" object
+	 * @see it.unisa.studenti.easyworkplatform.model.Account#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object object){
 		if(object == null) return false;
@@ -143,7 +217,7 @@ public class User extends Account{
 		return	this.name.equals(user.getName())			&& 
 				this.surname.equals(user.getSurename())	&&
 				this.birthdate.equals(user.getBirthdate())	&&
-				this.birthPlace.equals(user.getBirthplace())&&
+				this.birthplace.equals(user.getBirthplace())&&
 				this.address.equals(user.getAddress())		&&
 				this.city.equals(user.getCity())			&&
 				this.province.equals(user.getProvince())	&&
@@ -151,7 +225,10 @@ public class User extends Account{
 				this.taxCode.equals(user.getTaxCode());
 	}
 	
-	// Duplicate a user
+	/**
+	 * Duplicate a user
+	 * @see it.unisa.studenti.easyworkplatform.model.Account#clone()
+	 */
 	@Override
 	public User clone(){
 		User user = (User) super.clone();
@@ -160,7 +237,7 @@ public class User extends Account{
 		user.cap  = cap;
 		user.surname 	= surname;
 		user.birthdate 	= birthdate;
-		user.birthPlace = birthPlace;
+		user.birthplace = birthplace;
 		user.address	= address;
 		user.province 	= province;
 		user.taxCode 	= taxCode;
