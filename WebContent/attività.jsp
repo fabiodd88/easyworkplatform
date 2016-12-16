@@ -100,7 +100,7 @@
 						</td>
 						<td width="25%">
 							<div id="iconsServizio" style="display:none">
-								<button style="border: 0px; background: #FFFFFF">
+								<button style="border: 0px; background: #FFFFFF" onclick="addServizio()">
 									<img alt="" src="icon/add.png"><br>Aggiungi
 								</button>
 								<button style="border: 0px; background: #FFFFFF">
@@ -135,16 +135,28 @@
 			<div id="newCliente"></div>
 			
 			<!-- form per l'aggiunta dell'articolo -->
-			<div id="newArticolo"></div>
+			<div id="newArticolo" style="display:none">
+				<form style="border:1px solid black; width:100%" role="form"
+				 method="post">
+					<div class="form-group">
+						<label for="name">Nome</label> <input type="text"
+							class="form-control" required="required">
+					</div>
+					<div class="form-group">
+						<label for="descrizione">Descrizione</label> <input type="text"
+							class="form-control" required="required">
+					</div>
+					<div class="form-group">
+						<label for="prezzo">Prezzo</label> <input type="number"
+							class="form-control" min="0" required="required">
+					</div>
+					<div class="form-group">
+						<label for="durata">Durata</label> <input type="text"
+							class="form-control">
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<div class="footer">
-		<p>
-			<img src="icon/logo.png" height="50px" width="70px"> &nbsp
-			&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
-				href="index.html">Privacy Policy</a> <a href="index.html">Terms
-				and Conditions</a>
-		</p>
 	</div>
 </body>
 </html>

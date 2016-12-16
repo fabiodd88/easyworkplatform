@@ -370,7 +370,7 @@
 								<h2>Registrazione Account</h2>
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" aria-valuenow="0"
-										aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+										aria-valuemin="0" aria-valuemax="100" style="width: 30%">
 									</div>
 								</div>
 								<input type="text" name="typeOfRequest" id="inputAction"
@@ -440,7 +440,7 @@
 									<h2>Registrazione Attività</h2>
 									<div class="progress">
 										<div class="progress-bar" role="progressbar" aria-valuenow="0"
-											aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+											aria-valuemin="0" aria-valuemax="100" style="width: 50%">
 										</div>
 									</div>
 									<div class="table-responsive">
@@ -497,17 +497,229 @@
 											</tr>
 										</table>
 									</div>
+									
 									<button type="reset" class="btn btn-default"
 										onClick="forward('reg2')">Indietro</button>
 									<button type="button" class="btn btn-default"
-										data-toggle="modal" data-target="#mioModal">Conferma</button>
+										onclick="forward('rec1')">Avanti</button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<!-- Prima parte del riepilogo della registrazione -->
+			<div class="container-fluid text-center padding"
+				style="display: none;" id="rec1">
+				<div class="row content ">
+					<div class="col-sm-12">
+						<div class="panel-group ">
+							<div class="panel panel-default ">
+								<div class="container ">
+									<h2>Riepilogo registrazione Utente</h2>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="0"
+											aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+										</div>
+									</div>
 
+									<input type="text" name="typeOfRequest" id="inputAction" style="display: none" />
+									<div class="table-responsive">
+										<table class="table">
+											<tr>
+												<div class="form-group">
+													<th><label for="">Nome</label></th>
+													<th><input type="text" name="nome" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Cognome</label></th>
+													<th><input type="text" name="cognome" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Codice fiscale</label></th>
+													<th><input type="text" name="taxCode" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Data di nascita</label></th>
+													<th><input type="text" name="dateBirth" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Luogo di nascita</label></th>
+													<th><input type="text" name="placeBirth" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Indirizzo</label></th>
+													<th><input type="text" name="adress" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Numero civico</label></th>
+													<th><input type="text" name="civicNumber" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Città</label></th>
+													<th><input type="text" name="city" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Provincia</label></th>
+													<th><input type="text" name="provincia" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Cap</label></th>
+													<th><input type="text" name="cap" readonly></th>
+												</div>
+											</tr>
+										</table>
+										<button type="reset" class="btn btn-default"
+											onClick="forward('reg3')">Indietro</button>
+										<button type="button" class="btn btn-default"
+											onclick="forward('rec2')">Avanti</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Seconda parte del riepilogo della registrazione -->
+			<div class="container-fluid text-center padding"
+				style="display: none;" id="rec2">
+				<div class="row content ">
+					<div class="col-sm-12">
+						<div class="panel-group ">
+							<div class="panel panel-default ">
+								<div class="container ">
+									<h2>Riepilogo registrazione Utente</h2>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="0"
+											aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+										</div>
+									</div>
+
+									<input type="text" name="typeOfRequest" id="inputAction" style="display: none" />
+									<div class="table-responsive">
+										<table class="table">
+											<tr>
+												<div class="form-group">
+													<th><label for="">Email</label></th>
+													<th><input type="text" name="email" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Password</label></th>
+													<th><input type="text" name="password" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Chiave secondaria</label></th>
+													<th><input type="text" name="secondaryKey" readonly></th>
+												</div>
+											</tr>
+										</table>
+										<button type="reset" class="btn btn-default"
+											onClick="forward('rec1')">Indietro</button>
+										<button type="button" class="btn btn-default"
+											onclick="forward('rec3')">Avanti</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container-fluid text-center padding"
+				style="display: none;" id="rec3">
+				<div class="row content ">
+					<div class="col-sm-12">
+						<div class="panel-group ">
+							<div class="panel panel-default ">
+								<div class="container ">
+									<h2>Riepilogo registrazione Utente</h2>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" aria-valuenow="0"
+											aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+										</div>
+									</div>
+
+									<input type="text" name="typeOfRequest" id="inputAction" style="display: none" />
+									<div class="table-responsive">
+										<table class="table">
+											<tr>
+												<div class="form-group">
+													<th><label for="">Nome</label></th>
+													<th><input type="text" name="name" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Partita iva</label></th>
+													<th><input type="text" name="vatCode" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Tipologia</label></th>
+													<th><input type="text" name="tipology" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Indirizzo</label></th>
+													<th><input type="text" name="adress" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Città</label></th>
+													<th><input type="text" name="city" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Numero civico</label></th>
+													<th><input type="text" name="civicNumber" readonly></th>
+												</div>
+											</tr>
+											<tr>
+												<div class="form-group">
+													<th><label for="">Cap</label></th>
+													<th><input type="text" name="cap" readonly></th>
+												</div>
+											</tr>
+										</table>
+										<button type="reset" class="btn btn-default"
+										onClick="forward('rec2')">Indietro</button>
+										<button type="button" class="btn btn-default"
+										data-toggle="modal" data-target="#mioModal">Conferma</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 
 
@@ -516,7 +728,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4>Registrazione avvenuta con successo</h4>
+						<h4>Registrazione effettuata con successo</h4>
 					</div>
 					<a href="index.jsp">OK</a>
 				</div>
