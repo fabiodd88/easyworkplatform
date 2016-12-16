@@ -6,6 +6,9 @@ package it.unisa.studenti.easyworkplatform.proxy;
 public class HighResolutionImage implements Image{
 
 	
+/**
+ * @param imageFilePath
+ */
 public HighResolutionImage(String imageFilePath) {
 		
 		loadImage(imageFilePath);
@@ -17,6 +20,9 @@ public HighResolutionImage(String imageFilePath) {
 		// this is heavy and costly operation
 	}
 
+	/* (non-Javadoc)
+	 * @see it.unisa.studenti.easyworkplatform.proxy.Image#showImage()
+	 */
 	@Override
 	public void showImage() {
 
