@@ -155,6 +155,41 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
+	 * Return a list of specific customers
+	 * @param attribute of customer
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Customer> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Customer customer = new Customer();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				customer.setName(rs.getString("name"));
+				customer.setSurname(rs.getString("surname"));
+				customer.setBirthdate(rs.getDate("birth_date"));
+				customer.setBirthplace(rs.getString("birth_place"));
+				customer.setAddress(rs.getString("address"));
+				customer.setCity(rs.getString("city"));
+				customer.setProvince(rs.getString("province"));
+				customer.setCap(rs.getInt("cap"));
+				customer.setPhoneNumber(rs.getString("phone_number"));
+				customer.setNewsletter(rs.getInt("newsletter"));
+				customer.setEmail(rs.getString("email"));
+				listCustomer.add(customer);
+			}
+		} catch (SQLException e) {
+		}
+		return listCustomer;
+	}
+	
+	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
 	 */
 	@Override

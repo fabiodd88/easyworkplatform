@@ -48,8 +48,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		// }
 	}
 
-	// Insert a new instance of a service
-	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
 	 */
@@ -75,8 +73,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		}
 	}
 
-	// Update an existing service
-	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
 	 */
@@ -102,8 +98,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		}
 	}
 
-	// Remove a service with a specific id
-	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
 	 */
@@ -120,8 +114,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		}
 	}
 
-	// Find a service by its id
-	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
 	 */
@@ -152,8 +144,38 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	}
 
-	// Return a list with all the service
-
+	/** 
+	 * Return a list of specific services
+	 * @param attribute of services
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Service> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Service> listService = new LinkedList<Service>();
+		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Service service = new Service();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				service.setEmployee(rs.getString("employee"));
+				service.setQuantity(rs.getInt("quantity"));
+				service.setVariation(rs.getString("variation"));
+				service.setNote(rs.getString("note"));
+				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReturnDate(rs.getDate("return_date"));
+				service.setArticleId(rs.getInt("article_id"));
+				service.setCustomerId(rs.getInt("customer_id"));
+				listService.add(service);
+			}
+		} catch (SQLException e) {
+		}
+		return listService;
+	}
+	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
 	 */
@@ -182,8 +204,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		return listService;
 	}
 
-	// Close connection to the database
-	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
 	 */

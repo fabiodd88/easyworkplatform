@@ -127,6 +127,35 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		return article;
 	}
 
+	/** 
+	 * Return a list of specific articles
+	 * @param attribute of articles
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Article> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Article> listArticle = new LinkedList<Article>();
+		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Article article = new Article();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				article.setId(rs.getInt("id"));
+				article.setName(rs.getString("name"));
+				article.setPrice(rs.getDouble("price"));
+				article.setDescription(rs.getString("description"));
+				article.setDuration(rs.getInt("duration"));
+				listArticle.add(article);
+			}
+		} catch (SQLException e) {
+		}
+		return listArticle;
+	}
+	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
 	 */
