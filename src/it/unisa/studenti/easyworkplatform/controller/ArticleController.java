@@ -106,7 +106,7 @@ public class ArticleController extends HttpServlet {
 				//UPDATE
 				if(action.equalsIgnoreCase("update")){
 					
-					int id = Integer.parseInt(request.getParameter("id"));
+					int id = Integer.parseInt(request.getParameter("idArticle"));
 					Article oldArticle = modelDs.findByKey(id);
 					
 					if(oldArticle == null){
@@ -120,20 +120,24 @@ public class ArticleController extends HttpServlet {
 					String dur = request.getParameter("duration");
 					
 					//control if not empty
-					if (!(name.equals("") || pri.equals("") || description.equals("") || dur.equals(""))){
+					if (name.equals(""))
+						name = oldArticle.getName();
+					
+					if (pri.equals(""))
+						pri = String.valueOf(oldArticle.getPrice());
+					
+					
+					if (description.equals(""))
+						description = oldArticle.getDescription();
+					
+					if (dur.equals(""))
+						dur = String.valueOf(oldArticle.getDuration());
 
 						//control if they respect the format						
-						if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
-							Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
-								sendMessage("regExpError", response);
-								return;
-						}
-					}else{
-						//if empty, take old attributes
-						name = oldArticle.getName();
-						pri = oldArticle.getPrice()+"";
-						description = oldArticle.getDescription();
-						dur = oldArticle.getDuration()+"";
+					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
+						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
+						sendMessage("regExpError", response);
+						return;
 					}
 
 					double price = Double.parseDouble(pri);
@@ -154,7 +158,7 @@ public class ArticleController extends HttpServlet {
 				//REMOVE
 				if(action.equalsIgnoreCase("remove")){
 					
-					int id = Integer.parseInt(request.getParameter("id"));
+					int id = Integer.parseInt(request.getParameter("idArticle"));
 					
 					Article toRemoveArticle = modelDs.findByKey(id);
 					
@@ -176,37 +180,33 @@ public class ArticleController extends HttpServlet {
 				//SEARCH
 				if(action.equalsIgnoreCase("search")){
 					
-					String name = request.getParameter("name");
-					String pri = request.getParameter("price");
+					String attribute = request.getParameter("attribute");
+					String toSearch = request.getParameter("toSearch");
 					
 					//control if empty
-					if (name.equals("") && pri.equals("")){
+					if (attribute.equals("") && toSearch.equals("")){
 						sendMessage("empty", response);
 						return;
 					}
+					
+					String regex = "[0-9]{2}[.][0-9]{2}";
+					if(attribute.equals("name"))
+						regex = "[a-zA-Z]*";
 
 					//control if they respect the format					
-					if (!Pattern.matches("[a-zA-Z]*", name)	|| !Pattern.matches("[0-9]{2}[.][0-9]{2}", pri)){
+					if (!Pattern.matches(regex, toSearch)){
 						sendMessage("regExpError", response);
 						return;
 					}
 					
-					double price = Double.parseDouble(pri);
+					LinkedList<Article> listArticle = modelDs.findByField(attribute, toSearch);
 					
-					Article article = null;
-					LinkedList<Article> listArticle = modelDs.findAll();
-					for(Article art : listArticle){
-						if(art.getName().equals(name) || art.getPrice() == price){
-							article = art;
-						}
-					}
-					
-					if(article == null){
-						sendMessage("notFound", response);
+					if (listArticle.isEmpty()){
+						sendMessage("emptyList", response);
 						return;
 					}else{
-						request.setAttribute("article", article);
-						sendMessage("found", response);
+						request.setAttribute("articlesSearched", listArticle);
+						sendMessage("listSearched", response);
 						return;
 					}
 					

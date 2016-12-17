@@ -12,16 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
-
-import it.unisa.studenti.easyworkplatform.model.Account;
-import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
 import it.unisa.studenti.easyworkplatform.model.Customer;
 import it.unisa.studenti.easyworkplatform.model.CustomerModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
-import it.unisa.studenti.easyworkplatform.model.User;
 
 /**	CustomerController
  * 	Class that handles requests from the browser to the database of a Customer
@@ -62,7 +56,6 @@ public class CustomerController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
-		HttpSession session = request.getSession();
 		try {
 			if (action == null) {
 				sendMessage("noAction", response);
@@ -126,6 +119,171 @@ public class CustomerController extends HttpServlet {
 					}
 
 				}
+				
+				// UPDATE
+				if (action.equalsIgnoreCase("update")){
+					
+					int id = Integer.parseInt(request.getParameter("idCustomer"));
+					
+					Customer oldCustomer = modelDs.findByKey(id);
+					
+					if(oldCustomer == null){
+						sendMessage("noExist", response);
+						return;
+					}
+					
+					String name = request.getParameter("name");
+					String surname = request.getParameter("surname");
+					String birthDate = request.getParameter("birthDate");
+					String birthPlace = request.getParameter("birthPlace");
+					String address = request.getParameter("address");
+					String city = request.getParameter("city");
+					String province = request.getParameter("province");
+					String cap = request.getParameter("cap");
+					String email = request.getParameter("email");
+					String newsletter = request.getParameter("newsletter");
+					String phoneNumber = request.getParameter("phoneNumber");
+					
+					// control if empty
+					
+					if (name.equals(""))
+						name = oldCustomer.getName();
+						
+					if (surname.equals(""))
+						surname = oldCustomer.getSurname();
+					
+					if (birthDate.equals(""))
+						birthDate = String.valueOf(oldCustomer.getBirthdate());
+								
+					if (birthPlace.equals(""))
+						birthPlace = oldCustomer.getBirthplace();
+						
+					if (address.equals(""))
+						address = oldCustomer.getAddress();
+						
+					if (city.equals(""))
+						city = oldCustomer.getCity();
+								
+					if (province.equals(""))
+						province = oldCustomer.getProvince();
+										
+					if (cap.equals(""))		
+						cap = String.valueOf(oldCustomer.getCap());		
+					
+					if (email.equals(""))
+						email = oldCustomer.getEmail();
+								
+					if (newsletter.equals(""))
+						newsletter = String.valueOf(oldCustomer.getNewsletter());
+										
+					if (phoneNumber.equals(""))
+						phoneNumber = oldCustomer.getPhoneNumber();
+												
+					//control if they respect the format
+					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
+							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
+							Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap) && Pattern.matches("[0-9]*", phoneNumber) &&
+							Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) && Pattern.matches("[a-zA-Z0-9]*", newsletter))){
+								sendMessage("regExpError", response);
+								return;
+					}
+					
+					int CAP = Integer.parseInt(cap);
+					Date bd = Date.valueOf(birthDate);
+					int nl = Integer.parseInt(newsletter);
+					
+					Customer newCustomer = new Customer(name, surname, bd, birthPlace, address, city, province, CAP, nl, phoneNumber, email);
+					newCustomer.setId(oldCustomer.getId());
+					try{
+						modelDs.update(newCustomer);
+						sendMessage("updateOk", response);
+						return;
+					}catch(Exception e){
+						sendMessage("cError", response);
+						return;
+					}
+				}
+				
+				// REMOVE
+				if (action.equalsIgnoreCase("remove")){
+					int id = Integer.parseInt(request.getParameter("idCustomer"));
+					
+					Customer toRemove = modelDs.findByKey(id);
+					
+					if(toRemove == null){
+						sendMessage("noExists", response);
+						return;
+					}
+					
+					try{
+						modelDs.remove(id);
+						sendMessage("removeOk", response);
+						return;
+					}catch(Exception e){
+						sendMessage("cError", response);
+						return;
+					}
+				}
+				
+				// SEARCH
+				if (action.equalsIgnoreCase("search")){
+					
+					String attribute = request.getParameter("attribute");
+					String toSearch = request.getParameter("toSearch");
+					
+					//control if empty
+					if (attribute.equals("") && toSearch.equals("")){
+						sendMessage("empty", response);
+						return;
+					}
+					
+					String regex = "";
+					switch(attribute){
+						case "name" : {regex = "[a-zA-Z]*";}break;
+						case "surname" : {regex = "[a-zA-Z]*";}break;
+						case "birth_date" : {regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";}break;
+						case "birth_place" : {regex = "[a-zA-Z]*";}break;
+						case "address" : {regex = "[a-zA-Z 0-9]*";}break;
+						case "city" : {regex = "[a-zA-Z]*";}break;
+						case "province" : {regex="[a-zA-Z]*";}break;
+						case "cap" : {regex="[0-9]{5}";}break;
+						case "email" : {regex="[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*";}break;
+						case "phone_number" : {regex="[0-9]*";}break;
+						case "newsletter" : {regex="[a-zA-Z0-9]*";}break;
+					}
+					
+					if(Pattern.matches(regex, toSearch)){
+						sendMessage("regExpError", response);
+						return;
+					}
+					
+					LinkedList<Customer> listCustomer = modelDs.findByField(attribute, toSearch);
+					
+					if (listCustomer.isEmpty()){
+						sendMessage("emptyList", response);
+						return;
+					} else{
+						request.setAttribute("customersSearched", listCustomer);
+						sendMessage("listSearched", response);
+						return;
+					}
+				}
+				
+				// VIEW LIST
+				if (action.equalsIgnoreCase("viewList")){
+					LinkedList<Customer> listCustomer = modelDs.findAll();
+					
+					if (listCustomer.isEmpty()){
+						sendMessage("emptyList", response);
+						return;
+					} else{
+						request.setAttribute("customers", listCustomer);
+						sendMessage("list", response);
+						return;
+					}
+				}
+				
+				
 			}
 		} catch (SQLException e) {
 			this.sendMessage("genericError", response);
