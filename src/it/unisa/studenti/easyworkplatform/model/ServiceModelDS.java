@@ -54,19 +54,20 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
-				+ " VALUES (?,?,?,?,?,?,?,?)";
+				+ "(name, employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
+				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(1, service.getEmployee());
-			preparedStatement.setInt(2, service.getQuantity());
-			preparedStatement.setString(3, service.getVariation());
-			preparedStatement.setString(4, service.getNote());
-			preparedStatement.setDate(5, (Date) service.getReceiptDate());
-			preparedStatement.setDate(6, (Date) service.getReturnDate());
-			preparedStatement.setInt(7, service.getArticleId());
-			preparedStatement.setInt(8, service.getCustomerId());
+			preparedStatement.setString(1, service.getName());
+			preparedStatement.setString(2, service.getEmployee());
+			preparedStatement.setInt(3, service.getQuantity());
+			preparedStatement.setString(4, service.getVariation());
+			preparedStatement.setString(5, service.getNote());
+			preparedStatement.setDate(6, (Date) service.getReceiptDate());
+			preparedStatement.setDate(7, (Date) service.getReturnDate());
+			preparedStatement.setInt(8, service.getArticleId());
+			preparedStatement.setInt(9, service.getCustomerId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -78,20 +79,21 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (employeee=?, quantity=?, variation=?, note=?,"
+		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (name=?, employeee=?, quantity=?, variation=?, note=?,"
 				+ " receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, service.getEmployee());
-			preparedStatement.setInt(2, service.getQuantity());
-			preparedStatement.setString(3, service.getVariation());
-			preparedStatement.setString(4, service.getNote());
-			preparedStatement.setDate(5, (Date) service.getReceiptDate());
-			preparedStatement.setDate(6, (Date) service.getReturnDate());
-			preparedStatement.setInt(7, service.getArticleId());
-			preparedStatement.setInt(8, service.getCustomerId());
-			preparedStatement.setInt(9, service.getId());
+			preparedStatement.setString(1, service.getName());
+			preparedStatement.setString(2, service.getEmployee());
+			preparedStatement.setInt(3, service.getQuantity());
+			preparedStatement.setString(4, service.getVariation());
+			preparedStatement.setString(5, service.getNote());
+			preparedStatement.setDate(6, (Date) service.getReceiptDate());
+			preparedStatement.setDate(7, (Date) service.getReturnDate());
+			preparedStatement.setInt(8, service.getArticleId());
+			preparedStatement.setInt(9, service.getCustomerId());
+			preparedStatement.setInt(10, service.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
