@@ -10,6 +10,7 @@ import java.util.Date;
 public class Service implements Cloneable {
 
 	private int id;
+	private String name;
 	private String employee;
 	private int quantity;
 	private String variation;
@@ -35,9 +36,10 @@ public class Service implements Cloneable {
 	 * @param articleId of the service
 	 * @param customerId of the service
 	 */
-	public Service(String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
+	public Service(String name, String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
 			int articleId, int customerId) {
 		super();
+		this.name = name;
 		this.employee = employee;
 		this.quantity = quantity;
 		this.variation = variation;
@@ -46,6 +48,22 @@ public class Service implements Cloneable {
 		this.returnDate = returnDate;
 		this.articleId = articleId;
 		this.customerId = customerId;
+	}
+
+	/**
+	 * Get the name
+	 * @return this name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Set a name
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -198,7 +216,7 @@ public class Service implements Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
+		return "Service [name=" + name +", employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
 				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleId
 				+ ", customerId=" + customerId + "]";
 	}
@@ -212,7 +230,8 @@ public class Service implements Cloneable {
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Service service = (Service) object;
-		return 	(employee).equals(service.employee)	&&
+		return 	name.equals(service.name)			&&
+				(employee).equals(service.employee)	&&
 				this.quantity == service.quantity	&&
 				variation.equals(service.variation)	&&
 				note.equals(service.note)			&&
