@@ -133,6 +133,38 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return activity;
 	}
 
+	 /** Return a list of specific activities
+	 * @param attribute of activities
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Activity> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Activity> listActivity = new LinkedList<Activity>();
+		String selectSql = "SELECT * FROM " +ActivityModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Activity activity = new Activity();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				activity.setId(rs.getInt("id"));
+				activity.setName(rs.getString("name"));
+				activity.setType(rs.getString("type"));
+				activity.setAddress(rs.getString("address"));
+				activity.setCity(rs.getString("city"));
+				activity.setProvince(rs.getString("province"));
+				activity.setCap(rs.getInt("cap"));
+				activity.setVatNumber(rs.getString("vat_number"));
+				activity.setUserId(rs.getInt("user_id"));
+				listActivity.add(activity);
+			}
+		} catch (SQLException e) {
+		}
+		return listActivity;
+	}
+	
 	/**
 	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
 	 */
