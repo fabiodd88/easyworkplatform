@@ -76,14 +76,45 @@ function forward(value){
 	if(value == "reg1"){
 		document.getElementById("reg2").style.display="none";
 		document.getElementById("reg3").style.display="none";
+		document.getElementById("rec1").style.display="none";
+		document.getElementById("rec2").style.display="none";
+		document.getElementById("rec3").style.display="none";
 	}
 	else if(value == "reg2"){
 		document.getElementById("reg1").style.display="none";
 		document.getElementById("reg3").style.display="none";
+		document.getElementById("rec1").style.display="none";
+		document.getElementById("rec2").style.display="none";
+		document.getElementById("rec3").style.display="none";
 	}
 	else if(value == "reg3"){
 		document.getElementById("reg1").style.display="none";
 		document.getElementById("reg2").style.display="none";
+		document.getElementById("rec1").style.display="none";
+		document.getElementById("rec2").style.display="none";
+		document.getElementById("rec3").style.display="none";
+	}
+	else if(value == "rec1"){
+		document.getElementById("reg1").style.display="none";
+		document.getElementById("reg2").style.display="none";
+		document.getElementById("reg3").style.display="none";
+		document.getElementById("rec2").style.display="none";
+		document.getElementById("rec3").style.display="none";
+		
+	}
+	else if(value == "rec2"){
+		document.getElementById("reg1").style.display="none";
+		document.getElementById("reg2").style.display="none";
+		document.getElementById("reg3").style.display="none";
+		document.getElementById("rec1").style.display="none";
+		document.getElementById("rec3").style.display="none";
+	}
+	else if(value == "rec3"){
+		document.getElementById("reg1").style.display="none";
+		document.getElementById("reg2").style.display="none";
+		document.getElementById("reg3").style.display="none";
+		document.getElementById("rec1").style.display="none";
+		document.getElementById("rec2").style.display="none";
 	}
 	e.preventDefault();
 }

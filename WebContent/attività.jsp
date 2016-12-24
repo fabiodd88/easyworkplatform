@@ -20,11 +20,7 @@
 	<!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<!-- Un jumbotron è il quadratone blu -->
-		<div class="jumbotron color">
-			<div align="center">
-				<img src="icon/logo.png" width="200px" height="150px">
-			</div>
-		</div>
+		<div class="jumbotron color"></div>
 		<div class="container-fluid text-center padding">
 			<div>
 				<h2>Nome attività</h2>
@@ -44,107 +40,32 @@
 			<div class="table-responsive">
 				<table class="table">
 					<tr align="center">
-						<td width="25%"><button style="border: 0px; background: #FFFFFF"
-								onclick="icone(0)">
+						<td width="25%">
+							<button style="border: 0px; background: #FFFFFF">
 								<img alt="" src="icon/cliente.png">
 							</button>
 						</td>
-						<td width="25%"><button style="border: 0px; background: #FFFFFF"
-								onclick="icone(1)">
+						<td width="25%">
+							<button style="border: 0px; background: #FFFFFF">
 								<img alt="" src="icon/trattamento.png">
 							</button>
 						</td>
-						<td width="25%"><button style="border: 0px; background: #FFFFFF"
-								onclick="icone(2)">
+						<td width="25%">
+							<button style="border: 0px; background: #FFFFFF">
 								<img alt="" src="icon/appuntamento.png">
 							</button>
 						</td>
-						<td width="25%"><button style="border: 0px; background: #FFFFFF"
-								onclick="icone(3)">
+						<td width="25%">
+							<button style="border: 0px; background: #FFFFFF">
 								<img alt="" src="icon/pagamento2.png">
 							</button>
-						</td>
-					</tr>
-					<tr>
-						<td width="25%">
-							<div id="iconsCliente" style="display:none">
-								<button style="border: 0px; background: #FFFFFF" onclick="addCliente()">
-									<img alt="" src="icon/add.png"><br>Aggiungi
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/modifica.png"><br>Modifica
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/remove.png"><br>Elimina
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/search.png"><br>Cerca
-								</button>
-							</div>
-						</td>
-						<td width="25%">
-							<div id="iconsArticolo" style="display:none">
-								<button style="border: 0px; background: #FFFFFF" onclick="addArticolo()">
-									<img alt="" src="icon/add.png"><br>Aggiungi
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/modifica.png"><br>Modifica
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/remove.png"><br>Elimina
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/search.png"><br>Cerca
-								</button>
-							</div>
-						</td>
-						<td width="25%">
-							<div id="iconsServizio" style="display:none">
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/add.png"><br>Aggiungi
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/modifica.png"><br>Modifica
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/remove.png"><br>Elimina
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/search.png"><br>Cerca
-								</button>
-							</div>
-						</td>
-						<td width="25%">
-							<div id="iconsPagamento" style="display:none">
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/add.png"><br>Aggiungi
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/remove.png"><br>Elimina
-								</button>
-								<button style="border: 0px; background: #FFFFFF">
-									<img alt="" src="icon/search.png"><br>Cerca
-								</button>
-							</div>
 						</td>
 					</tr>
 				</table>
 			</div>
 
-			<!-- form per l'aggiunta del cliente -->
-			<div id="newCliente"></div>
-			
-			<!-- form per l'aggiunta dell'articolo -->
-			<div id="newArticolo"></div>
+
 		</div>
-	</div>
-	<div class="footer">
-		<p>
-			<img src="icon/logo.png" height="50px" width="70px"> &nbsp
-			&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
-				href="index.html">Privacy Policy</a> <a href="index.html">Terms
-				and Conditions</a>
-		</p>
 	</div>
 </body>
 </html>

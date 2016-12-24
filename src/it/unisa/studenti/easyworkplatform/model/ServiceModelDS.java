@@ -8,8 +8,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/*	ServiceModelDs
+/**	
+ * 	ServiceModelDs
  *	Class that interacts with the database through the information of Service
+ *	@author AdminEWP
 */
 public class ServiceModelDS implements ModelInterface<Service> {
 
@@ -18,11 +20,16 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	// Empty constructor
+	/**
+	 * Empty constructor
+	 */
 	public ServiceModelDS() {
 	}
 
-	// Parametric constructor with the name of the database
+	/**
+	 * Parametric constructor with the name of the database
+	 * @param nomeDb of the database
+	 */
 	public ServiceModelDS(String nomeDb) {
 		try {
 			// Context initCtx = new InitialContext();
@@ -41,53 +48,61 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		// }
 	}
 
-	// Insert a new instance of a service
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
-				+ " VALUES (?,?,?,?,?,?,?,?)";
+				+ "(name, employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
+				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(1, service.getEmployee());
-			preparedStatement.setInt(2, service.getQuantity());
-			preparedStatement.setString(3, service.getVariation());
-			preparedStatement.setString(4, service.getNote());
-			preparedStatement.setDate(5, (Date) service.getReceiptDate());
-			preparedStatement.setDate(6, (Date) service.getReturnDate());
-			preparedStatement.setInt(7, service.getArticleId());
-			preparedStatement.setInt(8, service.getCustomerId());
+			preparedStatement.setString(1, service.getName());
+			preparedStatement.setString(2, service.getEmployee());
+			preparedStatement.setInt(3, service.getQuantity());
+			preparedStatement.setString(4, service.getVariation());
+			preparedStatement.setString(5, service.getNote());
+			preparedStatement.setDate(6, (Date) service.getReceiptDate());
+			preparedStatement.setDate(7, (Date) service.getReturnDate());
+			preparedStatement.setInt(8, service.getArticleId());
+			preparedStatement.setInt(9, service.getCustomerId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
 		}
 	}
 
-	// Update an existing service
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (employeee=?, quantity=?, variation=?, note=?,"
+		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (name=?, employeee=?, quantity=?, variation=?, note=?,"
 				+ " receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id = ?)";
 		try {
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, service.getEmployee());
-			preparedStatement.setInt(2, service.getQuantity());
-			preparedStatement.setString(3, service.getVariation());
-			preparedStatement.setString(4, service.getNote());
-			preparedStatement.setDate(5, (Date) service.getReceiptDate());
-			preparedStatement.setDate(6, (Date) service.getReturnDate());
-			preparedStatement.setInt(7, service.getArticleId());
-			preparedStatement.setInt(8, service.getCustomerId());
-			preparedStatement.setInt(9, service.getId());
+			preparedStatement.setString(1, service.getName());
+			preparedStatement.setString(2, service.getEmployee());
+			preparedStatement.setInt(3, service.getQuantity());
+			preparedStatement.setString(4, service.getVariation());
+			preparedStatement.setString(5, service.getNote());
+			preparedStatement.setDate(6, (Date) service.getReceiptDate());
+			preparedStatement.setDate(7, (Date) service.getReturnDate());
+			preparedStatement.setInt(8, service.getArticleId());
+			preparedStatement.setInt(9, service.getCustomerId());
+			preparedStatement.setInt(10, service.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
 		}
 	}
 
-	// Remove a service with a specific id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -101,7 +116,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		}
 	}
 
-	// Find a service by its id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public Service findByKey(int id) throws SQLException {
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -129,7 +146,41 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	}
 
-	// Return a list with all the service
+	/** 
+	 * Return a list of specific services
+	 * @param attribute of services
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Service> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Service> listService = new LinkedList<Service>();
+		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Service service = new Service();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				service.setEmployee(rs.getString("employee"));
+				service.setQuantity(rs.getInt("quantity"));
+				service.setVariation(rs.getString("variation"));
+				service.setNote(rs.getString("note"));
+				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReturnDate(rs.getDate("return_date"));
+				service.setArticleId(rs.getInt("article_id"));
+				service.setCustomerId(rs.getInt("customer_id"));
+				listService.add(service);
+			}
+		} catch (SQLException e) {
+		}
+		return listService;
+	}
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
@@ -155,7 +206,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		return listService;
 	}
 
-	// Close connection to the database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	public void closeConnection() throws SQLException {
 		try {
 			if (preparedStatement != null)

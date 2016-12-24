@@ -36,7 +36,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		// }
 	}
 
-	// Insert a new instance of an activity into the Database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 */
 	@Override
 	public void insert(Activity activity) throws SQLException {
 
@@ -59,7 +61,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 
-	// Update an existing activity
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 */
 	@Override
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
@@ -83,7 +87,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		}
 	}
 
-	// Remove an activity with a specific id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 */
 	@Override
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
@@ -98,7 +104,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 
 	}
 
-	// Find an activity by its id
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 */
 	@Override
 	public Activity findByKey(int id) throws SQLException {
 		Activity activity = null;
@@ -125,7 +133,41 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return activity;
 	}
 
-	// Return a list with all the activity
+	 /** Return a list of specific activities
+	 * @param attribute of activities
+	 * @param toSearch parameter
+	 * @return
+	 * @throws SQLException
+	 */
+	public LinkedList<Activity> findByField(String attribute, String toSearch) throws SQLException{
+		LinkedList<Activity> listActivity = new LinkedList<Activity>();
+		String selectSql = "SELECT * FROM " +ActivityModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		Activity activity = new Activity();
+		try {
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(selectSql);
+			preparedStatement.setString(1, toSearch);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				activity.setId(rs.getInt("id"));
+				activity.setName(rs.getString("name"));
+				activity.setType(rs.getString("type"));
+				activity.setAddress(rs.getString("address"));
+				activity.setCity(rs.getString("city"));
+				activity.setProvince(rs.getString("province"));
+				activity.setCap(rs.getInt("cap"));
+				activity.setVatNumber(rs.getString("vat_number"));
+				activity.setUserId(rs.getInt("user_id"));
+				listActivity.add(activity);
+			}
+		} catch (SQLException e) {
+		}
+		return listActivity;
+	}
+	
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 */
 	@Override
 	public LinkedList<Activity> findAll() throws SQLException {
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
@@ -153,7 +195,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return listActivity;
 	}
 
-	// Close connection to the database
+	/**
+	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 */
 	@Override
 	public void closeConnection() throws SQLException {
 		try {

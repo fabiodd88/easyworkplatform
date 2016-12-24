@@ -16,10 +16,16 @@ public class ProxyImage implements Image{
 	private Image proxifiedImage;
 	
 	
+	/**
+	 * @param imageFilePath
+	 */
 	public ProxyImage(String imageFilePath) {
 		this.imageFilePath= imageFilePath;	
 	}
 	
+	/* (non-Javadoc)
+	 * @see it.unisa.studenti.easyworkplatform.proxy.Image#showImage()
+	 */
 	@Override
 	public void showImage() {
 

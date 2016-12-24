@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -15,13 +16,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 import it.unisa.studenti.easyworkplatform.model.Account;
 import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
+import it.unisa.studenti.easyworkplatform.model.Activity;
+import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.User;
 
-/*	UserController
+/**
+ * 	UserController
  * 	Class that handles requests from the browser to the database of a User
+ * 	@author AdminEWP
+ *
  */
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
@@ -30,24 +38,35 @@ public class UserController extends HttpServlet {
 	static ModelInterface<User> model = new AccountModelDS();
 	private AccountModelDS modelDs = (AccountModelDS) model;
 
-	// Empty Constructor
+	/** 
+	 *	Empty Constructor
+	 */
 	public UserController() {
 		super();
 	}
 
-	// Response of the server to the browser 
+	/**
+	 * Response of the server to the browser
+     * @param message to be send to the browser
+     * @param response HTTP from server to browser
+     * @throws IOException
+     */
     private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
     
-    // Handle the request in "GET" method
+    /**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	// Handle the request in "POST" method
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -105,7 +124,6 @@ public class UserController extends HttpServlet {
 						return;
 					}
 					
-					
 					//control if they respect the format
 					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
 							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
@@ -146,6 +164,11 @@ public class UserController extends HttpServlet {
 					String email = request.getParameter("email");
 					String password = request.getParameter("password");
 					
+					if (!(Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) || Pattern.matches("[a-zA-Z0-9]{8,32}", password))){
+						sendMessage("errorLogin", response);
+						return;
+					}
+					
 					User user = modelDs.findByEmail(email);
 					if (user == null) {
 						sendMessage("noUser", response);
@@ -178,32 +201,213 @@ public class UserController extends HttpServlet {
 						return;
 					}
 				}
+				
+				// FORGET PASSWORD
+				if (action.equalsIgnoreCase("retrievePassword")) {
+					String email = request.getParameter("email");
+
+					if (email.equals("")){
+						sendMessage("empty", response);
+						return;
+					}
+					
+					if (!Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email)){
+						sendMessage("errorEmail", response);
+						return;
+					}
+					
+					User user = modelDs.findByEmail(email);
+					if (user == null) {
+						sendMessage("noUser", response);
+						return;
+					}else{
+						// come inviamo l'email??
+						
+						sendMessage("emailSent", response);
+						return;
+					}
+					
+				}
+				
+				// FORGET LOGIN
+				if (action.equalsIgnoreCase("retrieveLogin")) {
+					
+					String attribute = request.getParameter("attribute");
+					String toRetrieve = request.getParameter("toRetrieve");
+					
+					if (attribute.equals("") || toRetrieve.equals("")){
+						sendMessage("empty", response);
+						return;
+					}
+					
+					User user = null;
+					
+					String regex = "[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]";
+					
+					if (attribute.equals("vatNumber")) {
+						regex = "";
+						if(! Pattern.matches(regex, toRetrieve)){
+							sendMessage("regExpError", response);
+							return;
+						}
+						ActivityModelDS modelDsActivity = new ActivityModelDS();
+						
+						LinkedList<Activity> listActivity = modelDsActivity.findByField("vat_number", toRetrieve);
+						
+						if(!listActivity.isEmpty()){
+							Activity activity = listActivity.getFirst();
+							LinkedList<User> listUser = modelDs.findAll();
+							for (User us : listUser) {
+								if(activity.getUserId() == us.getId()){
+									user = us;
+									break;
+								}
+							}
+							
+						}
+					}
+					else{
+						if(! Pattern.matches(regex, toRetrieve)){
+							sendMessage("regExpError", response);
+							return;
+						}
+						LinkedList<User> listUser = modelDs.findAll();
+						
+						for (User us : listUser) {
+							if (us.getTaxCode().equalsIgnoreCase(toRetrieve)){
+								user = us;
+								break;
+							}
+						}
+					}
+					
+					if(user == null){
+						sendMessage("notFound", response);
+						return;
+					}else {
+						// come inviamo l'email??
+						
+						sendMessage("emailSent", response);
+						return;	
+					}
+				}
 
 				// UPDATE
 				if (action.equalsIgnoreCase("update")) {
 					
+					int id = Integer.parseInt(request.getParameter("id"));
+					String secondKey = request.getParameter("secondKey");
+					
+					User oldUser = modelDs.findByKey(id);
+					
+					if(oldUser == null){
+						sendMessage("notFound", response);
+						return;
+					}
+					
+					if (secondKey.equals("")){
+						sendMessage("empty", response);
+						return;
+					}
+					
+					if(!Pattern.matches("[a-zA-Z0-9]{8,32}", secondKey)){
+						sendMessage("regExpError", response);
+						return;
+					}
+					
+					if (!oldUser.getSecondKey().equals(secondKey)) {
+						sendMessage("errorSecondKey", response);
+						return;	
+					}else {
+						
+						String name = request.getParameter("name");
+						String surname = request.getParameter("surname");
+						String birthDate = request.getParameter("birthDate");
+						String birthPlace = request.getParameter("birthPlace");
+						String address = request.getParameter("address");
+						String city = request.getParameter("city");
+						String province = request.getParameter("province");
+						String cap = request.getParameter("cap");
+						String taxCode = request.getParameter("taxCode");
+						String email = request.getParameter("email");
+						String password = request.getParameter("password");
+						String passwordCtrl = request.getParameter("password");
+						String secondKeyCtrl = request.getParameter("secondKeyCtrl");
+						
+						// control if empty
+						if (name.equals("") || surname.equals("") || birthDate.equals("") || 
+							birthPlace.equals("") || address.equals("") || city.equals("") || 
+							province.equals("") || cap.equals("") || taxCode.equals("") || 
+							email.equals("") || password.equals("") || secondKey.equals("") ||
+							passwordCtrl.equals("") || secondKeyCtrl.equals("")){
+								sendMessage("empty", response);
+								return;
+						}
+						
+						//password and secondkey are the same
+						if(password.equals(secondKey)){
+							sendMessage("samePassword", response);
+							return;
+						}
+						
+						//password and password control aren't the same
+						if(!password.equals(passwordCtrl)){
+							sendMessage("pswCtrl", response);
+							return;
+						}
+						
+						//secondkey and secondKey Control aren't the same
+						if(secondKey.equals(secondKeyCtrl)){
+							sendMessage("sKeyCtrl", response);
+							return;
+						}
+						
+						//control if they respect the format
+						if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
+								Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
+								Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap) && Pattern.matches("[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]", taxCode) &&
+								Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) && Pattern.matches("[a-zA-Z0-9]{8,32}", password) && Pattern.matches("[a-zA-Z0-9]{8,32}", secondKey))){
+									sendMessage("regExpError", response);
+									return;
+						}
+						
+						int CAP = Integer.parseInt(cap);
+						Date bd = Date.valueOf(birthDate);
+						String cryptedPassword = toSHA1(password.getBytes());
+						String cryptedSecondKey = toSHA1(secondKey.getBytes());
+						
+						
+						Account account = new Account(email, cryptedPassword, cryptedSecondKey);
+						User newUser = new User(account, name, surname, bd, birthPlace, address, city, province, CAP, taxCode);
+						
+						newUser.setId(oldUser.getId());
+						
+						try {
+							model.update(newUser);
+							sendMessage("updateOk", response);
+							return;
+						} catch (Exception e) {
+							sendMessage("cError", response);
+							return;
+						}
+						
+						
+					}
+					
+					
+					
+					
 				}
-				
-				// REMOVE
-				if (action.equalsIgnoreCase("remove")) {
-				}
-				
-				// Recupera pass
-				if (action.equalsIgnoreCase("retrievePassword")) {
-				}
-				
-				// Recupera login
-				if (action.equalsIgnoreCase("retrieveLogin")) {
-				}
-				
-				
 			}
 		} catch (SQLException e) {
 			this.sendMessage("genericError", response);
 		}
 	}
 
-	//Encrypt data
+	/** Encrypt data
+	 * @param convertme bytes array to be encrypt
+	 * @return
+	 */
 	public static String toSHA1(byte[] convertme) {
 		MessageDigest md = null;
 		try {
