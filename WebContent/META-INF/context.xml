@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Context>
-	<Resource name="jdbc/storage" global="jdbc/storage"
+	<Resource name="jdbc/dbtest" global="jdbc/dbtest"
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
 		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="fabio"
-		password="fabio1" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/storage" 
+		password="fabio1" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/dbtest" 
 		defaultAutoCommit ="false"/>
 </Context>
