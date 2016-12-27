@@ -3,13 +3,10 @@ package it.unisa.studenti.easyworkplatform.proxy;
 /**
  * RealSubject
  */
-public class HighResolutionImage implements Image{
+public class RealImage implements Image{
 
 	
-/**
- * @param imageFilePath
- */
-public HighResolutionImage(String imageFilePath) {
+public RealImage(String imageFilePath) {
 		
 		loadImage(imageFilePath);
 	}
@@ -20,9 +17,6 @@ public HighResolutionImage(String imageFilePath) {
 		// this is heavy and costly operation
 	}
 
-	/* (non-Javadoc)
-	 * @see it.unisa.studenti.easyworkplatform.proxy.Image#showImage()
-	 */
 	@Override
 	public void showImage() {
 
