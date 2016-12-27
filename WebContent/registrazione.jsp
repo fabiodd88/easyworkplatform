@@ -26,34 +26,12 @@
 		<form class="form" id="newUserForm" style="text-align: center;"
 			role="form">
 
+			<%@include file="jsp/reg1.jsp"%>
+			<%@include file="jsp/reg2.jsp"%>
+			<%@include file="jsp/reg3.jsp"%>
 
+		</form>
 
-<%@include file="jsp/reg1.jsp" %>
-<%@include file="jsp/reg2.jsp" %>
-<%@include file="jsp/reg3.jsp" %>
-
-
-		<div class="modal fase" id="mioModal" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4>Registrazione effettuata con successo</h4>
-					</div>
-					<a href="index.jsp">OK</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="footer">
-		<p>
-			<img src="icon/logo.png" height="50px" width="70px"> &nbsp
-			&copy 2016 EasyWorkPlatform. All Rights Reserved. <a
-				href="index.html">Privacy Policy</a> <a href="index.html">Terms
-				and Conditions</a>
-		</p>
-	</div>
+		<%@include file="jsp/footer.jsp"%>
 </body>
 </html>
