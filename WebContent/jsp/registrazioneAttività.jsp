@@ -19,42 +19,42 @@
 									<div class="form-group">
 										<th><label for="">Nome</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="name" readonly="readonly"></th>
+											value="" name="name"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="">Partita iva</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="vatCode" readonly="readonly"></th>
+											value="" name="vatCode"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="">Tipologia</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="tipology" readonly="readonly"></th>
+											value="" name="tipology"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="description size">Indirizzo</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="adress" readonly="readonly"></th>
+											value="" name="adress"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="description size">Città</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="city" readonly="readonly"></th>
+											value="" name="city"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="civic number">Numero civico</label></th>
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="civicNumber" readonly="readonly"></th>
+											value="" name="civicNumber"></th>
 									</div>
 								</tr>
 								<tr>
@@ -62,7 +62,7 @@
 										<th><label for="description size">Cap</label></th>
 										<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
 										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="cap" readonly="readonly"></th>
+											value="" name="cap"></th>
 									</div>
 								</tr>
 							</table>
