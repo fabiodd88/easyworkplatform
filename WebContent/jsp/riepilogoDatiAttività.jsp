@@ -1,7 +1,7 @@
 
 <!-- Terza parte registrazione 	 -->
 <div class="container-fluid text-center padding" style="display: none;"
-	id="reg3">
+	id="rec3">
 	<div class="row content ">
 		<div class="col-sm-12">
 			<div class="panel-group ">

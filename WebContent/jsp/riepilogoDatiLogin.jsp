@@ -1,6 +1,6 @@
 
 <!-- Seconda parte registrazione -->
-<div class="row content" style="display: none;" id="reg2">
+<div class="row content" style="display: none;" id="rec2">
 	<div class="col-sm-12">
 		<div class="panel-group ">
 			<div class="panel panel-default ">
