@@ -10,7 +10,7 @@
 						<h2>Registrazione Attività</h2>
 						<div class="progress">
 							<div class="progress-bar" role="progressbar" aria-valuenow="0"
-								aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+								aria-valuemin="0" aria-valuemax="100" style="width: 40%">
 							</div>
 						</div>
 						<div class="table-responsive">

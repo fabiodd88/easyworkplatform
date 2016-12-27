@@ -8,7 +8,7 @@
 					<h2>Registrazione Account</h2>
 					<div class="progress">
 						<div class="progress-bar" role="progressbar" aria-valuenow="0"
-							aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+							aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
 					</div>
 					<input type="text" name="typeOfRequest" id="inputAction"
 						value="insert" style="display: none;" />
