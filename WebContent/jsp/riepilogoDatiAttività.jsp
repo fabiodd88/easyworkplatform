@@ -69,9 +69,9 @@
 						</div>
 
 						<button type="reset" class="btn btn-default"
-							onClick="forward('reg2')">Indietro</button>
+							onClick="forward('rec2')">Indietro</button>
 						<button type="button" class="btn btn-default"
-							onclick="forward('rec1')">Avanti</button>
+							onclick="">Avanti</button>
 					</div>
 				</div>
 			</div>

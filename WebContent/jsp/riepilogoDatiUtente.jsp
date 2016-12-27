@@ -1,7 +1,7 @@
 
 <!-- Prima parte registrazione lo scorporiamo poi in tre pagine e le includiamo giusto per testare ora -->
-<div class="container-fluid text-center padding" style="display: block;"
-	id="reg1">
+<div class="container-fluid text-center padding" style="display: none;"
+	id="rec1">
 	<div class="row content ">
 		<div class="col-sm-12">
 			<div class="panel-group ">

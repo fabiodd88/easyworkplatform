@@ -54,9 +54,9 @@
 						</table>
 					</div>
 					<button type="reset" class="btn btn-default"
-						onClick="forward('reg1')">Indietro</button>
+						onClick="forward('rec1')">Indietro</button>
 					<button type="button" class="btn btn-default"
-						onclick="forward('reg3')">Avanti</button>
+						onclick="forward('rec3')">Avanti</button>
 
 				</div>
 			</div>
