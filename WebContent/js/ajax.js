@@ -72,21 +72,71 @@ function setAction(action){
 
 
 function forward(value){
-	document.getElementById(value).style.display="block";
 	if(value == "reg1"){
-		document.getElementById("reg2").style.display="none";
+			document.getElementById(value).style.display="block";
+			document.getElementById("reg2").style.display="none";
+		
 	}
 	else if(value == "reg2"){
-		document.getElementById("reg1").style.display="none";
-		document.getElementById("reg3").style.display="none";
+		var name	= document.getElementById("name").value;
+		var surename= document.getElementById("surename").value;
+		var date	= document.getElementById("birthDate").value;
+		var tax		= document.getElementById("taxCode").value;
+		var civic	= document.getElementById("civicNumber").value;
+		var city	= document.getElementById("city").value;
+		var cap		= document.getElementById("cap").value;
+		if(	name=="" || surename=="" || date=="" || 
+				tax=="" || civic=="" || city=="" ||cap==""){
+			$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+			document.getElementById("mess1").style.display="block";
+		}
+		else{
+			document.getElementById(value).style.display="block";
+			document.getElementById("reg1").style.display="none";
+			document.getElementById("reg3").style.display="none";
+			document.getElementById("mess1").style.display="none";
+			
+		}
 	}
 	else if(value == "reg3"){
-		document.getElementById("reg2").style.display="none";
-		document.getElementById("rec1").style.display="none";
+		var email	= document.getElementById("email").value;
+		var pass	= document.getElementById("pass").value;
+		var confermaPass= document.getElementById("confermaPass").value;
+		var secondKey	= document.getElementById("secondKey").value;
+		var confSecondKey= document.getElementById("confSecondKey").value;
+		if(email=="" || pass=="" || confermaPass=="" || 
+				secondKey=="" || confSecondKey==""){
+			$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+			document.getElementById("mess2").style.display="block";
+		}
+		else{
+			document.getElementById(value).style.display="block";
+			document.getElementById("reg2").style.display="none";
+			document.getElementById("rec1").style.display="none";
+			document.getElementById("mess2").style.display="none";
+			
+		}
 	}
 	else if(value == "rec1"){
-		document.getElementById("reg3").style.display="none";
-		document.getElementById("rec2").style.display="none";
+		var activityName= document.getElementById("activityName").value;
+		var vatCode		= document.getElementById("vatCode").value;
+		var tipology	= document.getElementById("tipology").value;
+		var activityAddress	= document.getElementById("activityAddress").value;
+		var activityCity= document.getElementById("activityCity").value;
+		var activityCivicNumber	= document.getElementById("activityCivicNumber").value;
+		var activityCap	= document.getElementById("activityCap").value;
+		if(activityName=="" || vatCode=="" || tipology=="" ||
+				activityAddress=="" || activityCity=="" || 
+				activityCivicNumber=="" || activityCap==""){
+			$("#mess3").html("<strong>Warning!</strong> Campi vuoti o non conformi!!");
+			document.getElementById("mess3").style.display="block";
+		}
+		else{
+			document.getElementById("reg3").style.display="none";
+			document.getElementById("rec2").style.display="none";
+			document.getElementById("mess3").style.display="none";
+		}
+		
 	}
 	else if(value == "rec2"){
 		document.getElementById("rec1").style.display="none";
@@ -95,8 +145,12 @@ function forward(value){
 	else if(value == "rec3"){
 		document.getElementById("rec2").style.display="none";
 	}
-	e.preventDefault();
 }
+
+
+
+
+
 
 function visualizzaDiv(x){
 	if(x==0){

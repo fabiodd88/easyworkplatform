@@ -17,26 +17,26 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label style="width:30%">Nome<span style="color: #FF0000">*</span></label> <input
-										type="text" name="name" required class="form-control" />
+										id="name" type="text" name="name" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Cognome<span style="color: #FF0000">*</span></label> <input
-										type="text" name="surename" required class="form-control" />
+										id="surename" type="text" name="surename" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Data di nascita<span style="color: #FF0000">*</span></label>
 									<input type="date" name="dateofBirth" required
-										class="form-control" />
+										id="birthDate" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Codice fiscale<span style="color: #FF0000">*</span></label>
-									<input type="text" name="taxCode" required class="form-control" />
+									<input id="taxCode" type="text" name="taxCode" required class="form-control" />
 								</div>
 								<br>
 
@@ -160,20 +160,20 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Indirizzo<span style="color: #FF0000">*</span></label> <input
-										type="text" name="adress" required class="form-control" />
+										id="address" type="text" name="address" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Numero civico<span style="color: #FF0000">*</span></label>
 									<input type="number" name="civicNumber" required
-										class="form-control" placeholder="Only number" min="0" />
+										id="civicNumber" class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Città<span style="color: #FF0000">*</span></label> <input
-										type="text" name="city" required class="form-control" />
+										id="city" type="text" name="city" required class="form-control" />
 								</div>
 								<br>
 
@@ -297,11 +297,11 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">CAP<span style="color: #FF0000">*</span></label> <input
-										type="number" name="civicNumber" required class="form-control"
+										id="cap" type="number" name="cap" required class="form-control"
 										placeholder="81020" min="0" />
 								</div>
 								<br>
-
+								<div id="mess1" class="alert alert-warning" style="display: none !important;"></div>
 							</div>
 						</div>
 						<button type="reset" class="btn btn-default"
