@@ -1,5 +1,5 @@
-
 <!-- Prima parte registrazione lo scorporiamo poi in tre pagine e le includiamo giusto per testare ora -->
+
 <div class="container-fluid text-center padding" style="display: none;"
 	id="rec1">
 	<div class="row content ">
@@ -16,64 +16,64 @@
 						<div class="table-responsive">
 							<div class="vertical">
 								<div class="divHorizontal">
-									<label>Nome</label> <input
+									<label style="width:30%">Nome</label> <input
 										type="text" name="name" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Cognome</label> <input
+									<label style="width:30%">Cognome</label> <input
 										type="text" name="surename" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Data di nascita</label>
+									<label style="width:30%">Data di nascita</label>
 									<input type="text" name="dateofBirth" class="form-control"
 										readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Codice fiscale</label>
+									<label style="width:30%">Codice fiscale</label>
 									<input type="text" name="taxCode" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Luogo di nascita</label>
+									<label style="width:30%">Luogo di nascita</label>
 									<input type="text" name="province" class="form-control"
 										readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Indirizzo</label> <input
+									<label style="width:30%">Indirizzo</label> <input
 										type="text" name="adress" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Numero civico</label>
+									<label style="width:30%">Numero civico</label>
 									<input type="text" name="civicNumber" class="form-control"
 										placeholder="Only number" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Città</label> <input
+									<label style="width:30%">Città</label> <input
 										type="text" name="city" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Provincia</label> <input
+									<label style="width:30%">Provincia</label> <input
 										type="text" name="province" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>CAP</label> <input
+									<label style="width:30%">CAP</label> <input
 										type="text" name="civicNumber" class="form-control"
 										placeholder="81020" readonly />
 								</div>

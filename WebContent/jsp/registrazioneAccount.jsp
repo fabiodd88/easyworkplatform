@@ -14,33 +14,33 @@
 					<div class="table-responsive">
 						<div class="vertical">
 							<div class="divHorizontal">
-								<label>Email<span style="color: #FF0000">*</span></label> <input
+								<label style="width:30%">Email<span style="color: #FF0000">*</span></label> <input
 									type="text" name="email" required class="form-control" />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
-								<label>Password<span style="color: #FF0000">*</span></label> <input
+								<label style="width:30%">Password<span style="color: #FF0000">*</span></label> <input
 									type="text" name="password" required class="form-control" />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
-								<label>Conferma password<span style="color: #FF0000">*</span></label>
+								<label style="width:30%">Conferma password<span style="color: #FF0000">*</span></label>
 								<input type="text" name="confermaPassword" required
 									class="form-control" />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
-								<label>Chiave secondaria<span style="color: #FF0000">*</span></label>
+								<label style="width:30%">Chiave secondaria<span style="color: #FF0000">*</span></label>
 								<input type="text" name="secondaryKey" required
 									class="form-control" />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
-								<label>Conferma chiave secondaria<span
+								<label style="width:30%">Conferma chiave secondaria<span
 									style="color: #FF0000">*</span>
 								</label> <input type="text" name="confermaSecondaryKey" required
 									class="form-control" />

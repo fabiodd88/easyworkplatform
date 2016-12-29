@@ -1,5 +1,6 @@
 
 <!-- Terza parte registrazione 	 -->
+>
 <div class="container-fluid text-center padding" style="display: none;"
 	id="rec3">
 	<div class="row content ">
@@ -16,44 +17,44 @@
 						<div class="table-responsive">
 							<div class="vertical">
 								<div class="divHorizontal">
-									<label>Nome</label> <input
+									<label style="width:30%">Nome</label> <input
 										type="text" name="name" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Partita iva</label>
+									<label style="width:30%">Partita iva</label>
 									<input type="text" name="vatCode" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Tipologia</label> <input
+									<label style="width:30%">Tipologia</label> <input
 										type="text" name="tipology" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Indirizzo</label> <input
+									<label style="width:30%">Indirizzo</label> <input
 										type="text" name="adress" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Città</label> 
+									<label style="width:30%">Città</label> 
 									<input type="text" name="city" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Numero civico</label> 
+									<label style="width:30%">Numero civico</label> 
 									<input type="text" name="civicNumber" class="form-control"
 										placeholder="Only number" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>CAP</label> 
+									<label style="width:30%">CAP</label> 
 									<input type="text" name="cap" class="form-control"
 										placeholder="81020" readonly />
 								</div>

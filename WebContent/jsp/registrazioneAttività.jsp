@@ -22,39 +22,39 @@
 								<br>
 
 								<div class="divHorizontal">
-									<label>Partita iva<span style="color: #FF0000">*</span></label>
+									<label style="width:30%">Partita iva<span style="color: #FF0000">*</span></label>
 									<input type="text" name="vatCode" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Tipologia<span style="color: #FF0000">*</span></label> <input
+									<label style="width:30%">Tipologia<span style="color: #FF0000">*</span></label> <input
 										type="text" name="tipology" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Indirizzo<span style="color: #FF0000">*</span></label> <input
+									<label style="width:30%">Indirizzo<span style="color: #FF0000">*</span></label> <input
 										type="text" name="adress" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Città<span style="color: #FF0000">*</span>
+									<label style="width:30%">Città<span style="color: #FF0000">*</span>
 									</label> <input type="text" name="city" required class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>Numero civico<span style="color: #FF0000">*</span>
+									<label style="width:30%">Numero civico<span style="color: #FF0000">*</span>
 									</label> <input type="number" name="civicNumber" required
 										class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label>CAP<span style="color: #FF0000">*</span>
-									</label> <input type="number" name="cap" required class="form-control"
+									<label style="width:30%">CAP<span style="color: #FF0000">*</span></label> 
+									<input type="number" name="cap" required class="form-control"
 										placeholder="81020" min="" />
 								</div>
 								<br>
