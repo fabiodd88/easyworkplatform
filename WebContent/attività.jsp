@@ -62,25 +62,66 @@
 				</div>
 			</div>
 			<!-- DIV PER IL CLIENTE -->
-			<div id="cliente" style="border:1px solid black;display:none">
-				<p>h</p>
+			<div id="cliente" style="display:none;">
+				<%@include file="jsp/search.jsp"%>
+				<div class="vertical" style="margin-top:7%;">
+					<aside style="border:1px solid black;width:100%">
+						<div class="divHorizontal" style="margin-top:1%;margin-bottom:1%">
+							<label>Nome</label>
+							<input type="text" name="name" readonly>
+							
+							<label style="width:25%">Cognome</label>
+						 	<input type="text" name="surename" readonly>
+						 	
+						 	<label style="width:25%">Data di nascita</label>
+						 	<input type="text" name="dateOfBirth" readonly>
+						 	
+						 	<label style="width:25%">Codice fiscale</label>
+						 	<input type="text" name="taxCode" readonly>
+						</div>
+						
+						<div class="divHorizontal" style="margin-top:1%;margin-bottom:1%">
+							<label style="width:25%">Luogo di nascita</label>
+						 	<input type="text" name="birthOfPlace" readonly>
+						 	
+						 	<label style="width:25%">Indirizzo</label>
+						 	<input type="text" name="adress" readonly>
+						 	
+						 	<label style="width:25%">Numero civico</label>
+						 	<input type="text" name="civicNumber" readonly>
+						 	
+						 	<label style="width:25%">Città</label>
+						 	<input type="text" name="city" readonly>
+						</div>
+						
+						<div class="divHorizontal" style="margin-top:1%;margin-bottom:1%">
+							<label style="width:10%">Provincia</label>
+						 	<input type="text" name="province" readonly>
+						 	
+						 	<label style="width:10%">CAP</label>
+						 	<input type="text" name="cap" readonly>
+						</div>
+					</aside>
+					
+				</div>
 			</div>
 			
 			<!-- DIV PER L'ARTICOLO -->
 			<div id="articolo" style="border:1px solid black;display:none">
-				<p>b</p>
+				<%@include file="jsp/search.jsp"%>
 			</div>
 			
 			<!-- DIV PER IL SERVIZIO -->
 			<div id="servizio" style="border:1px solid black;display:none">
-				<p>g</p>
+				<%@include file="jsp/search.jsp"%>
 			</div>
 			
 			<!-- DIV PER IL PAGAMENTO -->
 			<div id="pagamento" style="border:1px solid black;display:none">
-				<p>j</p>
+				<%@include file="jsp/search.jsp"%>
 			</div>
 		</div>
 	</div>
+	<%@include file="jsp/footer.jsp"%>
 </body>
 </html>
