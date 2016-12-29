@@ -79,8 +79,7 @@
 					<h4>Registrazione effettuata con successo</h4>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default" data-dismiss="modal"
-						onclick="index.jsp">Ok</button>
+					<a href="index.jsp">OK</a>
 				</div>
 			</div>
 		</div>
