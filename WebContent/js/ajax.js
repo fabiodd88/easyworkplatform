@@ -97,3 +97,32 @@ function forward(value){
 	}
 	e.preventDefault();
 }
+
+function visualizzaDiv(x){
+	if(x==0){
+		document.getElementById("cliente").style.display="inline";
+		document.getElementById("articolo").style.display="none";
+		document.getElementById("servizio").style.display="none";
+		document.getElementById("pagamento").style.display="none";
+		
+	}
+	else if(x==1){
+		document.getElementById("cliente").style.display="none";
+		document.getElementById("articolo").style.display="inline";
+		document.getElementById("servizio").style.display="none";
+		document.getElementById("pagamento").style.display="none";
+	}
+	else if(x==3){
+		document.getElementById("cliente").style.display="none";
+		document.getElementById("articolo").style.display="none";
+		document.getElementById("servizio").style.display="inline";
+		document.getElementById("pagamento").style.display="none";
+	}
+	else if(x==4){
+		document.getElementById("cliente").style.display="none";
+		document.getElementById("articolo").style.display="none";
+		document.getElementById("servizio").style.display="none";
+		document.getElementById("pagamento").style.display="inline";
+	}
+}
+

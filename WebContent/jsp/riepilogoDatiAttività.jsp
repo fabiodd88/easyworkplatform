@@ -71,15 +71,22 @@
 						<button type="reset" class="btn btn-default"
 							onClick="forward('rec2')">Indietro</button>
 						<button type="button" class="btn btn-default"
-							onclick="">Avanti</button>
+							data-toggle="modal" data-target="#mioModal">Conferma</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-
-
-
-
-
+	<div id="mioModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>Registrazione effettuata con successo</h4>
+				</div>
+				<div class="modal-footer" text-align="center">
+					<button type="submit" class="btn btn-default" data-dismiss="modal"
+						onclick="index.jsp">Ok</button>
+				</div>
+			</div>
+		</div>

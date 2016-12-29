@@ -30,25 +30,10 @@
 							</tr>
 							<tr>
 								<div class="form-group">
-									<th><label for="">Conferma password</label></th>
-									<th><input type="password" readonly="readonly"
-										class="form-control" name="conferma_password"></th>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
 									<th><label for="description size">Chiave di
 											sicurezza</label></th>
 									<th><input type="password" readonly="readonly"
 										class="form-control" name="chiave_di_sicurezza"></th>
-								</div>
-							</tr>
-							<tr>
-								<div class="form-group">
-									<th><label for="street">Conferma chiave di
-											sicurezza</label></th>
-									<th><input type="password" required="required"
-										class="form-control" name="conferma_chiave_di_sicurezza"></th>
 								</div>
 							</tr>
 						</table>

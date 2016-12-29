@@ -20,28 +20,28 @@
 								<tr>
 									<div class="form-group">
 										<th><label for="">Nome</label></th>
-										<th><input type="text" required="required"
-											class="form-control" name="nome"></th>
+										<th><input type="text"
+											class="form-control" name="nome" required></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="">Cognome</label></th>
 										<th><input type="text" class="form-control"
-											name="surename" required="required"></th>
+											name="surename" required></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="">Codice Fiscale</label></th>
-										<th><input type="text" required="required"
+										<th><input type="text" required
 											class="form-control" name="taxCode"></th>
 									</div>
 								</tr>
 								<tr>
 									<div class="form-group">
 										<th><label for="description size">Data di Nascita</label></th>
-										<th><input type="date" required="required"
+										<th><input type="date" required
 											class="form-control" name="birthDate"
 											placeholder="gg/mm/aaaa"></th>
 									</div>
@@ -50,8 +50,8 @@
 									<div class="form-group">
 										<th><label for="category">Luogo di Nascita</label></th>
 										<th><select class="form-control" name="province"
-											required="required">
-												<option value=""></option>
+											required>
+												<option value="Seleziona..."></option>
 												<option value="AG">AGRIGENTO</option>
 												<option value="AL">ALESSANDRIA</option>
 												<option value="AN">ANCONA</option>
@@ -175,7 +175,7 @@
 								<tr>
 									<div class="form-group">
 										<th><label for="civicNumber">Numero civico</label></th>
-										<th><input type="number" min="1" required="required"
+										<th><input type="number" min="1" required
 											class="form-control" name="civicNumber"
 											placeholder="Only number"></th>
 									</div>
@@ -183,7 +183,7 @@
 								<tr>
 									<div class="form-group">
 										<th><label for="city">Città</label></th>
-										<th><input type="text" required="required"
+										<th><input type="text" required
 											class="form-control" name="city"></th>
 									</div>
 								</tr>
@@ -191,8 +191,8 @@
 									<div class="form-group">
 										<th><label for="category">Provincia</label></th>
 										<th><select class="form-control" name="province"
-											required="required">
-												<option value=""></option>
+											required>
+												<option value="Seleziona..."></option>
 												<option value="AG">AGRIGENTO</option>
 												<option value="AL">ALESSANDRIA</option>
 												<option value="AN">ANCONA</option>
