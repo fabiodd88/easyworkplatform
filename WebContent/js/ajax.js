@@ -109,6 +109,10 @@ function forward(value){
 			$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 			document.getElementById("mess2").style.display="block";
 		}
+		else if(secondKey != confSecondKey || pass  != conferaPass){
+			$("#mess2").html("<strong>Warning!</strong>  Le password non sono identiche!!");
+			document.getElementById("mess2").style.display="block";
+		}
 		else{
 			document.getElementById(value).style.display="block";
 			document.getElementById("reg2").style.display="none";
@@ -166,13 +170,13 @@ function visualizzaDiv(x){
 		document.getElementById("servizio").style.display="none";
 		document.getElementById("pagamento").style.display="none";
 	}
-	else if(x==3){
+	else if(x==2){
 		document.getElementById("cliente").style.display="none";
 		document.getElementById("articolo").style.display="none";
 		document.getElementById("servizio").style.display="inline";
 		document.getElementById("pagamento").style.display="none";
 	}
-	else if(x==4){
+	else if(x==3){
 		document.getElementById("cliente").style.display="none";
 		document.getElementById("articolo").style.display="none";
 		document.getElementById("servizio").style.display="none";

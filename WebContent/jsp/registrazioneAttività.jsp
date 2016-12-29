@@ -58,7 +58,7 @@
 										placeholder="81020" min="" />
 								</div>
 								<br>
-								<div id="mess3" class="alert alert-warning" style="display: none !important;"></div>
+								<div id="mess3" class="alert alert-danger" style="display: none !important;"></div>
 							</div>
 							
 						</div>

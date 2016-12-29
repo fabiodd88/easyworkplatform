@@ -49,7 +49,7 @@
 									name="confermaSecondaryKey" required class="form-control" />
 							</div>
 							<br>
-							<div id="mess2" class="alert alert-warning" style="display: none !important;"></div>
+							<div id="mess2" class="alert alert-danger" style="display: none !important;"></div>
 						</div>
 					</div>
 					<button type="reset" class="btn btn-default"

@@ -301,7 +301,7 @@
 										placeholder="81020" min="0" />
 								</div>
 								<br>
-								<div id="mess1" class="alert alert-warning" style="display: none !important;"></div>
+								<div id="mess1" class="alert alert-danger" style="display: none !important;"></div>
 							</div>
 						</div>
 						<button type="reset" class="btn btn-default"
