@@ -12,33 +12,51 @@
 							aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
 					</div>
 					<div class="table-responsive">
-						<label>Email<span style="color: #FF0000">*</span> 
-						<input type="text" style="width:50%" name="email" required 
-							class="form-control" /></label><br>
-							
-						<label>Password<span style="color: #FF0000">*</span> 
-						<input type="text" style="width:50%" name="password" required 
-							class="form-control" /></label><br>
-				
-						<label>Conferma password<span style="color: #FF0000">*</span>
-							<input type="text" style="width:50%" name="confermaPassword" required
-								class="form-control" /></label><br>
-					
-						<label>Chiave secondaria<span style="color: #FF0000">*</span>
-							<input type="text" style="width:50%" name="secondaryKey" required
-								class="form-control" /></label><br>
-					
-						<label>Conferma chiave secondaria<span style="color: #FF0000">*</span> 
-							<input type="text" style="width:50%" name="confermaSecondaryKey" required 
-								class="form-control" /></label><br>
+						<div class="vertical">
+							<div class="divHorizontal">
+								<label>Email<span style="color: #FF0000">*</span></label> <input
+									type="text" name="email" required class="form-control" />
+							</div>
+							<br>
+
+							<div class="divHorizontal">
+								<label>Password<span style="color: #FF0000">*</span></label> <input
+									type="text" name="password" required class="form-control" />
+							</div>
+							<br>
+
+							<div class="divHorizontal">
+								<label>Conferma password<span style="color: #FF0000">*</span></label>
+								<input type="text" name="confermaPassword" required
+									class="form-control" />
+							</div>
+							<br>
+
+							<div class="divHorizontal">
+								<label>Chiave secondaria<span style="color: #FF0000">*</span></label>
+								<input type="text" name="secondaryKey" required
+									class="form-control" />
+							</div>
+							<br>
+
+							<div class="divHorizontal">
+								<label>Conferma chiave secondaria<span
+									style="color: #FF0000">*</span>
+								</label> <input type="text" name="confermaSecondaryKey" required
+									class="form-control" />
+							</div>
+							<br>
 						</div>
-						<button type="reset" class="btn btn-default"
-							onClick="forward('reg1')">Indietro</button>
-						<button type="submit" class="btn btn-default"
-							onclick="forward('reg3')">Avanti</button>
 					</div>
+					<button type="reset" class="btn btn-default"
+						onClick="forward('reg1')">Indietro</button>
+					<button type="submit" class="btn btn-default"
+						onclick="forward('reg3')">Avanti</button>
+				</div>
+				<div style="text-align:left">
+					<label>I campi con <span style="color: #FF0000">*</span> sono obbligatori</label>
 				</div>
 			</div>
 		</div>
 	</div>
-
+</div>

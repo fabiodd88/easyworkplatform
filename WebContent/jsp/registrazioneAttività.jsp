@@ -14,60 +14,52 @@
 							</div>
 						</div>
 						<div class="table-responsive">
-<!-- 							<table class="table"> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="">Nome</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="name" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="">Partita iva</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="vatCode" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="">Tipologia</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="tipology" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="description size">Indirizzo</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="adress" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="description size">Città</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="city" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="civic number">Numero civico</label></th> -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="civicNumber" required></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 								<tr> -->
-<!-- 									<div class="form-group"> -->
-<!-- 										<th><label for="description size">Cap</label></th> -->
-<!-- 										 QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
-<!-- 										<th><input class="form-control" maxlength="50" size="100" -->
-<!-- 											value="" name="cap"></th> -->
-<!-- 									</div> -->
-<!-- 								</tr> -->
-<!-- 							</table> -->
-						
-						
+							<div class="vertical">
+								<div class="divHorizontal">
+									<label>Nome<span style="color: #FF0000">*</span></label> <input
+										type="text" name="name" required class="form-control" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Partita iva<span style="color: #FF0000">*</span></label>
+									<input type="text" name="vatCode" required class="form-control" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Tipologia<span style="color: #FF0000">*</span></label> <input
+										type="text" name="tipology" required class="form-control" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Indirizzo<span style="color: #FF0000">*</span></label> <input
+										type="text" name="adress" required class="form-control" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Città<span style="color: #FF0000">*</span>
+									</label> <input type="text" name="city" required class="form-control" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Numero civico<span style="color: #FF0000">*</span>
+									</label> <input type="number" name="civicNumber" required
+										class="form-control" placeholder="Only number" min="0" />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>CAP<span style="color: #FF0000">*</span>
+									</label> <input type="number" name="cap" required class="form-control"
+										placeholder="81020" min="" />
+								</div>
+								<br>
+							</div>
+							
 						</div>
 
 						<button type="reset" class="btn btn-default"
@@ -75,13 +67,12 @@
 						<button type="button" class="btn btn-default"
 							onclick="forward('rec1')">Avanti</button>
 					</div>
+					<div style="text-align:left">
+						<label>I campi con <span style="color: #FF0000">*</span> sono obbligatori</label>
+					</div>
+				
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
-
-

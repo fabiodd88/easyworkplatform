@@ -14,69 +14,63 @@
 							</div>
 						</div>
 						<div class="table-responsive">
-							<table class="table">
-								<tr>
-									<div class="form-group">
-										<th><label for="">Nome</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="name" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="">Partita iva</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="vatCode" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="">Tipologia</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="tipology" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="description size">Indirizzo</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="adress" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="description size">Città</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="city" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="civic number">Numero civico</label></th>
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="civicNumber" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="description size">Cap</label></th>
-										<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
-										<th><input class="form-control" maxlength="50" size="100"
-											value="" name="cap" readonly="readonly"></th>
-									</div>
-								</tr>
-							</table>
+							<div class="vertical">
+								<div class="divHorizontal">
+									<label>Nome</label> <input
+										type="text" name="name" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Partita iva</label>
+									<input type="text" name="vatCode" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Tipologia</label> <input
+										type="text" name="tipology" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Indirizzo</label> <input
+										type="text" name="adress" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Città</label> 
+									<input type="text" name="city" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Numero civico</label> 
+									<input type="text" name="civicNumber" class="form-control"
+										placeholder="Only number" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>CAP</label> 
+									<input type="text" name="cap" class="form-control"
+										placeholder="81020" readonly />
+								</div>
+								<br>
+							</div>
 						</div>
 
 						<button type="reset" class="btn btn-default"
 							onClick="forward('rec2')">Indietro</button>
-						<button type="button" class="btn btn-default"
-							data-toggle="modal" data-target="#mioModal">Conferma</button>
+						<button type="button" class="btn btn-default" data-toggle="modal"
+							data-target="#mioModal">Conferma</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<div id="mioModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -84,9 +78,11 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>Registrazione effettuata con successo</h4>
 				</div>
-				<div class="modal-footer" text-align="center">
+				<div class="modal-footer">
 					<button type="submit" class="btn btn-default" data-dismiss="modal"
 						onclick="index.jsp">Ok</button>
 				</div>
 			</div>
 		</div>
+	</div>
+</div>	

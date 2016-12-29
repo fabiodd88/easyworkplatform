@@ -13,90 +13,78 @@
 								aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
 						</div>
 
-						<input type="text" name="typeOfRequest" id="inputAction"
-							value="insert" style="display: none" />
 						<div class="table-responsive">
-							<table class="table">
-								<tr>
-									<div class="form-group">
-										<th><label for="">Nome</label></th>
-										<th><input type="text" readonly="readonly"
-											class="form-control" name="nome"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="">Cognome</label></th>
-										<th><input type="text" class="form-control"
-											name="surename" readonly="readonly"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="">Codice Fiscale</label></th>
-										<th><input type="text" readonly="readonly"
-											class="form-control" name="taxCode"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="description size">Data di Nascita</label></th>
-										<th><input type="date" readonly="readonly"
-											class="form-control" name="birthDate"
-											placeholder="gg/mm/aaaa"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="category">Luogo di Nascita</label></th>
-										<th><input class="form-control" name="province"
-											readonly="readonly">
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="street">Indirizzo</label></th>
-										<th><input type="text" readonly="readonly"
-											class="form-control" name="address"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="civicNumber">Numero civico</label></th>
-										<th><input type="number" min="1" readonly="readonly"
-											class="form-control" name="civicNumber"
-											placeholder="Only number"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="city">Città</label></th>
-										<th><input type="text" readonly="readonly"
-											class="form-control" name="city"></th>
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="category">Provincia</label></th>
-										<th><input class="form-control" name="province"
-											readonly="readonly">
-									</div>
-								</tr>
-								<tr>
-									<div class="form-group">
-										<th><label for="description size">Cap</label></th>
-										<!--  QUA MO CERCO QUALCOSA PER FARE I CAP AUTOMATICI QUANDO SI SELEZIONA LA PROVINCIA -->
-										<th><input type="number" readonly="readonly"
-											class="form-control" name="cap" placeholder="Es. 80053"></th>
-									</div>
-								</tr>
-							</table>
+							<div class="vertical">
+								<div class="divHorizontal">
+									<label>Nome</label> <input
+										type="text" name="name" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Cognome</label> <input
+										type="text" name="surename" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Data di nascita</label>
+									<input type="text" name="dateofBirth" class="form-control"
+										readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Codice fiscale</label>
+									<input type="text" name="taxCode" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Luogo di nascita</label>
+									<input type="text" name="province" class="form-control"
+										readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Indirizzo</label> <input
+										type="text" name="adress" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Numero civico</label>
+									<input type="text" name="civicNumber" class="form-control"
+										placeholder="Only number" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Città</label> <input
+										type="text" name="city" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>Provincia</label> <input
+										type="text" name="province" class="form-control" readonly />
+								</div>
+								<br>
+
+								<div class="divHorizontal">
+									<label>CAP</label> <input
+										type="text" name="civicNumber" class="form-control"
+										placeholder="81020" readonly />
+								</div>
+								<br>
+							</div>
+							<button type="reset" class="btn btn-default"
+								onclick="forward('reg3')">Annulla</button>
+							<button type="button" class="btn btn-default"
+								onclick="forward('rec2')">Avanti</button>
+							<div class="container-fluid text-center padding"></div>
 						</div>
-						<button type="reset" class="btn btn-default"
-							onclick="forward('reg3')">Annulla</button>
-						<button type="button" class="btn btn-default"
-							onclick="forward('rec2')">Avanti</button>
-						<div class="container-fluid text-center padding"></div>
 					</div>
 				</div>
 			</div>
