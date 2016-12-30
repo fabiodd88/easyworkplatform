@@ -75,7 +75,6 @@ function forward(value){
 	if(value == "reg1"){
 			document.getElementById(value).style.display="block";
 			document.getElementById("reg2").style.display="none";
-		
 	}
 	
 	
@@ -191,4 +190,8 @@ function visualizzaDiv(x){
 		document.getElementById("pagamento").style.display="inline";
 	}
 }
+
+
+
+
 

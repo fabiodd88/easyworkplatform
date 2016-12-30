@@ -26,12 +26,12 @@
 		<form class="form" id="newUserForm" style="text-align: center;"
 			role="form">
 
-			<%@include file="jsp/registrazioneUtente.jsp"%>
-			<%@include file="jsp/registrazioneAccount.jsp"%>
-			<%@include file="jsp/registrazioneAttività.jsp"%>
-			<%@include file="jsp/riepilogoDatiUtente.jsp"%>
-			<%@include file="jsp/riepilogoDatiLogin.jsp"%>
-			<%@include file="jsp/riepilogoDatiAttività.jsp"%>
+			<%@include file="jsp/reg_component/registrazioneUtente.jsp"%>
+			<%@include file="jsp/reg_component/registrazioneAccount.jsp"%>
+			<%@include file="jsp/reg_component/registrazioneAttività.jsp"%>
+			<%@include file="jsp/reg_component/riepilogoDatiUtente.jsp"%>
+			<%@include file="jsp/reg_component/riepilogoDatiLogin.jsp"%>
+			<%@include file="jsp/reg_component/riepilogoDatiAttività.jsp"%>
 			
 		</form>
 
