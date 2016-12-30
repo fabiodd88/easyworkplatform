@@ -17,32 +17,32 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label style="width:30%">Nome<span style="color: #FF0000">*</span></label> <input
-										id="name" type="text" name="name" required class="form-control" />
+										id="name" type="text" name="name" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Cognome<span style="color: #FF0000">*</span></label> <input
-										id="surename" type="text" name="surename" required class="form-control" />
+										id="surename" type="text" name="surename" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Data di nascita<span style="color: #FF0000">*</span></label>
-									<input type="date" name="dateofBirth" required
+									<input type="date" name="dateofBirth" required="required"
 										id="birthDate" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Codice fiscale<span style="color: #FF0000">*</span></label>
-									<input id="taxCode" type="text" name="taxCode" required class="form-control" />
+									<input id="taxCode" type="text" name="taxCode" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Luogo di nascita<span style="color: #FF0000">*</span></label>
-									<select class="form-control" name="province" required>
+									<select class="form-control" name="province" required="required">
 										<option value=""></option>
 										<option value="AG">AGRIGENTO</option>
 										<option value="AL">ALESSANDRIA</option>
@@ -160,26 +160,26 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Indirizzo<span style="color: #FF0000">*</span></label> <input
-										id="address" type="text" name="address" required class="form-control" />
+										id="address" type="text" name="address" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Numero civico<span style="color: #FF0000">*</span></label>
-									<input type="number" name="civicNumber" required
+									<input type="number" name="civicNumber" required="required"
 										id="civicNumber" class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Città<span style="color: #FF0000">*</span></label> <input
-										id="city" type="text" name="city" required class="form-control" />
+										id="city" type="text" name="city" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Provincia<span style="color: #FF0000">*</span></label> <select
-										class="form-control" name="province" required>
+										class="form-control" name="province" required="required">
 										<option value=""></option>
 										<option value="AG">AGRIGENTO</option>
 										<option value="AL">ALESSANDRIA</option>
@@ -297,7 +297,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">CAP<span style="color: #FF0000">*</span></label> <input
-										id="cap" type="number" name="cap" required class="form-control"
+										id="cap" type="number" name="cap" required="required" class="form-control"
 										placeholder="81020" min="0" />
 								</div>
 								<br>

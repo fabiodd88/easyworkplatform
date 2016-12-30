@@ -17,44 +17,44 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label>Nome<span style="color: #FF0000">*</span></label> <input
-										id="activityName"type="text" name="activityName" required class="form-control" />
+										id="activityName"type="text" name="activityName" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Partita iva<span style="color: #FF0000">*</span></label>
-									<input id="vatCode" type="text" name="vatCode" required class="form-control" />
+									<input id="vatCode" type="text" name="vatCode" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Tipologia<span style="color: #FF0000">*</span></label> <input
-										input="tipology" type="text" name="tipology" required class="form-control" />
+										id="tipology" type="text" name="tipology" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Indirizzo<span style="color: #FF0000">*</span></label> <input
-										id="activityAddress" type="text" name="activityAddress" required class="form-control" />
+										id="activityAddress" type="text" name="activityAddress" required="required" class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Città<span style="color: #FF0000">*</span>
-									</label> <input id="activityCity" type="text" name="city" required class="form-control" />
+									</label> <input id="activityCity" type="text" name="city" required="required"  class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Numero civico<span style="color: #FF0000">*</span>
-									</label> <input id="acitvityCivicNumber" type="number" name="acitvityCivicNumber" required
+									</label> <input id="activityCivicNumber" type="number" name="acitvityCivicNumber" required="required"
 										class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">CAP<span style="color: #FF0000">*</span></label> 
-									<input id="acitvityCap" type="number" name="activityCap" required class="form-control"
+									<input id="activityCap" type="number" name="activityCap" required="required" class="form-control"
 										placeholder="81020" min="" />
 								</div>
 								<br>

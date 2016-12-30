@@ -77,6 +77,8 @@ function forward(value){
 			document.getElementById("reg2").style.display="none";
 		
 	}
+	
+	
 	else if(value == "reg2"){
 		var name	= document.getElementById("name").value;
 		var surename= document.getElementById("surename").value;
@@ -98,6 +100,8 @@ function forward(value){
 			
 		}
 	}
+	
+	
 	else if(value == "reg3"){
 		var email	= document.getElementById("email").value;
 		var pass	= document.getElementById("pass").value;
@@ -109,8 +113,12 @@ function forward(value){
 			$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 			document.getElementById("mess2").style.display="block";
 		}
-		else if(secondKey != confSecondKey || pass  != conferaPass){
-			$("#mess2").html("<strong>Warning!</strong>  Le password non sono identiche!!");
+		else if(secondKey == pass){
+			$("#mess2").html("<strong>Warning!</strong>  La password e la chiave secondaria devono essere distinte !!");
+			document.getElementById("mess2").style.display="block";
+		}
+		else if(secondKey != confSecondKey || pass  != confermaPass){
+			$("#mess2").html("<strong>Warning!</strong>  Le password non coincidono!!");
 			document.getElementById("mess2").style.display="block";
 		}
 		else{
@@ -118,9 +126,10 @@ function forward(value){
 			document.getElementById("reg2").style.display="none";
 			document.getElementById("rec1").style.display="none";
 			document.getElementById("mess2").style.display="none";
-			
 		}
 	}
+	
+	
 	else if(value == "rec1"){
 		var activityName= document.getElementById("activityName").value;
 		var vatCode		= document.getElementById("vatCode").value;
@@ -150,6 +159,10 @@ function forward(value){
 		document.getElementById("rec2").style.display="none";
 	}
 }
+
+
+
+
 
 function visualizzaDiv(x){
 	if(x==0){
