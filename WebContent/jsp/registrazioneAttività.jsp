@@ -16,7 +16,7 @@
 						<div class="table-responsive">
 							<div class="vertical">
 								<div class="divHorizontal">
-									<label>Nome<span style="color: #FF0000">*</span></label> <input
+									<label style="width:30%">Nome<span style="color: #FF0000">*</span></label> <input
 										id="activityName"type="text" name="activityName" required="required" class="form-control" />
 								</div>
 								<br>
