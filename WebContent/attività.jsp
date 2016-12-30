@@ -115,9 +115,9 @@
 						</tr>
 					</table>
 					<div class="horizontal" style="float: right">
-						<button style="background: #FFFFFF; border: none;">
-							<img src="icon/modifica.png" data-toggle="modal"
-								data-target="#mioModal"><br>Modifica
+						<button style="background: #FFFFFF; border: none;" data-toggle="modal"
+								data-target="#mioModal">
+							<img src="icon/modifica.png"><br>Modifica
 						</button>
 						<button style="background: #FFFFFF; border: none">
 							<img src="icon/remove.png"><br>Elimina
@@ -442,6 +442,8 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
 
 			<!-- DIV PER L'ARTICOLO -->
 			<div id="articolo" style="display: none">
@@ -471,16 +473,64 @@
 						</tr>
 					</table>
 					<div class="horizontal" style="float: right">
-						<button style="background: #FFFFFF; border: none;">
+						<button style="background: #FFFFFF; border: none;" data-toggle="modal"
+								data-target="#mioModalArticle">
 							<img src="icon/modifica.png"><br>Modifica
 						</button>
 						<button style="background: #FFFFFF; border: none">
 							<img src="icon/remove.png"><br>Elimina
 						</button>
 					</div>
+
+					<!-- Modal per la modifica dell'articolo -->
+					<div class="modal fade" id="mioModalArticle" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4>Modifica dati articolo</h4>
+								</div>
+								<div class="modal-body">
+									<div class="table-responsive">
+										<div class="vertical">
+											<div class="divHorizontal">
+												<label style="width: 30%">Nome<span
+													style="color: #FF0000">*</span></label> <input id="name"
+													type="text" name="name" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Prezzo<span
+													style="color: #FF0000">*</span></label> <input id="surename"
+													type="number" name="surename" required class="form-control"
+													min="0" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Descrizione<span
+													style="color: #FF0000">*</span></label> <input id="description"
+													type="text" name="description" required
+													class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Durata</label> <input
+													id="duration" type="number" name="duration"
+													class="form-control" min="0" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<a href="attività.jsp">Conferma</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				
-				
 			</div>
 
 			<!-- DIV PER IL SERVIZIO -->
@@ -521,12 +571,74 @@
 						</tr>
 					</table>
 					<div class="horizontal" style="float: right">
-						<button style="background: #FFFFFF; border: none;">
+						<button style="background: #FFFFFF; border: none;" data-toggle="modal"
+								data-target="#mioModalService">
 							<img src="icon/modifica.png"><br>Modifica
 						</button>
 						<button style="background: #FFFFFF; border: none">
 							<img src="icon/remove.png"><br>Elimina
 						</button>
+					</div>
+
+					<!-- Modal per la modifica del servizio -->
+					<div class="modal fade" id="mioModalService" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4>Modifica dati servizio</h4>
+								</div>
+								<div class="modal-body">
+									<div class="table-responsive">
+										<div class="vertical">
+											<div class="divHorizontal">
+												<label style="width: 30%">Nome<span
+													style="color: #FF0000">*</span></label> <input id="name"
+													type="text" name="name" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Cognome<span
+													style="color: #FF0000">*</span></label> <input id="surename"
+													type="text" name="surename" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Nome dipendente<span
+													style="color: #FF0000">*</span></label> <input id="employee"
+													type="text" name="employee" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Data<span
+													style="color: #FF0000">*</span></label> <input id="date"
+													type="date" name="date" class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Ora<span
+													style="color: #FF0000">*</span></label> <input id="time"
+													type="time" name="time" class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Tipo servizio<span
+													style="color: #FF0000">*</span></label> <input id="type"
+													type="text" name="type" required class="form-control" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<a href="attività.jsp">Conferma</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -565,17 +677,88 @@
 						</tr>
 					</table>
 					<div class="horizontal" style="float: right">
-						<button style="background: #FFFFFF; border: none;">
+						<button style="background: #FFFFFF; border: none;"data-toggle="modal"
+								data-target="#mioModalPayment">
 							<img src="icon/add.png"><br>Effettua
 						</button>
 						<button style="background: #FFFFFF; border: none">
 							<img src="icon/remove.png"><br>Elimina
 						</button>
 					</div>
+
+					<!-- 				Modal per effettuare un pagamento -->
+					<div class="modal fade" id="mioModalPayment" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4>Effettua pagamento</h4>
+								</div>
+								<div class="modal-body">
+									<div class="table-responsive">
+										<div class="vertical">
+											<div class="divHorizontal">
+												<label style="width: 30%">Cliente<span
+													style="color: #FF0000">*</span></label> <input id="client"
+													type="text" name="client" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Dipendente<span
+													style="color: #FF0000">*</span></label> <input id="employee"
+													type="text" name="employee" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Tipologia servizio<span
+													style="color: #FF0000">*</span></label> <input id="tipology"
+													type="text" name="tipology" required class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Data<span
+													style="color: #FF0000">*</span></label> <input id="date"
+													type="date" name="date" class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Ora<span
+													style="color: #FF0000">*</span></label> <input id="time"
+													type="time" name="time" class="form-control" />
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Articolo</label> <select
+													class="form-control" name="province">
+													<option value=""></option>
+												</select>
+											</div>
+											<br>
+
+											<div class="divHorizontal">
+												<label style="width: 30%">Totale<span
+													style="color: #FF0000">*</span></label> <input id="tot"
+													type="number" name="tot" class="form-control" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<a href="attività.jsp">Conferma</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<%@include file="jsp/footer.jsp"%>
 </body>
 </html>

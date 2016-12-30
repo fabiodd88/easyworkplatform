@@ -151,11 +151,6 @@ function forward(value){
 	}
 }
 
-
-
-
-
-
 function visualizzaDiv(x){
 	if(x==0){
 		document.getElementById("cliente").style.display="inline";
