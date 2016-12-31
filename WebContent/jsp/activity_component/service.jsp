@@ -1,7 +1,6 @@
 
 <!-- DIV PER IL SERVIZIO -->
 <div id="servizio" style="display: none">
-	<%@include file="/jsp/search.jsp"%>
 	<div class="table-responsive"
 		style="margin-top: 7%; border: 1px solid black">
 		<table style="width: 100%">

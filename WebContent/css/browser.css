@@ -14,8 +14,6 @@ body{
     background-color: #FFF;
     padding: 8px;
     border: 1px solid #DDD;
-    margin-bottom: 10px;
-    
 }
 
 .horizontal{
@@ -28,17 +26,6 @@ body{
 	size: 20px !important;
 }
 
-
-@media screen and (min-width: 300px){
-	
-	.divHorizontal{
-	    display: -webkit-flex; /* Safari */
-	    -webkit-justify-content: space-around; /* Safari 6.1+ */
-	    display: flex;
-	    justify-content: space-around;
-	}
-	
-}
 
 
 .footer{
@@ -89,3 +76,13 @@ body{
 .input-length{
 	width: 33% !important;
 }
+
+.left-side{
+	padding-left: 88%;
+}
+
+.but{
+	border: 0px !important; 
+	background-color:#FFFFFF !important;
+}
+

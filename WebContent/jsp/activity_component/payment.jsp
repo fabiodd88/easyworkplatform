@@ -1,7 +1,6 @@
 
 <!-- DIV PER IL PAGAMENTO -->
 <div id="pagamento" style="display: none">
-	<%@include file="/jsp/search.jsp"%>
 	<div class="table-responsive"
 		style="margin-top: 7%; border: 1px solid black">
 		<table style="width: 100%">
@@ -38,3 +37,5 @@
 				<img src="icon/remove.png"><br>Elimina
 			</button>
 		</div>
+	</div>
+</div>

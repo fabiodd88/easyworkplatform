@@ -164,6 +164,7 @@ function forward(value){
 
 
 function visualizzaDiv(x){
+	document.getElementById("searchBar").style.display="inline";
 	if(x==0){
 		document.getElementById("cliente").style.display="inline";
 		document.getElementById("articolo").style.display="none";
