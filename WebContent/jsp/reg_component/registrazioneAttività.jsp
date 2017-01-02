@@ -41,13 +41,13 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Città<span style="color: #FF0000">*</span>
-									</label> <input id="activityCity" type="text" name="city" required="required"  class="form-control" />
+									</label> <input id="activityCity" type="text" name="activityCity" required="required"  class="form-control" />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Numero civico<span style="color: #FF0000">*</span>
-									</label> <input id="activityCivicNumber" type="number" name="acitvityCivicNumber" required="required"
+									</label> <input id="activityCivicNumber" type="number" name="activityCivicNumber" required="required"
 										class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>

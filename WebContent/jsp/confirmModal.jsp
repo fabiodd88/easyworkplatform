@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalSuccess" role="dialog">
+<div class="modal fade" id="modalConf" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,7 +8,7 @@
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
-						<label id="lb">Modifica avvenuta con successo</label>
+						<label id="status"></label>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 
 <!-- Terza parte registrazione 	 -->
->
+
 <div class="container-fluid text-center padding" style="display: none;"
 	id="rec3">
 	<div class="row content ">
@@ -17,46 +17,45 @@
 						<div class="table-responsive">
 							<div class="vertical">
 								<div class="divHorizontal">
-									<label style="width:30%">Nome</label> <input
-										type="text" name="name" class="form-control" readonly />
+									<label style="width: 30%">Nome</label> <input type="text"
+										name="name" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">Partita iva</label>
-									<input type="text" name="vatCode" class="form-control" readonly />
+									<label style="width: 30%">Partita iva</label> <input
+										type="text" name="vatCode" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">Tipologia</label> <input
-										type="text" name="tipology" class="form-control" readonly />
+									<label style="width: 30%">Tipologia</label> <input type="text"
+										name="tipology" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">Indirizzo</label> <input
-										type="text" name="adress" class="form-control" readonly />
+									<label style="width: 30%">Indirizzo</label> <input type="text"
+										name="adress" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">Città</label> 
-									<input type="text" name="city" class="form-control" readonly />
+									<label style="width: 30%">Città</label> <input type="text"
+										name="city" class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">Numero civico</label> 
-									<input type="text" name="civicNumber" class="form-control"
+									<label style="width: 30%">Numero civico</label> <input
+										type="text" name="civicNumber" class="form-control"
 										placeholder="Only number" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width:30%">CAP</label> 
-									<input type="text" name="cap" class="form-control"
-										placeholder="81020" readonly />
+									<label style="width: 30%">CAP</label> <input type="text"
+										name="cap" class="form-control" placeholder="81020" readonly />
 								</div>
 								<br>
 							</div>
@@ -64,25 +63,10 @@
 
 						<button type="reset" class="btn btn-default"
 							onClick="forward('rec2')">Indietro</button>
-						<button type="button" class="btn btn-default" data-toggle="modal"
-							data-target="#mioModal">Conferma</button>
+						<button type="submit" class="btn btn-default" data-toggle="modal"
+							data-target="#modalConf" >Conferma</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div id="mioModal" class="modal fade" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>Registrazione effettuata con successo</h4>
-				</div>
-				<div class="modal-footer">
-					<a href="index.jsp">OK</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>	

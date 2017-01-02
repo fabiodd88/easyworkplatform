@@ -22,15 +22,15 @@
 
 							<div class="divHorizontal">
 								<label style="width: 30%">Password<span
-									style="color: #FF0000">*</span></label> <input id="pass" type="password"
+									style="color: #FF0000">*</span></label> <input id="passord" type="password"
 									name="password" required class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri"/>
 							</div>
 							<br>
 
 							<div class="divHorizontal">
 								<label style="width: 30%">Conferma password<span
-									style="color: #FF0000">*</span></label> <input id="confermaPass"
-									type="password" name="confermaPassword" required
+									style="color: #FF0000">*</span></label> <input id="confPassword"
+									type="password" name="confPassword" required
 									class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri"/>
 							</div>
 							<br>
@@ -38,7 +38,7 @@
 							<div class="divHorizontal">
 								<label style="width: 30%">Chiave secondaria<span
 									style="color: #FF0000">*</span></label> <input id="secondKey"
-									type="password" name="secondaryKey" required class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri" />
+									type="password" name="secondKey" required class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri" />
 							</div>
 							<br>
 
@@ -46,7 +46,7 @@
 								<label style="width: 30%">Conferma chiave secondaria<span
 									style="color: #FF0000">*</span>
 								</label> <input id="confSecondKey" type="password"
-									name="confermaSecondaryKey" required class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri" />
+									name="confSecondKey" required class="form-control" pattern=".{6,8}" placeholder="Da 6 a 8 caratteri" />
 							</div>
 							<br>
 							<div id="mess2" class="alert alert-danger" style="display: none !important;"></div>

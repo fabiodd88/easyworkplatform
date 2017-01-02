@@ -49,7 +49,6 @@ public class AccountModelDS implements ModelInterface<User> {
 				+ " (tax_code, name, surname, birth_date, birth_place, address, city, province, cap, email, password, secondary_key)"
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());

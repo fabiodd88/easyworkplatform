@@ -14,6 +14,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="js/ajax.js"></script>
+
 <link href="css/browser.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -23,8 +24,10 @@
 		<div class="jumbotron color"></div>
 
 
-		<form class="form" id="newUserForm" style="text-align: center;"
-			role="form">
+		<form id="newUserForm" role="form" action="UserController"
+			method="POST" enctype="multipart/form-data">
+			<input type="text" name="action" id="action"
+				value="insert" style="display: none;" />
 
 			<%@include file="jsp/reg_component/registrazioneUtente.jsp"%>
 			<%@include file="jsp/reg_component/registrazioneAccount.jsp"%>
@@ -32,7 +35,7 @@
 			<%@include file="jsp/reg_component/riepilogoDatiUtente.jsp"%>
 			<%@include file="jsp/reg_component/riepilogoDatiLogin.jsp"%>
 			<%@include file="jsp/reg_component/riepilogoDatiAttività.jsp"%>
-			
+			<%@include file="jsp/confirmModal.jsp"%>
 		</form>
 
 		<%@include file="jsp/footer.jsp"%>

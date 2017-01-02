@@ -29,7 +29,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Data di nascita<span style="color: #FF0000">*</span></label>
-									<input type="date" name="dateofBirth" required="required"
+									<input type="date" name="birthDate" required="required"
 										id="birthDate" class="form-control" />
 								</div>
 								<br>
@@ -42,7 +42,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Luogo di nascita<span style="color: #FF0000">*</span></label>
-									<select class="form-control" name="province" required="required">
+									<select class="form-control" name="birthPlace" required="required">
 										<%@include file="/jsp/province.jsp" %>
 									</select>
 								</div>

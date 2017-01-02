@@ -82,26 +82,37 @@ public class UserController extends HttpServlet {
 				if (action.equalsIgnoreCase("insert")) {
 					
 					String name = request.getParameter("name");
-					String surname = request.getParameter("surname");
+					String surname = request.getParameter("surename");
 					String birthDate = request.getParameter("birthDate");
 					String birthPlace = request.getParameter("birthPlace");
 					String address = request.getParameter("address");
+					String civicNumber = request.getParameter("civicNumber");
 					String city = request.getParameter("city");
 					String province = request.getParameter("province");
 					String cap = request.getParameter("cap");
 					String taxCode = request.getParameter("taxCode");
 					String email = request.getParameter("email");
 					String password = request.getParameter("password");
-					String passwordCtrl = request.getParameter("password");
+					String passwordCtrl = request.getParameter("confPassword");
 					String secondKey = request.getParameter("secondKey");
-					String secondKeyCtrl = request.getParameter("secondKeyCtrl");
+					String secondKeyCtrl = request.getParameter("confSecondKey");
+					String activityName = request.getParameter("activityName"); 
+					String vatCode = request.getParameter("vatCode"); 
+					String tipology = request.getParameter("tipology"); 
+					String activityAddress = request.getParameter("activityAddress"); 
+					String activityCity = request.getParameter("activityCity"); 
+					String activityCivicNumber = request.getParameter("activityCivicNumber"); 
+					String activityCap = request.getParameter("activityCap"); 
 					
 					// control if empty
-					if (name.equals("") || surname.equals("") || birthDate.equals("") || 
-						birthPlace.equals("") || address.equals("") || city.equals("") || 
-						province.equals("") || cap.equals("") || taxCode.equals("") || 
-						email.equals("") || password.equals("") || secondKey.equals("") ||
-						passwordCtrl.equals("") || secondKeyCtrl.equals("")){
+					if (name.equals("") 		|| surname.equals("") 			 || birthDate.equals("") 	 	|| 
+						birthPlace.equals("") 	|| address.equals("") 			 || city.equals("") 			|| 
+						province.equals("") 	|| cap.equals("") 				 || taxCode.equals("") 		 	|| 
+						email.equals("") 		|| password.equals("")			 || secondKey.equals("")		||
+						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || activityName.equals("")		||
+						vatCode.equals("")		|| tipology.equals("")			 || activityAddress.equals("")	|| 
+						activityCity.equals("") || activityCivicNumber.equals("")|| activityCap.equals("")
+						){
 							sendMessage("empty", response);
 							return;
 					}
@@ -119,19 +130,12 @@ public class UserController extends HttpServlet {
 					}
 					
 					//secondkey and secondKey Control aren't the same
-					if(secondKey.equals(secondKeyCtrl)){
+					if(!secondKey.equals(secondKeyCtrl)){
 						sendMessage("sKeyCtrl", response);
 						return;
 					}
 					
-					//control if they respect the format
-					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
-							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
-							Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap) && Pattern.matches("[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]", taxCode) &&
-							Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) && Pattern.matches("[a-zA-Z0-9]{8,32}", password) && Pattern.matches("[a-zA-Z0-9]{8,32}", secondKey))){
-								sendMessage("regExpError", response);
-								return;
-					}
+					
 					
 					int CAP = Integer.parseInt(cap);
 					Date bd = Date.valueOf(birthDate);
