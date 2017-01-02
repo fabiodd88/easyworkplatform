@@ -40,31 +40,32 @@
 					</ul>
 				</div>
 			</div>
-		<div class="col-xs-12 div-box">
-			<div class="posisition">
-				<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
-					<img alt="" src="icon/cliente.png">
-				</div>
-				<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-					<img alt="" src="icon/trattamento.png">
-				</div>
-				<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-					<img alt="" src="icon/appuntamento.png">
-				</div>
-				<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
-					<img alt="" src="icon/pagamento2.png">
-				</div>
-			</div>
-		</div>
-		
-		<%@include file="/jsp/search.jsp"%>
-		<%@include file="/jsp/activity_component/client.jsp"%>
-		<%@include file="/jsp/activity_component/article.jsp"%>
-		<%@include file="/jsp/activity_component/service.jsp"%>
-		<%@include file="/jsp/activity_component/payment.jsp"%>
+						<div class="col-xs-12">
+							<div class="posisition">
+								<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
+									<img alt="" src="icon/cliente.png">
+								</div>
+								<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
+									<img alt="" src="icon/trattamento.png">
+								</div>
+								<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
+									<img alt="" src="icon/appuntamento.png">
+								</div>
+								<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
+									<img alt="" src="icon/pagamento2.png">
+								</div>
+							</div>
+						</div>
 
+
+			<%@include file="/jsp/search.jsp"%>
+			<%@include file="/jsp/activity_component/client.jsp"%>
+			<%@include file="/jsp/activity_component/article.jsp"%>
+			<%@include file="/jsp/activity_component/service.jsp"%>
+			<%@include file="/jsp/activity_component/payment.jsp"%>
+
+		</div>
 	</div>
-</div>
 	<%@include file="jsp/confirmModal.jsp"%>
 	<%@include file="/jsp/activity_component/modalService.jsp"%>
 	<%@include file="/jsp/activity_component/modalArticle.jsp"%>

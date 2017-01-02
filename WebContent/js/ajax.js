@@ -86,9 +86,14 @@ function forward(value){
 		var civic	= document.getElementById("civicNumber").value;
 		var city	= document.getElementById("city").value;
 		var cap		= document.getElementById("cap").value;
+		
 		if(	name=="" || surename=="" || date=="" || 
 				tax=="" || civic=="" || city=="" ||cap==""){
-			$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+			$("#mess").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+			document.getElementById("mess1").style.display="block";
+		}
+		else if(tax.length != 16){
+			$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
 			document.getElementById("mess1").style.display="block";
 		}
 		else{
@@ -98,6 +103,7 @@ function forward(value){
 			document.getElementById("mess1").style.display="none";
 			
 		}
+		
 	}
 	
 	
@@ -118,6 +124,14 @@ function forward(value){
 		}
 		else if(secondKey != confSecondKey || pass  != confermaPass){
 			$("#mess2").html("<strong>Warning!</strong>  Le password non coincidono!!");
+			document.getElementById("mess2").style.display="block";
+		}
+		else if(pass.length<6 || secondKey.length<6){
+			$("#mess2").html("<strong>Warning!</strong>  Le password devono essere minimo 6 caratteri!!");
+			document.getElementById("mess2").style.display="block";
+		}
+		else if(pass.length>8 || secondKey.length>8){
+			$("#mess2").html("<strong>Warning!</strong>  Le password devono essere massimo 8 caratteri!!");
 			document.getElementById("mess2").style.display="block";
 		}
 		else{
@@ -141,6 +155,10 @@ function forward(value){
 				activityAddress=="" || activityCity=="" || 
 				activityCivicNumber=="" || activityCap==""){
 			$("#mess3").html("<strong>Warning!</strong> Campi vuoti o non conformi!!");
+			document.getElementById("mess3").style.display="block";
+		}
+		else if(vatCode.length != 11){
+			$("#mess3").html("<strong>Warning!</strong>  Inserire 11 cifre per la partita iva");
 			document.getElementById("mess3").style.display="block";
 		}
 		else{
@@ -192,6 +210,21 @@ function visualizzaDiv(x){
 	}
 }
 
+function modal(action){
+	switch(action){
+	case 'client':
+		$('#modalTitle').text('Modifica dati cliente');
+		break;
+	case 'service':
+		$('#modalTitle').text('Modifica dati servizio');
+		break;
+	case 'payment':
+		$('#modalTitle').text('Effettua pagamento');
+		$('#lb').text('Pagamento effettuato con successo');
+		break;
+	}
+}
+ 
 
 
 

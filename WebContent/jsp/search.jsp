@@ -1,4 +1,4 @@
-<div id="searchBar" class="col-xs-12 div-box" style="display: none;">
+<div id="searchBar" class="col-xs-12" style="display: none;">
 	<div class="col-xs-12">
 		<div class="col-xs-8"></div>
 		<div class="col-xs-4">
