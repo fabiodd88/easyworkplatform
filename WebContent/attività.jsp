@@ -40,22 +40,38 @@
 					</ul>
 				</div>
 			</div>
-						<div class="col-xs-12">
-							<div class="posisition">
-								<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
-									<img alt="" src="icon/cliente.png">
-								</div>
-								<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-									<img alt="" src="icon/trattamento.png">
-								</div>
-								<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-									<img alt="" src="icon/appuntamento.png">
-								</div>
-								<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
-									<img alt="" src="icon/pagamento2.png">
-								</div>
-							</div>
+			<div class="col-xs-12">
+				<div class="posisition">
+					<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
+						<img alt="" src="icon/cliente.png"><br>
+						<div id="btAddCliente" style="display: none;">
+							<button class="but" data-toggle="modal"
+								data-target="#modalAddCliente">
+								<img src="icon/add.png"><br>Aggiungi
+							</button>
 						</div>
+					</div>
+					<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
+						<img alt="" src="icon/trattamento.png"><br>
+						<div id="btAddArticle" style="display: none;">
+							<button class="but">
+								<img src="icon/add.png"><br>Aggiungi
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
+						<img alt="" src="icon/appuntamento.png"><br>
+						<div id="btAddService" style="display: none;">
+							<button class="but">
+								<img src="icon/add.png"><br>Aggiungi
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
+						<img alt="" src="icon/pagamento2.png"><br>
+					</div>
+				</div>
+			</div>
 
 
 			<%@include file="/jsp/search.jsp"%>

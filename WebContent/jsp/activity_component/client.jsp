@@ -80,6 +80,7 @@
 				</div>
 
 			</div>
+			<%@include file="/jsp/activity_component/modalAddCliente.jsp"%>
 			<div class="col-md-12">
 				<div class="col-md-10"></div>
 				<div class="col-md-2">
