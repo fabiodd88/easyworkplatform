@@ -219,9 +219,9 @@ public class Activity implements Cloneable{
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Article clone(){
+	public Activity clone(){
 		try{
-			return (Article) super.clone();
+			return (Activity) super.clone();
 		}
 		catch(CloneNotSupportedException e){
 			return null;
