@@ -26,13 +26,13 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required id="birthDate" class="form-control" />
+								name="dateofBirth" required id="birth" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice fiscale<span
-								style="color: #FF0000">*</span></label> <input id="taxCode" type="text"
+								style="color: #FF0000">*</span></label> <input id="tax" type="text"
 								name="taxCode" required class="form-control" />
 						</div>
 						<br>
@@ -40,7 +40,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="province" required="required" id="province">
+								<select class="form-control" name="province" required="required" id="place">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -56,7 +56,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="civicNumber" required id="civicNumber"
+								name="civicNumber" required id="civic"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
@@ -70,7 +70,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
-								style="color: #FF0000">*</span></label> <select class="form-control" id="prov"
+								style="color: #FF0000">*</span></label> <select class="form-control" id="province"
 								name="province" required>
 								<%@include file="/jsp/province.jsp" %>
 							</select>

@@ -190,6 +190,7 @@ function visualizzaDiv(x){
 	document.getElementById("searchBar").style.display="inline";
 	if(x==0){
 		document.getElementById("cliente").style.display="inline";
+		document.getElementById("periodo").style.display="none";
 		document.getElementById("btAddCliente").style.display="inline";
 		document.getElementById("articolo").style.display="none";
 		document.getElementById("btAddArticle").style.display="none";
@@ -202,6 +203,7 @@ function visualizzaDiv(x){
 		document.getElementById("btAddCliente").style.display="none";
 		document.getElementById("articolo").style.display="inline";
 		document.getElementById("btAddArticle").style.display="inline";
+		document.getElementById("periodo").style.display="none";
 		document.getElementById("servizio").style.display="none";
 		document.getElementById("btAddService").style.display="none";
 		document.getElementById("pagamento").style.display="none";
@@ -213,6 +215,7 @@ function visualizzaDiv(x){
 		document.getElementById("btAddArticle").style.display="none";
 		document.getElementById("servizio").style.display="inline";
 		document.getElementById("btAddService").style.display="inline";
+		document.getElementById("periodo").style.display="inline";
 		document.getElementById("pagamento").style.display="none";
 	}
 	else if(x==3){
@@ -223,6 +226,7 @@ function visualizzaDiv(x){
 		document.getElementById("servizio").style.display="none";
 		document.getElementById("btAddService").style.display="none";
 		document.getElementById("pagamento").style.display="inline";
+		document.getElementById("periodo").style.display="inline";
 	}
 }
 
@@ -232,6 +236,7 @@ function modal(action){
 	case 'client':
 		$('#modalTitle').text('Modifica dati cliente');
 		$('#status').text('Modifica avvenuta con successo');
+		datiCliente();
 		break;
 	case 'article':
 		$('#modalTitle').text('Modifica dati articolo');
@@ -264,8 +269,6 @@ function modal(action){
 		break;
 	}
 }
-
-
 
 function controlloClient(){
 	var name = document.getElementById("name").value;
@@ -320,7 +323,7 @@ function controlloService(){
 function elimina(action){
 	switch(action){
 	case 'client': 
-		document.getElementById("cliente").style.display="none";
+		document.getElementById("riga").style.display="none";
 		break;
 	case 'article':
 		var box = document.getElementById("articolo").style.display="none";
@@ -332,4 +335,28 @@ function elimina(action){
 		var box = document.getElementById("pagamento").style.display="none";
 		break;
 	}
+}
+
+function datiCliente(){
+	var name = document.getElementById("name").value;
+	var surename = document.getElementById("surename").value;
+	var birth = document.getElementById("birth").value;
+	var tax = document.getElementById("tax").value;
+	var place = document.getElementById("place").value;
+	var address = document.getElementById("address").value;
+	var civic = document.getElementById("civic").value;
+	var city = document.getElementById("city").value;
+	var province = document.getElementById("province").value;
+	var cap = document.getElementById("cap").value;
+	
+	$('#name').text(name);
+	$('#surename').text(surename);
+	$('#birth').text(birth);
+	$('#tax').text(tax);
+	$('#place').text('place');
+	$('#address').text(address);
+	$('#civic').text(civic);
+	$('#city').text(city);
+	$('#province').text(province);
+	$('#cap').text(cap);
 }

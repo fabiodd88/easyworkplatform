@@ -11,7 +11,7 @@
 					<span class="glyphicon glyphicon-search"></span>
 				</button>
 			</div>
-			<div class="col-xs-1">
+			<div class="col-xs-1" id="periodo">
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"

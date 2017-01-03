@@ -1,4 +1,3 @@
-
 <table class="table table-bordered" id="cliente" style="display: none;">
 	<thead>
 		<tr class="info">
@@ -16,23 +15,23 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td id="name">Francesca</td>
-			<td id="surename">Tassatone</td>
-			<td id="birth">10/03/1994</td>
-			<td id="tax">qwertyuioplkjhgf</td>
-			<td id="place">Capua</td>
-			<td id="adress">Via verga</td>
-			<td id="civic">2</td>
-			<td id="city">Recale</td>
-			<td id="province">Caserta</td>
-			<td id="cap">81020</td>
+		<tr id="riga">
+			<td><span id="name">Francesca</span></td>
+			<td><span id="surename">Tassatone</span></td>
+			<td><span id="birth">10/03/1994</span></td>
+			<td><span id="tax">qwertyuioplkjhgf</span></td>
+			<td><span id="place">Capua</span></td>
+			<td><span id="address">Via verga</span></td>
+			<td><span id="civic">2</span></td>
+			<td><span id="city">Recale</span></td>
+			<td><span id="province">Caserta</span></td>
+			<td><span id="cap">81020</span></td>
 			<td><button class="but" data-toggle="modal"
 					data-target="#mioModal" onclick="modal('client')">
-					<img src="icon/modifica.png" style="width:20px"><br>Modifica
+					<img src="icon/modifica.png" style="width: 20px"><br>Modifica
 				</button></td>
 			<td><button class="but" onclick="elimina('client')">
-					<img src="icon/remove.png" style="width:20px"><br>Elimina
+					<img src="icon/remove.png" style="width: 20px"><br>Elimina
 				</button></td>
 		</tr>
 	</tbody>
