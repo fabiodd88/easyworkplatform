@@ -34,8 +34,9 @@
 								src="icon/user.png" width="50px" height="50px" /><br> Nome
 								utente loggato <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Modifica dati</a></li>
-								<li><a href="index.jsp">Logout</a></li>
+								<li><a href="#" class="but" role="button" data-toggle="modal"
+								data-target="#modalUser" onclick="modal('user')">Modifica dati</a></li>
+								<li><a href="index.jsp" class="but" role="button">Logout</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -92,6 +93,7 @@
 	<%@include file="/jsp/activity_component/modalArticle.jsp"%>
 	<%@include file="/jsp/activity_component/modalPayment.jsp"%>
 	<%@include file="/jsp/activity_component/modalClient.jsp"%>
+	<%@include file="/jsp/activity_component/modalModificaUtente.jsp"%>
 	<%@include file="jsp/footer.jsp"%>
 
 

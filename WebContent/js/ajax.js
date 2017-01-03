@@ -256,6 +256,10 @@ function modal(action){
 		$('#modalTitle').text('Aggiungi servizio');
 		$('#status').text('Servizio aggiunto con successo');
 		break;
+	case 'user':
+		$('#modalTitle').text('Modifica dati utente');
+		$('#status').text('Modifica avvenuta con successo');
+		break;
 	}
 }
 
