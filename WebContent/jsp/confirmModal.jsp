@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 id="modalTitle">Modifica dati articolo</h4>
+				<h4 id="modalTitle"></h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">

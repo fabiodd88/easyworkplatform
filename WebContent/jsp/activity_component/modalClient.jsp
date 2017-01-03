@@ -1,4 +1,4 @@
-<!-- Modal per la modifica del cliente -->
+<!-- Modal per il cliente -->
 <div class="modal fade" id="mioModal" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -40,7 +40,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="province" required="required">
+								<select class="form-control" name="province" required="required" id="province">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -70,7 +70,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
-								style="color: #FF0000">*</span></label> <select class="form-control"
+								style="color: #FF0000">*</span></label> <select class="form-control" id="prov"
 								name="province" required>
 								<%@include file="/jsp/province.jsp" %>
 							</select>
@@ -88,9 +88,14 @@
 					</div>
 				</div>
 			</div>
+			<div style="text-align: left">
+				<label>I campi con <span style="color: #FF0000">*</span>
+					sono obbligatori
+				</label>
+			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalSuccess" data-dismiss="modal">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal" onclick="controlloClient()">Conferma</button>
 			</div>
 		</div>
 	</div>

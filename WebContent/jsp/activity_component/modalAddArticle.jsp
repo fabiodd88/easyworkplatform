@@ -1,5 +1,5 @@
-<!-- Modal per la modifica dell'articolo -->
-<div class="modal fade" id="mioModalArticle" role="dialog">
+<!-- Modal per l'aggiunta dell'articolo -->
+<div class="modal fade" id="modalAddArticle" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -37,6 +37,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div style="text-align: left">
+				<label>I campi con <span style="color: #FF0000">*</span>
+					sono obbligatori
+				</label>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"

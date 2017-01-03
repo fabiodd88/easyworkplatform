@@ -46,7 +46,7 @@
 						<img alt="" src="icon/cliente.png"><br>
 						<div id="btAddCliente" style="display: none;">
 							<button class="but" data-toggle="modal"
-								data-target="#modalAddCliente">
+								data-target="#modalAddCliente" onclick="modal('addClient')">
 								<img src="icon/add.png"><br>Aggiungi
 							</button>
 						</div>
@@ -54,7 +54,8 @@
 					<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
 						<img alt="" src="icon/trattamento.png"><br>
 						<div id="btAddArticle" style="display: none;">
-							<button class="but">
+							<button class="but" data-toggle="modal"
+								data-target="#modalAddArticle" onclick="modal('addArticle')">
 								<img src="icon/add.png"><br>Aggiungi
 							</button>
 						</div>
@@ -62,7 +63,8 @@
 					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
 						<img alt="" src="icon/appuntamento.png"><br>
 						<div id="btAddService" style="display: none;">
-							<button class="but">
+							<button class="but" data-toggle="modal"
+								data-target="#modalAddService" onclick="modal('addService')">
 								<img src="icon/add.png"><br>Aggiungi
 							</button>
 						</div>
@@ -83,6 +85,9 @@
 		</div>
 	</div>
 	<%@include file="jsp/confirmModal.jsp"%>
+	<%@include file="/jsp/activity_component/modalAddCliente.jsp"%>
+	<%@include file="/jsp/activity_component/modalAddArticle.jsp"%>
+	<%@include file="/jsp/activity_component/modalAddService.jsp"%>
 	<%@include file="/jsp/activity_component/modalService.jsp"%>
 	<%@include file="/jsp/activity_component/modalArticle.jsp"%>
 	<%@include file="/jsp/activity_component/modalPayment.jsp"%>

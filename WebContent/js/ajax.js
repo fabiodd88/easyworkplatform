@@ -229,20 +229,35 @@ function modal(action){
 	switch(action){
 	case 'client':
 		$('#modalTitle').text('Modifica dati cliente');
+		$('#status').text('Modifica avvenuta con successo');
+		break;
+	case 'article':
+		$('#modalTitle').text('Modifica dati articolo');
+		$('#status').text('Modifica avvenuta con successo');
 		break;
 	case 'service':
 		$('#modalTitle').text('Modifica dati servizio');
+		$('#status').text('Modifica avvenuta con successo');
 		break;
 	case 'payment':
 		$('#modalTitle').text('Effettua pagamento');
-		$('#lb').text('Pagamento effettuato con successo');
+		$('#status').text('Pagamento effettuato con successo');
+		break;
+	case 'addClient':
+		$('#modalTitle').text('Aggiungi cliente');
+		$('#status').text('Cliente aggiunto con successo');
+		addCliente();
+		break;
+	case 'addArticle':
+		$('#modalTitle').text('Aggiungi articolo');
+		$('#status').text('Articolo aggiunto con successo');
+		break;
+	case 'addService':
+		$('#modalTitle').text('Aggiungi servizio');
+		$('#status').text('Servizio aggiunto con successo');
 		break;
 	}
 }
- 
-
-
-
 
 function registration(){
 	$.ajax({
@@ -276,4 +291,22 @@ function registration(){
 			}
 		}
 });
+}
+
+function controlloClient(){
+	var name = document.getElementById("name").value;
+	var surename = document.getElementById("surename").value;
+	var birthDate = document.getElementById("birthDate").value;
+	var taxCode = document.getElementById("taxCode").value;
+	var province = document.getElementById("province").value;
+	var address = document.getElementById("address").value;
+	var civicNumber = document.getElementById("civicNumber").value;
+	var city = document.getElementById("city").value;
+	var prov = document.getElementById("prov").value;
+	var cap = document.getElementById("cap").value;
+	
+	if(name==""||surename==""||birthDate==""||taxCode==""||province==""||address==""||civicNumber==""||city==""|| city==""||prov==""||cap==""){
+		$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+		document.getElementById("mess1").style.display="block";
+	}
 }

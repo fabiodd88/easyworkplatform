@@ -1,7 +1,7 @@
 
 
-<!-- Modal per la modifica del servizio -->
-<div class="modal fade" id="mioModalService" role="dialog">
+<!-- Modal per l'aggiunta del servizio -->
+<div class="modal fade" id="modalAddService" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -52,6 +52,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div style="text-align: left">
+				<label>I campi con <span style="color: #FF0000">*</span>
+					sono obbligatori
+				</label>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"

@@ -1,6 +1,6 @@
 
 <!-- DIV PER IL CLIENTE -->
-<div id="cliente" style="display: none;">
+<div class="vertical" id="cliente" style="display: none;">
 	<div class="container text-center">
 		<div class= "table-responsive"style="border: 1px solid black;">
 			<div class="row-fluid">
@@ -80,7 +80,6 @@
 				</div>
 
 			</div>
-			<%@include file="/jsp/activity_component/modalAddCliente.jsp"%>
 			<div class="col-md-12">
 				<div class="col-md-10"></div>
 				<div class="col-md-2">
