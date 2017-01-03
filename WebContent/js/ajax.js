@@ -58,7 +58,6 @@ function setAction(action){
 		var psw=document.getElementById('inputPassword');
 		psw.setAttribute("type", "hidden");
 		$(".inutile").css({"display":"none"});
-
 		break;
 
 	case 'login':
@@ -83,14 +82,14 @@ function forward(value){
 	
 	else if(value == "reg2"){
 		var name	= document.getElementById("name").value;
-		var surename= document.getElementById("surename").value;
+		var surname= document.getElementById("surname").value;
 		var date	= document.getElementById("birthDate").value;
 		var tax		= document.getElementById("taxCode").value;
 		var civic	= document.getElementById("civicNumber").value;
 		var city	= document.getElementById("city").value;
 		var cap		= document.getElementById("cap").value;
 		
-		if(	name=="" || surename=="" || date=="" || 
+		if(	name=="" || surname=="" || date=="" || 
 				tax=="" || civic=="" || city=="" ||cap==""){
 			$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 			document.getElementById("mess1").style.display="block";

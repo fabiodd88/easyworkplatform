@@ -69,7 +69,7 @@ public class User extends Account{
 	 * Get the surname
 	 * @return
 	 */
-	public String getSurename() {
+	public String getSurname() {
 		return surname;
 	}
 
@@ -77,7 +77,7 @@ public class User extends Account{
 	 * Set a surname
 	 * @param surname
 	 */
-	public void setSurename(String surname) {
+	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
@@ -215,7 +215,7 @@ public class User extends Account{
 		if(!super.equals(object)) return false; 
 		User user = (User) object;
 		return	this.name.equals(user.getName())			&& 
-				this.surname.equals(user.getSurename())	&&
+				this.surname.equals(user.getSurname())	&&
 				this.birthdate.equals(user.getBirthdate())	&&
 				this.birthplace.equals(user.getBirthplace())&&
 				this.address.equals(user.getAddress())		&&
