@@ -15,20 +15,20 @@
 						<div class="vertical">
 							<div class="divHorizontal">
 								<label style="width:30%">Email</label> <input
-									type="text" name="email" required class="form-control" readonly />
+									type="text" name="email" required class="form-control" id="recEmail" readonly />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
 								<label style="width:30%">Password</label> <input
-									type="text" name="password" required class="form-control"
+									type="text" name="password" id="recPsw" required class="form-control"
 									readonly />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
 								<label style="width:30%">Conferma password</label>
-								<input type="text" name="confermaPassword" required
+								<input type="text" name="confermaPassword" id="recConfirmPsw" required
 									class="form-control" readonly />
 							</div>
 							<br>
@@ -36,14 +36,14 @@
 							<div class="divHorizontal">
 								<label style="width:30%">Chiave secondaria</label>
 								<input type="text" name="secondaryKey" required
-									class="form-control" readonly />
+									class="form-control" id="recSecondaryKey" readonly />
 							</div>
 							<br>
 
 							<div class="divHorizontal">
 								<label style="width:30%">Conferma chiave secondaria</label> 
 								<input type="text" name="confermaSecondaryKey" required
-									class="form-control" readonly />
+									class="form-control" id="recConfirmSecondaryKey" readonly />
 							</div>
 							<br>
 						</div>

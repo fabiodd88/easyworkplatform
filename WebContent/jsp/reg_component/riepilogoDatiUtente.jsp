@@ -17,65 +17,65 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label style="width:30%">Nome</label> <input
-										type="text" name="name" class="form-control" readonly />
+										type="text" name="name" class="form-control" id="nameUser" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Cognome</label> <input
-										type="text" name="surename" class="form-control" readonly />
+										type="text" name="surename" class="form-control" id="recSurename" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Data di nascita</label>
 									<input type="text" name="dateofBirth" class="form-control"
-										readonly />
+										id="recBirth" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Codice fiscale</label>
-									<input type="text" name="taxCode" class="form-control" readonly />
+									<input type="text" name="taxCode" class="form-control" id="recTax" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Luogo di nascita</label>
 									<input type="text" name="province" class="form-control"
-										readonly />
+										id="recPlace" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Indirizzo</label> <input
-										type="text" name="adress" class="form-control" readonly />
+										type="text" name="adress" class="form-control" id="recAdress" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Numero civico</label>
 									<input type="text" name="civicNumber" class="form-control"
-										placeholder="Only number" readonly />
+										placeholder="Only number" id="recCivic" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Città</label> <input
-										type="text" name="city" class="form-control" readonly />
+										type="text" name="city" class="form-control" id="recCity" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">Provincia</label> <input
-										type="text" name="province" class="form-control" readonly />
+										type="text" name="province" class="form-control" id="recProvince" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">CAP</label> <input
 										type="text" name="civicNumber" class="form-control"
-										placeholder="81020" readonly />
+										placeholder="81020" id="recCap" readonly />
 								</div>
 								<br>
 							</div>
