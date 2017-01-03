@@ -23,7 +23,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Cognome<span style="color: #FF0000">*</span></label> <input
-										id="surename" type="text" name="surename" required="required" class="form-control" />
+										id="surname" type="text" name="surname" required="required" class="form-control" />
 								</div>
 								<br>
 

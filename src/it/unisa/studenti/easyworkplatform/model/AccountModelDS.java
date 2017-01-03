@@ -50,13 +50,13 @@ public class AccountModelDS implements ModelInterface<User> {
 	@Override
 	public void insert(User user) throws SQLException {
 		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
-				+ " (name, surename, birth_date, birth_place, address, city, province, cap, tax_code, email, password, secondary_key) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (name, surname, birth_date, birth_place, address, city, province, cap, tax_code, email, password, secondary_key) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			
 			preparedStatement.setString(1, user.getName());
-			preparedStatement.setString(2, user.getSurename());
+			preparedStatement.setString(2, user.getSurname());
 			preparedStatement.setDate(3, (java.sql.Date) user.getBirthdate());
 			preparedStatement.setString(4, user.getBirthplace());
 			preparedStatement.setString(5, user.getAddress());
@@ -91,7 +91,7 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, user.getTaxCode());
 			preparedStatement.setString(2, user.getName());
-			preparedStatement.setString(3, user.getSurename());
+			preparedStatement.setString(3, user.getSurname());
 			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
 			preparedStatement.setString(5, user.getBirthplace());
 			preparedStatement.setString(6, user.getAddress());
@@ -147,7 +147,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				user.setPassword(rs.getString("password"));
 				user.setSecondKey(rs.getString("secondary_key"));
 				user.setName(rs.getString("name"));
-				user.setSurename(rs.getString("surname"));
+				user.setSurname(rs.getString("surname"));
 				user.setBirthdate(rs.getDate("birth_date"));
 				user.setBirthplace(rs.getString("birth_place"));
 				user.setAddress(rs.getString("address"));
@@ -180,7 +180,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				user.setPassword(rs.getString("password"));
 				user.setSecondKey(rs.getString("secondary_key"));
 				user.setName(rs.getString("name"));
-				user.setSurename(rs.getString("surname"));
+				user.setSurname(rs.getString("surname"));
 				user.setBirthdate(rs.getDate("birth_date"));
 				user.setBirthplace(rs.getString("birth_place"));
 				user.setAddress(rs.getString("address"));
@@ -214,7 +214,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				user = new User();
 				user.setId(rs.getInt("id"));
 				user.setName(rs.getString("name"));
-				user.setSurename(rs.getString("surname"));
+				user.setSurname(rs.getString("surname"));
 				user.setBirthdate(rs.getDate("birth_date"));
 				user.setBirthplace(rs.getString("birth_place"));
 				user.setAddress(rs.getString("address"));

@@ -82,7 +82,7 @@ public class UserController extends HttpServlet {
 				if (action.equalsIgnoreCase("insert")) {
 					
 					String name = request.getParameter("name");
-					String surname = request.getParameter("surename");
+					String surname = request.getParameter("surname");
 					String birthDate = request.getParameter("birthDate");
 					String birthPlace = request.getParameter("birthPlace");
 					String address = request.getParameter("address");
