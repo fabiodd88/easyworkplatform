@@ -53,6 +53,8 @@
 					</div>
 				</div>
 			</div>
+			<div id="mess3" class="alert alert-danger"
+				style="display: none !important;"></div>
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori
@@ -60,7 +62,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal" onclick="controlloService()">Conferma</button>
 			</div>
 		</div>
 	</div>

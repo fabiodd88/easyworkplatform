@@ -18,9 +18,8 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
-								style="color: #FF0000">*</span></label> <input id="surename"
-								type="number" name="surename" required class="form-control"
-								min="0" />
+								style="color: #FF0000">*</span></label> <input id="price" type="number"
+								name="surename" required class="form-control" min="0" />
 						</div>
 						<br>
 
@@ -38,6 +37,9 @@
 					</div>
 				</div>
 			</div>
+			<div id="mess2" class="alert alert-danger"
+				style="display: none !important;">
+			</div>
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori
@@ -45,7 +47,8 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal"
+					onclick="controlloArticle()">Conferma</button>
 			</div>
 		</div>
 	</div>

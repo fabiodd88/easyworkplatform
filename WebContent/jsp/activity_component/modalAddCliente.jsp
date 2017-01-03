@@ -84,7 +84,8 @@
 						</div>
 						<br>
 						<div id="mess1" class="alert alert-danger"
-							style="display: none !important;"></div>
+							style="display: none !important;">
+						</div>
 					</div>
 				</div>
 			</div>
