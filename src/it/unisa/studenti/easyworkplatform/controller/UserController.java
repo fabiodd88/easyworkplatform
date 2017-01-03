@@ -168,10 +168,10 @@ public class UserController extends HttpServlet {
 					String email = request.getParameter("email");
 					String password = request.getParameter("password");
 					
-					if (!(Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) || Pattern.matches("[a-zA-Z0-9]{8,32}", password))){
-						sendMessage("errorLogin", response);
-						return;
-					}
+//					if (!(Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) || Pattern.matches("[a-zA-Z0-9]{8,32}", password))){
+//						sendMessage("errorLogin", response);
+//						return;
+//					}
 					
 					User user = modelDs.findByEmail(email);
 					if (user == null) {
@@ -179,7 +179,7 @@ public class UserController extends HttpServlet {
 						return;
 					}
 					String dbPassword = user.getPassword();
-					String hashed = toSHA1(password.getBytes());
+					String hashed 	  = toSHA1(password.getBytes());
 					if (dbPassword != null) {
 						if (dbPassword.equals(hashed)){
 							session.setAttribute("user", user);

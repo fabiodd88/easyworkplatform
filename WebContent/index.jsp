@@ -30,10 +30,9 @@
 		<div class="container-fluid text-center padding">
 			<div class="table-responsive">
   				<table class="table" >
-    				<th type="button" id="log" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('login');">
+    				<th type="button" id="log" data-toggle="modal" data-target="#login" style="text-align:center" onclick="setAction('login');">
 		   				<img alt="" src="icon/login.png"></br>Login
 					</th>
-			   		
 	    			<th style="text-align:center">
 	    				<a href="registrazione.jsp"><img alt="" src="icon/addUser.png" id="imgAdd"></br>Registrazione</a>
 					</th>
@@ -41,7 +40,7 @@
   				
 			</div>		
 				
-			<div class="recPsw" type="button" data-toggle="modal" data-target="#myModal" style="text-align:center" onclick="setAction('retrive');">
+			<div class="recPsw" type="button" data-toggle="modal" data-target="#login" style="text-align:center" onclick="setAction('retrive');">
 				<p><b>Password dimenticata?</b></p>
 			</div>
 			
