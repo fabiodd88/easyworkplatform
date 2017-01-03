@@ -58,6 +58,7 @@ function setAction(action){
 		var psw=document.getElementById('password');
 		psw.setAttribute("type", "hidden");
 		document.getElementById("passLab").style.display="none";
+		$("#status").html("Messaggio: ");
 		break;
 
 	case 'login':
@@ -66,6 +67,7 @@ function setAction(action){
 		$(".inutile").css({"display":"inline"});
 		var psw=document.getElementById('password');
 		psw.setAttribute("type", "");
+		$("#status").html("Messaggio: ");
 		break;
 	}	
 }
