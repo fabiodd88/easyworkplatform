@@ -78,10 +78,10 @@
 
 
 			<%@include file="/jsp/search.jsp"%>
-			<%@include file="/jsp/activity_component/client.jsp"%>
-			<%@include file="/jsp/activity_component/article.jsp"%>
-			<%@include file="/jsp/activity_component/service.jsp"%>
-			<%@include file="/jsp/activity_component/payment.jsp"%>
+			<%@include file="/jsp/activity_component/tableClient.jsp"%>
+			<%@include file="/jsp/activity_component/tableArticle.jsp"%>
+			<%@include file="/jsp/activity_component/tableService.jsp"%>
+			<%@include file="/jsp/activity_component/tablePagamento.jsp"%>
 
 		</div>
 	</div>

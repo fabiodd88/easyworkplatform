@@ -349,20 +349,16 @@ function controlloService(){
 function elimina(action){
 	switch(action){
 	case 'client': 
-		var box = document.getElementById("cliente");
-		box.parentNode.removeChild(box);
+		document.getElementById("cliente").style.display="none";
 		break;
 	case 'article':
-		var box = document.getElementById("articolo");
-		box.parentNode.removeChild(box);
+		var box = document.getElementById("articolo").style.display="none";
 		break;
 	case 'service':
-		var box = document.getElementById("servizio");
-		box.parentNode.removeChild(box);
+		var box = document.getElementById("servizio").style.display="none";
 		break;
 	case 'payment':
-		var box = document.getElementById("pagamento");
-		box.parentNode.removeChild(box);
+		var box = document.getElementById("pagamento").style.display="none";
 		break;
 	}
 }
