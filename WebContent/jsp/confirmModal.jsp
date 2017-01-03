@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a class="btn btn-info" href="attività.jsp">OK</a>
+				<a class="btn btn-info" data-dismiss="modal">OK</a>
 			</div>
 		</div>
 	</div>

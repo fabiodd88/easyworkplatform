@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal">
+<div class="modal fade" id="login">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,22 +8,21 @@
 			</div>
 			<div class="modal-body">
 				<div class="form-group">
-					<form method="POST" action="UserController" id='myForm'>
-						<input type="text" size="40" maxlength="40" name="action"
-								id="inputAction" placeholder="Action" class="form-control"
-								style="display: none;" /><br> 
-						<label for="inputUser">Email</label>
-						<input type="text" size="40" maxlength="40" name="email"
-							id="inputUser" placeholder="Email" class="form-control" /><br>
-						<div class="inutile" for="inputPassword" name="pwdLabel" type="">Password</div> <input
-								type="password" size="40" maxlength="40" name="password"
-								id="inputPassword" class="form-control" placeholder="Password" /><br>
-						<div id="status">Messaggio: </div>
+					<form id="newUserForm" role="form" action="UserController"
+						method="POST">
+						<input type="text" name="action" id="action" value="login"
+							style="display: none;" /><br> 
+							<label>Email</label> 
+							<input type="text" size="40" maxlength="40" name="email" id="email"
+							placeholder="Email" class="form-control" /><br> 
+							<label id="passLab">Password</label>
+							<input type="password" size="40" maxlength="40" name="password"
+							id="password" class="form-control" placeholder="Password" /><br>
+						<div id="status">Messaggio:</div>
 						<div class="modal-footer">
-							<a href="#" data-dismiss="modal" class="btn">Close</a> 
-						<!--  <input type="submit" class="btn btn-primary" id='mySubmit'/> -->
-							<a href="homePage.jsp" data-dismiss="modal" class="btn">Conferma</a> 
-
+							<a href="#" data-dismiss="modal" class="btn">Close</a>
+							<!--  <input type="submit" class="btn btn-primary" id='mySubmit'/> -->
+							<button class="btn" type="submit">Conferma</button>
 						</div>
 					</form>
 				</div>

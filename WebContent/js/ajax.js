@@ -48,24 +48,26 @@ $(document).ready(function()
 
 
 function setAction(action){
-	$('#inputAction').attr('value', action);
+	$('#action').attr('value', action);
 
 	switch(action)
 	{
 	case 'retrive':
 		$('#modalTitle').text('Recupera password');
 		$('#mySubmit').val('Retrive');
-		var psw=document.getElementById('inputPassword');
+		var psw=document.getElementById('password');
 		psw.setAttribute("type", "hidden");
-		$(".inutile").css({"display":"none"});
+		document.getElementById("passLab").style.display="none";
+		$("#status").html("Messaggio: ");
 		break;
 
 	case 'login':
 		$('#modalTitle').text('Login User');
 		$('#mySubmit').val('Log-In');
 		$(".inutile").css({"display":"inline"});
-		var psw=document.getElementById('inputPassword');
+		var psw=document.getElementById('password');
 		psw.setAttribute("type", "");
+		$("#status").html("Messaggio: ");
 		break;
 	}	
 }
@@ -224,6 +226,7 @@ function visualizzaDiv(x){
 	}
 }
 
+
 function modal(action){
 	switch(action){
 	case 'client':
@@ -262,39 +265,7 @@ function modal(action){
 	}
 }
 
-function registration(){
-	$.ajax({
-		type: "POST",
-		url: "UserController",
-		data: $("#newUserForm").serialize(),
-		dataType: "text",
-		success: function(data, status, xhr)
-		{
-			$("#status").html("");
-			if(xhr.responseText == "loginOk"){
-				$("#status").html("Messaggio: Login Successful.");
-			}
-			else if(xhr.responseText == "nUser"){
-				$("#status").html("Messaggio: User dosn't not exist.");
-			}
-			else if(xhr.responseText == "insertOk"){
-				$("#status").html("Messaggio: User insert");
-			}
-			else if(xhr.responseText == "noInsert"){
-				$("#status").html("Messaggio: Errore insert");
-			}
-			else if(xhr.responseText == "exist"){
-				$("#status").html("Messaggio: User already exist");
-			}
-			else if(xhr.responseText == "empty"){
-				$("#status").html("Messaggio: Uno dei campi risulta vuoto");
-			}
-			else if(xhr.responseText == "dbError"){
-				$("#status").html("Messaggio: Database Error");
-			}
-		}
-});
-}
+
 
 function controlloClient(){
 	var name = document.getElementById("name").value;
