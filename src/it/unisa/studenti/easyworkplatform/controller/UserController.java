@@ -16,8 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import it.unisa.studenti.easyworkplatform.model.Account;
 import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.Activity;
