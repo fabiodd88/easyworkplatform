@@ -90,7 +90,7 @@
 					</div>
 					<div class="col-md-1"></div>
 					<div class="col-md-3">
-						<button class="but">
+						<button class="but" onclick="elimina('client')">
 							<img src="icon/remove.png"><br>Elimina
 						</button>
 					</div>

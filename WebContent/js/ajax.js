@@ -346,3 +346,24 @@ function controlloService(){
 		document.getElementById("mess3").style.display="block";
 	}
 }
+
+function elimina(action){
+	switch(action){
+	case 'client': 
+		var box = document.getElementById("cliente");
+		box.parentNode.removeChild(box);
+		break;
+	case 'article':
+		var box = document.getElementById("articolo");
+		box.parentNode.removeChild(box);
+		break;
+	case 'service':
+		var box = document.getElementById("servizio");
+		box.parentNode.removeChild(box);
+		break;
+	case 'payment':
+		var box = document.getElementById("pagamento");
+		box.parentNode.removeChild(box);
+		break;
+	}
+}
