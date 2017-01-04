@@ -20,7 +20,6 @@
 <body>
 	<!-- Contenitore della pagina -->
 	<div class="container-fluid div-box">
-		<!-- Un jumbotron è il quadratone blu -->
 		<%@include file="/jsp/jumbotron.jsp" %>
 		<div class="container-fluid text-center padding">
 			<div class="row-fluid">
