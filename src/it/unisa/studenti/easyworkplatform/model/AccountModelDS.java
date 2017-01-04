@@ -65,12 +65,8 @@ public class AccountModelDS implements ModelInterface<User> {
 			preparedStatement.setInt(8, user.getCap());
 			preparedStatement.setString(9, user.getTaxCode());
 			preparedStatement.setString(10, user.getEmail());
-			String password = user.getPassword();
-			String cryptedPassword = toSHA1(password.getBytes());
-			preparedStatement.setString(11, cryptedPassword);
-			String secondKey = user.getPassword();
-			String cryptedSecondKey = toSHA1(secondKey.getBytes());
-			preparedStatement.setString(12, cryptedSecondKey);
+			preparedStatement.setString(11,  user.getPassword());
+			preparedStatement.setString(12,  user.getSecondKey());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {

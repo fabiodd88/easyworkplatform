@@ -84,15 +84,21 @@ function forward(value){
 	
 	else if(value == "reg2"){
 		var name	= document.getElementById("name").value;
-		var surname= document.getElementById("surname").value;
+		var surname	= document.getElementById("surname").value;
 		var date	= document.getElementById("birthDate").value;
+		var place	= $("#birthPlace").val();
 		var tax		= document.getElementById("taxCode").value;
+		var address	= document.getElementById("address").value;
 		var civic	= document.getElementById("civicNumber").value;
 		var city	= document.getElementById("city").value;
+		var province=  $("#province").val();
 		var cap		= document.getElementById("cap").value;
 		
-		if(	name=="" || surname=="" || date=="" || 
-				tax=="" || civic=="" || city=="" ||cap==""){
+		if(		name == ""	|| surname == ""	|| date   == ""	|| 
+				tax	 == ""	|| civic   == ""	|| city   == "" ||
+				cap  == ""	|| place   == ""	|| address== ""	||
+				province == ""
+		){
 			$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 			document.getElementById("mess1").style.display="block";
 		}
@@ -101,6 +107,16 @@ function forward(value){
 			document.getElementById("mess1").style.display="block";
 		}
 		else{
+			$("#repName").val(name);;
+			$("#repSurname").val(surname);
+			$("#repBirth").val(date);
+			$("#repPlace").val(place);
+			$("#repTax").val(tax);
+			$("#repAddress").val(address);
+			$("#repCivic").val(civic);
+			$("#repCity").val(city);
+			$("#repProvince").val(province);
+			$("#repCap").val(cap);
 			document.getElementById(value).style.display="block";
 			document.getElementById("reg1").style.display="none";
 			document.getElementById("reg3").style.display="none";
@@ -139,6 +155,11 @@ function forward(value){
 			document.getElementById("mess2").style.display="block";
 		}
 		else{
+			$("#repEmail").val(email);
+			$("#repPass").val(pass);
+			$("#repConfPass").val(confermaPass);
+			$("#repSecondKey").val(secondKey);
+			$("#repConfSecondKey").val(confSecondKey);
 			document.getElementById(value).style.display="block";
 			document.getElementById("reg2").style.display="none";
 			document.getElementById("rec1").style.display="none";
@@ -166,6 +187,13 @@ function forward(value){
 			document.getElementById("mess3").style.display="block";
 		}
 		else{
+			$("#repActivityName").val(activityName);
+			$("#repVatCode").val(vatCode);
+			$("#repTipology").val(tipology);
+			$("#repActivityAddress").val(activityAddress);
+			$("#repActivityCivicNumber").val(activityCivicNumber);
+			$("#repActivityCity").val(activityCity);
+			$("#repActivityCap").val(activityCap);
 			document.getElementById("rec1").style.display="inline";
 			document.getElementById("reg3").style.display="none";
 			document.getElementById("rec2").style.display="none";

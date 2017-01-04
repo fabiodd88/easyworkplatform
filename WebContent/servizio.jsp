@@ -19,7 +19,7 @@
 	<!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<!-- Un jumbotron è il quadratone blu -->
-		<div class="jumbotron color">
+		<%@include file="/jsp/jumbotron.jsp" %>
 			<form id="InsertForm" action="" method="post"
 				style="visibility: hidden;">
 				<input type="hidden" name="action" value="insert"></input>

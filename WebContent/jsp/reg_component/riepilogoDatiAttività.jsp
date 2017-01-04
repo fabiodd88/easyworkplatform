@@ -18,44 +18,44 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label style="width: 30%">Nome</label> <input type="text"
-										name="name" class="form-control" id="recNameActivity" readonly />
+										name="name" class="form-control" id="repActivityName" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Partita iva</label> <input
-										type="text" name="vatCode" class="form-control" id="recVat" readonly />
+										type="text" name="vatCode" class="form-control" id="repVatCode" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Tipologia</label> <input type="text"
-										name="tipology" class="form-control" id="recType" readonly />
+										name="tipology" class="form-control" id="repTipology" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Indirizzo</label> <input type="text"
-										name="adress" class="form-control" id="recAdressActivity" readonly />
+										name="address" class="form-control" id="repActivityAddress" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Città</label> <input type="text"
-										name="city" class="form-control" id="recCityActivity"readonly />
+										name="city" class="form-control" id="repActivityCity"readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Numero civico</label> <input
 										type="text" name="civicNumber" class="form-control"
-										placeholder="Only number" id="recCivic" readonly />
+										placeholder="Only number" id="repActivityCivicNumber" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">CAP</label> <input type="text"
-										name="cap" class="form-control" id="recCap" readonly />
+										name="cap" class="form-control" id="repActivityCap" readonly />
 								</div>
 								<br>
 							</div>

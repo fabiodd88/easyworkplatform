@@ -42,7 +42,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Luogo di nascita<span style="color: #FF0000">*</span></label>
-									<select class="form-control" name="birthPlace" required="required">
+									<select class="form-control" name="birthPlace" id="birthPlace" required="required">
 										<%@include file="/jsp/province.jsp" %>
 									</select>
 								</div>
@@ -69,7 +69,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Provincia<span style="color: #FF0000">*</span></label> <select
-										class="form-control" name="province" required="required">
+										class="form-control" name="province" id="province" required="required">
 										<%@include file="/jsp/province.jsp" %>
 									</select>
 								</div>

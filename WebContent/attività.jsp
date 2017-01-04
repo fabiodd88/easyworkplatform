@@ -21,7 +21,7 @@
 	<!-- Contenitore della pagina -->
 	<div class="container-fluid div-box">
 		<!-- Un jumbotron è il quadratone blu -->
-		<div class="jumbotron color"></div>
+		<%@include file="/jsp/jumbotron.jsp" %>
 		<div class="container-fluid text-center padding">
 			<div class="row-fluid">
 				<div class="col-xs-8">

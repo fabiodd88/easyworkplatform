@@ -21,7 +21,7 @@
 	<!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<!-- Un jumbotron è il quadratone blu -->
-		<div class="jumbotron color"></div>
+		<%@include file="/jsp/jumbotron.jsp" %>
 
 
 		<form id="newUserForm" role="form" action="UserController"

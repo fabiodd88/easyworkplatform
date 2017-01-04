@@ -109,7 +109,8 @@ public class UserController extends HttpServlet {
 						email.equals("") 		|| password.equals("")			 || secondKey.equals("")		||
 						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || activityName.equals("")		||
 						vatCode.equals("")		|| tipology.equals("")			 || activityAddress.equals("")	|| 
-						activityCity.equals("") || activityCivicNumber.equals("")|| activityCap.equals("")
+						activityCity.equals("") || activityCivicNumber.equals("")|| activityCap.equals("")		||
+						civicNumber.equals("")
 						){
 							sendMessage("empty", response);
 							return;
@@ -139,8 +140,6 @@ public class UserController extends HttpServlet {
 					Date bd = Date.valueOf(birthDate);
 					String cryptedPassword = toSHA1(password.getBytes());
 					String cryptedSecondKey = toSHA1(secondKey.getBytes());
-					
-					
 					Account account = new Account(email, cryptedPassword, cryptedSecondKey);
 					User user = new User(account, name, surname, bd, birthPlace, address, city, province, CAP, taxCode);
 					
@@ -163,8 +162,9 @@ public class UserController extends HttpServlet {
 				// LOGIN
 				if (action.equalsIgnoreCase("login")) {
 					
-					String email = request.getParameter("email");
-					String password = request.getParameter("password");
+					
+					String email	= (String) request.getParameter("email");
+					String password = (String) request.getParameter("password");
 					
 //					if (!(Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) || Pattern.matches("[a-zA-Z0-9]{8,32}", password))){
 //						sendMessage("errorLogin", response);
@@ -181,7 +181,7 @@ public class UserController extends HttpServlet {
 					if (dbPassword != null) {
 						if (dbPassword.equals(hashed)){
 							session.setAttribute("user", user);
-							sendMessage("login", response);
+							sendMessage("loginOk", response);
 							return;
 						}
 						else{
