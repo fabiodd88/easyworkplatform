@@ -80,7 +80,7 @@
 								<br>
 							</div>
 							<button type="reset" class="btn btn-default"
-								onclick="forward('reg3')">Annulla</button>
+								onclick="forward('reg1')">Modifica</button>
 							<button type="button" class="btn btn-default"
 								onclick="forward('rec2')">Avanti</button>
 							<div class="container-fluid text-center padding"></div>

@@ -18,9 +18,9 @@
 <script src="js/ajax.js"></script>
 </head>
 <body>
+
 <!-- Contenitore della pagina -->
 	<div class="container div-box">
-	<!-- Un jumbotron è il quadratone blu -->
 		<%@include file="/jsp/jumbotron.jsp" %>
 		<div class="container-fluid text-center padding">
 			<div class="table-responsive">

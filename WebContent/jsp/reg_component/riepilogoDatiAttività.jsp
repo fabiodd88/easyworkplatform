@@ -62,7 +62,7 @@
 						</div>
 
 						<button type="reset" class="btn btn-default"
-							onClick="forward('rec2')">Indietro</button>
+							onClick="forward('reg3')">Modifica</button>
 						<button type="submit" class="btn btn-default" data-toggle="modal"
 							data-target="#modalConf" >Conferma</button>
 					</div>

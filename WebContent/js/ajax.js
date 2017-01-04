@@ -11,10 +11,8 @@ $(document).ready(function()
 			{
 				$("#status").html("");
 				if(xhr.responseText == "loginOk"){
+					$("#modalTitle").html("Messaggio:");
 					$("#status").html("Messaggio: Login Successful.");
-					$('#topRightNavBar').hide();
-					$('#topRightSettings').show();
-					window.location.href="index.jsp";
 				}
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
@@ -58,7 +56,6 @@ function setAction(action){
 		var psw=document.getElementById('password');
 		psw.setAttribute("type", "hidden");
 		document.getElementById("passLab").style.display="none";
-		$("#status").html("Messaggio: ");
 		break;
 
 	case 'login':
@@ -66,8 +63,7 @@ function setAction(action){
 		$('#mySubmit').val('Log-In');
 		$(".inutile").css({"display":"inline"});
 		var psw=document.getElementById('password');
-		psw.setAttribute("type", "");
-		$("#status").html("Messaggio: ");
+		psw.setAttribute("type", "password");
 		break;
 	}	
 }
@@ -77,128 +73,150 @@ function setAction(action){
 
 function forward(value){
 	if(value == "reg1"){
-			document.getElementById(value).style.display="block";
+			document.getElementById(value).style.display="inline";
+			document.getElementById("rec1").style.display="none";
 			document.getElementById("reg2").style.display="none";
+			
 	}
 	
 	
 	else if(value == "reg2"){
-		var name	= document.getElementById("name").value;
-		var surname	= document.getElementById("surname").value;
-		var date	= document.getElementById("birthDate").value;
-		var place	= $("#birthPlace").val();
-		var tax		= document.getElementById("taxCode").value;
-		var address	= document.getElementById("address").value;
-		var civic	= document.getElementById("civicNumber").value;
-		var city	= document.getElementById("city").value;
-		var province=  $("#province").val();
-		var cap		= document.getElementById("cap").value;
-		
-		if(		name == ""	|| surname == ""	|| date   == ""	|| 
-				tax	 == ""	|| civic   == ""	|| city   == "" ||
-				cap  == ""	|| place   == ""	|| address== ""	||
-				province == ""
-		){
-			$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-			document.getElementById("mess1").style.display="block";
-		}
-		else if(tax.length != 16){
-			$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
-			document.getElementById("mess1").style.display="block";
+		var non =document.getElementById("rec2").style.display;
+		var nom =document.getElementById("reg3").style.display;
+		if(non == "inline" || nom == "inline" ){
+			document.getElementById("reg2").style.display="inline";
+			document.getElementById("reg3").style.display="none";
+			document.getElementById("rec2").style.display="none";
+			document.getElementById("mess3").style.display="none";
 		}
 		else{
-			$("#repName").val(name);;
-			$("#repSurname").val(surname);
-			$("#repBirth").val(date);
-			$("#repPlace").val(place);
-			$("#repTax").val(tax);
-			$("#repAddress").val(address);
-			$("#repCivic").val(civic);
-			$("#repCity").val(city);
-			$("#repProvince").val(province);
-			$("#repCap").val(cap);
-			document.getElementById(value).style.display="block";
-			document.getElementById("reg1").style.display="none";
-			document.getElementById("reg3").style.display="none";
-			document.getElementById("mess1").style.display="none";
+			var name	= document.getElementById("name").value;
+			var surname	= document.getElementById("surname").value;
+			var date	= document.getElementById("birthDate").value;
+			var place	= $("#birthPlace").val();
+			var tax		= document.getElementById("taxCode").value;
+			var address	= document.getElementById("address").value;
+			var civic	= document.getElementById("civicNumber").value;
+			var city	= document.getElementById("city").value;
+			var province=  $("#province").val();
+			var cap		= document.getElementById("cap").value;
 			
+			if(		name == ""	|| surname == ""	|| date   == ""	|| 
+					tax	 == ""	|| civic   == ""	|| city   == "" ||
+					cap  == ""	|| place   == ""	|| address== ""	||
+					province == ""
+			){
+				$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+				document.getElementById("mess1").style.display="block";
+			}
+			else if(tax.length != 16){
+				$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
+				document.getElementById("mess1").style.display="block";
+			}
+			else{
+				$("#repName").val(name);;
+				$("#repSurname").val(surname);
+				$("#repBirth").val(date);
+				$("#repPlace").val(place);
+				$("#repTax").val(tax);
+				$("#repAddress").val(address);
+				$("#repCivic").val(civic);
+				$("#repCity").val(city);
+				$("#repProvince").val(province);
+				$("#repCap").val(cap);
+				document.getElementById(value).style.display="inline";
+				document.getElementById("reg1").style.display="none";
+				document.getElementById("rec2").style.display="none";
+				document.getElementById("mess1").style.display="none";
+			}
 		}
 		
 	}
 	
 	
 	else if(value == "reg3"){
-		var email	= document.getElementById("email").value;
-		var pass	= document.getElementById("passord").value;
-		var confermaPass= document.getElementById("confPassword").value;
-		var secondKey	= document.getElementById("secondKey").value;
-		var confSecondKey= document.getElementById("confSecondKey").value;
-		if(email=="" || pass=="" || confermaPass=="" || 
-				secondKey=="" || confSecondKey==""){
-			$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-			document.getElementById("mess2").style.display="block";
-		}
-		else if(secondKey == pass){
-			$("#mess2").html("<strong>Warning!</strong>  La password e la chiave secondaria devono essere distinte !!");
-			document.getElementById("mess2").style.display="block";
-		}
-		else if(secondKey != confSecondKey || pass  != confermaPass){
-			$("#mess2").html("<strong>Warning!</strong>  Le password non coincidono!!");
-			document.getElementById("mess2").style.display="block";
-		}
-		else if(pass.length<6 || secondKey.length<6){
-			$("#mess2").html("<strong>Warning!</strong>  Le password devono essere minimo 6 caratteri!!");
-			document.getElementById("mess2").style.display="block";
-		}
-		else if(pass.length>8 || secondKey.length>8){
-			$("#mess2").html("<strong>Warning!</strong>  Le password devono essere massimo 8 caratteri!!");
-			document.getElementById("mess2").style.display="block";
+		var non =document.getElementById("rec3").style.display;
+		if(non == "inline"){
+			document.getElementById("reg3").style.display="inline";
+			document.getElementById("rec3").style.display="none";
+			document.getElementById("mess3").style.display="none";
 		}
 		else{
-			$("#repEmail").val(email);
-			$("#repPass").val(pass);
-			$("#repConfPass").val(confermaPass);
-			$("#repSecondKey").val(secondKey);
-			$("#repConfSecondKey").val(confSecondKey);
-			document.getElementById(value).style.display="block";
-			document.getElementById("reg2").style.display="none";
-			document.getElementById("rec1").style.display="none";
-			document.getElementById("mess2").style.display="none";
+			var email	= document.getElementById("email").value;
+			var pass	= document.getElementById("password").value;
+			var confermaPass= document.getElementById("confPassword").value;
+			var secondKey	= document.getElementById("secondKey").value;
+			var confSecondKey= document.getElementById("confSecondKey").value;
+			if(email=="" || pass=="" || confermaPass=="" || 
+					secondKey=="" || confSecondKey==""){
+				$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+				document.getElementById("mess2").style.display="block";
+			}
+			else if(secondKey == pass){
+				$("#mess2").html("<strong>Warning!</strong>  La password e la chiave secondaria devono essere distinte !!");
+				document.getElementById("mess2").style.display="block";
+			}
+			else if(secondKey != confSecondKey || pass  != confermaPass){
+				$("#mess2").html("<strong>Warning!</strong>  Le password non coincidono!!");
+				document.getElementById("mess2").style.display="block";
+			}
+			else if(pass.length<6 || secondKey.length<6){
+				$("#mess2").html("<strong>Warning!</strong>  Le password devono essere minimo 6 caratteri!!");
+				document.getElementById("mess2").style.display="block";
+			}
+			else if(pass.length>8 || secondKey.length>8){
+				$("#mess2").html("<strong>Warning!</strong>  Le password devono essere massimo 8 caratteri!!");
+				document.getElementById("mess2").style.display="block";
+			}
+			else{
+				$("#repEmail").val(email);
+				$("#repPass").val(pass);
+				$("#repConfPass").val(confermaPass);
+				$("#repSecondKey").val(secondKey);
+				$("#repConfSecondKey").val(confSecondKey);
+				document.getElementById(value).style.display="inline";
+				document.getElementById("reg2").style.display="none";
+				document.getElementById("rec3").style.display="none";
+				document.getElementById("mess2").style.display="none";
+			}
 		}
 	}
 	
 	
 	else if(value == "rec1"){
-		var activityName= document.getElementById("activityName").value;
-		var vatCode		= document.getElementById("vatCode").value;
-		var tipology	= document.getElementById("tipology").value;
-		var activityAddress	= document.getElementById("activityAddress").value;
-		var activityCity= document.getElementById("activityCity").value;
-		var activityCivicNumber	= document.getElementById("activityCivicNumber").value;
-		var activityCap	= document.getElementById("activityCap").value;
-		if(activityName=="" || vatCode=="" || tipology=="" ||
-				activityAddress=="" || activityCity=="" || 
-				activityCivicNumber=="" || activityCap==""){
-			$("#mess3").html("<strong>Warning!</strong> Campi vuoti o non conformi!!");
-			document.getElementById("mess3").style.display="block";
-		}
-		else if(vatCode.length != 11){
-			$("#mess3").html("<strong>Warning!</strong>  Inserire 11 cifre per la partita iva");
-			document.getElementById("mess3").style.display="block";
-		}
-		else{
-			$("#repActivityName").val(activityName);
-			$("#repVatCode").val(vatCode);
-			$("#repTipology").val(tipology);
-			$("#repActivityAddress").val(activityAddress);
-			$("#repActivityCivicNumber").val(activityCivicNumber);
-			$("#repActivityCity").val(activityCity);
-			$("#repActivityCap").val(activityCap);
-			document.getElementById("rec1").style.display="inline";
-			document.getElementById("reg3").style.display="none";
-			document.getElementById("rec2").style.display="none";
-			document.getElementById("mess3").style.display="none";
-		}
+		
+			var activityName= document.getElementById("activityName").value;
+			var vatCode		= document.getElementById("vatCode").value;
+			var tipology	= document.getElementById("tipology").value;
+			var activityAddress	= document.getElementById("activityAddress").value;
+			var activityCity= document.getElementById("activityCity").value;
+			var activityCivicNumber	= document.getElementById("activityCivicNumber").value;
+			var activityCap	= document.getElementById("activityCap").value;
+			if(activityName=="" || vatCode=="" || tipology=="" ||
+					activityAddress=="" || activityCity=="" || 
+					activityCivicNumber=="" || activityCap==""){
+				$("#mess3").html("<strong>Warning!</strong> Campi vuoti o non conformi!!");
+				document.getElementById("mess3").style.display="block";
+			}
+			else if(vatCode.length != 11){
+				$("#mess3").html("<strong>Warning!</strong>  Inserire 11 cifre per la partita iva");
+				document.getElementById("mess3").style.display="block";
+			}
+			else{
+				$("#repActivityName").val(activityName);
+				$("#repVatCode").val(vatCode);
+				$("#repTipology").val(tipology);
+				$("#repActivityAddress").val(activityAddress);
+				$("#repActivityCivicNumber").val(activityCivicNumber);
+				$("#repActivityCity").val(activityCity);
+				$("#repActivityCap").val(activityCap);
+				document.getElementById("rec1").style.display="inline";
+				document.getElementById("reg3").style.display="none";
+				document.getElementById("rec2").style.display="none";
+				document.getElementById("mess3").style.display="none";
+			}
+		
+		
 		
 	}
 	else if(value == "rec2"){

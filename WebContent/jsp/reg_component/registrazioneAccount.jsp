@@ -23,7 +23,7 @@
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Password<span
-										style="color: #FF0000">*</span></label> <input id="passord"
+										style="color: #FF0000">*</span></label> <input id="password"
 										type="password" name="password" required class="form-control"
 										pattern=".{6,8}" placeholder="Da 6 a 8 caratteri" />
 								</div>

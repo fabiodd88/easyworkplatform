@@ -16,42 +16,42 @@
 							<div class="vertical">
 								<div class="divHorizontal">
 									<label style="width: 30%">Email</label> <input type="text"
-										name="email" required class="form-control" id="repEmail"
+										name="email" class="form-control" id="repEmail"
 										readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
-									<label style="width: 30%">Password</label> <input type="text"
-										name="password" id="repPass" required class="form-control"
+									<label style="width: 30%">Password</label> <input type="password"
+										name="password" id="repPass" class="form-control"
 										readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Conferma password</label> <input
-										type="text" name="confermaPassword" id="repConfPass" required
+										type="password" name="confermaPassword" id="repConfPass" 
 										class="form-control" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Chiave secondaria</label> <input
-										type="text" name="secondaryKey" required class="form-control"
+										type="password" name="secondaryKey" class="form-control"
 										id="repSecondKey" readonly />
 								</div>
 								<br>
 
 								<div class="divHorizontal">
 									<label style="width: 30%">Conferma chiave secondaria</label> <input
-										type="text" name="confermaSecondaryKey" required
+										type="password" name="confermaSecondaryKey" 
 										class="form-control" id="repConfSecondKey" readonly />
 								</div>
 								<br>
 							</div>
 						</div>
 						<button type="reset" class="btn btn-default"
-							onClick="forward('rec1')">Indietro</button>
+							onClick="forward('reg2')">Modifica</button>
 						<button type="button" class="btn btn-default"
 							onclick="forward('rec3')">Avanti</button>
 
