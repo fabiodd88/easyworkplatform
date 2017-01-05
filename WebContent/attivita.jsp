@@ -109,7 +109,7 @@
 	<%@include file="/jsp/activity_component/modalPayment.jsp"%>
 	<%@include file="/jsp/activity_component/modalClient.jsp"%>
 	<%@include file="/jsp/activity_component/modalModificaUtente.jsp"%>
-	<%@include file="jsp/footer.jsp"%>
+	<%@include file="jsp/footer.jsp"%>1
 
 
 </body>
