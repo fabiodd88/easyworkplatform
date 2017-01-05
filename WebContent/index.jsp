@@ -19,6 +19,9 @@
 </head>
 <body>
 
+		
+
+
 <!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<%@include file="/jsp/jumbotron.jsp" %>

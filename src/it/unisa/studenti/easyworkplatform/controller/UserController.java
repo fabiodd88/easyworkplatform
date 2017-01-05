@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import it.unisa.studenti.easyworkplatform.model.Account;
 import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
@@ -59,7 +60,15 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doPost(request, response);
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		if(user != null ){
+			request.getRequestDispatcher("attivita.jsp").forward(request, response);
+			
+		}
+		else{
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
 	}
 
 	/**
@@ -181,6 +190,8 @@ public class UserController extends HttpServlet {
 					if (dbPassword != null) {
 						if (dbPassword.equals(hashed)){
 							session.setAttribute("user", user);
+							String name = user.getName()+ user.getSurname();
+							session.setAttribute("UserName", name);
 							sendMessage("loginOk", response);
 							return;
 						}
@@ -195,7 +206,7 @@ public class UserController extends HttpServlet {
 				if (action.equalsIgnoreCase("logout")) {
 					User user = (User) session.getAttribute("user");
 					if (user != null) {
-						response.sendRedirect("/ProgettoPW/index.jsp");
+						response.sendRedirect("UserController");
 						session.invalidate();
 						return;
 					} else{

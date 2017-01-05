@@ -13,6 +13,7 @@ $(document).ready(function()
 				if(xhr.responseText == "loginOk"){
 					$("#modalTitle").html("Messaggio:");
 					$("#status").html("Messaggio: Login Successful.");
+					window.location.href="attivita.jsp";
 				}
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
@@ -61,7 +62,7 @@ function setAction(action){
 	case 'login':
 		$('#modalTitle').text('Login User');
 		$('#mySubmit').val('Log-In');
-		$(".inutile").css({"display":"inline"});
+		$('#mySubmit').addClass("btn-primary");
 		var psw=document.getElementById('password');
 		psw.setAttribute("type", "password");
 		break;
