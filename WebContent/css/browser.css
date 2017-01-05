@@ -6,7 +6,7 @@ body{
 
 .color{
 	background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-	color: white;
+	color: white !important;
 	font-family: lato;
 }
 
@@ -92,8 +92,35 @@ body{
 	padding-left: 88%;
 }
 
-.but{
-	border: 0px !important; 
-	background-color:#FFFFFF !important;
+.distance{
+	width: 250px;
 }
 
+.but{
+	border: 0px !important; 
+	background-color: transparent !important;
+}
+
+
+.screen{
+	display: inline;
+}
+
+.naviBar{
+		display: none !important;
+		
+}
+
+.text-color{
+	color: white !important;
+}
+
+
+.table-hidden{
+	display: none !important;
+}
+
+
+.display-block{
+	display: inline !important;
+}

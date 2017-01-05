@@ -1,4 +1,4 @@
-<div class="table-responsive" id="servizio" style="display: none;">
+<div class="table-responsive table-hidden" id="servizio">
 	<table class="table table-bordered" >
 		<thead>
 			<tr class="info">

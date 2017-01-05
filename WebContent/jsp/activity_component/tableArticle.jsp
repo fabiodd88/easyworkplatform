@@ -1,4 +1,4 @@
-<div class="table-responsive" id="articolo" style="display: none;">
+<div class="table-responsive table-hidden" id="articolo">
 	<table class="table table-bordered" >
 		<thead>
 			<tr class="info">

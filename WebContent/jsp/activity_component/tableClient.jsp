@@ -1,4 +1,6 @@
-<div class="table-responsive" id="cliente" style="display: none;"">
+
+
+<div class="table-responsive table-hidden" id="cliente">
 	<table class="table table-bordered">
 		<thead>
 			<tr class="info">

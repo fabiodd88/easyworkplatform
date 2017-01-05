@@ -234,16 +234,12 @@ function forward(value){
 
 
 function visualizzaDiv(x){
-	document.getElementById("searchBar").style.display="inline";
+
 	if(x==0){
-		document.getElementById("cliente").style.display="inline";
-		document.getElementById("periodo").style.display="none";
-		document.getElementById("btAddCliente").style.display="inline";
-		document.getElementById("articolo").style.display="none";
-		document.getElementById("btAddArticle").style.display="none";
-		document.getElementById("servizio").style.display="none";
-		document.getElementById("btAddService").style.display="none";
-		document.getElementById("pagamento").style.display="none";
+		$('#cliente').removeClass("table-hidden");
+		$('#btAddCliente').removeClass("table-hidden");
+		$('#cliente').addClass("display-block");
+		$('#btAddCliente').addClass("display-block");
 	}
 	else if(x==1){
 		document.getElementById("cliente").style.display="none";
