@@ -234,42 +234,21 @@ function forward(value){
 
 
 function visualizzaDiv(x){
-
+	$("#list-client").hide();
+	$("#list-service").hide();
+	$("#list-article").hide();
+	$("#list-payment").hide();
 	if(x==0){
-		$('#cliente').removeClass("table-hidden");
-		$('#btAddCliente').removeClass("table-hidden");
-		$('#cliente').addClass("display-block");
-		$('#btAddCliente').addClass("display-block");
+		$("#list-client").show();
 	}
 	else if(x==1){
-		document.getElementById("cliente").style.display="none";
-		document.getElementById("btAddCliente").style.display="none";
-		document.getElementById("articolo").style.display="inline";
-		document.getElementById("btAddArticle").style.display="inline";
-		document.getElementById("periodo").style.display="none";
-		document.getElementById("servizio").style.display="none";
-		document.getElementById("btAddService").style.display="none";
-		document.getElementById("pagamento").style.display="none";
+		$("#list-service").show();
 	}
 	else if(x==2){
-		document.getElementById("cliente").style.display="none";
-		document.getElementById("btAddCliente").style.display="none";
-		document.getElementById("articolo").style.display="none";
-		document.getElementById("btAddArticle").style.display="none";
-		document.getElementById("servizio").style.display="inline";
-		document.getElementById("btAddService").style.display="inline";
-		document.getElementById("periodo").style.display="inline";
-		document.getElementById("pagamento").style.display="none";
+		$("#list-article").show();
 	}
 	else if(x==3){
-		document.getElementById("cliente").style.display="none";
-		document.getElementById("btAddCliente").style.display="none";
-		document.getElementById("articolo").style.display="none";
-		document.getElementById("btAddArticle").style.display="none";
-		document.getElementById("servizio").style.display="none";
-		document.getElementById("btAddService").style.display="none";
-		document.getElementById("pagamento").style.display="inline";
-		document.getElementById("periodo").style.display="inline";
+		$("#list-payment").show();
 	}
 }
 
