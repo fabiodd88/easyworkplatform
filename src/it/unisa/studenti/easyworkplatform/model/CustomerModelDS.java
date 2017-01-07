@@ -19,10 +19,13 @@ import javax.sql.DataSource;
 */
 public class CustomerModelDS implements ModelInterface<Customer> {
 
+
+	private static DataSource ds;
+
 	private static final String TABLE_NAME = "customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-	private static DataSource ds;
+
 
 	/**
 	 * Empty constructor
@@ -39,7 +42,8 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		 }  catch (NamingException e) {
+
+		 } catch (NamingException e) {
 			 e.printStackTrace();
 		 }
 	}
@@ -54,6 +58,8 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)"
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		try {
+
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -79,9 +85,10 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	public void update(Customer customer) throws SQLException {
 		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
-				+ " cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id = ?)";
+				+ " cap=?,phone_number=?,newsletter=?,email=?" + "WHERE (id = ?)";
 		try {
 
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -109,6 +116,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
 
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -126,11 +134,13 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		Customer customer = null;
 		try {
 
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				customer = new Customer();
+				customer.setId(rs.getInt("id"));
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));
@@ -158,14 +168,16 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	public LinkedList<Customer> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Customer customer = new Customer();
 		try {
 	
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, toSearch);
+			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
+				customer.setId(rs.getInt("id"));
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));
@@ -194,9 +206,11 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		Customer customer = new Customer();
 		try {
 			
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
+				customer.setId(rs.getInt("id"));
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));
 				customer.setBirthdate(rs.getDate("birth_date"));

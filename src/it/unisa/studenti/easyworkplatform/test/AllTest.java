@@ -16,6 +16,8 @@ public class AllTest{
 	 */
 	public static Test suite(){
 		TestSuite suite = new TestSuite();
+		
+		//Test class
 		suite.addTestSuite(TestAccount.class);
 		suite.addTestSuite(TestActivity.class);
 		suite.addTestSuite(TestArticle.class);
@@ -24,6 +26,15 @@ public class AllTest{
 		suite.addTestSuite(TestPayment.class);
 		suite.addTestSuite(TestService.class);
 		suite.addTestSuite(TestUser.class);
+		
+		// Test model
+		suite.addTestSuite(TestAccountModelDS.class);
+		suite.addTestSuite(TestActivityModelDS.class);
+		suite.addTestSuite(TestArticleModelDS.class);
+		suite.addTestSuite(TestCustomerModelDS.class);
+		suite.addTestSuite(TestPaymentModelDS.class);
+		suite.addTestSuite(TestServiceModelDS.class);
+		
 		return suite;
 	}
 

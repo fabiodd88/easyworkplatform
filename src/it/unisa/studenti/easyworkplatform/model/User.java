@@ -199,8 +199,8 @@ public class User extends Account{
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surname + ", birthdate=" + birthdate + ", burthplace="
-				+ birthplace + ", address=" + address + ", city=" + city + ", province=" + province + ", cap=" + cap
+		return super.toString() + getClass().getSimpleName()+" [name=" + name + ", surename=" + surname + ", birthdate=" + birthdate + ", birthplace="
+				+ birthplace + ", address=" + address + ", city=" + city + ", province = " + province + ", cap=" + cap
 				+ ", taxCode=" + taxCode + "]";
 	}
 	

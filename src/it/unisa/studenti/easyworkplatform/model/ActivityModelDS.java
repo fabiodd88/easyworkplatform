@@ -16,10 +16,11 @@ import javax.sql.DataSource;
 public class ActivityModelDS implements ModelInterface<Activity> {
 
 
+	private static DataSource ds;
 	private static final String TABLE_NAME = "activity";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-	private static DataSource ds;
+
 	
 	
 	public ActivityModelDS() {
@@ -30,8 +31,11 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		 }  catch (NamingException e) {
+
+		 } catch (NamingException e) {
+
 			 e.printStackTrace();
 		 }
 	}
@@ -45,6 +49,8 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
 				+ "(vat_number, name, type, address, city, province, cap, user_id) VALUES (?,?,?,?,?,?,?,?)";
 		try {
+
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
@@ -66,10 +72,10 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
-				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?)"
+				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?"
 				+ " WHERE (id = ? && user_id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
@@ -93,7 +99,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -111,7 +117,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		Activity activity = null;
 		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -143,7 +149,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		String selectSql = "SELECT * FROM " +ActivityModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
 		Activity activity = new Activity();
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -172,7 +178,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
 		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME;
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
