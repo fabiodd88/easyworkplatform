@@ -20,11 +20,12 @@
 					</ul>
 
 				</li>
+				
 				<li>
 					<ul class="list-inline">
-						<li class="col-xs-10"  onclick="visualizzaDiv(1)"><a href="#">Articolo</a></li>
+						<li class="col-xs-10"  onclick="visualizzaDiv(1)"><a href="#">Servizio</a></li>
 						<li><a class="but" data-toggle="modal"
-							data-target="#modalAddArticle" onclick="modal('addArticle')">
+							data-target="#modalAddService" onclick="modal('addService')">
 								<img src="icon/add.png">
 						</a></li>
 					</ul>
@@ -32,9 +33,9 @@
 				</li>
 				<li>
 					<ul class="list-inline">
-						<li class="col-xs-10"  onclick="visualizzaDiv(2)"><a href="#">Servizio</a></li>
+						<li class="col-xs-10"  onclick="visualizzaDiv(2)"><a href="#">Articolo</a></li>
 						<li><a class="but" data-toggle="modal"
-							data-target="#modalAddService" onclick="modal('addService')">
+							data-target="#modalAddArticle" onclick="modal('addArticle')">
 								<img src="icon/add.png">
 						</a></li>
 					</ul>

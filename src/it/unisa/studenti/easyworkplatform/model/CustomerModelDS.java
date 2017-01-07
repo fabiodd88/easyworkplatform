@@ -2,11 +2,15 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /**
  * 	CustomerModelDs
@@ -15,10 +19,10 @@ import java.util.LinkedList;
 */
 public class CustomerModelDS implements ModelInterface<Customer> {
 
-	// private static DataSource ds;
 	private static final String TABLE_NAME = "customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
+	private static DataSource ds;
 
 	/**
 	 * Empty constructor
@@ -32,20 +36,12 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	public CustomerModelDS(String nomeDb) {
 		try {
-			// Context initCtx = new InitialContext();
-			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			// ds = (DataSource)
-			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-
-		// } catch (NamingException e) {
-		// e.printStackTrace();
-		// }
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
+		 }  catch (NamingException e) {
+			 e.printStackTrace();
+		 }
 	}
 
 	/**
@@ -58,7 +54,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)"
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		try {
-			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -86,7 +81,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
 				+ " cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getSurname());
@@ -113,7 +108,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -130,7 +125,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Customer customer = null;
 		try {
-			connection.setAutoCommit(false);
+
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -166,7 +161,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
 		Customer customer = new Customer();
 		try {
-			connection.setAutoCommit(false);
+	
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -198,7 +193,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME;
 		Customer customer = new Customer();
 		try {
-			connection.setAutoCommit(false);
+			
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {

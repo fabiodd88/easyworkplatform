@@ -64,37 +64,48 @@ public class ServiceController extends HttpServlet {
 				
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
-					String name = request.getParameter("name");
-					String employee = request.getParameter("employee");
-					String quantity = request.getParameter("quantity");
-					String variation = request.getParameter("variation");
-					String note = request.getParameter("note");
-					String receiptDate = request.getParameter("recepitDate");
-					String returnDate = request.getParameter("returnDate");
-					String aid = request.getParameter("aid");
-					String cid = request.getParameter("");
+					String name 		= request.getParameter("name");
+					String employee 	= request.getParameter("employee");
+					String quantity 	= request.getParameter("quantity");
+					String variation	= request.getParameter("variation");
+					String note 		= request.getParameter("note");
+					String receiptDate	= request.getParameter("recepitDate");
+					String returnDate	= request.getParameter("returnDate");
+					String aid 			= request.getParameter("aid");
+					String cid 			= request.getParameter("");
 					
 					//control if empty
-					if (name.equals("") ||employee.equals("") || quantity.equals("") ||
-						variation.equals("") ||	note.equals("") || receiptDate.equals("") ||
-						returnDate.equals("") || aid.equals("") || cid.equals("")){
+					if (
+							name.equals("") 		||employee.equals("") 	|| quantity.equals("")		||
+							variation.equals("") 	||	note.equals("") 	|| receiptDate.equals("") 	||
+							returnDate.equals("") 	|| aid.equals("") 		|| cid.equals("")
+						){
 							sendMessage("empty", response);
 							return;
 					}
 					
 					//control if they respect the format
-					if ( ! (Pattern.matches("[a-zA-Z]*", employee) || Pattern.matches("[0-9]*", quantity) || Pattern.matches("[a-zA-Z]*", variation) || 
-							Pattern.matches("[a-zA-Z]*", note) || Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", receiptDate) || Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", returnDate) || 
-							Pattern.matches("[0-9]*", aid) || Pattern.matches("[0-9]*", cid) || Pattern.matches("[a-zA-Z]*", name))){
+					if ( ! (
+							Pattern.matches("[a-zA-Z]*", employee)	|| 
+							Pattern.matches("[0-9]*", quantity) 	|| 
+							Pattern.matches("[a-zA-Z]*", variation) || 
+							Pattern.matches("[a-zA-Z]*", note) 		|| 
+							Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", receiptDate)	|| 
+							Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", returnDate) 	|| 
+							Pattern.matches("[0-9]*", aid) || 
+							Pattern.matches("[0-9]*", cid) || 
+							Pattern.matches("[a-zA-Z]*", name)
+							)
+						){
 								sendMessage("regExpError", response);
 								return;
 					}
 					
-					int qt = Integer.parseInt(quantity);
-					int aID = Integer.parseInt(aid);
-					int cID = Integer.parseInt(cid);
-					Date rec = Date.valueOf(receiptDate);
-					Date ret = Date.valueOf(returnDate);
+					int  qt 	= Integer.parseInt(quantity);
+					int  aID	= Integer.parseInt(aid);
+					int	 cID 	= Integer.parseInt(cid);
+					Date rec 	= Date.valueOf(receiptDate);
+					Date ret	= Date.valueOf(returnDate);
 					
 					Service service = new Service(name, employee, qt, variation, note, rec, ret, aID, cID);
 					LinkedList<Service> listService = modelDs.findAll();
@@ -124,15 +135,15 @@ public class ServiceController extends HttpServlet {
 						sendMessage("noExist", response);
 						return;
 					}
-					String name = request.getParameter("name");
-					String employee = request.getParameter("employee");
-					String quantity = request.getParameter("quantity");
-					String variation = request.getParameter("variation");
-					String note = request.getParameter("note");
-					String receiptDate = request.getParameter("recepitDate");
-					String returnDate = request.getParameter("returnDate");
-					String aid = request.getParameter("aid");
-					String cid = request.getParameter("");
+					String name 		= request.getParameter("name");
+					String employee 	= request.getParameter("employee");
+					String quantity 	= request.getParameter("quantity");
+					String variation 	= request.getParameter("variation");
+					String note 		= request.getParameter("note");
+					String receiptDate	= request.getParameter("recepitDate");
+					String returnDate 	= request.getParameter("returnDate");
+					String aid			= request.getParameter("aid");
+					String cid 			= request.getParameter("");
 					
 					if(name.equals(""))
 						name = oldService.getEmployee();

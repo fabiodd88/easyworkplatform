@@ -66,15 +66,17 @@ public class PaymentController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
 					
-					String date = request.getParameter("date");
-					String amount = request.getParameter("amount");
-					String scid = request.getParameter("serviceCustomerId");
-					String said = request.getParameter("serviceArticleId");
-					String sid = request.getParameter("serviceId");
+					String date		= request.getParameter("date");
+					String amount	= request.getParameter("amount");
+					String scid		= request.getParameter("serviceCustomerId");
+					String said		= request.getParameter("serviceArticleId");
+					String sid		= request.getParameter("serviceId");
 					
 					// control if empty
-					if (date.equals("") || amount.equals("") || 
-						scid.equals("") || said.equals("") || sid.equals("")){
+					if (
+						date.equals("")	|| amount.equals("")	|| 
+						scid.equals("") || said.equals("")		|| sid.equals("")
+						){
 							sendMessage("empty", response);
 							return;
 					}

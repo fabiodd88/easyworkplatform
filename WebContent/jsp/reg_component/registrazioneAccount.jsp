@@ -60,7 +60,7 @@
 						</div>
 						<button type="reset" class="btn btn-default"
 							onClick="forward('reg1')">Indietro</button>
-						<button type="submit" class="btn btn-default"
+						<button class="btn btn-default"
 							onclick="forward('reg3')">Avanti</button>
 					</div>
 					<div style="text-align: left">

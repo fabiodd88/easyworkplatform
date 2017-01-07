@@ -39,7 +39,7 @@
 							</button>
 						</div>
 					</div>
-					<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
+					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
 						<img alt="" src="icon/trattamento.png"><br> <label>Articolo</label><br>
 						<div id="btAddArticle" style="display: none;">
 							<button class="but" data-toggle="modal"
@@ -48,7 +48,7 @@
 							</button>
 						</div>
 					</div>
-					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
+					<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
 						<img alt="" src="icon/appuntamento.png"><br> <label>Servizio</label><br>
 						<div id="btAddService" style="display: none;">
 							<button class="but" data-toggle="modal"

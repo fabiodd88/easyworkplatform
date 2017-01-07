@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,8 +59,10 @@ public class ActivityController extends HttpServlet {
      *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+		
+		String 		action 	= request.getParameter("action");
 		HttpSession session = request.getSession();
+		
 		try {
 			if (action == null) {
 				sendMessage("noAction", response);
@@ -72,7 +73,6 @@ public class ActivityController extends HttpServlet {
 				if (action.equalsIgnoreCase("insert")){
 					
 					int userId = Integer.parseInt(request.getParameter("userId"));
-
 					AccountModelDS modelDsAccount = new AccountModelDS();
 					User user = modelDsAccount.findByKey(userId);
 					
@@ -81,33 +81,31 @@ public class ActivityController extends HttpServlet {
 						return;
 					}
 					
-					String vatNumber = request.getParameter("vatNumber");
-					String name = request.getParameter("name");
-					String type = request.getParameter("type");
-					String address = request.getParameter("address");
-					String city = request.getParameter("city");
-					String province = request.getParameter("province");
-					String cap = request.getParameter("cap");
-				
+					String activityName 	= request.getParameter("activityName"); 
+					String vatCode 			= request.getParameter("vatCode"); 
+					String tipology 		= request.getParameter("tipology"); 
+					String activityAddress 	= request.getParameter("activityAddress"); 
+					String activityCity 	= request.getParameter("activityCity"); 
+					String activityCivicNumber = request.getParameter("activityCivicNumber"); 
+					String activityCap		= request.getParameter("activityCap"); 
+					String activityProvince	= request.getParameter("activityProvince");
+					String address			= activityAddress+", "+activityCivicNumber;
 					//Control if empty
-					if (vatNumber.equals("") || name.equals("") || type.equals("") || address.equals("") || city.equals("") || 
-						province.equals("") || cap.equals("")){
+					if (
+							activityName.equals("")	||	vatCode.equals("")				|| 
+							tipology.equals("") 	||	activityAddress.equals("") 		|| 
+							activityCity.equals("") ||	activityCivicNumber.equals("")	||
+							activityCap.equals("")	||	activityProvince.equals("")		
+						){
 							sendMessage("empty", response);
 							return;
 					}
 					
-					// control if they respect the format
-					if ( ! (Pattern.matches("[0-9]*", vatNumber) && Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", type) && 
-							Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
-							Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap))){
-								sendMessage("regExp", response);
-								return;
-						
-					}
 					
-					int CAP = Integer.parseInt(cap);
 					
-					Activity activity = new Activity(name, type, address, city, province, CAP, vatNumber, userId);
+					int cap = Integer.parseInt(activityCap);
+					
+					Activity activity = new Activity(activityName, tipology, address, activityCity, activityProvince, cap, vatCode, userId);
 					
 					LinkedList<Activity> listActivity = modelDs.findAll();
 					

@@ -21,23 +21,22 @@
 	<!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<!-- Un jumbotron è il quadratone blu -->
-		<%@include file="/jsp/jumbotron.jsp" %>
+		<%@include file="/jsp/jumbotron.jsp"%>
 
 
 		<form id="newUserForm" role="form" action="UserController"
-			method="POST" enctype="multipart/form-data">
-			<input type="text" name="action" id="action"
-				value="insert" style="display: none;" />
-
+			method="POST">
+			<input type="text" name="action" id="action" value="insert"
+				style="display: none;" />
 			<%@include file="jsp/reg_component/registrazioneUtente.jsp"%>
 			<%@include file="jsp/reg_component/registrazioneAccount.jsp"%>
 			<%@include file="jsp/reg_component/registrazioneAttività.jsp"%>
-			<%@include file="jsp/reg_component/riepilogoDatiUtente.jsp"%>
-			<%@include file="jsp/reg_component/riepilogoDatiLogin.jsp"%>
-			<%@include file="jsp/reg_component/riepilogoDatiAttività.jsp"%>
-			<%@include file="jsp/confirmModal.jsp"%>
 		</form>
 
+		<%@include file="jsp/reg_component/riepilogoDatiUtente.jsp"%>
+		<%@include file="jsp/reg_component/riepilogoDatiLogin.jsp"%>
+		<%@include file="jsp/reg_component/riepilogoDatiAttività.jsp"%>
+		<%@include file="jsp/confirmModal.jsp"%>
 		<%@include file="jsp/footer.jsp"%>
 	</div>
 </body>

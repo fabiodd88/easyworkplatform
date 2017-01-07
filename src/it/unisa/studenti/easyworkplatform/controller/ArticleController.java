@@ -23,8 +23,7 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 @WebServlet("/ArticleServlet")
 public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ModelInterface<Article> model = new ArticleModelDS();
-	private ArticleModelDS modelDs = (ArticleModelDS) model;
+
 
 	/** 
 	 *	Empty Constructor
@@ -55,7 +54,10 @@ public class ArticleController extends HttpServlet {
      *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
+		
+		String action	= request.getParameter("action");
+		String db		= request.getParameter("activity");
+		
 		try{
 			if(action == null){
 				sendMessage("noAction", response);

@@ -54,7 +54,6 @@ public class AccountModelDS implements ModelInterface<User> {
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getSurname());
 			preparedStatement.setDate(3, (java.sql.Date) user.getBirthdate());

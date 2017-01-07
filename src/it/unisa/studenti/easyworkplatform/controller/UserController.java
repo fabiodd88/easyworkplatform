@@ -88,38 +88,30 @@ public class UserController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")) {
 					
-					String name = request.getParameter("name");
-					String surname = request.getParameter("surname");
-					String birthDate = request.getParameter("birthDate");
-					String birthPlace = request.getParameter("birthPlace");
-					String address = request.getParameter("address");
-					String civicNumber = request.getParameter("civicNumber");
-					String city = request.getParameter("city");
-					String province = request.getParameter("province");
-					String cap = request.getParameter("cap");
-					String taxCode = request.getParameter("taxCode");
-					String email = request.getParameter("email");
-					String password = request.getParameter("password");
+					String name 		= request.getParameter("name");
+					String surname		= request.getParameter("surname");
+					String birthDate	= request.getParameter("birthDate");
+					String birthPlace	= request.getParameter("birthPlace");
+					String address		= request.getParameter("address");
+					String civicNumber	= request.getParameter("civicNumber");
+					String city			= request.getParameter("city");
+					String province		= request.getParameter("province");
+					String cap			= request.getParameter("cap");
+					String taxCode		= request.getParameter("taxCode");
+					String email		= request.getParameter("email");
+					String password		= request.getParameter("password");
 					String passwordCtrl = request.getParameter("confPassword");
-					String secondKey = request.getParameter("secondKey");
-					String secondKeyCtrl = request.getParameter("confSecondKey");
-					String activityName = request.getParameter("activityName"); 
-					String vatCode = request.getParameter("vatCode"); 
-					String tipology = request.getParameter("tipology"); 
-					String activityAddress = request.getParameter("activityAddress"); 
-					String activityCity = request.getParameter("activityCity"); 
-					String activityCivicNumber = request.getParameter("activityCivicNumber"); 
-					String activityCap = request.getParameter("activityCap"); 
+					String secondKey	= request.getParameter("secondKey");
+					String secondKeyCtrl= request.getParameter("confSecondKey");
+					String address1 	= address+", "+civicNumber;
+					
 					
 					// control if empty
 					if (name.equals("") 		|| surname.equals("") 			 || birthDate.equals("") 	 	|| 
 						birthPlace.equals("") 	|| address.equals("") 			 || city.equals("") 			|| 
 						province.equals("") 	|| cap.equals("") 				 || taxCode.equals("") 		 	|| 
 						email.equals("") 		|| password.equals("")			 || secondKey.equals("")		||
-						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || activityName.equals("")		||
-						vatCode.equals("")		|| tipology.equals("")			 || activityAddress.equals("")	|| 
-						activityCity.equals("") || activityCivicNumber.equals("")|| activityCap.equals("")		||
-						civicNumber.equals("")
+						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || civicNumber.equals("")
 						){
 							sendMessage("empty", response);
 							return;
@@ -147,10 +139,10 @@ public class UserController extends HttpServlet {
 					
 					int CAP = Integer.parseInt(cap);
 					Date bd = Date.valueOf(birthDate);
-					String cryptedPassword = toSHA1(password.getBytes());
+					String cryptedPassword 	= toSHA1(password.getBytes());
 					String cryptedSecondKey = toSHA1(secondKey.getBytes());
-					Account account = new Account(email, cryptedPassword, cryptedSecondKey);
-					User user = new User(account, name, surname, bd, birthPlace, address, city, province, CAP, taxCode);
+					Account account	= new Account(email, cryptedPassword, cryptedSecondKey);
+					User 	user	= new User(account, name, surname, bd, birthPlace, address1, city, province, CAP, taxCode);
 					
 					
 					if (modelDs.findByEmail(email) != null) {
@@ -191,7 +183,6 @@ public class UserController extends HttpServlet {
 						if (dbPassword.equals(hashed)){
 							session.setAttribute("user", user);
 							String name = user.getName()+ user.getSurname();
-							session.setAttribute("UserName", name);
 							sendMessage("loginOk", response);
 							return;
 						}
@@ -333,26 +324,29 @@ public class UserController extends HttpServlet {
 						return;	
 					}else {
 						
-						String name = request.getParameter("name");
-						String surname = request.getParameter("surname");
-						String birthDate = request.getParameter("birthDate");
-						String birthPlace = request.getParameter("birthPlace");
-						String address = request.getParameter("address");
-						String city = request.getParameter("city");
-						String province = request.getParameter("province");
-						String cap = request.getParameter("cap");
-						String taxCode = request.getParameter("taxCode");
-						String email = request.getParameter("email");
-						String password = request.getParameter("password");
+						String name 		= request.getParameter("name");
+						String surname		= request.getParameter("surname");
+						String birthDate	= request.getParameter("birthDate");
+						String birthPlace 	= request.getParameter("birthPlace");
+						String address 		= request.getParameter("address");
+						String city 		= request.getParameter("city");
+						String province 	= request.getParameter("province");
+						String cap 			= request.getParameter("cap");
+						String taxCode 		= request.getParameter("taxCode");
+						String email		= request.getParameter("email");
+						String password		= request.getParameter("password");
 						String passwordCtrl = request.getParameter("password");
-						String secondKeyCtrl = request.getParameter("secondKeyCtrl");
+						String secondKeyCtrl= request.getParameter("secondKeyCtrl");
 						
 						// control if empty
-						if (name.equals("") || surname.equals("") || birthDate.equals("") || 
-							birthPlace.equals("") || address.equals("") || city.equals("") || 
-							province.equals("") || cap.equals("") || taxCode.equals("") || 
-							email.equals("") || password.equals("") || secondKey.equals("") ||
-							passwordCtrl.equals("") || secondKeyCtrl.equals("")){
+						if (
+							name.equals("")			|| surname.equals("")	|| birthDate.equals("") || 
+							birthPlace.equals("")	|| address.equals("")	|| city.equals("")		|| 
+							province.equals("")		|| cap.equals("") 		|| taxCode.equals("")	|| 
+							email.equals("") 		|| password.equals("")	|| secondKey.equals("") ||
+							passwordCtrl.equals("") || secondKeyCtrl.equals("")
+							
+							){
 								sendMessage("empty", response);
 								return;
 						}

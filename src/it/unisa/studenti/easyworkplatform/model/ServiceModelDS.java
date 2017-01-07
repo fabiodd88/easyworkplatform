@@ -8,6 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 /**	
  * 	ServiceModelDs
  *	Class that interacts with the database through the information of Service
@@ -15,7 +20,7 @@ import java.util.LinkedList;
 */
 public class ServiceModelDS implements ModelInterface<Service> {
 
-	// private static DataSource ds;
+	private static DataSource ds;
 	private static final String TABLE_NAME = "service";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
@@ -32,20 +37,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	public ServiceModelDS(String nomeDb) {
 		try {
-			// Context initCtx = new InitialContext();
-			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			// ds = (DataSource)
-			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
-
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-
-		// } catch (NamingException e) {
-		// e.printStackTrace();
-		// }
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
+		 }  catch (NamingException e) {
+			 e.printStackTrace();
+		 }
 	}
 
 	/**
