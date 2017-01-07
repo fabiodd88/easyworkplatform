@@ -1,18 +1,22 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 /*	ArticleModelDs
  *	Class that interacts with the database through the information of Article
 */
 public class ArticleModelDS implements ModelInterface<Article> {
 
-	// private static DataSource ds;
+	private static DataSource ds;
 	private static final String TABLE_NAME = "article";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
@@ -28,20 +32,19 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	public ArticleModelDS(String nomeDb) {
 		try {
-			// Context initCtx = new InitialContext();
-			// Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			// ds = (DataSource)
-			// initCtx.lookup("jdbc:mysql://localhost/easy_work_platform");
+			Context initCtx = new InitialContext();
+			Context envCtx = (Context) initCtx.lookup("java:comp/env");
+			ds = (DataSource) envCtx.lookup("jdbc/dbtest");
 
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/easy_work_platform", "root", "");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+//			Class.forName("com.mysql.jdbc.Driver");
+//			connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
+//		} catch (ClassNotFoundException | SQLException e) {
+//			e.printStackTrace();
+//		}
 
-		// } catch (NamingException e) {
-		// e.printStackTrace();
-		// }
+		 } catch (NamingException e) {
+			 e.printStackTrace();
+		 }
 	}
 
 	/**
@@ -52,7 +55,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, desciption, duration)"
 				+ " VALUES (?,?,?,?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
@@ -72,7 +75,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
 				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
@@ -92,7 +95,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -109,7 +112,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		Article article = null;
 		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -139,7 +142,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
 		Article article = new Article();
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -164,7 +167,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
 		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME;
 		try {
-			connection.setAutoCommit(false);
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			Article article = new Article();
