@@ -1,7 +1,5 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +18,6 @@ import javax.sql.DataSource;
 */
 public class AccountModelDS implements ModelInterface<User> {
 
-//	 private static DataSource ds;
 	private static final String TABLE_NAME = "user";
 	private static Connection connection = null;
 	private static PreparedStatement preparedStatement = null;
@@ -54,7 +51,6 @@ public class AccountModelDS implements ModelInterface<User> {
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getSurname());
 			preparedStatement.setDate(3, (java.sql.Date) user.getBirthdate());
@@ -80,27 +76,23 @@ public class AccountModelDS implements ModelInterface<User> {
 	public void update(User user) throws SQLException {
 
 		String updateSql = "UPDATE " + AccountModelDS.TABLE_NAME
-				+ " SET (tax_code = ?, name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, email = ?, password = ?, secondaryKey = ?)"
+				+ " SET name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, tax_code = ?, email = ?, password = ?, secondary_key = ?"
 				+ " WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, user.getTaxCode());
-			preparedStatement.setString(2, user.getName());
-			preparedStatement.setString(3, user.getSurname());
-			preparedStatement.setDate(4, (java.sql.Date) user.getBirthdate());
-			preparedStatement.setString(5, user.getBirthplace());
-			preparedStatement.setString(6, user.getAddress());
-			preparedStatement.setString(7, user.getCity());
-			preparedStatement.setString(8, user.getProvince());
-			preparedStatement.setInt(9, user.getCap());
+			preparedStatement.setString(1, user.getName());
+			preparedStatement.setString(2, user.getSurname());
+			preparedStatement.setDate(3, (java.sql.Date) user.getBirthdate());
+			preparedStatement.setString(4, user.getBirthplace());
+			preparedStatement.setString(5, user.getAddress());
+			preparedStatement.setString(6, user.getCity());
+			preparedStatement.setString(7, user.getProvince());
+			preparedStatement.setInt(8, user.getCap());
+			preparedStatement.setString(9, user.getTaxCode());
 			preparedStatement.setString(10, user.getEmail());
-			String password = user.getPassword();
-			String cryptedPassword = toSHA1(password.getBytes());
-			preparedStatement.setString(11, cryptedPassword);
-			String secondKey = user.getPassword();
-			String cryptedSecondKey = toSHA1(secondKey.getBytes());
-			preparedStatement.setString(12, cryptedSecondKey);
+			preparedStatement.setString(11,  user.getPassword());
+			preparedStatement.setString(12,  user.getSecondKey());
 			preparedStatement.setInt(13, user.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -200,9 +192,8 @@ public class AccountModelDS implements ModelInterface<User> {
 	 */
 	public User findByEmail(String email) throws SQLException {
 		User user = null;
-		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE EMAIL = ?";
+		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE email = ?";
 		try {
-			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -241,21 +232,6 @@ public class AccountModelDS implements ModelInterface<User> {
 			if (connection != null)
 				connection.close();
 		}
-	}
-
-	/**
-	 * Method encrypt password
-	 * @param convertMe
-	 * @return encrypted String
-	 */
-	private static String toSHA1(byte[] convertMe) {
-		MessageDigest md = null;
-		try {
-			md = MessageDigest.getInstance("SHA-1");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return new String(md.digest(convertMe));
 	}
 
 }
