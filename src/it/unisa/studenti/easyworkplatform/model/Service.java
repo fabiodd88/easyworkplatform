@@ -230,15 +230,15 @@ public class Service implements Cloneable {
 		if(object == null) return false;
 		if(object.getClass() != this.getClass()) return false;
 		Service service = (Service) object;
-		return 	name.equals(service.name)			&&
-				(employee).equals(service.employee)	&&
-				this.quantity == service.quantity	&&
-				variation.equals(service.variation)	&&
-				note.equals(service.note)			&&
-				receiptDate.equals(service.receiptDate)	&&
-				returnDate.equals(service.returnDate)	&&
-				articleId	== service.articleId		&&
-				customerId	== service.customerId;
+		return 	this.name.equals(service.getName())			&&
+				this.employee.equals(service.getEmployee())	&&
+				this.quantity == service.getQuantity()	&&
+				this.variation.equals(service.getVariation())	&&
+				this.note.equals(service.getNote())			&&
+				this.receiptDate.equals(service.getReceiptDate())	&&
+				this.returnDate.equals(service.getReturnDate())	&&
+				this.articleId	== service.getArticleId()		&&
+				this.customerId	== service.getCustomerId();
 				
 	} 
 
