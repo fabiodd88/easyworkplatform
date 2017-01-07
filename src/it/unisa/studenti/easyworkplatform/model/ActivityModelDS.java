@@ -70,7 +70,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	@Override
 	public void update(Activity activity) throws SQLException {
 		String updateSql = "UPDATE " + ActivityModelDS.TABLE_NAME
-				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?)"
+				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?"
 				+ " WHERE (id = ? && user_id = ?)";
 		try {
 			connection=ds.getConnection();

@@ -78,8 +78,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public void update(Payment payment) throws SQLException {
 		String updateSql = "UPDATE " + PaymentModelDS.TABLE_NAME
-				+ " SET (amount=?, date_payment=?, service_id=?, service_customer_id=?,"
-				+ " service_article_id=?) WHERE (id = ?)";
+				+ " SET amount=?, date_payment=?, service_id=?, service_customer_id=?,"
+				+ " service_article_id=? WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -148,12 +148,12 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	public LinkedList<Payment> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
-		String selectSql = "SELECT * FROM " +PaymentModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		String selectSql = "SELECT * FROM " +PaymentModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Payment payment = new Payment();
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, toSearch);
+			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				payment.setId(rs.getInt("id"));

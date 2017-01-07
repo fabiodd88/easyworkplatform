@@ -82,8 +82,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET (name=?, employeee=?, quantity=?, variation=?, note=?,"
-				+ " receipt_date=?, return_date=?, article_id=?, customer_id=?) WHERE (id = ?)";
+		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET name=?, employee=?, quantity=?, variation=?, note=?,"
+				+ " receipt_date=?, return_date=?, article_id=?, customer_id=? WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -159,12 +159,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	public LinkedList<Service> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Service> listService = new LinkedList<Service>();
-		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Service service = new Service();
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, toSearch);
+			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				service.setId(rs.getInt("id"));

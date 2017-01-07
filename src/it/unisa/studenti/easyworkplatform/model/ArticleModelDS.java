@@ -52,7 +52,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	@Override
 	public void insert(Article article) throws SQLException {
-		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, desciption, duration)"
+		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, description, duration)"
 				+ " VALUES (?,?,?,?)";
 		try {
 			connection=ds.getConnection();
@@ -73,7 +73,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public void update(Article article) throws SQLException {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
-				+ " SET(name = ?, price = ?, desciption = ?, duration = ?)" + " WHERE (id = ?)";
+				+ " SET name = ?, price = ?, description = ?, duration = ?" + " WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -139,12 +139,12 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	public LinkedList<Article> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Article> listArticle = new LinkedList<Article>();
-		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Article article = new Article();
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, toSearch);
+			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				article.setId(rs.getInt("id"));

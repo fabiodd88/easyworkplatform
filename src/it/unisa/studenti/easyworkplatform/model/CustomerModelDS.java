@@ -87,7 +87,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	public void update(Customer customer) throws SQLException {
 		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
-				+ " cap=?,phone_number=?,newsletter=?,email=?)" + "WHERE (id = ?)";
+				+ " cap=?,phone_number=?,newsletter=?,email=?" + "WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
@@ -167,12 +167,12 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	public LinkedList<Customer> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?%)";
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Customer customer = new Customer();
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			preparedStatement.setString(1, toSearch);
+			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				customer.setId(rs.getInt("id"));
