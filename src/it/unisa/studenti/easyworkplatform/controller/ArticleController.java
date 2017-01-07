@@ -23,7 +23,8 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 @WebServlet("/ArticleServlet")
 public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	static ModelInterface<Article> model = new ArticleModelDS();
+	private ArticleModelDS modelDs = (ArticleModelDS) model;
 
 	/** 
 	 *	Empty Constructor

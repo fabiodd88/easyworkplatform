@@ -39,22 +39,7 @@ $(document).ready(function()
 
 			}
 		});
-		$.ajax({
-			type: "POST",
-			url: "ActivityController",
-			data: $("#newUserForm").serialize(),
-			dataType: "text",
-			success: function(data, status, xhr)
-			{
-				if(xhr.responseText == "insertOk"){
-					$("#status").html("Messaggio: User insert");
-				}
-				else{
-					$("#status").html("Messaggio: Activity Insert failed");
-				}
-
-			}
-		});
+		
 		e.preventDefault();
 	});
 	

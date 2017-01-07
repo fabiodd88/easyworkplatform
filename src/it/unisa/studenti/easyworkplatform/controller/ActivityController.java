@@ -90,6 +90,7 @@ public class ActivityController extends HttpServlet {
 					String activityCap		= request.getParameter("activityCap"); 
 					String activityProvince	= request.getParameter("activityProvince");
 					String address			= activityAddress+", "+activityCivicNumber;
+					
 					//Control if empty
 					if (
 							activityName.equals("")	||	vatCode.equals("")				|| 
