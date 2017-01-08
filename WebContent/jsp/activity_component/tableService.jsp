@@ -50,8 +50,8 @@
 									for(Service service: serviceList){
 										out.write("<tr>");
 										out.write("<td data-title='#'>"+service.getId()+"</td>");
-										out.write("<td data-title='Tipo Servizio' id='name'>"+service.getName()+"</td>");
-										out.write("<td data-title='Nome Cliente' id='customer'>"+service.getCustomerId()+"</td>");
+										out.write("<td data-title='Tipo di Servizio' id='article_name'>"+service.getArticleName()+"</td>");
+										out.write("<td data-title='Nome Cliente' id='customer'>"+service.getCustomerName()+"</td>");
 										out.write("<td data-title='Quantità' id='quantity'>"+service.getQuantity()+"</td>");
 										out.write("<td data-title='Variazioni' id='variation'>"+service.getVariation()+"</td>");
 										out.write("<td data-title='Note' id='note'>"+service.getNote()+"</td>");

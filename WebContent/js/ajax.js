@@ -299,7 +299,7 @@ function visualizzaDiv(x){
 			success: function(data, status, xhr)
 			{
 				if(xhr.responseText == "list"){
-					$('#list-p').load('jsp/activity_component/tablePagamento.jsp');
+					$('#list-p').load('jsp/activity_component/tablePayment.jsp');
 				}
 			}
 			

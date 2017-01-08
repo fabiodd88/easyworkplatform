@@ -30,9 +30,9 @@
 								<tr>
 									<th>#</th>
 									<th>Cliente</th>
-									<th>Dipendente</th>
 									<th>Tipologia di servizio</th>
 									<th>Data di Pagamento</th>
+									<th>Ammontare</th>
 									<th colspan="2">Funzioni</th>
 								</tr>
 							</thead>
@@ -43,10 +43,9 @@
 								if(paymentList != null){
 									for(Payment payment: paymentList){
 										out.write("<tr>");
-										out.write("<td data-title='#' >"+payment.getServiceCustomerId()+"</td> ");
-										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerId()+"</td>");
-										out.write("<td data-title='Dipendente' id='employee'>"+payment.getServiceEmplooyeId()+"</td>");
-										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleId()+"</td>");
+										out.write("<td data-title='#' >"+payment.getId()+"</td> ");
+										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerName()+"</td>");
+										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleName()+"</td>");
 										out.write("<td data-title='Data Di Pagamento' id='date'>"+payment.getDate()+"</td>");
 										out.write("<td data-title='Ammontare' id='amount'>"+payment.getAmount()+"</td>");
 										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('payment')'>");
