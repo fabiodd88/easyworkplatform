@@ -200,8 +200,8 @@ public class Service implements Cloneable {
 	@Override
 	public String toString() {
 		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
-				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleName
-				+ ", customerId = " + customerName + "]";
+				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleName=" + articleName
+				+ ", customerName=" + customerName + "]";
 
 	}
 

@@ -27,14 +27,14 @@ public class Payment implements Cloneable {
 	 * @param date of the payment
 	 * @param serviceId of the payment
 	 * @param serviceCustomerId of the payment
-	 * @param serviceArticleId of the payment
+	 * @param serviceArticleName of the payment
 	 */
-	public Payment(double amount, Date date, int serviceId , String serviceCustomerName, String serviceArticleId) {	
+	public Payment(double amount, Date date, int serviceId , String serviceCustomerName, String serviceArticleName) {	
 		this.date				= date;
 		this.amount				= amount;
 		this.serviceId			= serviceId;
 		this.serviceCustomerName= serviceCustomerName;
-		this.serviceArticleName	= serviceArticleId;
+		this.serviceArticleName	= serviceArticleName;
 	
 	}
 		
@@ -141,8 +141,8 @@ public class Payment implements Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerName
-				+ ", serviceId=" + serviceId + ", serviceArticleId=" + serviceArticleName + "]";
+		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerName=" + serviceCustomerName
+				+ ", serviceId=" + serviceId + ", serviceArticleName=" + serviceArticleName + "]";
 	}
 
 	/**
