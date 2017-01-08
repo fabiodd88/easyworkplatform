@@ -218,7 +218,7 @@ public class Service implements Cloneable {
 	public String toString() {
 		return "Service [name=" + name +", employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
 				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleId
-				+ ", customerId = " + customerId + "]";
+				+ ", customerId=" + customerId + "]";
 	}
 
 	/**
