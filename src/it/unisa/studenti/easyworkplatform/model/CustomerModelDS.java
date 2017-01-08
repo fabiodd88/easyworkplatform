@@ -19,13 +19,10 @@ import javax.sql.DataSource;
 */
 public class CustomerModelDS implements ModelInterface<Customer> {
 
-
 	private static DataSource ds;
-
 	private static final String TABLE_NAME = "pizzeria_customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-
 
 	/**
 	 * Empty constructor
@@ -58,7 +55,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)"
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		try {
-
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, customer.getName());
@@ -87,7 +83,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
 				+ " cap=?,phone_number=?,newsletter=?,email=?" + "WHERE (id = ?)";
 		try {
-
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, customer.getName());
@@ -115,7 +110,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
@@ -133,7 +127,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Customer customer = null;
 		try {
-
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
@@ -171,7 +164,6 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Customer customer = new Customer();
 		try {
-	
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
@@ -203,13 +195,10 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
 		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+ ";";
-	
 		try {
-			
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
-			
 			while (rs.next()) {
 				Customer customer = new Customer();
 				customer.setId(rs.getInt("id"));

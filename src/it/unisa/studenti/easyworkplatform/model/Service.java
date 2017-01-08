@@ -202,6 +202,7 @@ public class Service implements Cloneable {
 		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
 				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleName
 				+ ", customerId = " + customerName + "]";
+
 	}
 
 	/**

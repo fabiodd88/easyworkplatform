@@ -19,11 +19,11 @@ import javax.sql.DataSource;
 */
 public class PaymentModelDS implements ModelInterface<Payment> {
 
-
 	private static final String TABLE_NAME = "pizzeria_payment";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 	private static DataSource ds;
+	
 	/**
 	 * Empty constructor
 	 */
@@ -95,7 +95,6 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
@@ -118,8 +117,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				payment.setId(rs.getInt("id"));
 				payment = new Payment();
+				payment.setId(rs.getInt("id"));
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));
 				payment.setServiceId(rs.getInt("service_id"));
@@ -170,7 +169,6 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	public LinkedList<Payment> findAll() throws SQLException {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME+";";
-		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);

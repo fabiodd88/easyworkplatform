@@ -52,6 +52,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
 				+ "(employee, quantity, variation, note, receipt_data, return_date, article_name, customer_name)"
+
 				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
 		try {
 			connection=ds.getConnection();
@@ -130,7 +131,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleName(rs.getString("article_name"));
 				service.setCustomerName(rs.getString("customer_name"));
@@ -164,7 +165,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleName(rs.getString("article_name"));
 				service.setCustomerName(rs.getString("customer_name"));
@@ -182,7 +183,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
-		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
@@ -194,7 +194,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleName(rs.getString("article_name"));
 				service.setCustomerName(rs.getString("customer_name"));
