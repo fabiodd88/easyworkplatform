@@ -12,9 +12,9 @@ public class Payment implements Cloneable {
 	private int id;
 	private Date date;
 	private double amount;
-	private int serviceCustomerId;
+	private String serviceCustomerName;
 	private int serviceId;
-	private int serviceArticleId;
+	private String serviceArticleName;
 	
 	/**
 	 * Empty constructor
@@ -29,14 +29,16 @@ public class Payment implements Cloneable {
 	 * @param serviceCustomerId of the payment
 	 * @param serviceArticleId of the payment
 	 */
-	public Payment(double amount, Date date, int serviceId , int serviceCustomerId, int serviceArticleId) {	
+	public Payment(double amount, Date date, int serviceId , String serviceCustomerName, String serviceArticleId) {	
 		this.date				= date;
 		this.amount				= amount;
 		this.serviceId			= serviceId;
-		this.serviceCustomerId	= serviceCustomerId;
-		this.serviceArticleId	= serviceArticleId;
+		this.serviceCustomerName= serviceCustomerName;
+		this.serviceArticleName	= serviceArticleId;
+	
 	}
 		
+
 	/**
 	 * Get the date
 	 * @return this date
@@ -70,19 +72,19 @@ public class Payment implements Cloneable {
 	}
 	
 	/**
-	 * Get the service customer id
-	 * @return this service customer id
+	 * Get the service customer name
+	 * @return String
 	 */
-	public int getServiceCustomerId() {
-		return serviceCustomerId;
+	public String getServiceCustomerName() {
+		return serviceCustomerName;
 	}
 
 	/**
-	 * Set a service customer id
-	 * @param serviceCustomerId
+	 * Set a service customer name
+	 * @param serviceCustomerName
 	 */
-	public void setServiceCustomerId(int serviceCustomerId) {
-		this.serviceCustomerId = serviceCustomerId;
+	public void setServiceCustomerName(String serviceCustomerName) {
+		this.serviceCustomerName = serviceCustomerName;
 	}
 	
 	/**
@@ -105,16 +107,16 @@ public class Payment implements Cloneable {
 	 * Get the service article id
 	 * @return this service article id
 	 */
-	public int getServiceArticleId() {
-		return serviceArticleId;
+	public String getServiceArticleName() {
+		return serviceArticleName;
 	}
 
 	/**
-	 * Set a service article id
-	 * @param serviceArticleId
+	 * Set a service article name
+	 * @param serviceArticleName
 	 */
-	public void setServiceArticleId(int serviceArticleId) {
-		this.serviceArticleId = serviceArticleId;
+	public void setServiceArticleName(String serviceArticleName) {
+		this.serviceArticleName = serviceArticleName;
 	}
 	
 	/**
@@ -139,8 +141,8 @@ public class Payment implements Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerId
-				+ ", serviceId=" + serviceId + ", serviceArticleId=" + serviceArticleId + "]";
+		return "Payment [date=" + date + ", amount=" + amount + ", serviceCustomerId=" + serviceCustomerName
+				+ ", serviceId=" + serviceId + ", serviceArticleId=" + serviceArticleName + "]";
 	}
 
 	/**
@@ -155,8 +157,8 @@ public class Payment implements Cloneable {
 		return 	this.date.equals(payment.getDate())	&&
 				this.amount == payment.amount		&&
 				this.serviceId == payment.serviceId	&&
-				this.serviceArticleId	== payment.serviceArticleId  &&
-				this.serviceCustomerId	== payment.serviceCustomerId ;
+				this.serviceArticleName	== payment.serviceArticleName  &&
+				this.serviceCustomerName	== payment.serviceCustomerName ;
 	} 
 	
 	/**

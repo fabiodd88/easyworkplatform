@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Article"%>
-	
+<script src="js/tab.js"></script>
+
 <div class="container container-table" id="list-article">
 	<div class="row-374">
 		<div class="col-md-12">
@@ -37,23 +38,26 @@
 							</thead>
 							<tbody>
 								<%
-								int j =0;
-								AbstractList<Article> articleList = (AbstractList<Article>)session.getAttribute("articles");
-								if(articleList != null){
-									for(Article article: articleList){
-										j++;
-										out.write("<tr>");
-										out.write("<td data-title='#'>"+article.getId()+"</td>");
-										out.write("<td data-title='Nome'>"+article.getName()+"</td>");
-										out.write("<td data-title='Descrizione'>"+article.getDescription()+"</td>");
-										out.write("<td data-title='Prezzo'>"+article.getPrice()+"</td>");
-										out.write("<td data-title='Durata'>"+article.getDuration()+"</td>");
-										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('article')'>");
-										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-										out.write("<button class='but' onclick='elimina('article')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
-										out.write("</td>");
-										out.write("</tr>");
+								if(session.getAttribute("articles") != null){
+									AbstractList<Article> articleList = (AbstractList<Article>)session.getAttribute("articles");
+									if(articleList != null){
+										for(Article article: articleList){
+											out.write("<tr>");
+											out.write("<td data-title='#'>"+article.getId()+"</td>");
+											out.write("<td data-title='Nome'>"+article.getName()+"</td>");
+											out.write("<td data-title='Descrizione'>"+article.getDescription()+"</td>");
+											out.write("<td data-title='Prezzo'>"+article.getPrice()+"</td>");
+											out.write("<td data-title='Durata'>"+article.getDuration()+"</td>");
+											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('article')'>");
+											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
+											out.write("<button class='but' onclick='elimina('article')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+											out.write("</td>");
+											out.write("</tr>");
+										}
 									}
+								}
+								else{
+									out.write("<tr class='filterTable_no_results'><td colspan='12'>No results found</td></tr>");
 								}
 								%>
 							

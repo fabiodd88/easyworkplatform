@@ -283,7 +283,7 @@ public class CustomerController extends HttpServlet {
 						return;
 					} else{
 						session.setAttribute("customers", listCustomer);
-						
+						sendMessage("list", response);
 						return;
 					}
 				}

@@ -51,20 +51,19 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(name, employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
+				+ "(employee, quantity, variation, note, receipt_data, return_date, article_name, customer_name)"
 				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(1, service.getName());
 			preparedStatement.setString(2, service.getEmployee());
 			preparedStatement.setInt(3, service.getQuantity());
 			preparedStatement.setString(4, service.getVariation());
 			preparedStatement.setString(5, service.getNote());
 			preparedStatement.setDate(6, (Date) service.getReceiptDate());
 			preparedStatement.setDate(7, (Date) service.getReturnDate());
-			preparedStatement.setInt(8, service.getArticleId());
-			preparedStatement.setInt(9, service.getCustomerId());
+			preparedStatement.setString(8, service.getArticleName());
+			preparedStatement.setString(9, service.getCustomerName());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -76,20 +75,19 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET name=?, employee=?, quantity=?, variation=?, note=?,"
-				+ " receipt_date=?, return_date=?, article_id=?, customer_id=? WHERE (id = ?)";
+		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET employee=?, quantity=?, variation=?, note=?,"
+				+ " receipt_date=?, return_date=?, article_name=?, customer_name=? WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(1, service.getName());
 			preparedStatement.setString(2, service.getEmployee());
 			preparedStatement.setInt(3, service.getQuantity());
 			preparedStatement.setString(4, service.getVariation());
 			preparedStatement.setString(5, service.getNote());
 			preparedStatement.setDate(6, (Date) service.getReceiptDate());
 			preparedStatement.setDate(7, (Date) service.getReturnDate());
-			preparedStatement.setInt(8, service.getArticleId());
-			preparedStatement.setInt(9, service.getCustomerId());
+			preparedStatement.setString(8, service.getArticleName());
+			preparedStatement.setString(9, service.getCustomerName());
 			preparedStatement.setInt(10, service.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -134,8 +132,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setNote(rs.getString("note"));
 				service.setReceiptDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
-				service.setArticleId(rs.getInt("article_id"));
-				service.setCustomerId(rs.getInt("customer_id"));
+				service.setArticleName(rs.getString("article_name"));
+				service.setCustomerName(rs.getString("customer_name"));
 			}
 			connection.commit();
 		} catch (SQLException e) {
@@ -168,8 +166,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setNote(rs.getString("note"));
 				service.setReceiptDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
-				service.setArticleId(rs.getInt("article_id"));
-				service.setCustomerId(rs.getInt("customer_id"));
+				service.setArticleName(rs.getString("article_name"));
+				service.setCustomerName(rs.getString("customer_name"));
 				listService.add(service);
 			}
 		} catch (SQLException e) {
@@ -198,8 +196,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				service.setNote(rs.getString("note"));
 				service.setReceiptDate(rs.getDate("receipt_data"));
 				service.setReturnDate(rs.getDate("return_date"));
-				service.setArticleId(rs.getInt("article_id"));
-				service.setCustomerId(rs.getInt("customer_id"));
+				service.setArticleName(rs.getString("article_name"));
+				service.setCustomerName(rs.getString("customer_name"));
 				listService.add(service);
 			}
 		} catch (SQLException e) {

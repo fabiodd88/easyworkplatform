@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
@@ -20,7 +21,7 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
  * 	Class that handles requests from the browser to the database of an Article
  *  @author AdminEWP
  */
-@WebServlet("/ArticleServlet")
+@WebServlet("/ArticleController")
 public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static ModelInterface<Article> model = new ArticleModelDS();
@@ -58,6 +59,7 @@ public class ArticleController extends HttpServlet {
 		
 		String action	= request.getParameter("action");
 		String db		= request.getParameter("activity");
+		HttpSession session = request.getSession();
 		ArticleModelDS custDs = new ArticleModelDS("dbtest");
 		try{
 			if(action == null){
@@ -224,7 +226,7 @@ public class ArticleController extends HttpServlet {
 						sendMessage("emptyList", response);
 						return;
 					}else{
-						request.setAttribute("articles", listArticle);
+						session.setAttribute("articles", listArticle);
 						sendMessage("list", response);
 						return;
 					}

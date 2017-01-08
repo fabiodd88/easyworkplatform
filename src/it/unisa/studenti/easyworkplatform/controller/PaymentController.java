@@ -72,8 +72,8 @@ public class PaymentController extends HttpServlet {
 					
 					String date		= request.getParameter("date");
 					String amount	= request.getParameter("amount");
-					String scid		= request.getParameter("serviceCustomerId");
-					String said		= request.getParameter("serviceArticleId");
+					String scid		= request.getParameter("serviceCustomerName");
+					String said		= request.getParameter("serviceArticleName");
 					String sid		= request.getParameter("serviceId");
 					
 					// control if empty
@@ -85,20 +85,18 @@ public class PaymentController extends HttpServlet {
 							return;
 					}
 					
-					//control if they respect the format
-					if ( ! (Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", date) && Pattern.matches("[0-9]{2}[.][0-9]{2}", amount) && Pattern.matches("[0-9]*", scid) && 
-							Pattern.matches("[0-9]*", said) && Pattern.matches("[0-9]*", sid)) ){
-								sendMessage("regExpError", response);
-								return;
-					}
+//					//control if they respect the format
+//					if ( ! (Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", date) && Pattern.matches("[0-9]{2}[.][0-9]{2}", amount) && Pattern.matches("[0-9]*", scid) && 
+//							Pattern.matches("[0-9]*", said) && Pattern.matches("[0-9]*", sid)) ){
+//								sendMessage("regExpError", response);
+//								return;
+//					}
 					
-					Date dt = Date.valueOf(date);
-					double am = Double.parseDouble(amount);
-					int scid2 = Integer.parseInt(scid);
-					int said2 = Integer.parseInt(said);
-					int sid2 = Integer.parseInt(sid);
+					Date	dt		= Date.valueOf(date);
+					double 	am		= Double.parseDouble(amount);
+					int		sid2	= Integer.parseInt(sid);
+					Payment payment = new Payment(am, dt, sid2, scid, said);
 					
-					Payment payment = new Payment(am, dt, sid2, scid2, said2);
 					LinkedList<Payment> listPayment = modelDs.findAll();
 					
 					for (Payment pay : listPayment) {
@@ -158,7 +156,7 @@ public class PaymentController extends HttpServlet {
 						sendMessage("emptyList", response);
 						return;
 					}else{
-						request.setAttribute("payments", listPayment);
+						session.setAttribute("payments", listPayment);
 						sendMessage("list", response);
 						return;
 					}

@@ -12,42 +12,7 @@ $(document).ready(function()
 				$("#status").html("");
 				if(xhr.responseText == "loginOk"){
 					$("#modalTitle").html("Messaggio:");
-					$("#status").html("Messaggio: Login Successful.");
-					
-					$.ajax({
-						type: "POST",
-						url: "ArticleController",
-						data: $("#articleList").serialize(),
-						dataType: "text",
-						success: function(data, status, xhr)
-						{
-							
-						}
-						
-					});
-					$.ajax({
-						type: "POST",
-						url: "PaymentController",
-						data: $("#articleList").serialize(),
-						dataType: "text",
-						success: function(data, status, xhr)
-						{
-							
-						}
-						
-					});
-					$.ajax({
-						type: "POST",
-						url: "ServiceController",
-						data: $("#articleList").serialize(),
-						dataType: "text",
-						success: function(data, status, xhr)
-						{
-							
-						}
-						
-					});
-					
+					$("#status").html("Messaggio: Login Successful.");	
 					window.location.href="attivita.jsp";
 					
 				}
@@ -271,12 +236,7 @@ function forward(value){
 
 
 
-function visualizzaDiv(x){
-//	$("#list-client").hide();
-//	$("#list-service").hide();
-//	$("#list-article").hide();
-//	$("#list-payment").hide();
-	
+function visualizzaDiv(x){	
 	var client = document.getElementById('list-client');
 	var service= document.getElementById('list-service');
 	var article= document.getElementById('list-article');
@@ -293,24 +253,57 @@ function visualizzaDiv(x){
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				
+				if(xhr.responseText == "list"){
+					$('#list-c').load('jsp/activity_component/tableClient.jsp');
+				}
 			}
 			
 		});
-		$('#list-c').load('jsp/activity_component/tableClient.jsp');
-//		$("#list-client").show();
 	}
 	else if(x==1){
-		 $('#list-s').load('jsp/activity_component/tableService.jsp');
-//		$("#list-service").show();
+		$.ajax({
+			type: "POST",
+			url: "ServiceController",
+			data: $("#serviceList").serialize(),
+			dataType: "text",
+			success: function(data, status, xhr)
+			{
+				if(xhr.responseText == "list"){
+					$('#list-s').load('jsp/activity_component/tableService.jsp');
+				}
+			}
+			
+		});
 	}
 	else if(x==2){
-		 $('#list-a').load('jsp/activity_component/tableArticle.jsp');
-//		$("#list-article").show();
+		$.ajax({
+			type: "POST",
+			url: "ArticleController",
+			data: $("#articleList").serialize(),
+			dataType: "text",
+			success: function(data, status, xhr)
+			{
+				if(xhr.responseText == "list"){
+					$('#list-a').load('jsp/activity_component/tableArticle.jsp');
+				}
+			}
+			
+		});
 	}
 	else if(x==3){
-		 $('#list-p').load('jsp/activity_component/tablePagamento.jsp');
-//		$("#list-payment").show();
+		$.ajax({
+			type: "POST",
+			url: "PaymentController",
+			data: $("#paymentList").serialize(),
+			dataType: "text",
+			success: function(data, status, xhr)
+			{
+				if(xhr.responseText == "list"){
+					$('#list-p').load('jsp/activity_component/tablePagamento.jsp');
+				}
+			}
+			
+		});
 	}
 }
 

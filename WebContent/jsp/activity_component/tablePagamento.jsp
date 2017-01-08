@@ -1,3 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Payment"%>
+<script src="js/tab.js"></script>
+
 <div class="container container-table" id="list-payment">
 	<div class="row-374">
 		<div class="col-md-12">
@@ -28,29 +32,36 @@
 									<th>Cliente</th>
 									<th>Dipendente</th>
 									<th>Tipologia di servizio</th>
-									<th>Data</th>
-									<th>Ora</th>
+									<th>Data di Pagamento</th>
 									<th colspan="2">Funzioni</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td data-title="#" >1</td>
-									<td data-title="Cliente" id="client">Francesca Tassatone</td>
-									<td data-title="Dipendente" id="employee">Pinco pallo</td>
-									<td data-title="Tipologia di servizio" id="type">Lavaggio</td>
-									<td data-title="Data" id="date">1/01/2016</td>
-									<td data-title="Ora" id="place">16:00</td>
-
-									<td data-title="Funzioni"><button class="but"
-											data-toggle="modal" data-target="#mioModalArticle"
-											onclick="modal('article')">
-											<img src="icon/modifica.png"><br>Modifica
-										</button>
-										<button class="but" onclick="elimina('article')">
-											<img src="icon/remove.png"><br>Elimina
-										</button></td>
-								</tr>
+							<%
+							if(session.getAttribute("payments") != null){
+								AbstractList<Payment> paymentList = (AbstractList<Payment>)session.getAttribute("payments");
+								if(paymentList != null){
+									for(Payment payment: paymentList){
+										out.write("<tr>");
+										out.write("<td data-title='#' >"+payment.getServiceCustomerId()+"</td> ");
+										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerId()+"</td>");
+										out.write("<td data-title='Dipendente' id='employee'>"+payment.getServiceEmplooyeId()+"</td>");
+										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleId()+"</td>");
+										out.write("<td data-title='Data Di Pagamento' id='date'>"+payment.getDate()+"</td>");
+										out.write("<td data-title='Ammontare' id='amount'>"+payment.getAmount()+"</td>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('payment')'>");
+										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
+										out.write("<button class='but' onclick='elimina('payment')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+										out.write("</td>");
+										out.write("</tr>");
+									}
+								}
+							}
+							else{
+								out.write("<tr class='filterTable_no_results'><td colspan='12'>No results found</td></tr>");
+							}
+							
+							%>
 							</tbody>
 						</table>
 					</div>

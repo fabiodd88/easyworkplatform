@@ -16,13 +16,13 @@
 <link href="css/browser.css" rel="stylesheet" type="text/css" />
 <link href="css/tablet.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
-<script src="js/tab.js"></script>
+
 
 </head>
 
 <body>
 
-
+<%@include file="/jsp/formList.jsp" %>
 	<!-- Contenitore della pagina -->
 	<div class="container-fluid div-box">
 
@@ -66,16 +66,11 @@
 
 
 		<%@include file="/jsp/activity_component/navBar.jsp"%>
-		<div id="list-c"></div>
+		<div id="list-c"></div>		
 		<div id="list-a"></div>
 		<div id="list-s"></div>
 		<div id="list-p"></div>
-		
-		
-<%-- 		<%@include file="/jsp/activity_component/tableClient.jsp"%> --%>
-<%-- 		<%@include file="/jsp/activity_component/tableArticle.jsp"%> --%>
-<%-- 		<%@include file="/jsp/activity_component/tableService.jsp"%> --%>
-<%-- 		<%@include file="/jsp/activity_component/tablePagamento.jsp"%> --%>
+
 
 	</div>
 	<%@include file="jsp/confirmModal.jsp"%>

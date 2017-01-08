@@ -1,3 +1,9 @@
+<%@page import="javax.sql.rowset.serial.SerialArray"%>
+<%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Service"%>
+<script src="js/tab.js"></script>
+
+
 <div class="container container-table" id="list-service" >
 	<div class="row-374">
 		<div class="col-md-12">
@@ -25,33 +31,45 @@
 							<thead class="cf">
 								<tr>
 									<th>#</th>
-									<th>Nome</th>
-									<th>Cognome</th>
-									<th>Nome Dipendente</th>
-									<th>Data</th>
-									<th>Ora</th>
 									<th>Tipo Servizio</th>
+									<th>Nome Cliente</th>
+									<th>Quantità</th>
+									<th>Variazioni</th>
+									<th>Note</th>
+									<th>Data Ricezione</th>
+									<th>Data Restituzione</th>
+									<th>Nome Dipendente</th>
 									<th colspan="2">Funzioni</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td data-title="#">1</td>
-									<td data-title="Nome" id="name">Francesca</td>
-									<td data-title="Cognome" id="surename">Tassatone</td>
-									<td data-title="Nome Dipendente" id="employee">Pinco pallo</td>
-									<td data-title="Data" id="date">1/02/2016</td>
-									<td data-title="Ora" id="time">16:00</td>
-									<td data-title="Tipo di servizio" id="type">Lavaggio</td>
-									<td data-title="Funzioni"><button class="but"
-											data-toggle="modal" data-target="#mioModalArticle"
-											onclick="modal('article')">
-											<img src="icon/modifica.png"><br>Modifica
-										</button>
-										<button class="but" onclick="elimina('article')">
-											<img src="icon/remove.png"><br>Elimina
-										</button></td>
-								</tr>
+							<%
+							if(session.getAttribute("services") != null){
+								AbstractList<Service> serviceList = (AbstractList<Service>)session.getAttribute("services");
+								if(serviceList != null){
+									for(Service service: serviceList){
+										out.write("<tr>");
+										out.write("<td data-title='#'>"+service.getId()+"</td>");
+										out.write("<td data-title='Tipo Servizio' id='name'>"+service.getName()+"</td>");
+										out.write("<td data-title='Nome Cliente' id='customer'>"+service.getCustomerId()+"</td>");
+										out.write("<td data-title='Quantità' id='quantity'>"+service.getQuantity()+"</td>");
+										out.write("<td data-title='Variazioni' id='variation'>"+service.getVariation()+"</td>");
+										out.write("<td data-title='Note' id='note'>"+service.getNote()+"</td>");
+										out.write("<td data-title='Data Ricezione' id='receipt_date'>"+service.getReceiptDate()+"</td>");
+										out.write("<td data-title='Data Restituzione' id='return_date'>"+service.getReturnDate()+"</td>");
+										out.write("<td data-title='Nome Dipendente' id='employee'>"+service.getEmployee()+"</td>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('service')'>");
+										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
+										out.write("<button class='but' onclick='elimina('service')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+										out.write("</td>");
+										out.write("</tr>");
+									}
+								}
+							}
+							else{
+								out.write("<tr class='filterTable_no_results'><td colspan='12'>No results found</td></tr>");
+							}
+							%>	
 							</tbody>
 						</table>
 					</div>

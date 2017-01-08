@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.Service;
@@ -57,6 +58,7 @@ public class ServiceController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		ServiceModelDS custDb= new ServiceModelDS("dbtest");
+		HttpSession session = request.getSession();
 		try{
 			if(action == null){
 				sendMessage("noAction", response);
@@ -103,13 +105,12 @@ public class ServiceController extends HttpServlet {
 					}
 					
 					int  qt 	= Integer.parseInt(quantity);
-					int  aID	= Integer.parseInt(aid);
-					int	 cID 	= Integer.parseInt(cid);
 					Date rec 	= Date.valueOf(receiptDate);
 					Date ret	= Date.valueOf(returnDate);
 					
-					Service service = new Service(name, employee, qt, variation, note, rec, ret, aID, cID);
+					Service service = new Service(employee, qt, variation, note, rec, ret, aid, cid);
 					LinkedList<Service> listService = modelDs.findAll();
+					
 					for (Service ser : listService) {
 						if(ser.equals(service)){
 							sendMessage("exist", response);
@@ -168,10 +169,10 @@ public class ServiceController extends HttpServlet {
 						returnDate = String.valueOf(oldService.getReturnDate());
 					
 					if(aid.equals(""))
-						aid = String.valueOf(oldService.getArticleId());
+						aid = String.valueOf(oldService.getArticleName());
 					
 					if(cid.equals(""))
-						cid = String.valueOf(oldService.getCustomerId());
+						cid = String.valueOf(oldService.getCustomerName());
 					
 					//control if they respect the format
 					if ( ! (Pattern.matches("[a-zA-Z]*", employee) || Pattern.matches("[0-9]*", quantity) || Pattern.matches("[a-zA-Z]*", variation) || 
@@ -182,12 +183,10 @@ public class ServiceController extends HttpServlet {
 					}
 					
 					int qt = Integer.parseInt(quantity);
-					int aID = Integer.parseInt(aid);
-					int cID = Integer.parseInt(cid);
 					Date rec = Date.valueOf(receiptDate);
 					Date ret = Date.valueOf(returnDate);
 					
-					Service newService = new Service(name, employee, qt, variation, note, rec, ret, aID, cID);
+					Service newService = new Service(employee, qt, variation, note, rec, ret, aid, cid);
 					newService.setId(oldService.getId());
 					try {
 						modelDs.update(newService);
@@ -263,7 +262,7 @@ public class ServiceController extends HttpServlet {
 						sendMessage("emptyList", response);
 						return;
 					}else{
-						request.setAttribute("service", listService);
+						session.setAttribute("services", listService);
 						sendMessage("list", response);
 						return;
 					}

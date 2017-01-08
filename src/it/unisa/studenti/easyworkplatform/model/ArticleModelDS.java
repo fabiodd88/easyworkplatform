@@ -167,7 +167,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public LinkedList<Article> findAll() throws SQLException {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME+";";
+		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME+ ";";
 		
 		try {
 			connection=ds.getConnection();
@@ -183,7 +183,6 @@ public class ArticleModelDS implements ModelInterface<Article> {
 				article.setDuration(rs.getInt("duration"));
 				listArticle.add(article);
 			}
-			connection.commit();
 		} catch (SQLException e) {
 		}
 		return listArticle;
