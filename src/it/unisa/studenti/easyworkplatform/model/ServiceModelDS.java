@@ -51,7 +51,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(name, employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
+				+ "(name, employee, quantity, variation, note, receipt_date, return_date, article_id, customer_id)"
 				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
 		try {
 			connection=ds.getConnection();
@@ -128,11 +128,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 			while (rs.next()) {
 				service = new Service();
 				service.setId(rs.getInt("id"));
+				service.setName(rs.getString("name"));
 				service.setEmployee(rs.getString("employee"));
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
@@ -162,11 +163,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				service.setId(rs.getInt("id"));
+				service.setName(rs.getString("name"));
 				service.setEmployee(rs.getString("employee"));
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
@@ -184,7 +186,6 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
-		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
@@ -192,11 +193,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 			while (rs.next()) {
 				Service service = new Service();
 				service.setId(rs.getInt("id"));
+				service.setName(rs.getString("name"));
 				service.setEmployee(rs.getString("employee"));
 				service.setQuantity(rs.getInt("quantity"));
 				service.setVariation(rs.getString("variation"));
 				service.setNote(rs.getString("note"));
-				service.setReceiptDate(rs.getDate("receipt_data"));
+				service.setReceiptDate(rs.getDate("receipt_date"));
 				service.setReturnDate(rs.getDate("return_date"));
 				service.setArticleId(rs.getInt("article_id"));
 				service.setCustomerId(rs.getInt("customer_id"));
