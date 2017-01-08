@@ -59,6 +59,8 @@ public class CustomerController extends HttpServlet {
 		
 		String action = request.getParameter("action");
 		HttpSession session = request.getSession();
+		CustomerModelDS custDs = new CustomerModelDS("dbtest");
+		
 		try {
 			if (action == null) {
 				sendMessage("noAction", response);
@@ -241,25 +243,25 @@ public class CustomerController extends HttpServlet {
 						return;
 					}
 					
-					String regex = "";
-					switch(attribute){
-						case "name" : {regex = "[a-zA-Z]*";}break;
-						case "surname" : {regex = "[a-zA-Z]*";}break;
-						case "birth_date" : {regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";}break;
-						case "birth_place" : {regex = "[a-zA-Z]*";}break;
-						case "address" : {regex = "[a-zA-Z 0-9]*";}break;
-						case "city" : {regex = "[a-zA-Z]*";}break;
-						case "province" : {regex="[a-zA-Z]*";}break;
-						case "cap" : {regex="[0-9]{5}";}break;
-						case "email" : {regex="[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*";}break;
-						case "phone_number" : {regex="[0-9]*";}break;
-						case "newsletter" : {regex="[a-zA-Z0-9]*";}break;
-					}
-					
-					if(Pattern.matches(regex, toSearch)){
-						sendMessage("regExpError", response);
-						return;
-					}
+//					String regex = "";
+//					switch(attribute){
+//						case "name" : {regex = "[a-zA-Z]*";}break;
+//						case "surname" : {regex = "[a-zA-Z]*";}break;
+//						case "birth_date" : {regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";}break;
+//						case "birth_place" : {regex = "[a-zA-Z]*";}break;
+//						case "address" : {regex = "[a-zA-Z 0-9]*";}break;
+//						case "city" : {regex = "[a-zA-Z]*";}break;
+//						case "province" : {regex="[a-zA-Z]*";}break;
+//						case "cap" : {regex="[0-9]{5}";}break;
+//						case "email" : {regex="[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*";}break;
+//						case "phone_number" : {regex="[0-9]*";}break;
+//						case "newsletter" : {regex="[a-zA-Z0-9]*";}break;
+//					}
+//					
+//					if(Pattern.matches(regex, toSearch)){
+//						sendMessage("regExpError", response);
+//						return;
+//					}
 					
 					LinkedList<Customer> listCustomer = modelDs.findByField(attribute, toSearch);
 					
@@ -281,7 +283,7 @@ public class CustomerController extends HttpServlet {
 						return;
 					} else{
 						session.setAttribute("customers", listCustomer);
-						sendMessage("list", response);
+						
 						return;
 					}
 				}

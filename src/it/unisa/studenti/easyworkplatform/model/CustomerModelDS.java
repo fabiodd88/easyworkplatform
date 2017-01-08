@@ -22,7 +22,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 
 	private static DataSource ds;
 
-	private static final String TABLE_NAME = "customer";
+	private static final String TABLE_NAME = "pizzeria_customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -202,14 +202,16 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME;
-		Customer customer = new Customer();
+		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+ ";";
+	
 		try {
 			
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
+			
 			while (rs.next()) {
+				Customer customer = new Customer();
 				customer.setId(rs.getInt("id"));
 				customer.setName(rs.getString("name"));
 				customer.setSurname(rs.getString("surname"));

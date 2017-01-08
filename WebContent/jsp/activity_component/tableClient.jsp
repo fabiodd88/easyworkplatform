@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Customer"%>
-	
-	
-
-<form role="form" id="customerList" action="CustomerController" method="POST">
-	<input style="display: none" type="text"  name="action" 
-			id="action" value="viewList">
-	<button id="custoButt" type="submit" style="display: none;"></button>
-</form>
-<script>$('button#custoButt').click();</script>
-
 
 <div class="container container-table " id="list-client">
 	<div class="row-374">
@@ -41,10 +31,8 @@
 									<th>Nome</th>
 									<th>Cognome</th>
 									<th>Data di nascita</th>
-									<th>Codice fiscale</th>
 									<th>Luogo di nascita</th>
 									<th>Indirizzo</th>
-									<th>Numero civico</th>
 									<th>Città</th>
 									<th>Provincia</th>
 									<th>Cap</th>
@@ -52,7 +40,30 @@
 								</tr>
 							</thead>
 							<tbody>
-								
+								<%
+								int i =0;
+								AbstractList<Customer> list = (AbstractList<Customer>)session.getAttribute("customers");
+								if(list != null){
+									for(Customer customer: list){
+										i++;
+										out.write("<tr>");
+										out.write("<td data-title='#' id='id'>"+customer.getId()+"</td>");
+										out.write("<td data-title='Nome' id='name'>"+customer.getName()+"</td>");
+										out.write("<td data-title='Cognome' id='surename'>"+customer.getSurname()+"</td>");
+										out.write("<td data-title='Data di nascita' id='birth'>"+customer.getBirthdate()+"</td>");
+										out.write("<td data-title='Luogo di nascita' id='place'>"+customer.getBirthplace()+"</td>");
+										out.write("<td data-title='Indirizzo' id='address'>"+customer.getAddress()+"</td>");
+										out.write("<td data-title='Città' id='city'>"+customer.getCity()+"</td>");
+										out.write("<td data-title='Provincia' id='province'>"+customer.getProvince()+"</td>");
+										out.write("<td data-title='Cap' id='cap'>"+customer.getCap()+"</td>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('client')'>");
+										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
+										out.write("<button class='but' onclick='elimina('client')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+										out.write("</td>");
+										out.write("</tr>");								
+										}
+								}
+								%>
 
 
 							</tbody>

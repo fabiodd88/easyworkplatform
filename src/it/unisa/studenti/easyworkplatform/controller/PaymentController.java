@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.Payment;
@@ -56,6 +57,9 @@ public class PaymentController extends HttpServlet {
      *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		PaymentModelDS custDs = new PaymentModelDS("dbtest");
+		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		try{
 			if(action == null){

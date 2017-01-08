@@ -58,7 +58,7 @@ public class ArticleController extends HttpServlet {
 		
 		String action	= request.getParameter("action");
 		String db		= request.getParameter("activity");
-		
+		ArticleModelDS custDs = new ArticleModelDS("dbtest");
 		try{
 			if(action == null){
 				sendMessage("noAction", response);
@@ -224,7 +224,7 @@ public class ArticleController extends HttpServlet {
 						sendMessage("emptyList", response);
 						return;
 					}else{
-						request.setAttribute("article", listArticle);
+						request.setAttribute("articles", listArticle);
 						sendMessage("list", response);
 						return;
 					}

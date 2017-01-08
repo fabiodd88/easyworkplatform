@@ -63,8 +63,8 @@
 
 						<button type="reset" class="btn btn-default"
 							onClick="forward('reg3')">Modifica</button>
-						<button  class="btn btn-default" data-toggle="modal"
-							data-target="#modalConf" type="submit">Conferma</button>
+						<button  type="submit" class="btn btn-default" data-toggle="modal"
+							data-target="#modalConf">Conferma</button>
 					</div>
 				</div>
 			</div>

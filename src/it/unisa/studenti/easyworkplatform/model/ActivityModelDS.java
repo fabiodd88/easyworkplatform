@@ -27,13 +27,11 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		
 	}
 	
-	public ActivityModelDS(String nomeDb) {
+	static {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-
-			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-
+			ds = (DataSource) envCtx.lookup("jdbc/dbtest");
 		 } catch (NamingException e) {
 
 			 e.printStackTrace();

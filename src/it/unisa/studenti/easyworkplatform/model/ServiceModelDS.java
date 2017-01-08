@@ -12,11 +12,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 /**	
  * 	ServiceModelDs
  *	Class that interacts with the database through the information of Service
@@ -25,7 +20,7 @@ import javax.sql.DataSource;
 public class ServiceModelDS implements ModelInterface<Service> {
 
 	private static DataSource ds;
-	private static final String TABLE_NAME = "service";
+	private static final String TABLE_NAME = "pizzeria_service";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -189,12 +184,13 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
-		Service service = new Service();
+		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
+				Service service = new Service();
 				service.setId(rs.getInt("id"));
 				service.setEmployee(rs.getString("employee"));
 				service.setQuantity(rs.getInt("quantity"));

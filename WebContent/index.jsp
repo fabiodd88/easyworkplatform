@@ -21,7 +21,7 @@
 
 		
 
-
+<%@include file="/jsp/formList.jsp" %>
 <!-- Contenitore della pagina -->
 	<div class="container div-box">
 		<%@include file="/jsp/jumbotron.jsp" %>

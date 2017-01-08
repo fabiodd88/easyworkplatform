@@ -14,8 +14,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Ferdie/Documents/Workspace/libraries/mysql-connector-java-5.0.8-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ferdie/Documents/Workspace/libraries/org.apache.commons.io.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio/Desktop/Project/org.apache.commons.io.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Fabio/Desktop/Project/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

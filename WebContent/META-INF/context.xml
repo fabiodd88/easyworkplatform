@@ -7,34 +7,4 @@
 		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/dbtest" 
 		defaultAutoCommit ="false"/>
 		
-		<Resource name="jdbc/easy_work_platform" global="jdbc/easy_work_platform"
-		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
-		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
-		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/easy_work_platform" 
-		defaultAutoCommit ="false"/>
-		
-		<Resource name="jdbc/laundry" global="jdbc/laundry"
-		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
-		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
-		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/laundry" 
-		defaultAutoCommit ="false"/>
-		
-		<Resource name="jdbc/pizzeria" global="jdbc/pizzeria"
-		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
-		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
-		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/pizzeria" 
-		defaultAutoCommit ="false"/>
-		
-		<Resource name="jdbc/repair_center" global="jdbc/repair_center"
-		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
-		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
-		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/repair_center" 
-		defaultAutoCommit ="false"/>
-		
-		<Resource name="jdbc/beauty_center" global="jdbc/beauty_center"
-		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
-		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
-		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/beauty_center" 
-		defaultAutoCommit ="false"/>
-		
 </Context>

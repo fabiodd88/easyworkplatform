@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 public class PaymentModelDS implements ModelInterface<Payment> {
 
 
-	private static final String TABLE_NAME = "customer";
+	private static final String TABLE_NAME = "pizzeria_payment";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 	private static DataSource ds;
@@ -38,7 +38,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
+			ds = (DataSource) envCtx.lookup("jdbc/dbtest");
 		 }  catch (NamingException e) {
 			 e.printStackTrace();
 		 }
@@ -169,13 +169,14 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public LinkedList<Payment> findAll() throws SQLException {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
-		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME;
-		Payment payment = new Payment();
+		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME+";";
+		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
+				Payment payment = new Payment();
 				payment.setId(rs.getInt("id"));
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));

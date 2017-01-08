@@ -62,6 +62,7 @@ public class ActivityController extends HttpServlet {
 		
 		String 		action 	= request.getParameter("action");
 		HttpSession session = request.getSession();
+
 		
 		try {
 			if (action == null) {

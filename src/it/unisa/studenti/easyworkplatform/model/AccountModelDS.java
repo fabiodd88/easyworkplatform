@@ -194,6 +194,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE email = ?";
 		try {
+			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();

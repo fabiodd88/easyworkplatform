@@ -66,10 +66,17 @@
 
 
 		<%@include file="/jsp/activity_component/navBar.jsp"%>
-		<%@include file="/jsp/activity_component/tableClient.jsp"%>
-		<%@include file="/jsp/activity_component/tableArticle.jsp"%>
-		<%@include file="/jsp/activity_component/tableService.jsp"%>
-		<%@include file="/jsp/activity_component/tablePagamento.jsp"%>
+		<div id="list-c"></div>
+		<div id="list-a"></div>
+		<div id="list-s"></div>
+		<div id="list-p"></div>
+		
+		
+<%-- 		<%@include file="/jsp/activity_component/tableClient.jsp"%> --%>
+<%-- 		<%@include file="/jsp/activity_component/tableArticle.jsp"%> --%>
+<%-- 		<%@include file="/jsp/activity_component/tableService.jsp"%> --%>
+<%-- 		<%@include file="/jsp/activity_component/tablePagamento.jsp"%> --%>
+
 	</div>
 	<%@include file="jsp/confirmModal.jsp"%>
 	<%@include file="/jsp/activity_component/modalAddCliente.jsp"%>

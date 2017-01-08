@@ -56,6 +56,7 @@ public class ServiceController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
+		ServiceModelDS custDb= new ServiceModelDS("dbtest");
 		try{
 			if(action == null){
 				sendMessage("noAction", response);

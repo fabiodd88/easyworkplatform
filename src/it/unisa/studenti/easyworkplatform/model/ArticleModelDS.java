@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -10,7 +11,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.mysql.jdbc.ResultSet;
 
 /**
  * 	ArticleModelDs
@@ -19,7 +19,7 @@ import com.mysql.jdbc.ResultSet;
 public class ArticleModelDS implements ModelInterface<Article> {
 
 	private static DataSource ds;
-	private static final String TABLE_NAME = "article";
+	private static final String TABLE_NAME = "pizzeria_article";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
@@ -115,7 +115,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
-			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
+			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				article = new Article();
 				article.setId(id);
@@ -147,7 +147,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
-			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
+			ResultSet rs =  preparedStatement.executeQuery();
 			while (rs.next()) {
 				article.setId(rs.getInt("id"));
 				article.setName(rs.getString("name"));
@@ -167,13 +167,15 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public LinkedList<Article> findAll() throws SQLException {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME;
+		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME+";";
+		
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
-			ResultSet rs = (ResultSet) preparedStatement.executeQuery();
-			Article article = new Article();
+			ResultSet rs = preparedStatement.executeQuery();
+			
 			while (rs.next()) {
+				Article article = new Article();
 				article.setId(rs.getInt("id"));
 				article.setName(rs.getString("name"));
 				article.setPrice(rs.getDouble("price"));

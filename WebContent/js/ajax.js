@@ -13,13 +13,50 @@ $(document).ready(function()
 				if(xhr.responseText == "loginOk"){
 					$("#modalTitle").html("Messaggio:");
 					$("#status").html("Messaggio: Login Successful.");
+					
+					$.ajax({
+						type: "POST",
+						url: "ArticleController",
+						data: $("#articleList").serialize(),
+						dataType: "text",
+						success: function(data, status, xhr)
+						{
+							
+						}
+						
+					});
+					$.ajax({
+						type: "POST",
+						url: "PaymentController",
+						data: $("#articleList").serialize(),
+						dataType: "text",
+						success: function(data, status, xhr)
+						{
+							
+						}
+						
+					});
+					$.ajax({
+						type: "POST",
+						url: "ServiceController",
+						data: $("#articleList").serialize(),
+						dataType: "text",
+						success: function(data, status, xhr)
+						{
+							
+						}
+						
+					});
+					
 					window.location.href="attivita.jsp";
+					
 				}
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
 				}
 				else if(xhr.responseText == "insertOk"){
 					$("#status").html("Messaggio: User insert");
+
 				}
 				else if(xhr.responseText == "noInsert"){
 					$("#status").html("Messaggio: Errore insert");
@@ -41,10 +78,8 @@ $(document).ready(function()
 		});
 		
 		e.preventDefault();
-	});
-	
-});
-
+			});
+		});
 
 
 
@@ -237,21 +272,45 @@ function forward(value){
 
 
 function visualizzaDiv(x){
-	$("#list-client").hide();
-	$("#list-service").hide();
-	$("#list-article").hide();
-	$("#list-payment").hide();
+//	$("#list-client").hide();
+//	$("#list-service").hide();
+//	$("#list-article").hide();
+//	$("#list-payment").hide();
+	
+	var client = document.getElementById('list-client');
+	var service= document.getElementById('list-service');
+	var article= document.getElementById('list-article');
+	var payment= document.getElementById('list-payment');
+	if(client  != null) client.remove();
+	if(service != null) service.remove();
+	if(article != null) article.remove();
+	if(payment != null) payment.remove();
 	if(x==0){
-		$("#list-client").show();
+		$.ajax({
+			type: "POST",
+			url: "CustomerController",
+			data: $("#clientList").serialize(),
+			dataType: "text",
+			success: function(data, status, xhr)
+			{
+				
+			}
+			
+		});
+		$('#list-c').load('jsp/activity_component/tableClient.jsp');
+//		$("#list-client").show();
 	}
 	else if(x==1){
-		$("#list-service").show();
+		 $('#list-s').load('jsp/activity_component/tableService.jsp');
+//		$("#list-service").show();
 	}
 	else if(x==2){
-		$("#list-article").show();
+		 $('#list-a').load('jsp/activity_component/tableArticle.jsp');
+//		$("#list-article").show();
 	}
 	else if(x==3){
-		$("#list-payment").show();
+		 $('#list-p').load('jsp/activity_component/tablePagamento.jsp');
+//		$("#list-payment").show();
 	}
 }
 
