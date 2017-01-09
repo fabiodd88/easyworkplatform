@@ -16,8 +16,8 @@ public class Service implements Cloneable {
 	private String note;
 	private Date receiptDate;
 	private Date returnDate;
-	private String articleName;
-	private String customerName;
+	private int articleId;
+	private int customerId;
 
 	/**
 	 * Empty constructor 
@@ -36,7 +36,7 @@ public class Service implements Cloneable {
 	 * @param customerId of the service
 	 */
 	public Service(String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
-			String articleName, String customerName) {
+			int articleId, int customerId) {
 		super();
 		this.employee = employee;
 		this.quantity = quantity;
@@ -44,9 +44,11 @@ public class Service implements Cloneable {
 		this.note = note;
 		this.receiptDate = receiptdate;
 		this.returnDate = returnDate;
-		this.articleName = articleName;
-		this.customerName = customerName;
+		this.articleId = articleId;
+		this.customerId = customerId;
 	}
+
+	
 
 
 	/**
@@ -146,35 +148,35 @@ public class Service implements Cloneable {
 	}
 
 	/**
-	 * Get the article name
-	 * @return String
+	 * Get the article id
+	 * @return this article id
 	 */
-	public String getArticleName() {
-		return articleName;
+	public int getArticleId() {
+		return articleId;
 	}
 
 	/**
-	 * Set an article name
-	 * @param articleName
+	 * Set an article id
+	 * @param articleId
 	 */
-	public void setArticleName(String articleName) {
-		this.articleName = articleName;
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
 	}
 
 	/**
-	 * Get the customer name
-	 * @return String
+	 * Get the customer id
+	 * @return this customer id
 	 */
-	public String getCustomerName() {
-		return customerName;
+	public int getCustomerId() {
+		return customerId;
 	}
 
 	/**
-	 * Set a customer name
-	 * @param customerName
+	 * Set a customer id
+	 * @param customerId
 	 */
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	/**
@@ -200,9 +202,8 @@ public class Service implements Cloneable {
 	@Override
 	public String toString() {
 		return "Service [employee=" + employee + ", quantity=" + quantity + ", variation=" + variation + ", note="
-				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleName=" + articleName
-				+ ", customerName=" + customerName + "]";
-
+				+ note + ", recepitDate=" + receiptDate + ", returnDate=" + returnDate + ", articleId=" + articleId
+				+ ", customerId = " + customerId + "]";
 	}
 
 	/**
@@ -221,8 +222,8 @@ public class Service implements Cloneable {
 				this.note.equals(service.getNote())			&&
 				this.receiptDate.equals(service.getReceiptDate())	&&
 				this.returnDate.equals(service.getReturnDate())	&&
-				this.articleName	== service.getArticleName()		&&
-				this.customerName	== service.getCustomerName();
+				this.articleId	== service.getArticleId()		&&
+				this.customerId	== service.getCustomerId();
 				
 	} 
 

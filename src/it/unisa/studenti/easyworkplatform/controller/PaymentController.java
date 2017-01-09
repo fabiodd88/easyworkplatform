@@ -72,8 +72,8 @@ public class PaymentController extends HttpServlet {
 					
 					String date		= request.getParameter("date");
 					String amount	= request.getParameter("amount");
-					String scid		= request.getParameter("serviceCustomerName");
-					String said		= request.getParameter("serviceArticleName");
+					String scid		= request.getParameter("serviceCustomerId");
+					String said		= request.getParameter("serviceArticleId");
 					String sid		= request.getParameter("serviceId");
 					
 					// control if empty
@@ -92,11 +92,13 @@ public class PaymentController extends HttpServlet {
 //								return;
 //					}
 					
-					Date	dt		= Date.valueOf(date);
-					double 	am		= Double.parseDouble(amount);
-					int		sid2	= Integer.parseInt(sid);
-					Payment payment = new Payment(am, dt, sid2, scid, said);
+					Date dt = Date.valueOf(date);
+					double am = Double.parseDouble(amount);
+					int scid2 = Integer.parseInt(scid);
+					int said2 = Integer.parseInt(said);
+					int sid2 = Integer.parseInt(sid);
 					
+					Payment payment = new Payment(am, dt, sid2, scid2, said2);
 					LinkedList<Payment> listPayment = modelDs.findAll();
 					
 					for (Payment pay : listPayment) {

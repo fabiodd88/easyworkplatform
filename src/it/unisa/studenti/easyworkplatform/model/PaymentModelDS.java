@@ -50,15 +50,15 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public void insert(Payment payment) throws SQLException {
 		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
-				+ "(amount, date_payment, service_id, service_customer_name, service_article_name) VALUES (?,?,?,?,?)";
+				+ "(amount, date_payment, service_id, service_customer_id, service_article_id) VALUES (?,?,?,?,?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
 			preparedStatement.setInt(3, payment.getServiceId());
-			preparedStatement.setString(4, payment.getServiceCustomerName());
-			preparedStatement.setString(5, payment.getServiceArticleName());
+			preparedStatement.setInt(4, payment.getServiceCustomerId());
+			preparedStatement.setInt(5, payment.getServiceArticleId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -71,16 +71,16 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public void update(Payment payment) throws SQLException {
 		String updateSql = "UPDATE " + PaymentModelDS.TABLE_NAME
-				+ " SET amount=?, date_payment=?, service_id=?, service_customer_name=?,"
-				+ " service_article_name=? WHERE (id = ?)";
+				+ " SET amount=?, date_payment=?, service_id=?, service_customer_id=?,"
+				+ " service_article_id=? WHERE (id = ?)";
 		try {
 			connection=ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
 			preparedStatement.setInt(3, payment.getServiceId());
-			preparedStatement.setString(4, payment.getServiceCustomerName());
-			preparedStatement.setString(5, payment.getServiceArticleName());
+			preparedStatement.setInt(4, payment.getServiceCustomerId());
+			preparedStatement.setInt(5, payment.getServiceArticleId());
 			preparedStatement.setInt(5, payment.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
@@ -122,8 +122,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));
 				payment.setServiceId(rs.getInt("service_id"));
-				payment.setServiceCustomerName(rs.getString("service_customer_name"));
-				payment.setServiceArticleName(rs.getString("service_article_name"));
+				payment.setServiceCustomerId(rs.getInt("service_customer_id"));
+				payment.setServiceArticleId(rs.getInt("service_article_id"));
 			}
 			connection.commit();
 		} catch (SQLException e) {
@@ -153,8 +153,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));
 				payment.setServiceId(rs.getInt("service_id"));
-				payment.setServiceCustomerName(rs.getString("service_customer_name"));
-				payment.setServiceArticleName(rs.getString("service_article_name"));
+				payment.setServiceCustomerId(rs.getInt("service_customer_id"));
+				payment.setServiceArticleId(rs.getInt("service_article_id"));
 				listPayment.add(payment);
 			}
 		} catch (SQLException e) {
@@ -179,8 +179,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setDate(rs.getDate("date_payment"));
 				payment.setServiceId(rs.getInt("service_id"));
-				payment.setServiceCustomerName(rs.getString("service_customer_name"));
-				payment.setServiceArticleName(rs.getString("service_article_name"));
+				payment.setServiceCustomerId(rs.getInt("service_customer_id"));
+				payment.setServiceArticleId(rs.getInt("service_article_id"));
 				listPayment.add(payment);
 			}
 		} catch (SQLException e) {

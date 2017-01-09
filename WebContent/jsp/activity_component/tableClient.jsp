@@ -57,7 +57,8 @@
 											out.write("<td data-title='Cap' id='cap'>"+customer.getCap()+"</td>");
 											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('client')'>");
 											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-											out.write("<button class='but' onclick='elimina('client')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+											out.write("<button class='but' onclick='setClick("+customer.getId()+")' data-toggle='modal' data-target='#question'>");
+											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 											out.write("</td>");
 											out.write("</tr>");								
 											}

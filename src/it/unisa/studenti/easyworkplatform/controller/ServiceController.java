@@ -105,10 +105,12 @@ public class ServiceController extends HttpServlet {
 					}
 					
 					int  qt 	= Integer.parseInt(quantity);
+					int  aID	= Integer.parseInt(aid);
+					int	 cID 	= Integer.parseInt(cid);
 					Date rec 	= Date.valueOf(receiptDate);
 					Date ret	= Date.valueOf(returnDate);
 					
-					Service service = new Service(employee, qt, variation, note, rec, ret, aid, cid);
+					Service service = new Service(employee, qt, variation, note, rec, ret, aID, cID);
 					LinkedList<Service> listService = modelDs.findAll();
 					
 					for (Service ser : listService) {
@@ -169,10 +171,10 @@ public class ServiceController extends HttpServlet {
 						returnDate = String.valueOf(oldService.getReturnDate());
 					
 					if(aid.equals(""))
-						aid = String.valueOf(oldService.getArticleName());
+						aid = String.valueOf(oldService.getArticleId());
 					
 					if(cid.equals(""))
-						cid = String.valueOf(oldService.getCustomerName());
+						cid = String.valueOf(oldService.getCustomerId());
 					
 					//control if they respect the format
 					if ( ! (Pattern.matches("[a-zA-Z]*", employee) || Pattern.matches("[0-9]*", quantity) || Pattern.matches("[a-zA-Z]*", variation) || 
@@ -183,10 +185,12 @@ public class ServiceController extends HttpServlet {
 					}
 					
 					int qt = Integer.parseInt(quantity);
+					int aID = Integer.parseInt(aid);
+					int cID = Integer.parseInt(cid);
 					Date rec = Date.valueOf(receiptDate);
 					Date ret = Date.valueOf(returnDate);
 					
-					Service newService = new Service(employee, qt, variation, note, rec, ret, aid, cid);
+					Service newService = new Service(employee, qt, variation, note, rec, ret, aID, cID);
 					newService.setId(oldService.getId());
 					try {
 						modelDs.update(newService);

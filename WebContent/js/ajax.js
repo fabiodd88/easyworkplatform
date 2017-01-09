@@ -14,7 +14,6 @@ $(document).ready(function()
 					$("#modalTitle").html("Messaggio:");
 					$("#status").html("Messaggio: Login Successful.");	
 					window.location.href="attivita.jsp";
-					
 				}
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
@@ -46,6 +45,22 @@ $(document).ready(function()
 			});
 		});
 
+
+
+function deleteUser(row, userId)
+{
+	row = $(row).parent().parent();
+	$.ajax({
+		   type: "POST",
+		   url: "UserController",
+		   data: "action=remove&id="+userId,
+		   dataType: "text",
+		   success: function(data, status, xhr)
+		   {
+			   row.remove();
+		   }
+		 });
+}
 
 
 
@@ -253,9 +268,7 @@ function visualizzaDiv(x){
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				if(xhr.responseText == "list"){
-					$('#list-c').load('jsp/activity_component/tableClient.jsp');
-				}
+				$('#list-c').load('jsp/activity_component/tableClient.jsp');
 			}
 			
 		});
@@ -268,9 +281,7 @@ function visualizzaDiv(x){
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				if(xhr.responseText == "list"){
-					$('#list-s').load('jsp/activity_component/tableService.jsp');
-				}
+				$('#list-s').load('jsp/activity_component/tableService.jsp');
 			}
 			
 		});
@@ -283,9 +294,7 @@ function visualizzaDiv(x){
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				if(xhr.responseText == "list"){
-					$('#list-a').load('jsp/activity_component/tableArticle.jsp');
-				}
+				$('#list-a').load('jsp/activity_component/tableArticle.jsp');	
 			}
 			
 		});
@@ -298,9 +307,7 @@ function visualizzaDiv(x){
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				if(xhr.responseText == "list"){
 					$('#list-p').load('jsp/activity_component/tablePayment.jsp');
-				}
 			}
 			
 		});
@@ -397,43 +404,27 @@ function controlloService(){
 	}
 }
 
-function elimina(action){
-	switch(action){
-	case 'client': 
-		document.getElementById("riga").style.display="none";
-		break;
-	case 'article':
-		var box = document.getElementById("articolo").style.display="none";
-		break;
-	case 'service':
-		var box = document.getElementById("servizio").style.display="none";
-		break;
-	case 'payment':
-		var box = document.getElementById("pagamento").style.display="none";
-		break;
-	}
+
+
+function elimina(value){
+	$.ajax({
+		type: "POST",
+		url: "CustomerController",
+		data: "action=remove&id="+value,
+		dataType: "text",
+		success: function(data, status, xhr)
+		{
+			if(xhr.responseText == "succesfull"){
+				$("#modalTitle").html("Messaggio");
+				$("#status").html("Messaggio: Rimozione avvenuta con successo.");	
+			}
+		}
+		
+	});
+	
 }
 
-function datiCliente(){
-	var name = document.getElementById("name").value;
-	var surename = document.getElementById("surename").value;
-	var birth = document.getElementById("birth").value;
-	var tax = document.getElementById("tax").value;
-	var place = document.getElementById("place").value;
-	var address = document.getElementById("address").value;
-	var civic = document.getElementById("civic").value;
-	var city = document.getElementById("city").value;
-	var province = document.getElementById("province").value;
-	var cap = document.getElementById("cap").value;
-	
-	$('#name').text(name);
-	$('#surename').text(surename);
-	$('#birth').text(birth);
-	$('#tax').text(tax);
-	$('#place').text('place');
-	$('#address').text(address);
-	$('#civic').text(civic);
-	$('#city').text(city);
-	$('#province').text(province);
-	$('#cap').text(cap);
+
+function setClick(value){
+		$("#confirmButtonModal").attr("onclick","elimina("+value+")");
 }

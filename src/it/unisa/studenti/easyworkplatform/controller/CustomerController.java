@@ -212,7 +212,7 @@ public class CustomerController extends HttpServlet {
 				
 				// REMOVE
 				if (action.equalsIgnoreCase("remove")){
-					int id = Integer.parseInt(request.getParameter("idCustomer"));
+					int id = Integer.parseInt(request.getParameter("id"));
 					
 					Customer toRemove = modelDs.findByKey(id);
 					

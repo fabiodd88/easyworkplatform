@@ -74,6 +74,7 @@
 
 	</div>
 	<%@include file="jsp/confirmModal.jsp"%>
+	<%@include file="jsp/question.jsp"%>
 	<%@include file="/jsp/activity_component/modalAddCliente.jsp"%>
 	<%@include file="/jsp/activity_component/modalAddArticle.jsp"%>
 	<%@include file="/jsp/activity_component/modalAddService.jsp"%>
@@ -84,12 +85,6 @@
 	<%@include file="/jsp/activity_component/modalModificaUtente.jsp"%>
 	<%@include file="jsp/footer.jsp"%>
 
-	<script type="text/javascript">
-		$("#list-client").hide();
-		$("#list-service").hide();
-		$("#list-article").hide();
-		$("#list-payment").hide();
-	</script>
 
 </body>
 </html>
