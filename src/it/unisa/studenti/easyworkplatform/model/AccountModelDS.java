@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 */
 public class AccountModelDS implements ModelInterface<User> {
 
-	private static final String TABLE_NAME = "user";
+	private static final String TABLE_NAME ="user";
 	private static Connection connection = null;
 	private static PreparedStatement preparedStatement = null;
 	private static DataSource ds;
