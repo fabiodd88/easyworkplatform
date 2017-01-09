@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,8 +40,15 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-		 } catch (NamingException e) {
-			 e.printStackTrace();
+			connection = ds.getConnection();
+		 } catch (NamingException | SQLException e) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost/"+nomeDb, "root", "");
+				connection.setAutoCommit(false);
+			} catch (SQLException | ClassNotFoundException ex) {
+				e.printStackTrace();
+			}
 		 }
 	}
 
@@ -52,7 +60,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
 				+ "(amount, date_payment, service_id, service_customer_id, service_article_id) VALUES (?,?,?,?,?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
@@ -74,7 +82,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 				+ " SET amount=?, date_payment=?, service_id=?, service_customer_id=?,"
 				+ " service_article_id=? WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setDouble(1, payment.getAmount());
 			preparedStatement.setDate(2, (Date) payment.getDate());
@@ -95,7 +103,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -112,7 +120,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Payment payment = null;
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -144,7 +152,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		String selectSql = "SELECT * FROM " +PaymentModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Payment payment = new Payment();
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
@@ -170,7 +178,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
 		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME+";";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {

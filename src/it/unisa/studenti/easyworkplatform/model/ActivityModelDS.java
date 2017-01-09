@@ -1,6 +1,7 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,8 +30,15 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/dbtest");
-		 } catch (NamingException e) {
-			 e.printStackTrace();
+			connection = ds.getConnection();
+		 } catch (NamingException | SQLException e) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
+				connection.setAutoCommit(false);
+			} catch (SQLException | ClassNotFoundException ex) {
+				e.printStackTrace();
+			}
 		 }
 	}
 
@@ -43,7 +51,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		String insertSql = "INSERT INTO " + ActivityModelDS.TABLE_NAME
 				+ "(vat_number, name, type, address, city, province, cap, user_id) VALUES (?,?,?,?,?,?,?,?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
@@ -68,7 +76,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 				+ " SET vat_number = ?, name = ?, type = ?, address = ?, city = ?, province = ?, cap = ?"
 				+ " WHERE (id = ? && user_id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, activity.getVatNumber());
 			preparedStatement.setString(2, activity.getName());
@@ -92,7 +100,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -110,7 +118,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		Activity activity = null;
 		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -143,7 +151,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		String selectSql = "SELECT * FROM " +ActivityModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Activity activity = new Activity();
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
@@ -172,7 +180,7 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
 		String selectSql = "SELECT * FROM " + ActivityModelDS.TABLE_NAME;
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {

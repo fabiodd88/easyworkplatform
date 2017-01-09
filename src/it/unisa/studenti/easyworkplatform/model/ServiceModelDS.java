@@ -2,6 +2,7 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,9 +40,15 @@ public class ServiceModelDS implements ModelInterface<Service> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
-
-		 } catch (NamingException e) {
-			 e.printStackTrace();
+			connection = ds.getConnection();
+		 } catch (NamingException | SQLException e) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				connection = DriverManager.getConnection("jdbc:mysql://localhost/"+nomeDb, "root", "");
+				connection.setAutoCommit(false);
+			} catch (SQLException | ClassNotFoundException ex) {
+				e.printStackTrace();
+			}
 		 }
 	}
 
@@ -54,7 +61,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 				+ "(employee, quantity, variation, note, receipt_date, return_date, article_id, customer_id)"
 				+ " VALUES (?,?,?,?,?,?,?,?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, service.getEmployee());
 			preparedStatement.setInt(2, service.getQuantity());
@@ -78,7 +85,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET employee=?, quantity=?, variation=?, note=?,"
 				+ " receipt_date=?, return_date=?, article_id=?, customer_id=? WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, service.getEmployee());
 			preparedStatement.setInt(2, service.getQuantity());
@@ -102,7 +109,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -119,7 +126,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Service service = null;
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -154,7 +161,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Service service = new Service();
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
@@ -183,7 +190,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		LinkedList<Service> listService = new LinkedList<Service>();
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
 		try {
-			connection = ds.getConnection();
+			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {
