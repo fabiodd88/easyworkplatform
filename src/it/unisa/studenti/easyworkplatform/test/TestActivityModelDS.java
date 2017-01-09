@@ -61,7 +61,7 @@ public class TestActivityModelDS extends TestCase {
 
 	public void testInsert() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
-		Activity activity = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 1);
+		Activity activity = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
 		modelDS.insert(activity); // method to test
 
 		// database extrapolation
@@ -93,7 +93,7 @@ public class TestActivityModelDS extends TestCase {
 
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
-		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 1);
+		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
 		modelDS.insert(act);
 		int id = -1;
 		LinkedList<Activity> list = modelDS.findAll();
@@ -134,7 +134,7 @@ public class TestActivityModelDS extends TestCase {
 
 	public void testFindByField() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
-		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 1);
+		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
 		modelDS.insert(act);
 
 		// method to test
@@ -167,7 +167,7 @@ public class TestActivityModelDS extends TestCase {
 
 	public void testUpdate() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
-		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 1);
+		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
 		modelDS.insert(act);
 		int id = -1;
 		LinkedList<Activity> list = modelDS.findAll();
@@ -210,7 +210,7 @@ public class TestActivityModelDS extends TestCase {
 
 	public void testRemove() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
-		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 1);
+		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
 		modelDS.insert(act);
 		int id = -1;
 		LinkedList<Activity> list = modelDS.findAll();

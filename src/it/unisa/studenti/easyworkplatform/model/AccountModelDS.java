@@ -29,13 +29,6 @@ public class AccountModelDS implements ModelInterface<User> {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/dbtest");
-
-//			Class.forName("com.mysql.jdbc.Driver");
-//			connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
-//		} catch (ClassNotFoundException | SQLException e) {
-//			e.printStackTrace();
-//		}
-
 		 } catch (NamingException e) {
 			 e.printStackTrace();
 		 }
@@ -49,7 +42,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		String insertSQL = "INSERT INTO " + AccountModelDS.TABLE_NAME
 				+ " (name, surname, birth_date, birth_place, address, city, province, cap, tax_code, email, password, secondary_key) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getSurname());
@@ -79,7 +72,7 @@ public class AccountModelDS implements ModelInterface<User> {
 				+ " SET name = ?, surname = ?, birth_date = ?, birth_place = ?, address = ?, city = ?, province = ?, cap = ?, tax_code = ?, email = ?, password = ?, secondary_key = ?"
 				+ " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, user.getName());
 			preparedStatement.setString(2, user.getSurname());
@@ -107,7 +100,7 @@ public class AccountModelDS implements ModelInterface<User> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -124,7 +117,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -158,7 +151,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		LinkedList<User> listAccount = new LinkedList<User>();
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME;
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
@@ -194,7 +187,7 @@ public class AccountModelDS implements ModelInterface<User> {
 		User user = null;
 		String selectSql = "SELECT * FROM " + AccountModelDS.TABLE_NAME + " WHERE email = ?";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, email);
 			ResultSet rs = preparedStatement.executeQuery();

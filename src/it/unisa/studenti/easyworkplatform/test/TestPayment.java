@@ -1,6 +1,6 @@
 package it.unisa.studenti.easyworkplatform.test;
 
-import java.util.Date;
+import java.sql.Date;
 
 import it.unisa.studenti.easyworkplatform.model.Payment;
 import junit.framework.TestCase;
@@ -38,7 +38,7 @@ public class TestPayment extends TestCase {
 		assertEquals(expected,payment.toString());
 
 		// case 2
-		Date d = new Date();
+		Date d = Date.valueOf("2017-01-01");
 		payment = new Payment(0.0, d, 0, 0, 0);
 		expected = "Payment [date="+d+", amount=0.0, serviceCustomerId=0, serviceId=0, serviceArticleId=0]";
 		assertEquals(expected,payment.toString());
@@ -55,14 +55,14 @@ public class TestPayment extends TestCase {
 	public final void testEquals(){
 
 		// case 1
-		Date d = new Date();
+		Date d = Date.valueOf("2017-01-01");
 		payment = new Payment(0.0, d, 0, 0, 0);
 		Payment expected = new Payment(0.0, d, 0, 0, 0);
 		assertEquals(true,payment.equals(expected));
 		
 		// case 2
-		d = new Date();
-		payment = new Payment(1.1, new Date(), 0, 0, 0);
+		d = Date.valueOf("2017-01-01");
+		payment = new Payment(1.1, Date.valueOf("1970-01-01"), 0, 0, 0);
 		expected = new Payment(0.0, d, 0, 0, 0);
 		assertEquals(false,payment.equals(expected));
 	}
@@ -72,7 +72,7 @@ public class TestPayment extends TestCase {
 	 */	
 	public final void testClone(){
 		// case 1
-		Date d = new Date();
+		Date d = Date.valueOf("2017-01-01");
 		payment = new Payment(0.0, d, 0, 0, 0);
 		Payment expected = payment.clone();
 		assertEquals(expected, payment);

@@ -34,21 +34,21 @@ public class TestUser extends TestCase {
 	public final void testToString() {
 		// case 1
 		user = new User();
-		String expected = "User[id=0, email=null, password=null, secondKey=null]User [name=null, surename=null, birthdate=null, burthplace=null, address=null, city=null, province=null, cap=0, taxCode=null]";
+		String expected = "User[id=0, email=null, password=null, secondKey=null]User [name=null, surename=null, birthdate=null, birthplace=null, address=null, city=null, province=null, cap=0, taxCode=null]";
 		assertEquals(expected, user.toString());
 		
 		// case 2
 		Account a = new Account("email", "password", "secondKey");
 		Date d = new Date();
 		user = new User(a, "name", "surname", d, "birthplace", "address", "city", "province", 0, "taxCode");
-		expected = "User[id=0, email=email, password=password, secondKey=secondKey]User [name=name, surename=surname, birthdate="+d+", burthplace=birthplace, address=address, city=city, province=province, cap=0, taxCode=taxCode]";
+		expected = "User[id=0, email=email, password=password, secondKey=secondKey]User [name=name, surename=surname, birthdate="+d+", birthplace=birthplace, address=address, city=city, province=province, cap=0, taxCode=taxCode]";
 		assertEquals(expected, user.toString());
 		
 		// case 3
 		a = new Account("", "password", "secondKey");
 		d = new Date();
 		user = new User(a, "NAme", "surname", d, "birthplace", "address", "city", "province", 0, "taxCode");
-		expected = "User[id=0, email=email, password=password, secondKey=secondKey]User [name=name, surename=surname, birthdate="+d+", burthplace=birthplace, address=address, city=city, province=province, cap=0, taxCode=taxCode]";
+		expected = "User[id=0, email=email, password=password, secondKey=secondKey]User [name=name, surename=surname, birthdate="+d+", birthplace=birthplace, address=address, city=city, province=province, cap=0, taxCode=taxCode]";
 		assertNotSame(expected, user.toString());
 	}
 	

@@ -50,7 +50,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, description, duration)"
 				+ " VALUES (?,?,?,?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
@@ -70,7 +70,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
 				+ " SET name = ?, price = ?, description = ?, duration = ?" + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
 			preparedStatement.setString(1, article.getName());
 			preparedStatement.setDouble(2, article.getPrice());
@@ -90,7 +90,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -107,7 +107,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		Article article = null;
 		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -137,7 +137,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Article article = new Article();
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs =  preparedStatement.executeQuery();
@@ -163,7 +163,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME+ ";";
 		
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {

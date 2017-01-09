@@ -51,19 +51,19 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	@Override
 	public void insert(Service service) throws SQLException {
 		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
-				+ "(employee, quantity, variation, note, receipt_data, return_date, article_id, customer_id)"
-				+ " VALUES (?, ?,?,?,?,?,?,?,?)";
+				+ "(employee, quantity, variation, note, receipt_date, return_date, article_id, customer_id)"
+				+ " VALUES (?,?,?,?,?,?,?,?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSql);
-			preparedStatement.setString(2, service.getEmployee());
-			preparedStatement.setInt(3, service.getQuantity());
-			preparedStatement.setString(4, service.getVariation());
-			preparedStatement.setString(5, service.getNote());
-			preparedStatement.setDate(6, (Date) service.getReceiptDate());
-			preparedStatement.setDate(7, (Date) service.getReturnDate());
-			preparedStatement.setInt(8, service.getArticleId());
-			preparedStatement.setInt(9, service.getCustomerId());
+			preparedStatement.setString(1, service.getEmployee());
+			preparedStatement.setInt(2, service.getQuantity());
+			preparedStatement.setString(3, service.getVariation());
+			preparedStatement.setString(4, service.getNote());
+			preparedStatement.setDate(5, (Date) service.getReceiptDate());
+			preparedStatement.setDate(6, (Date) service.getReturnDate());
+			preparedStatement.setInt(7, service.getArticleId());
+			preparedStatement.setInt(8, service.getCustomerId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -78,17 +78,17 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET employee=?, quantity=?, variation=?, note=?,"
 				+ " receipt_date=?, return_date=?, article_id=?, customer_id=? WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(updateSql);
-			preparedStatement.setString(2, service.getEmployee());
-			preparedStatement.setInt(3, service.getQuantity());
-			preparedStatement.setString(4, service.getVariation());
-			preparedStatement.setString(5, service.getNote());
-			preparedStatement.setDate(6, (Date) service.getReceiptDate());
-			preparedStatement.setDate(7, (Date) service.getReturnDate());
-			preparedStatement.setInt(8, service.getArticleId());
-			preparedStatement.setInt(9, service.getCustomerId());
-			preparedStatement.setInt(10, service.getId());
+			preparedStatement.setString(1, service.getEmployee());
+			preparedStatement.setInt(2, service.getQuantity());
+			preparedStatement.setString(3, service.getVariation());
+			preparedStatement.setString(4, service.getNote());
+			preparedStatement.setDate(5, (Date) service.getReceiptDate());
+			preparedStatement.setDate(6, (Date) service.getReturnDate());
+			preparedStatement.setInt(7, service.getArticleId());
+			preparedStatement.setInt(8, service.getCustomerId());
+			preparedStatement.setInt(9, service.getId());
 			preparedStatement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	public void remove(int id) throws SQLException {
 		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
@@ -119,7 +119,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
 		Service service = null;
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setInt(1, id);
 			ResultSet rs = preparedStatement.executeQuery();
@@ -154,7 +154,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
 		Service service = new Service();
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			preparedStatement.setString(1, toSearch+"%");
 			ResultSet rs = preparedStatement.executeQuery();
@@ -183,7 +183,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 		LinkedList<Service> listService = new LinkedList<Service>();
 		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
 		try {
-			connection=ds.getConnection();
+			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
 			ResultSet rs = preparedStatement.executeQuery(selectSql);
 			while (rs.next()) {

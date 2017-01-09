@@ -143,11 +143,11 @@ public class TestAccountModelDS extends TestCase {
 
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 
-		User user = modelDS.findByKey(1);
+		User user = modelDS.findByKey(5);
 
 		// database extrapolation
 		PreparedStatement ps = connection.prepareStatement("SELECT * FROM " + TABLE_NAME + " WHERE id = ?");
-		ps.setString(1, "1");
+		ps.setInt(1, 5);
 		ResultSet rs = ps.executeQuery();
 		User expected = null;
 		while (rs.next()) {

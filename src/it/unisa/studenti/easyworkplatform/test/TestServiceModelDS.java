@@ -44,7 +44,6 @@ public class TestServiceModelDS extends TestCase {
 		while (rs.next()) {
 			Service expected = new Service();
 			expected.setId(rs.getInt("id"));
-			expected.setName(rs.getString("name"));
 			expected.setEmployee(rs.getString("employee"));
 			expected.setQuantity(rs.getInt("quantity"));
 			expected.setVariation(rs.getString("variation"));
@@ -64,18 +63,17 @@ public class TestServiceModelDS extends TestCase {
 	public void testInsert() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
-		Service service = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Service service = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		modelDS.insert(service); // method to test
 
 		// database extrapolation
-		PreparedStatement ps = connection.prepareStatement("SELECT * FROM " + TABLE_NAME + " WHERE name = ?");
-		ps.setString(1, "name");
+		PreparedStatement ps = connection.prepareStatement("SELECT * FROM " + TABLE_NAME + " WHERE employee = ?");
+		ps.setString(1, "employee");
 		ResultSet rs = ps.executeQuery();
 		Service expected = null;
 		while (rs.next()) {
 			expected = new Service();
 			expected.setId(rs.getInt("id"));
-			expected.setName(rs.getString("name"));
 			expected.setEmployee(rs.getString("employee"));
 			expected.setQuantity(rs.getInt("quantity"));
 			expected.setVariation(rs.getString("variation"));
@@ -98,7 +96,7 @@ public class TestServiceModelDS extends TestCase {
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
-		Service ser = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Service ser = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		modelDS.insert(ser); 
 		int id = -1;
 		LinkedList<Service> list = modelDS.findAll();
@@ -118,7 +116,6 @@ public class TestServiceModelDS extends TestCase {
 		while (rs.next()) {
 			expected = new Service();
 			expected.setId(rs.getInt("id"));
-			expected.setName(rs.getString("name"));
 			expected.setEmployee(rs.getString("employee"));
 			expected.setQuantity(rs.getInt("quantity"));
 			expected.setVariation(rs.getString("variation"));
@@ -141,7 +138,7 @@ public class TestServiceModelDS extends TestCase {
 	public void testFindByField() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
-		Service ser = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Service ser = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		modelDS.insert(ser); 
 
 		// method to test
@@ -156,7 +153,6 @@ public class TestServiceModelDS extends TestCase {
 		while (rs.next()) {
 			expected = new Service();
 			expected.setId(rs.getInt("id"));
-			expected.setName(rs.getString("name"));
 			expected.setEmployee(rs.getString("employee"));
 			expected.setQuantity(rs.getInt("quantity"));
 			expected.setVariation(rs.getString("variation"));
@@ -176,7 +172,7 @@ public class TestServiceModelDS extends TestCase {
 	public void testUpdate() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
-		Service ser = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Service ser = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		modelDS.insert(ser); 
 		int id = -1;
 		LinkedList<Service> list = modelDS.findAll();
@@ -186,7 +182,6 @@ public class TestServiceModelDS extends TestCase {
 		}
 
 		Service service = modelDS.findByKey(id);
-		service.setName("newName");
 		service.setEmployee("newEmployee");
 		modelDS.update(service);
 
@@ -198,7 +193,6 @@ public class TestServiceModelDS extends TestCase {
 		while (rs.next()) {
 			expected = new Service();
 			expected.setId(rs.getInt("id"));
-			expected.setName(rs.getString("name"));
 			expected.setEmployee(rs.getString("employee"));
 			expected.setQuantity(rs.getInt("quantity"));
 			expected.setVariation(rs.getString("variation"));
@@ -221,7 +215,7 @@ public class TestServiceModelDS extends TestCase {
 	public void testRemove() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
-		Service ser = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Service ser = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		modelDS.insert(ser); 
 		int id = -1;
 		LinkedList<Service> list = modelDS.findAll();

@@ -1,6 +1,6 @@
 package it.unisa.studenti.easyworkplatform.test;
 
-import java.util.Date;
+import java.sql.Date;
 
 import it.unisa.studenti.easyworkplatform.model.Service;
 import junit.framework.TestCase;
@@ -33,18 +33,18 @@ public class TestService extends TestCase {
 	public final void testToString() {
 		// case 1
 		service = new Service();
-		String expected = "Service [name=null, employee=null, quantity=0, variation=null, note=null, recepitDate=null, returnDate=null, articleId=0, customerId=0]";
+		String expected = "Service [employee=null, quantity=0, variation=null, note=null, recepitDate=null, returnDate=null, articleId=0, customerId=0]";
 		assertEquals(expected, service.toString());
 		
 		// case 2
-		Date d = new Date();
-		service = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
-		expected = "Service [name=name, employee=employee, quantity=1, variation=variation, note=note, recepitDate="+d+", returnDate="+d+", articleId=1, customerId=1]";
+		Date d = Date.valueOf("2017-01-01");
+		service = new Service("employee", 1, "variation", "note", d, d, 1, 1);
+		expected = "Service [employee=employee, quantity=1, variation=variation, note=note, recepitDate="+d+", returnDate="+d+", articleId=1, customerId=1]";
 		assertEquals(expected, service.toString());
 		
 		// case 3
 		service = new Service();
-		expected = "Service [name=name, employee=employee, quantity=1, variation=variation, note=note, recepitDate="+d+", returnDate="+d+", articleId=1, customerId=1]";
+		expected = "Service [employee=employee, quantity=1, variation=variation, note=note, recepitDate="+d+", returnDate="+d+", articleId=1, customerId=1]";
 		assertNotSame(expected, service.toString());
 	}
 
@@ -53,15 +53,15 @@ public class TestService extends TestCase {
 	 */	
 	public final void testEquals(){
 		// case 1
-		Date d = new Date();
-		service = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
-		Service expected = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Date d = Date.valueOf("2017-01-01");
+		service = new Service("employee", 1, "variation", "note", d, d, 1, 1);
+		Service expected = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		assertEquals(true, service.equals(expected));
 		
 		// case 2
-		d = new Date();
-		service = new Service("name", "employee", 1, "variation", "note", d, d, 0, 0);
-		expected = new Service("name", "employEE", 1, "variaAtion", "note", d, d, 1, 1);
+		d = Date.valueOf("2017-01-01");
+		service = new Service("employee", 1, "variation", "note", d, d, 0, 0);
+		expected = new Service("employEE", 1, "variaAtion", "note", d, d, 1, 1);
 		assertEquals(false, service.equals(expected));
 	}
 
@@ -70,8 +70,8 @@ public class TestService extends TestCase {
 	 */	
 	public final void testClone(){
 		// case 1
-		Date d = new Date();
-		service = new Service("name", "employee", 1, "variation", "note", d, d, 1, 1);
+		Date d = Date.valueOf("2017-01-01");
+		service = new Service("employee", 1, "variation", "note", d, d, 1, 1);
 		Service expected = service.clone();
 		assertEquals(expected, service);
 	}
