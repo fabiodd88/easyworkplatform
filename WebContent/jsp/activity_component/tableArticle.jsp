@@ -48,11 +48,12 @@
 											out.write("<td data-title='Descrizione'>"+article.getDescription()+"</td>");
 											out.write("<td data-title='Prezzo'>"+article.getPrice()+"</td>");
 											out.write("<td data-title='Durata'>"+article.getDuration()+"</td>");
-											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('article')'>");
+											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalArticle' onclick='modal('article')'>");
 											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-											out.write("<button class='but' onclick='elimina('article')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+											out.write("<button class='but' onclick='setClick("+article.getId()+")' data-toggle='modal' data-target='#question'>");
+											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 											out.write("</td>");
-											out.write("</tr>");
+											out.write("</tr>");	
 										}
 									}
 								}

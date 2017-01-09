@@ -58,11 +58,12 @@
 										out.write("<td data-title='Data Ricezione' id='receipt_date'>"+service.getReceiptDate()+"</td>");
 										out.write("<td data-title='Data Restituzione' id='return_date'>"+service.getReturnDate()+"</td>");
 										out.write("<td data-title='Nome Dipendente' id='employee'>"+service.getEmployee()+"</td>");
-										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('service')'>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalService' onclick='modal('service')'>");
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-										out.write("<button class='but' onclick='elimina('service')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+										out.write("<button class='but' onclick='setClick("+service.getId()+")' data-toggle='modal' data-target='#question'>");
+										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 										out.write("</td>");
-										out.write("</tr>");
+										out.write("</tr>");	
 									}
 								}
 							}

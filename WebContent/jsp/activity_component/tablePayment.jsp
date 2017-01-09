@@ -44,15 +44,16 @@
 									for(Payment payment: paymentList){
 										out.write("<tr>");
 										out.write("<td data-title='#' >"+payment.getId()+"</td> ");
-										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerName()+"</td>");
-										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleName()+"</td>");
+										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerId()+"</td>");
+										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleId()+"</td>");
 										out.write("<td data-title='Data Di Pagamento' id='date'>"+payment.getDate()+"</td>");
 										out.write("<td data-title='Ammontare' id='amount'>"+payment.getAmount()+"</td>");
-										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('payment')'>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalPayment' onclick='modal('payment')'>");
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-										out.write("<button class='but' onclick='elimina('payment')'><img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
+										out.write("<button class='but' onclick='setClick("+payment.getId()+")' data-toggle='modal' data-target='#question'>");
+										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 										out.write("</td>");
-										out.write("</tr>");
+										out.write("</tr>");	
 									}
 								}
 							}
