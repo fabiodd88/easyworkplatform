@@ -51,7 +51,7 @@
 							<div class="table-responsive">
 								<table class="table">
 									<tr>
-										<td><a href="cliente.jsp"><img alt=""
+										<td><a href="customer.jsp"><img alt=""
 												src="icon/cliente.png"></a></td>
 										<td><a href="articolo.jsp"><img alt=""
 												src="icon/trattamento.png"></a></td>

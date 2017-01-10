@@ -13,8 +13,8 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Cliente<span
-								style="color: #FF0000">*</span></label> <input id="client" type="text"
-								name="client" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="customer" type="text"
+								name="customer" required class="form-control" />
 						</div>
 						<br>
 
@@ -33,8 +33,7 @@
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Data<span
-								style="color: #FF0000">*</span></label> <input id="date" type="date"
+							<label style="width: 30%">Data</label> <input id="date" type="date"
 								name="date" class="form-control" />
 						</div>
 						<br>

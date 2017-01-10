@@ -2,9 +2,9 @@
 	<div class="posisition">
 		<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
 			<img alt="" src="icon/cliente.png"><br> <label>Cliente</label><br>
-			<div id="btAddCliente" style="display: none;">
+			<div id="btAddCustomer" style="display: none;">
 				<button class="but" data-toggle="modal"
-					data-target="#modalAddCliente" onclick="modal('addClient')">
+					data-target="#modalAddCustomer" onclick="modal('addCustomer')">
 					<img src="icon/add.png"><br>Aggiungi
 				</button>
 			</div>

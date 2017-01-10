@@ -1,4 +1,4 @@
-<option value=""></option>
+<option value="">Scegli un opzione</option>
 <option value="AG">AGRIGENTO</option>
 <option value="AL">ALESSANDRIA</option>
 <option value="AN">ANCONA</option>

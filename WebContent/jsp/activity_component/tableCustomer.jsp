@@ -1,7 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Customer"%>
 <script src="js/tab.js"></script>
-<div class="container container-table " id="list-client">
+
+
+<div class="container container-table " id="list-customer">
 	<div class="row-374">
 		<div class="col-md-12">
 			<div class="panel panel-primary">
@@ -42,20 +44,22 @@
 							<tbody>
 								<%
 								if(session.getAttribute("customers") != null){
-									AbstractList<Customer> list = (AbstractList<Customer>)session.getAttribute("customers");
-									if(list != null){
-										for(Customer customer: list){
+									AbstractList<Customer> customerList = (AbstractList<Customer>)session.getAttribute("customers");
+									if(customerList != null){
+										for(int i=0; i<customerList.size(); i++){
+											Customer customer = customerList.get(i);
 											out.write("<tr>");
-											out.write("<td data-title='#' id='id'>"+customer.getId()+"</td>");
-											out.write("<td data-title='Nome' id='name'>"+customer.getName()+"</td>");
-											out.write("<td data-title='Cognome' id='surename'>"+customer.getSurname()+"</td>");
-											out.write("<td data-title='Data di nascita' id='birth'>"+customer.getBirthdate()+"</td>");
-											out.write("<td data-title='Luogo di nascita' id='place'>"+customer.getBirthplace()+"</td>");
-											out.write("<td data-title='Indirizzo' id='address'>"+customer.getAddress()+"</td>");
-											out.write("<td data-title='Città' id='city'>"+customer.getCity()+"</td>");
-											out.write("<td data-title='Provincia' id='province'>"+customer.getProvince()+"</td>");
-											out.write("<td data-title='Cap' id='cap'>"+customer.getCap()+"</td>");
-											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal' onclick='modal('client')'>");
+											out.write("<td data-title='#' id='id"+i+"'>"+customer.getId()+"</td>");
+											out.write("<td data-title='Nome' id='name"+i+"'>"+customer.getName()+"</td>");
+											out.write("<td data-title='Cognome' id='surename"+i+"'>"+customer.getSurname()+"</td>");
+											out.write("<td data-title='Data di nascita' id='birth"+i+"'>"+customer.getBirthdate()+"</td>");
+											out.write("<td data-title='Luogo di nascita' id='place"+i+"'>"+customer.getBirthplace()+"</td>");
+											out.write("<td data-title='Indirizzo' id='address"+i+"'>"+customer.getAddress()+"</td>");
+											out.write("<td data-title='Città' id='city"+i+"'>"+customer.getCity()+"</td>");
+											out.write("<td data-title='Provincia' id='province"+i+"'>"+customer.getProvince()+"</td>");
+											out.write("<td data-title='Cap' id='cap"+i+"'>"+customer.getCap()+"</td>");
+											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal'");
+											out.write("onclick='setChangeCustomer("+i+");'>");
 											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
 											out.write("<button class='but' onclick='setClick("+customer.getId()+")' data-toggle='modal' data-target='#question'>");
 											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");

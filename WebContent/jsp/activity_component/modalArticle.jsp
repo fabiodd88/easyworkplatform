@@ -1,3 +1,4 @@
+
 <!-- Modal per la modifica dell'articolo -->
 <div class="modal fade" id="mioModalArticle" role="dialog">
 	<div class="modal-dialog">
@@ -11,14 +12,14 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="name" type="text"
+								style="color: #FF0000">*</span></label> <input id="modName" type="text"
 								name="name" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
-								style="color: #FF0000">*</span></label> <input id="surename"
+								style="color: #FF0000">*</span></label> <input id="modPrice"
 								type="number" name="surename" required class="form-control"
 								min="0" />
 						</div>
@@ -26,13 +27,13 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Descrizione<span
-								style="color: #FF0000">*</span></label> <input id="description"
+								style="color: #FF0000">*</span></label> <input id="modDescription"
 								type="text" name="description" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Durata</label> <input id="duration"
+							<label style="width: 30%">Durata</label> <input id="modDuration"
 								type="number" name="duration" class="form-control" min="0" />
 						</div>
 					</div>

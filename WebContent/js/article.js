@@ -52,3 +52,17 @@ $(document).ready(function()
 		e.preventDefault();
 			});
 		});
+
+function setChangeArticle(value){
+	
+	
+	var name = document.getElementById("name"+value).textContent;
+	var price = document.getElementById("price"+value).textContent;
+	var description = document.getElementById("description"+value).textContent;
+	var duration = document.getElementById("duration"+value).textContent;
+	$('#modName').val(name);
+	$('#modPrice').val(price);
+	$('#modDescription').val(description);
+	$('#modDuration').val(duration);
+	
+}

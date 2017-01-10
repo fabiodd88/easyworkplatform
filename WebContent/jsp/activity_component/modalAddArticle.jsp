@@ -12,7 +12,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="name" type="text"
-								name="name" required class="form-control" />
+								name="name" required class="form-control"  />
 						</div>
 						<br>
 
@@ -29,7 +29,6 @@
 								type="text" name="description" required class="form-control" />
 						</div>
 						<br>
-
 						<div class="divHorizontal">
 							<label style="width: 30%">Durata</label> <input id="duration"
 								type="number" name="duration" class="form-control" min="0" />

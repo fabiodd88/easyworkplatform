@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Article"%>
 <script src="js/tab.js"></script>
+<script src="js/article.js"></script>
+
 
 <div class="container container-table" id="list-article">
 	<div class="row-374">
@@ -41,14 +43,16 @@
 								if(session.getAttribute("articles") != null){
 									AbstractList<Article> articleList = (AbstractList<Article>)session.getAttribute("articles");
 									if(articleList != null){
-										for(Article article: articleList){
+										for(int i=0; i<articleList.size(); i++){
+											Article article = articleList.get(i);
 											out.write("<tr>");
-											out.write("<td data-title='#'>"+article.getId()+"</td>");
-											out.write("<td data-title='Nome'>"+article.getName()+"</td>");
-											out.write("<td data-title='Descrizione'>"+article.getDescription()+"</td>");
-											out.write("<td data-title='Prezzo'>"+article.getPrice()+"</td>");
-											out.write("<td data-title='Durata'>"+article.getDuration()+"</td>");
-											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalArticle' onclick='modal('article')'>");
+											out.write("<td data-title='#' id='cod"+i+"'>"+article.getId()+"</td>");
+											out.write("<td data-title='Nome' id='name"+i+"'>"+article.getName()+"</td>");
+											out.write("<td data-title='Descrizione' id='description"+i+"'>"+article.getDescription()+"</td>");
+											out.write("<td data-title='Prezzo' id='price"+i+"'>"+article.getPrice()+"</td>");
+											out.write("<td data-title='Durata' id='duration"+i+"'>"+article.getDuration()+"</td>");
+											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalArticle'");
+											out.write("onclick='setChangeArticle("+i+");'>");
 											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
 											out.write("<button class='but' onclick='setClick("+article.getId()+")' data-toggle='modal' data-target='#question'>");
 											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
@@ -60,14 +64,12 @@
 								else{
 									out.write("<tr class='filterTable_no_results'><td colspan='12'>No results found</td></tr>");
 								}
-								%>
-							
+								%>					
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
 </div>

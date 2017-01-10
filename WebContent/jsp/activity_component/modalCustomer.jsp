@@ -11,14 +11,14 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="name" type="text"
+								style="color: #FF0000">*</span></label> <input id="modNameCl" type="text"
 								name="name" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surename" type="text"
+								style="color: #FF0000">*</span></label> <input id="modSurenameCl" type="text"
 								name="surename" required class="form-control" />
 						</div>
 						<br>
@@ -26,21 +26,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required id="birth" class="form-control" />
-						</div>
-						<br>
-
-						<div class="divHorizontal">
-							<label style="width: 30%">Codice fiscale<span
-								style="color: #FF0000">*</span></label> <input id="tax" type="text"
-								name="taxCode" required class="form-control" />
+								name="dateofBirth" required id="modBirthCl" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="province" required="required" id="place">
+								<select class="form-control" name="province" required="required" id="modPlaceCl">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -48,7 +41,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
-								style="color: #FF0000">*</span></label> <input id="address" type="text"
+								style="color: #FF0000">*</span></label> <input id="modAddressCl" type="text"
 								name="address" required class="form-control" />
 						</div>
 						<br>
@@ -56,7 +49,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="civicNumber" required id="civic"
+								name="modCivicNumberCl" required id="civic"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
@@ -64,13 +57,13 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
 								style="color: #FF0000">*</span></label> <input id="city" type="text"
-								name="city" required class="form-control" />
+								name="modCityCl" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
-								style="color: #FF0000">*</span></label> <select class="form-control" id="province"
+								style="color: #FF0000">*</span></label> <select class="form-control" id="modProvinceCl"
 								name="province" required>
 								<%@include file="/jsp/province.jsp" %>
 							</select>
@@ -79,7 +72,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
-							<input id="cap" type="number" name="cap" required
+							<input id="modCapCl" type="number" name="cap" required
 								class="form-control" placeholder="81020" min="0" />
 						</div>
 						<br>
@@ -95,7 +88,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" onclick="controlloClient()">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal" onclick="controlloCustomer()">Conferma</button>
 			</div>
 		</div>
 	</div>

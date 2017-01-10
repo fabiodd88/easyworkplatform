@@ -1,4 +1,4 @@
-<form id="clientList" role="form" action="UserController" method="POST"
+<form id="customerList" role="form" action="UserController" method="POST"
 	enctype="multipart/form-data">
 	<input type="text" name="action" id="action" value="viewList"style="display: none;" />
 </form>

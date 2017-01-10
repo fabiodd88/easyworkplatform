@@ -1,5 +1,5 @@
 <!-- Modal per l'aggiunta del cliente -->
-<div class="modal fade" id="modalAddCliente" role="dialog">
+<div class="modal fade" id="modalAddCustomer" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -96,7 +96,7 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" onclick="controlloClient()">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal" onclick="controlloCustomer()">Conferma</button>
 			</div>
 		</div>
 	</div>

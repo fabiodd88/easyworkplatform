@@ -52,3 +52,28 @@ $(document).ready(function()
 		e.preventDefault();
 			});
 		});
+
+
+
+function setChangeCustomer(value){
+	
+	var name = document.getElementById("name"+value).textContent;
+	var surename = document.getElementById("surename"+value).textContent;
+	var birth = document.getElementById("birth"+value).textContent;
+	var place = document.getElementById("place"+value).textContent;
+	var address = document.getElementById("address"+value).textContent;
+//	var civicNumber = document.getElementById("civicNumber"+value).textContent;
+	var city = document.getElementById("city"+value).textContent;
+	var province = document.getElementById("province"+value).textContent;
+	var cap = document.getElementById("cap"+value).textContent;
+	$('#modNameCl').val(name);
+	$('#modSurenameCl').val(surename);
+	$('#modBirthCl').val(birth);
+	$('#modPlaceCl').val(place);
+	$('#modAddressCl').val(address);
+//	$('#modCivicNumberCl').val(civicNumber);
+	$('#modCityCl').val(city);
+	$('#modProvinceCl').val(province);
+	$('#modCapCl').val(cap);
+	
+}

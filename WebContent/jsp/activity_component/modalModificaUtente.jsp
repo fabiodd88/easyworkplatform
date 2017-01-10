@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.User ,it.unisa.studenti.easyworkplatform.model.Account"%>
 <!-- Modal per la modifica dell'utente -->
 <div class="modal fade" id="modalUser" role="dialog">
 	<div class="modal-dialog">
@@ -6,34 +8,35 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4>Modifica dati utente</h4>
 			</div>
+			<% User user = (User)session.getAttribute("user"); %>
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="name" type="text"
-								name="name" required class="form-control" />
+								name="name" required class="form-control" value="<%out.write(user.getName());%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
 								style="color: #FF0000">*</span></label> <input id="surename" type="text"
-								name="surename" required class="form-control" />
+								name="surename" required class="form-control" value="<%out.write(user.getSurname());%>"/>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required id="birthDate" class="form-control" />
+								name="dateofBirth" required id="birthDate" class="form-control" value="<%out.write(user.getBirthdate()+"");%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice fiscale<span
 								style="color: #FF0000">*</span></label> <input id="taxCode" type="text"
-								name="taxCode" required class="form-control" />
+								name="taxCode" required class="form-control" value="<%out.write(user.getTaxCode());%>" />
 						</div>
 						<br>
 
@@ -42,14 +45,14 @@
 								style="color: #FF0000">*</span></label>
 								<select class="form-control" name="province" required="required" id="province">
 								<%@include file="/jsp/province.jsp" %>
-							</select>
+								</select>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
 								style="color: #FF0000">*</span></label> <input id="address" type="text"
-								name="address" required class="form-control" />
+								name="address" required class="form-control" value="<%out.write(user.getAddress());%>" />
 						</div>
 						<br>
 
@@ -62,9 +65,9 @@
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Citt‡<span
+							<label style="width: 30%">Citt√†<span
 								style="color: #FF0000">*</span></label> <input id="city" type="text"
-								name="city" required class="form-control" />
+								name="city" required class="form-control" value="<%out.write(user.getCity());%>"/>
 						</div>
 						<br>
 
@@ -100,3 +103,4 @@
 		</div>
 	</div>
 </div>
+

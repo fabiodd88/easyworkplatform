@@ -252,11 +252,11 @@ function forward(value){
 
 
 function visualizzaDiv(x){	
-	var client = document.getElementById('list-client');
+	var customer = document.getElementById('list-customer');
 	var service= document.getElementById('list-service');
 	var article= document.getElementById('list-article');
 	var payment= document.getElementById('list-payment');
-	if(client  != null) client.remove();
+	if(customer  != null) customer.remove();
 	if(service != null) service.remove();
 	if(article != null) article.remove();
 	if(payment != null) payment.remove();
@@ -264,11 +264,11 @@ function visualizzaDiv(x){
 		$.ajax({
 			type: "POST",
 			url: "CustomerController",
-			data: $("#clientList").serialize(),
+			data: "action=viewList",
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				$('#list-c').load('jsp/activity_component/tableClient.jsp');
+				$('#list-c').load('jsp/activity_component/tableCustomer.jsp');
 			}
 			
 		});
@@ -315,46 +315,9 @@ function visualizzaDiv(x){
 }
 
 
-function modal(action){
-	switch(action){
-	case 'client':
-		$('#modalTitle').text('Modifica dati cliente');
-		$('#status').text('Modifica avvenuta con successo');
-		datiCliente();
-		break;
-	case 'article':
-		$('#modalTitle').text('Modifica dati articolo');
-		$('#status').text('Modifica avvenuta con successo');
-		break;
-	case 'service':
-		$('#modalTitle').text('Modifica dati servizio');
-		$('#status').text('Modifica avvenuta con successo');
-		break;
-	case 'payment':
-		$('#modalTitle').text('Effettua pagamento');
-		$('#status').text('Pagamento effettuato con successo');
-		break;
-	case 'addClient':
-		$('#modalTitle').text('Aggiungi cliente');
-		$('#status').text('Cliente aggiunto con successo');
-		addCliente();
-		break;
-	case 'addArticle':
-		$('#modalTitle').text('Aggiungi articolo');
-		$('#status').text('Articolo aggiunto con successo');
-		break;
-	case 'addService':
-		$('#modalTitle').text('Aggiungi servizio');
-		$('#status').text('Servizio aggiunto con successo');
-		break;
-	case 'user':
-		$('#modalTitle').text('Modifica dati utente');
-		$('#status').text('Modifica avvenuta con successo');
-		break;
-	}
-}
 
-function controlloClient(){
+
+function controlloCustomer(){
 	var name = document.getElementById("name").value;
 	var surename = document.getElementById("surename").value;
 	var birthDate = document.getElementById("birthDate").value;
@@ -369,12 +332,12 @@ function controlloClient(){
 	if(name==""||surename==""||birthDate==""||taxCode==""||province==""||address==""||civicNumber==""||city==""|| city==""||prov==""||cap==""){
 		$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 		document.getElementById("modalConf").style.display="none";
-		document.getElementById("modalAddCliente").style.display="block";
+		document.getElementById("modalAddCustomer").style.display="block";
 		document.getElementById("mess1").style.display="block";
 	}else if(tax.length != 16){
 		$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
 		document.getElementById("modalConf").style.display="none";
-		document.getElementById("modalAddCliente").style.display="block";
+		document.getElementById("modalAddCustomer").style.display="block";
 		document.getElementById("mess1").style.display="block";
 	}
 }
@@ -428,3 +391,11 @@ function elimina(value){
 function setClick(value){
 		$("#confirmButtonModal").attr("onclick","elimina("+value+")");
 }
+
+
+
+
+
+
+
+

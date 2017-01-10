@@ -14,7 +14,7 @@
 					<ul class="list-inline">
 						<li class="col-xs-10"  onclick="visualizzaDiv(0)"><a href="#">Cliente</a></li>
 						<li><a class="but" data-toggle="modal"
-							data-target="#modalAddCliente" onclick="modal('addClient')">
+							data-target="#modalAddCustomer" onclick="modal('addCustomer')">
 								<img src="icon/add.png">
 						</a></li>
 					</ul>

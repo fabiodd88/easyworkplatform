@@ -1,8 +1,6 @@
 <div class="container-fluid text-center padding">
 	<div class="row-fluid">
-		<div class="col-xs-8">
-			<h2>Nome attività</h2>
-		</div>
+
 		<div class="col-xs-4">
 			<ul class="nav navbar-nav" style="float: right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -25,4 +23,6 @@
 					</ul></li>
 			</ul>
 		</div>
+
 	</div>
+</div>

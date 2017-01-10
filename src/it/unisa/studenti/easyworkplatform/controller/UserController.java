@@ -181,6 +181,8 @@ public class UserController extends HttpServlet {
 					if (dbPassword != null) {
 						if (dbPassword.equals(hashed)){
 							session.setAttribute("user", user);
+							String userName = user.getName()+user.getSurname();
+							session.setAttribute("UserName", userName);
 							String name = user.getName()+ user.getSurname();
 							sendMessage("loginOk", response);
 							return;
