@@ -56,7 +56,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
-								style="color: #FF0000">*</span></label> <input id="city" type="text"
+								style="color: #FF0000">*</span></label> <input id="modCityCl" type="text"
 								name="modCityCl" required class="form-control" />
 						</div>
 						<br>

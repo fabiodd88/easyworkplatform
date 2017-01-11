@@ -2,6 +2,7 @@
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Payment"%>
 <script src="js/tab.js"></script>
 
+
 <div class="container container-table" id="list-payment">
 	<div class="row-374">
 		<div class="col-md-12">
@@ -30,6 +31,7 @@
 								<tr>
 									<th>#</th>
 									<th>Cliente</th>
+									<th>Servizio</th>
 									<th>Tipologia di servizio</th>
 									<th>Data di Pagamento</th>
 									<th>Ammontare</th>
@@ -41,14 +43,17 @@
 							if(session.getAttribute("payments") != null){
 								AbstractList<Payment> paymentList = (AbstractList<Payment>)session.getAttribute("payments");
 								if(paymentList != null){
-									for(Payment payment: paymentList){
+									for(int i=0; i<paymentList.size(); i++){
+										Payment payment = paymentList.get(i);
 										out.write("<tr>");
 										out.write("<td data-title='#' >"+payment.getId()+"</td> ");
-										out.write("<td data-title='Cliente' id='customer'>"+payment.getServiceCustomerId()+"</td>");
-										out.write("<td data-title='Tipologia di Servizio' id='service'>"+payment.getServiceArticleId()+"</td>");
-										out.write("<td data-title='Data Di Pagamento' id='date'>"+payment.getDate()+"</td>");
-										out.write("<td data-title='Ammontare' id='amount'>"+payment.getAmount()+"</td>");
-										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalPayment' onclick='modal('payment')'>");
+										out.write("<td data-title='Cliente' id='customer"+i+"'>"+payment.getServiceCustomerId()+"</td>");
+										out.write("<td data-title='Servizio' id='service"+i+"'>"+payment.getServiceId()+"</td>");
+										out.write("<td data-title='Tipologia di Servizio' id='serviceType"+i+"'>"+payment.getServiceArticleId()+"</td>");
+										out.write("<td data-title='Data Di Pagamento' id='date"+i+"'>"+payment.getDate()+"</td>");
+										out.write("<td data-title='Ammontare' id='amount"+i+"'>"+payment.getAmount()+"</td>");
+										out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalPayment'");
+										out.write("onclick='setChangePayment("+i+");'>");
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
 										out.write("<button class='but' onclick='setClick("+payment.getId()+")' data-toggle='modal' data-target='#question'>");
 										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");

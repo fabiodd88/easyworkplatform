@@ -103,7 +103,7 @@ body{
 
 
 .screen{
-	display: inline;
+	
 }
 
 .naviBar{
@@ -200,4 +200,10 @@ body{
 	Label the data
 	*/
 	#no-more-tables td:before { content: attr(data-title); }
+}
+
+
+.center {
+    margin: 0 auto;
+    width: 70%;
 }

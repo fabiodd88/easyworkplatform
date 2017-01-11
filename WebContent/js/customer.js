@@ -66,6 +66,7 @@ function setChangeCustomer(value){
 	var city = document.getElementById("city"+value).textContent;
 	var province = document.getElementById("province"+value).textContent;
 	var cap = document.getElementById("cap"+value).textContent;
+	var cap1= parseInt(cap);
 	$('#modNameCl').val(name);
 	$('#modSurenameCl').val(surename);
 	$('#modBirthCl').val(birth);
@@ -74,6 +75,6 @@ function setChangeCustomer(value){
 //	$('#modCivicNumberCl').val(civicNumber);
 	$('#modCityCl').val(city);
 	$('#modProvinceCl').val(province);
-	$('#modCapCl').val(cap);
+	$('#modCapCl').val(cap1);
 	
 }

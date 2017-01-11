@@ -1,6 +1,6 @@
 
 
-<!-- 				Modal per effettuare un pagamento -->
+<!-- 	Modal per effettuare un pagamento -->
 <div class="modal fade" id="mioModalPayment" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -13,50 +13,38 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Cliente<span
-								style="color: #FF0000">*</span></label> <input id="customer" type="text"
-								name="customer" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="modCustomerP" type="text"
+								name="modCustomerP" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Dipendente<span
-								style="color: #FF0000">*</span></label> <input id="employee" type="text"
-								name="employee" required class="form-control" />
+							<label style="width: 30%">Servizio<span
+								style="color: #FF0000">*</span></label> <input id="modServiceP" type="text"
+								name="modServiceP" required class="form-control" />
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Tipologia di servizio<span
+								style="color: #FF0000">*</span></label> <input id="modServiceTypeP" type="text"
+								name="modServiceTypeP" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Tipologia servizio<span
-								style="color: #FF0000">*</span></label> <input id="tipology" type="text"
-								name="tipology" required class="form-control" />
-						</div>
-						<br>
-
-						<div class="divHorizontal">
-							<label style="width: 30%">Data</label> <input id="date" type="date"
+							<label style="width: 30%">Ammontare<span
+								style="color: #FF0000">*</span></label><input id="modAmountP" type="text"
 								name="date" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Ora<span style="color: #FF0000">*</span></label>
-							<input id="time" type="time" name="time" class="form-control" />
+							<label style="width: 30%">Data Di Pagamento </label><input id="modDateP" type="date"
+								name="modDateP" required class="form-control" />
 						</div>
-						<br>
-
-						<div class="divHorizontal">
-							<label style="width: 30%">Articolo</label> <select
-								class="form-control" name="province">
-								<option value=""></option>
-							</select>
-						</div>
-						<br>
-
-						<div class="divHorizontal">
-							<label style="width: 30%">Totale<span
-								style="color: #FF0000">*</span></label> <input id="tot" type="number"
-								name="tot" class="form-control" />
-						</div>
+						
+						
 					</div>
 				</div>
 			</div>
