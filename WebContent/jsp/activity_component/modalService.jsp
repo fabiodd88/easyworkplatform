@@ -12,43 +12,54 @@
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="name" type="text"
+							<label style="width: 30%">Nome Servizio<span
+								style="color: #FF0000">*</span></label> <input id="modNameS" type="text"
 								name="name" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surename" type="text"
+							<label style="width: 30%">Cliente<span
+								style="color: #FF0000">*</span></label> <input id="modCustomerS" type="text"
 								name="surename" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome dipendente<span
-								style="color: #FF0000">*</span></label> <input id="employee" type="text"
+							<label style="width: 30%">Quantità<span
+								style="color: #FF0000">*</span></label> <input id="modQuantityS" type="text"
 								name="employee" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
+							<label style="width: 30%">Variazioni<span
+								style="color: #FF0000">*</span></label> <input id="modVariationS" type="text"
+								name="variation" class="form-control" />
+						</div>
+						<br>
+
+						<div class="divHorizontal">
+							<label style="width: 30%">Note<span style="color: #FF0000">*</span></label>
+							<input id="modNoteS" type="text" name="note" class="form-control" />
+						</div>
+						<br>
+
+						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
-								style="color: #FF0000">*</span></label> <input id="date" type="date"
-								name="date" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="modReceiptDateS" type="date"
+								name="date" required class="form-control" />
 						</div>
 						<br>
-
 						<div class="divHorizontal">
-							<label style="width: 30%">Ora<span style="color: #FF0000">*</span></label>
-							<input id="time" type="time" name="time" class="form-control" />
-						</div>
-						<br>
-
-						<div class="divHorizontal">
-							<label style="width: 30%">Tipo servizio<span
-								style="color: #FF0000">*</span></label> <input id="type" type="text"
+							<label style="width: 30%">Data Restituzione<span
+								style="color: #FF0000">*</span></label> <input id="modReturnDateS" type="date"
 								name="type" required class="form-control" />
+						</div>
+						<br>
+						<div class="divHorizontal">
+							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
+							<input id="modEmployeeS" type="text" name="note" class="form-control" />
 						</div>
 					</div>
 				</div>

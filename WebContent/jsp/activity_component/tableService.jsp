@@ -2,7 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Service"%>
 <script src="js/tab.js"></script>
-
+<script src="js/service.js"></script>
 
 <div class="container container-table" id="list-service" >
 	<div class="row-374">
@@ -47,20 +47,22 @@
 							if(session.getAttribute("services") != null){
 								AbstractList<Service> serviceList = (AbstractList<Service>)session.getAttribute("services");
 								if(serviceList != null){
-									for(Service service: serviceList){
+									for(int i=0; i<serviceList.size(); i++){
+										Service service = serviceList.get(i);
 										out.write("<tr>");
-										out.write("<td data-title='#'>"+service.getId()+"</td>");
-										out.write("<td data-title='Tipo di Servizio' id='article_name'>"+service.getArticleId()+"</td>");
-										out.write("<td data-title='Nome Cliente' id='customer'>"+service.getCustomerId()+"</td>");
-										out.write("<td data-title='Quantità' id='quantity'>"+service.getQuantity()+"</td>");
-										out.write("<td data-title='Variazioni' id='variation'>"+service.getVariation()+"</td>");
-										out.write("<td data-title='Note' id='note'>"+service.getNote()+"</td>");
-										out.write("<td data-title='Data Ricezione' id='receipt_date'>"+service.getReceiptDate()+"</td>");
-										out.write("<td data-title='Data Restituzione' id='return_date'>"+service.getReturnDate()+"</td>");
-										out.write("<td data-title='Nome Dipendente' id='employee'>"+service.getEmployee()+"</td>");
+										out.write("<td data-title='#' id='id'>"+service.getId()+"</td>");
+										out.write("<td data-title='Tipo di Servizio' id='name"+i+"'>"+service.getArticleId()+"</td>");
+										out.write("<td data-title='Nome Cliente' id='customer"+i+"'>"+service.getCustomerId()+"</td>");
+										out.write("<td data-title='Quantità' id='quantity"+i+"'>"+service.getQuantity()+"</td>");
+										out.write("<td data-title='Variazioni' id='variation"+i+"'>"+service.getVariation()+"</td>");
+										out.write("<td data-title='Note' id='note"+i+"'>"+service.getNote()+"</td>");
+										out.write("<td data-title='Data Ricezione' id='receiptDate"+i+"'>"+service.getReceiptDate()+"</td>");
+										out.write("<td data-title='Data Restituzione' id='returnDate"+i+"'>"+service.getReturnDate()+"</td>");
+										out.write("<td data-title='Nome Dipendente' id='employee"+i+"'>"+service.getEmployee()+"</td>");
 										out.write("<td data-title='Funzioni'>");
-										out.write("<button class='but' data-toggle='modal' data-target='#mioModalPayment' onclick='modal('payment')'><img src='icon/add.png'><br>Effettua Pagamento</button>");
-										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService' onclick='modal('service')'>");
+										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService' onclick='modal('payment')'><img src='icon/add.png'><br>Effettua Pagamento</button>");
+										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService'");
+										out.write("onclick='setChangeService("+i+");'>");
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
 										out.write("<button class='but' onclick='setClick("+service.getId()+")' data-toggle='modal' data-target='#question'>");
 										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
