@@ -58,7 +58,8 @@
 										out.write("<td data-title='Ammontare' id='amount"+i+"'>"+payment.getAmount()+"</td>");
 										sum = sum+ payment.getAmount();
 										out.write("<td data-title='Funzioni'>");
-										out.write("<button class='but' onclick='setClick("+payment.getId()+")' data-toggle='modal' data-target='#question'>");
+										String pay = "Payment";
+										out.write("<button class='but' onclick='setClick("+payment.getId()+","+pay+")' data-toggle='modal' data-target='#question'>");
 										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 										out.write("</td>");
 										out.write("</tr>");	

@@ -15,14 +15,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome Servizio<span
 								style="color: #FF0000">*</span></label> <input id="modNameS" type="text"
-								name="name" required class="form-control" />
+								name="modNameS" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cliente<span
 								style="color: #FF0000">*</span></label> <input id="modCustomerS" type="text"
-								name="surename" required class="form-control" />
+								name="modCustomerS" required class="form-control" />
 						</div>
 						<br>
 
@@ -49,23 +49,23 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
 								style="color: #FF0000">*</span></label> <input id="modReceiptDateS" type="date"
-								name="date" required class="form-control" />
+								name="modReceiptDateS" required class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Data Restituzione<span
 								style="color: #FF0000">*</span></label> <input id="modReturnDateS" type="date"
-								name="type" required class="form-control" />
+								name="modReturnDateS" required class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
-							<input id="modEmployeeS" type="text" name="note" class="form-control" />
+							<input id="modEmployeeS" type="text" name="modEmployeeS" class="form-control" />
 						</div>
 					</div>
 				</div>
 			</div>
-			<input type="text" name="idService" id="modIdS" style="display: none;">
+			<input type="text" name="modIdS" id="modIdS" style="display: none;">
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori

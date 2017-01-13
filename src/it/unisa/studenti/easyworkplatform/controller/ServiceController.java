@@ -67,14 +67,15 @@ public class ServiceController extends HttpServlet {
 				
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
-					String name 		= request.getParameter("name");
-					String employee 	= request.getParameter("employee");
-					String quantity 	= request.getParameter("quantity");
-					String variation	= request.getParameter("variation");
-					String note 		= request.getParameter("note");
-					String receiptDate	= request.getParameter("recepitDate");
-					String returnDate	= request.getParameter("returnDate");
-					String aid 			= request.getParameter("aid");
+					
+					String name 		= request.getParameter("nameS");
+					String employee 	= request.getParameter("employeeS");
+					String quantity 	= request.getParameter("quantityS");
+					String variation	= request.getParameter("variationS");
+					String note 		= request.getParameter("noteS");
+					String receiptDate	= request.getParameter("recepitDateS");
+					String returnDate	= request.getParameter("returnDateS");
+					String aid 			= request.getParameter("aidS");
 					String cid 			= request.getParameter("");
 					
 //					//control if empty
@@ -139,14 +140,15 @@ public class ServiceController extends HttpServlet {
 						sendMessage("noExist", response);
 						return;
 					}
-					String name 		= request.getParameter("name");
-					String employee 	= request.getParameter("employee");
-					String quantity 	= request.getParameter("quantity");
-					String variation 	= request.getParameter("variation");
-					String note 		= request.getParameter("note");
-					String receiptDate	= request.getParameter("recepitDate");
-					String returnDate 	= request.getParameter("returnDate");
-					String aid			= request.getParameter("aid");
+					String name 		= request.getParameter("modNameS");
+					String employee 	= request.getParameter("modEmployeeS");
+					String customer		= request.getParameter("modCustomerS");
+					String quantity 	= request.getParameter("modQuantityS");
+					String variation 	= request.getParameter("modVariationS");
+					String note 		= request.getParameter("modNoteS");
+					String receiptDate	= request.getParameter("modRecepitDateS");
+					String returnDate 	= request.getParameter("modReturnDateS");
+					String aid			= request.getParameter("modAidS");
 					String cid 			= request.getParameter("");
 					
 //					if(name.equals(""))

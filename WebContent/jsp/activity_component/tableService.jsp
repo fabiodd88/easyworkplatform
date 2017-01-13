@@ -2,7 +2,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Service"%>
 <script src="js/tab.js"></script>
-<script src="js/service.js"></script>
 
 <div class="container container-table" id="list-service" >
 	<div class="row-374">
@@ -68,8 +67,9 @@
 										out.write("<button class='but' data-toggle='modal' data-target='#mioModalPayment' onclick='modal('payment')'><img src='icon/add.png'><br>Effettua Pagamento</button>");
 										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService'");
 										out.write("onclick='setChangeService("+i+");'>");
+										String serv = "Service";
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-										out.write("<button class='but' onclick='setClick("+service.getId()+")' data-toggle='modal' data-target='#question'>");
+										out.write("<button class='but' onclick='setClick("+service.getId()+","+serv+")' data-toggle='modal' data-target='#question'>");
 										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 										out.write("</td>");
 										out.write("</tr>");	

@@ -59,7 +59,8 @@
 											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalArticle'");
 											out.write("onclick='setChangeArticle("+i+");'>");
 											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-											out.write("<button class='but' onclick='setClick("+article.getId()+")' data-toggle='modal' data-target='#question'>");
+											String art = "Article";
+											out.write("<button class='but' onclick='setClick("+article.getId()+","+art+")' data-toggle='modal' data-target='#question'>");
 											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
 											out.write("</td>");
 											out.write("</tr>");	

@@ -7,49 +7,55 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4>Modifica dati servizio</h4>
+				<h4>Inserisci dati servizio</h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="name" type="text"
-								name="name" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="nameS" 
+								type="text" name="nameS" 
+								required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surename" type="text"
-								name="surename" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="surenameS" 
+								type="text" required="required"
+								name="surenameS" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome dipendente<span
-								style="color: #FF0000">*</span></label> <input id="employee" type="text"
-								name="employee" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="employeeS" 
+								type="text" name="employeeS" 
+								required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
-								style="color: #FF0000">*</span></label> <input id="date" type="date"
-								name="date" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="dateS"
+								type="date" readonly="readonly"
+								name="dateS" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Ora<span style="color: #FF0000">*</span></label>
-							<input id="time" type="time" name="time" class="form-control" />
+							<input id="timeS" type="time" name="timeS" 
+							required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Tipo servizio<span
-								style="color: #FF0000">*</span></label> <input id="type" type="text"
-								name="type" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="typeS" 
+								type="text" name="typeS" 
+								required="required" class="form-control" />
 						</div>
 					</div>
 				</div>

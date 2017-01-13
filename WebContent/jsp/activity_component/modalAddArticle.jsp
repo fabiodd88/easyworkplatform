@@ -3,7 +3,7 @@
 	enctype="multipart/form-data">
 <div class="modal fade" id="modalAddArticle" role="dialog">
 	<div class="modal-dialog">
-	<input type="text" name="action" id="action" value="insert"style="display: none;" />
+	<input type="text" name="action" id="action" value="insert" style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -14,27 +14,27 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="name" type="text"
-								name="name" required class="form-control"  />
+								style="color: #FF0000">*</span></label> <input id="nameA" type="text"
+								name="nameA" required class="form-control"  />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
-								style="color: #FF0000">*</span></label> <input id="price" type="number"
-								name="surename" required class="form-control" min="0" />
+								style="color: #FF0000">*</span></label> <input id="priceA" type="number"
+								name="priceA" required class="form-control" min="0" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Descrizione<span
-								style="color: #FF0000">*</span></label> <input id="description"
-								type="text" name="description" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="descriptionA"
+								type="text" name="descriptionA" required class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
-							<label style="width: 30%">Durata</label> <input id="duration"
-								type="number" name="duration" class="form-control" min="0" />
+							<label style="width: 30%">Durata</label> <input id="durationA"
+								type="number" name="durationA" class="form-control" min="0" />
 						</div>
 					</div>
 				</div>

@@ -15,21 +15,21 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="nameCl" type="text"
-								name="name" required class="form-control" />
+								name="nameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
 								style="color: #FF0000">*</span></label> <input id="surnameCl" type="text"
-								name="surnameCl" required class="form-control" />
+								name="surnameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="birthDateCl" required id="birthDateCl" class="form-control" />
+								name="birthDateCl" required="required" id="birthDateCl" class="form-control" />
 						</div>
 						<br>
 
@@ -52,14 +52,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
 								style="color: #FF0000">*</span></label> <input id="addressCl" type="text"
-								name="addressCl" required class="form-control" />
+								name="addressCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="numberCl" required id="civicNumberCl"
+								name="numberCl" required="required" id="civicNumberCl"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
@@ -67,14 +67,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
 								style="color: #FF0000">*</span></label> <input id="cityCl" type="text"
-								name="cityCl" required class="form-control" />
+								name="cityCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
 								style="color: #FF0000">*</span></label> <select id="provCl" class="form-control"
-								name="provinceCl" required>
+								name="provinceCl" required=>
 								<%@include file="/jsp/province.jsp"%>
 							</select>
 						</div>
@@ -82,7 +82,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
-							<input id="capCl" type="number" name="capCl" required
+							<input id="capCl" type="number" name="capCl" required="required"
 								class="form-control" placeholder="81020" min="0" />
 						</div>
 						<br>

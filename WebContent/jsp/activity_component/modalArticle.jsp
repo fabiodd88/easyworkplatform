@@ -15,14 +15,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="modName" type="text"
-								name="name" required class="form-control" />
+								name="modName" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
 								style="color: #FF0000">*</span></label> <input id="modPrice"
-								type="number" name="surename" required class="form-control"
+								type="number" name="modPrice" required class="form-control"
 								min="0" />
 						</div>
 						<br>
@@ -30,13 +30,13 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Descrizione<span
 								style="color: #FF0000">*</span></label> <input id="modDescription"
-								type="text" name="description" required class="form-control" />
+								type="text" name="modDescription" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Durata</label> <input id="modDuration"
-								type="number" name="duration" class="form-control" min="0" />
+								type="number" name="modDuration" class="form-control" min="0" />
 						</div>
 					</div>
 				</div>

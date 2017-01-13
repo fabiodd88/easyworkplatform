@@ -5,15 +5,12 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.regex.Pattern;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import it.unisa.studenti.easyworkplatform.model.Customer;
 import it.unisa.studenti.easyworkplatform.model.CustomerModelDS;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
