@@ -21,8 +21,8 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="modSurenameCl" type="text"
-								name="modSurenameCl" required="required" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="modSurnameCl" type="text"
+								name="modSurnameCl" required="required" class="form-control" />
 						</div>
 						<br>
 

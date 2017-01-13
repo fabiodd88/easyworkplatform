@@ -139,7 +139,7 @@ public class CustomerController extends HttpServlet {
 					}
 					
 					String name 		= request.getParameter("modNameCl");
-					String surname 		= request.getParameter("modSurenameCl");
+					String surname 		= request.getParameter("modSurnameCl");
 					String birthDate 	= request.getParameter("modBirthCl");
 					String birthPlace	= request.getParameter("modPlaceCl");
 					String address		= request.getParameter("modAddressCl");

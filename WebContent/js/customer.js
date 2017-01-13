@@ -62,7 +62,7 @@ function setChangeCustomer(value){
 
 	var id = document.getElementById("id"+value).textContent;
 	var name = document.getElementById("name"+value).textContent;
-	var surename = document.getElementById("surename"+value).textContent;
+	var surname = document.getElementById("surname"+value).textContent;
 	var birth = document.getElementById("birth"+value).textContent;
 	var place = document.getElementById("place"+value).textContent;
 	var address = document.getElementById("address"+value).textContent;
@@ -75,7 +75,7 @@ function setChangeCustomer(value){
 	var cap1= parseInt(cap);
 	$('#modIdCl').val(id);
 	$('#modNameCl').val(name);
-	$('#modSurenameCl').val(surename);
+	$('#modSurnameCl').val(surname);
 	$('#modBirthCl').val(birth);
 	$('#modPlaceCl').val(place);
 	$('#modAddressCl').val(address);
