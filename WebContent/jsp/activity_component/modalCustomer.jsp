@@ -1,6 +1,9 @@
 <!-- Modal per il cliente -->
+<form id="formChangeCustomer" method="post" action="UserController" method="POST"
+	enctype="multipart/form-data">
 <div class="modal fade" id="mioModal" role="dialog">
 	<div class="modal-dialog">
+	<input type="text" name="action" id="action" value="update"style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -12,28 +15,28 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="modNameCl" type="text"
-								name="name" required class="form-control" />
+								name="modNameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
 								style="color: #FF0000">*</span></label> <input id="modSurenameCl" type="text"
-								name="surename" required class="form-control" />
+								name="modSurenameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required id="modBirthCl" class="form-control" />
+								name="modBirthCl" required="required" id="modBirthCl" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="province" required="required" id="modPlaceCl">
+								<select class="form-control" name="modPlaceCl" required="required" id="modPlaceCl">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -42,14 +45,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
 								style="color: #FF0000">*</span></label> <input id="modAddressCl" type="text"
-								name="address" required class="form-control" />
+								name="modAddressCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="modCivicNumberCl" required id="civic"
+								name="modCivicNumberCl" required="required" id="modCivicNumberCl"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
@@ -64,7 +67,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
 								style="color: #FF0000">*</span></label> <select class="form-control" id="modProvinceCl"
-								name="province" required>
+								name="modProvinceCl" required="required">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -72,8 +75,22 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
-							<input id="modCapCl" type="number" name="cap" required
+							<input id="modCapCl" type="number" name="modCapCl" required="required"
 								class="form-control" placeholder="81020" min="0" />
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Numero di Telefono<span style="color: #FF0000">*</span></label>
+							<input id="modPhoneCl" type="text" name="modPhoneCl" required="required"
+								class="form-control" placeholder="340999888" min="0" />
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Email<span style="color: #FF0000">*</span></label>
+							<input id="modEmailCl" type="text" name="modEmailCl" required="required"
+								class="form-control" placeholder="prova@gmail.com" min="0" />
 						</div>
 						<br>
 						<div id="mess1" class="alert alert-danger"
@@ -81,15 +98,17 @@
 					</div>
 				</div>
 			</div>
+			<input type="text" name="idCustomer" id="modIdCl" style="display: none;">
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" onclick="controlloCustomer()">Conferma</button>
+				<button class="btn btn-info" data-toggle="modal" type="submit"
+					data-target="#modalConf" data-dismiss="modal" onclick="sendForm('Customer','#formChangeCustomer');">Conferma</button>
 			</div>
 		</div>
 	</div>
 </div>
+</form>

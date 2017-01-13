@@ -27,6 +27,42 @@ public class Customer implements Cloneable{
 	 */
 	public Customer(){}
 	
+	
+	/**
+	 * Parametric constructor
+	 * @param id of the customer
+	 * @param name of the customer
+	 * @param surname of the customer
+	 * @param birthdate of the customer
+	 * @param birthplace of the customer
+	 * @param address of the customer
+	 * @param city of the customer
+	 * @param province of the customer
+	 * @param cap of the customer
+	 * @param newsletter of the customer
+	 * @param phoneNumber of the customer
+	 * @param email of the customer
+	 */
+	public Customer(int id, String name, String surname, Date birthdate, String birthplace, String address, String city,
+			String province, int cap, int newsletter, String phoneNumber, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.birthdate = birthdate;
+		this.birthplace = birthplace;
+		this.address = address;
+		this.city = city;
+		this.province = province;
+		this.cap = cap;
+		this.newsletter = newsletter;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	}
+	
+	
+	
+	
 	/**
 	 * Parametric constructor
 	 * @param name of the customer

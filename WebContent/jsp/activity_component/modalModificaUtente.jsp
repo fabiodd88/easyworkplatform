@@ -1,8 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.User ,it.unisa.studenti.easyworkplatform.model.Account"%>
 <!-- Modal per la modifica dell'utente -->
+<form id="formModUser" method="post" action="UserController" method="POST"
+	enctype="multipart/form-data">
 <div class="modal fade" id="modalUser" role="dialog">
 	<div class="modal-dialog">
+	<input type="text" name="action" id="action" value="insert"style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -98,9 +101,10 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal"
+					onclick="sendForm('User','#formModUser');">>Conferma</button>
 			</div>
 		</div>
 	</div>
 </div>
-
+</form>

@@ -28,7 +28,6 @@
 
 
 
-
 	<%@include file="/jsp/formList.jsp"%>
 	<!-- Contenitore della pagina -->
 	<div class="container-fluid div-box">

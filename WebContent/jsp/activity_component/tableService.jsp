@@ -11,6 +11,7 @@
 				<div class="panel-heading color">
 					<h3 class="panel-title">Servizi</h3>
 					<div class="pull-right">
+						<label>Filtri</label>
 						<span class="clickable filter" data-toggle="tooltip"
 							title="Toggle table filter" data-container="body"> <i
 							class="glyphicon glyphicon-filter"></i>
@@ -21,6 +22,10 @@
 					<input type="text" class="form-control" id="dev-table-filter"
 						data-action="filter" data-filters="#dev-table"
 						placeholder="Filter Developers" />
+					<div class="but" data-toggle="modal"
+							data-target="#modalAddService" onclick="modal('addService')">
+								<img src="icon/add.png">
+					</div>
 				</div>
 				<div class="container" style="padding: 0px;">
 
@@ -30,7 +35,7 @@
 							style="padding: 0px;">
 							<thead class="cf">
 								<tr>
-									<th>#</th>
+									<th>Codice Servizio</th>
 									<th>Tipo Servizio</th>
 									<th>Nome Cliente</th>
 									<th>Quantità</th>
@@ -50,7 +55,7 @@
 									for(int i=0; i<serviceList.size(); i++){
 										Service service = serviceList.get(i);
 										out.write("<tr>");
-										out.write("<td data-title='#' id='id'>"+service.getId()+"</td>");
+										out.write("<td data-title='Codice Servizio' id='id"+i+"'>"+service.getId()+"</td>");
 										out.write("<td data-title='Tipo di Servizio' id='name"+i+"'>"+service.getArticleId()+"</td>");
 										out.write("<td data-title='Nome Cliente' id='customer"+i+"'>"+service.getCustomerId()+"</td>");
 										out.write("<td data-title='Quantità' id='quantity"+i+"'>"+service.getQuantity()+"</td>");
@@ -60,7 +65,7 @@
 										out.write("<td data-title='Data Restituzione' id='returnDate"+i+"'>"+service.getReturnDate()+"</td>");
 										out.write("<td data-title='Nome Dipendente' id='employee"+i+"'>"+service.getEmployee()+"</td>");
 										out.write("<td data-title='Funzioni'>");
-										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService' onclick='modal('payment')'><img src='icon/add.png'><br>Effettua Pagamento</button>");
+										out.write("<button class='but' data-toggle='modal' data-target='#mioModalPayment' onclick='modal('payment')'><img src='icon/add.png'><br>Effettua Pagamento</button>");
 										out.write("<button class='but' data-toggle='modal' data-target='#mioModalService'");
 										out.write("onclick='setChangeService("+i+");'>");
 										out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");

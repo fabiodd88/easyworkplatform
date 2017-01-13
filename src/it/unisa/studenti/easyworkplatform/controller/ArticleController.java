@@ -124,26 +124,26 @@ public class ArticleController extends HttpServlet {
 					String description = request.getParameter("description");
 					String dur = request.getParameter("duration");
 					
-					//control if not empty
-					if (name.equals(""))
-						name = oldArticle.getName();
-					
-					if (pri.equals(""))
-						pri = String.valueOf(oldArticle.getPrice());
-					
-					
-					if (description.equals(""))
-						description = oldArticle.getDescription();
-					
-					if (dur.equals(""))
-						dur = String.valueOf(oldArticle.getDuration());
-
-						//control if they respect the format						
-					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
-						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
-						sendMessage("regExpError", response);
-						return;
-					}
+//					//control if not empty
+//					if (name.equals(""))
+//						name = oldArticle.getName();
+//					
+//					if (pri.equals(""))
+//						pri = String.valueOf(oldArticle.getPrice());
+//					
+//					
+//					if (description.equals(""))
+//						description = oldArticle.getDescription();
+//					
+//					if (dur.equals(""))
+//						dur = String.valueOf(oldArticle.getDuration());
+//
+//						//control if they respect the format						
+//					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
+//						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
+//						sendMessage("regExpError", response);
+//						return;
+//					}
 
 					double price = Double.parseDouble(pri);
 					int duration = Integer.parseInt(dur);

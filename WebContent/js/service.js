@@ -56,25 +56,4 @@ $(document).ready(function()
 
 
 
-function setChangeService(value){
-	
-	var name 	 = document.getElementById("name"+value).textContent;
-	var customer = document.getElementById("customer"+value).textContent;
-	var quantity = document.getElementById("quantity"+value).textContent;
-	var variation= document.getElementById("variation"+value).textContent;
-	var note	 = document.getElementById("note"+value).textContent;
-	var receiptDate = document.getElementById("receiptDate"+value).textContent;
-	var returnDate 	= document.getElementById("returnDate"+value).textContent;
-	var employee = document.getElementById("employee"+value).textContent;
-	$('#modNameS').val(name);
-	$('#modCustomerS').val(customer);
-	$('#modQuantityS').val(quantity);
-	$('#modVariationS').val(variation);
-	$('#modNoteS').val(note);
-	$('#modReceiptDateS').val(receiptDate);
-	$('#modReturnDateS').val(returnDate);
-	$('#modEmployeeS').val(employee);
-
-	
-}
 

@@ -3,7 +3,7 @@
 		style="visibility: hidden;">
 		<input type="hidden" name="action" value="logout"></input>
 	</form>
-	<ul class="nav navbar-nav">
+	<ul class="">
 		<li class="dropdown"><a href="#" class="dropdown-toggle"
 			data-toggle="dropdown" style="background: transparent"><img
 				src="icon/user.png" /> <%
@@ -15,7 +15,7 @@
 					data-target="#modalUser" onclick="modal('user')">Modifica dati</a></li>
 
 				<li><a class="but" role="button" type="submit"
-					onclick="$('#logoutForm').submit();">Logout</a></li>
+					onclick="logout()">Logout</a></li>
 			</ul></li>
 	</ul>
 </div>

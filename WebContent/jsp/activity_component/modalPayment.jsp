@@ -1,6 +1,6 @@
-
-
 <!-- 	Modal per effettuare un pagamento -->
+<form id="formChangePayment" method="post" action="UserController" method="POST"
+	enctype="multipart/form-data">
 <div class="modal fade" id="mioModalPayment" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -48,10 +48,17 @@
 					</div>
 				</div>
 			</div>
+			<input type="text" name="idPayment" id="modIdP" style="display: none;">
+			<div style="text-align: left">
+				<label>I campi con <span style="color: #FF0000">*</span>
+					sono obbligatori
+				</label>
+			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal" onclick="sendForm('Payment','#formChangePayment');">Conferma</button>
 			</div>
 		</div>
 	</div>
 </div>
+</form>

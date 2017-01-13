@@ -5,7 +5,6 @@
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" auth="Container"
 		type="javax.sql.DataSource" maxActive="50" maxIdle="30" username="easywork"
 		password="easy" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/dbtest" 
-		defaultAutoCommit ="false"/>
-		
+		defaultAutoCommit ="false"/>	
 </Context>
 

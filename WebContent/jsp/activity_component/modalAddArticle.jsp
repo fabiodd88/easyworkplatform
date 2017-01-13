@@ -1,6 +1,9 @@
 <!-- Modal per l'aggiunta dell'articolo -->
+<form id="formAddArticle" method="post" action="UserController" method="POST"
+	enctype="multipart/form-data">
 <div class="modal fade" id="modalAddArticle" role="dialog">
 	<div class="modal-dialog">
+	<input type="text" name="action" id="action" value="insert"style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -36,6 +39,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div id="mess2" class="alert alert-danger"
 				style="display: none !important;">
 			</div>
@@ -47,8 +51,9 @@
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
 					data-target="#modalConf" data-dismiss="modal"
-					onclick="controlloArticle()">Conferma</button>
+					onclick="sendForm('Article','#formAddArticle');">Conferma</button>
 			</div>
 		</div>
 	</div>
 </div>
+</form>

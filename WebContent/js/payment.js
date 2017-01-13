@@ -51,17 +51,3 @@ $(document).ready(function()
 
 
 
-function setChangePayment(value){
-	
-	var customer= document.getElementById("customer"+value).textContent;
-	var service = document.getElementById("service"+value).textContent;
-	var serviceType = document.getElementById("serviceType"+value).textContent;
-	var amount	= document.getElementById("amount"+value).textContent;
-	var date	= document.getElementById("date"+value).textContent;
-	$('#modCustomerP').val(customer);
-	$('#modServiceP').val(service);
-	$('#modServiceTypeP').val(serviceType);
-	$('#modAmountP').val(amount);
-	$('#modDateP').val(date);
-	
-}

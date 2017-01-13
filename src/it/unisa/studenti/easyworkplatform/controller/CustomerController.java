@@ -83,15 +83,15 @@ public class CustomerController extends HttpServlet {
 					String newsletter 	= request.getParameter("newsletter");
 					String phoneNumber 	= request.getParameter("phoneNumber");
 					
-					// control if empty
-					if (name.equals("") || surname.equals("") || birthDate.equals("") || 
-						birthPlace.equals("") || address.equals("") || city.equals("") || 
-						province.equals("") || cap.equals("") || email.equals("") ||
-						newsletter.equals("") || phoneNumber.equals("")){
-							sendMessage("empty", response);
-							return;
-					}
-					
+//					// control if empty
+//					if (name.equals("") || surname.equals("") || birthDate.equals("") || 
+//						birthPlace.equals("") || address.equals("") || city.equals("") || 
+//						province.equals("") || cap.equals("") || email.equals("") ||
+//						newsletter.equals("") || phoneNumber.equals("")){
+//							sendMessage("empty", response);
+//							return;
+//					}
+//					
 					//control if they respect the format
 //					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
 //							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
@@ -138,67 +138,67 @@ public class CustomerController extends HttpServlet {
 						return;
 					}
 					
-					String name = request.getParameter("name");
-					String surname = request.getParameter("surname");
-					String birthDate = request.getParameter("birthDate");
-					String birthPlace = request.getParameter("birthPlace");
-					String address = request.getParameter("address");
-					String city = request.getParameter("city");
-					String province = request.getParameter("province");
-					String cap = request.getParameter("cap");
-					String email = request.getParameter("email");
-					String newsletter = request.getParameter("newsletter");
-					String phoneNumber = request.getParameter("phoneNumber");
+					String name 		= request.getParameter("modNameCl");
+					String surname 		= request.getParameter("modSurenameCl");
+					String birthDate 	= request.getParameter("modBirthCl");
+					String birthPlace	= request.getParameter("modPlaceCl");
+					String address		= request.getParameter("modAddressCl");
+					String city			= request.getParameter("modCityCl");
+					String province		= request.getParameter("modProvinceCl");
+					String cap 			= request.getParameter("modCapCl");
+					String email		= request.getParameter("modEmailCl");
+					String newsletter 	= request.getParameter("newsletter");
+					String phoneNumber 	= request.getParameter("modPhoneCl");
 					
-					// control if empty
-					
-					if (name.equals(""))
-						name = oldCustomer.getName();
-						
-					if (surname.equals(""))
-						surname = oldCustomer.getSurname();
-					
-					if (birthDate.equals(""))
-						birthDate = String.valueOf(oldCustomer.getBirthdate());
-								
-					if (birthPlace.equals(""))
-						birthPlace = oldCustomer.getBirthplace();
-						
-					if (address.equals(""))
-						address = oldCustomer.getAddress();
-						
-					if (city.equals(""))
-						city = oldCustomer.getCity();
-								
-					if (province.equals(""))
-						province = oldCustomer.getProvince();
-										
-					if (cap.equals(""))		
-						cap = String.valueOf(oldCustomer.getCap());		
-					
-					if (email.equals(""))
-						email = oldCustomer.getEmail();
-								
-					if (newsletter.equals(""))
-						newsletter = String.valueOf(oldCustomer.getNewsletter());
-										
-					if (phoneNumber.equals(""))
-						phoneNumber = oldCustomer.getPhoneNumber();
-												
-					//control if they respect the format
-					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
-							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
-							Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap) && Pattern.matches("[0-9]*", phoneNumber) &&
-							Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) && Pattern.matches("[a-zA-Z0-9]*", newsletter))){
-								sendMessage("regExpError", response);
-								return;
-					}
+//					// control if empty
+//					
+//					if (name.equals(""))
+//						name = oldCustomer.getName();
+//						
+//					if (surname.equals(""))
+//						surname = oldCustomer.getSurname();
+//					
+//					if (birthDate.equals(""))
+//						birthDate = String.valueOf(oldCustomer.getBirthdate());
+//								
+//					if (birthPlace.equals(""))
+//						birthPlace = oldCustomer.getBirthplace();
+//						
+//					if (address.equals(""))
+//						address = oldCustomer.getAddress();
+//						
+//					if (city.equals(""))
+//						city = oldCustomer.getCity();
+//								
+//					if (province.equals(""))
+//						province = oldCustomer.getProvince();
+//										
+//					if (cap.equals(""))		
+//						cap = String.valueOf(oldCustomer.getCap());		
+//					
+//					if (email.equals(""))
+//						email = oldCustomer.getEmail();
+//								
+//					if (newsletter.equals(""))
+//						newsletter = String.valueOf(oldCustomer.getNewsletter());
+//										
+//					if (phoneNumber.equals(""))
+//						phoneNumber = oldCustomer.getPhoneNumber();
+//												
+//					//control if they respect the format
+//					if ( ! (Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", surname) && Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)",birthDate) && 
+//							Pattern.matches("[a-zA-Z]*", birthPlace) && Pattern.matches("[a-zA-Z 0-9]*", address) && Pattern.matches("[a-zA-Z]*", province) &&
+//							Pattern.matches("[a-zA-Z]*", city) && Pattern.matches("[0-9]{5}", cap) && Pattern.matches("[0-9]*", phoneNumber) &&
+//							Pattern.matches("[a-zA-Z]*[@][a-zA-Z]*[.][a-zA-Z]*", email) && Pattern.matches("[a-zA-Z0-9]*", newsletter))){
+//								sendMessage("regExpError", response);
+//								return;
+//					}
 					
 					int CAP = Integer.parseInt(cap);
 					Date bd = Date.valueOf(birthDate);
-					int nl = Integer.parseInt(newsletter);
+					int nl = 0;
 					
-					Customer newCustomer = new Customer(name, surname, bd, birthPlace, address, city, province, CAP, nl, phoneNumber, email);
+					Customer newCustomer = new Customer(id, name, surname, bd, birthPlace, address, city, province, CAP, nl, phoneNumber, email);
 					newCustomer.setId(oldCustomer.getId());
 					try{
 						modelDs.update(newCustomer);

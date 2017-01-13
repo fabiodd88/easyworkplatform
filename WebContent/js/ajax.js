@@ -369,10 +369,11 @@ function controlloService(){
 
 
 
-function elimina(value){
+
+function elimina(value, type){
 	$.ajax({
 		type: "POST",
-		url: "CustomerController",
+		url: type+"Controller",
 		data: "action=remove&id="+value,
 		dataType: "text",
 		success: function(data, status, xhr)
@@ -388,10 +389,10 @@ function elimina(value){
 }
 
 
-function setClick(value){
-		$("#confirmButtonModal").attr("onclick","elimina("+value+")");
-}
 
+function setClick(value, type){
+		$("#confirmButtonModal").attr("onclick","elimina("+value+","+type+")");
+}
 
 
 

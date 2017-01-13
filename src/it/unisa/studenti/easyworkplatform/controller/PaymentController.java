@@ -124,19 +124,19 @@ public class PaymentController extends HttpServlet {
 					String attribute = request.getParameter("attribute");
 					String toSearch = request.getParameter("toSearch");
 					
-					//control if empty
-					if (attribute.equals("") && toSearch.equals("")){
-						sendMessage("empty", response);
-						return;
-					}
-					
-					String regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";
-					if (attribute.equals("serviceCustomerId")) regex = "[0-9]*";
-					
-					if(!(Pattern.matches(regex, toSearch))){
-						sendMessage("regExpError", response);
-						return;
-					}
+//					//control if empty
+//					if (attribute.equals("") && toSearch.equals("")){
+//						sendMessage("empty", response);
+//						return;
+//					}
+//					
+//					String regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";
+//					if (attribute.equals("serviceCustomerId")) regex = "[0-9]*";
+//					
+//					if(!(Pattern.matches(regex, toSearch))){
+//						sendMessage("regExpError", response);
+//						return;
+//					}
 					
 					LinkedList<Payment> listPayment = modelDs.findByField(attribute, toSearch);
 					
