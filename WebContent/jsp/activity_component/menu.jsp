@@ -6,7 +6,7 @@
 			</div>
 			
 			<%
-				String act = (String)session.getAttribute("activity");	
+				String act = (String)session.getAttribute("activityType");	
 				if(act != null){
 					if(act.equalsIgnoreCase("lavanderia")){ 
 			%>

@@ -183,7 +183,7 @@ public class UserController extends HttpServlet {
 							session.setAttribute("user", user);
 							String userName = user.getName()+" "+user.getSurname();
 							session.setAttribute("UserName", userName);
-							session.setAttribute("activityTyoe", "pizzeria");
+							session.setAttribute("activityType", "pizzeria");
 							String name = user.getName()+ user.getSurname();
 							sendMessage("loginOk", response);
 							return;
