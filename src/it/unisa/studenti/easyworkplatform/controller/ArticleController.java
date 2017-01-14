@@ -68,36 +68,38 @@ public class ArticleController extends HttpServlet {
 			}else{
 				//INSERT
 				if(action.equalsIgnoreCase("insert")){
-					String name = request.getParameter("name");
-					String pri = request.getParameter("price");
-					String description = request.getParameter("description");
-					String dur = request.getParameter("duration");
+					String name = request.getParameter("nameA");
+					String pri = request.getParameter("priceA");
+					String description = request.getParameter("descriptionA");
+					String dur = request.getParameter("durationA");
 					
-					//control if empty
-					if (name.equals("") || pri.equals("") || description.equals("") || dur.equals("")){
-						sendMessage("empty", response);
-						return;
-					}
-
-					//control if they respect the format					
-					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
-						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
-						sendMessage("regExpError", response);
-						return;
-					}
-					
+//					//control if empty
+//					if (name.equals("") || pri.equals("") || description.equals("") || dur.equals("")){
+//						sendMessage("empty", response);
+//						return;
+//					}
+//
+//					//control if they respect the format					
+//					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
+//						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
+//						sendMessage("regExpError", response);
+//						return;
+//					}
+//					
 					double price = Double.parseDouble(pri);
 					int duration = Integer.parseInt(dur);
 					
 					Article newArticle = new Article(name, price, description, duration);
 					LinkedList<Article> listArticle = modelDs.findAll();
-					for(Article art : listArticle){
-						if(art.equals(newArticle)){
-							sendMessage("exists", response);
-							return;
+					
+					if(listArticle != null){
+						for(Article art : listArticle){
+							if(art.equals(newArticle)){
+								sendMessage("exists", response);
+								return;
+							}
 						}
 					}
-					
 					try{
 						model.insert(newArticle);
 						sendMessage("insertOk", response);
@@ -119,10 +121,10 @@ public class ArticleController extends HttpServlet {
 						return;
 					}
 					
-					String name = request.getParameter("name");
-					String pri = request.getParameter("price");
-					String description = request.getParameter("description");
-					String dur = request.getParameter("duration");
+					String name = request.getParameter("modName");
+					String pri = request.getParameter("modPrice");
+					String description = request.getParameter("modDescription");
+					String dur = request.getParameter("modDuration");
 					
 //					//control if not empty
 //					if (name.equals(""))
@@ -163,7 +165,7 @@ public class ArticleController extends HttpServlet {
 				//REMOVE
 				if(action.equalsIgnoreCase("remove")){
 					
-					int id = Integer.parseInt(request.getParameter("idArticle"));
+					int id = Integer.parseInt(request.getParameter("id"));
 					
 					Article toRemoveArticle = modelDs.findByKey(id);
 					

@@ -67,18 +67,18 @@ public class CustomerController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")) {
 					
-					String name 	 	= request.getParameter("nameCl");
-					String surname	 	= request.getParameter("surnameCl");
-					String birthDate 	= request.getParameter("birthDateCl");
-					String birthPlace 	= request.getParameter("birthPlaceCl");
-					String address		= request.getParameter("addressCl");
-					String civicNumber	= request.getParameter("civicNumberCl");
-					String city 		= request.getParameter("cityCl");
-					String province 	= request.getParameter("provinceCl");
-					String cap 			= request.getParameter("capCl");
-					String email 		= request.getParameter("emailCl");
-					String newsletter 	= request.getParameter("newsletterCl");
-					String phoneNumber 	= request.getParameter("phoneNumberCl");
+					String name 		= request.getParameter("modNameCl");
+					String surname 		= request.getParameter("modSurnameCl");
+					String birthDate 	= request.getParameter("modBirthCl");
+					String birthPlace	= request.getParameter("modPlaceCl");
+					String address		= request.getParameter("modAddressCl");
+					String civicNumber	= request.getParameter("modCivicNumber");
+					String city			= request.getParameter("modCityCl");
+					String province		= request.getParameter("modProvinceCl");
+					String cap 			= request.getParameter("modCapCl");
+					String email		= request.getParameter("modEmailCl");
+					String newsletter 	= request.getParameter("newsletter");
+					String phoneNumber 	= request.getParameter("modPhoneCl");
 					
 //					// control if empty
 //					if (name.equals("") || surname.equals("") || birthDate.equals("") || 
@@ -100,18 +100,20 @@ public class CustomerController extends HttpServlet {
 					String address1 = address+", "+civicNumber;
 					int CAP = Integer.parseInt(cap);
 					Date bd = Date.valueOf(birthDate);
-					int nl = Integer.parseInt(newsletter);
+					int nl 	= 0;
 					
 					
 					Customer customer = new Customer(name, surname, bd, birthPlace, address1, city, province, CAP, nl, phoneNumber, email);
 					LinkedList<Customer> listCustomer = modelDs.findAll();
-					for (Customer cus : listCustomer) {
-						if(cus.equals(customer)){
-							sendMessage("exists", response);
-							return;
+					
+					if(listCustomer != null){
+						for (Customer cus : listCustomer) {
+							if(cus.equals(customer)){
+								sendMessage("exists", response);
+								return;
+							}
 						}
 					}
-					
 					try {
 						modelDs.insert(customer);
 						sendMessage("insertOk", response);

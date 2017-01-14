@@ -13,50 +13,62 @@
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="nameS" 
-								type="text" name="nameS" 
-								required="required" class="form-control" />
+								<label style="width: 30%">Codice Servizio<span
+								style="color: #FF0000">*</span></label> <input id="CodS" type="text"
+								name="CodS" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surenameS" 
-								type="text" required="required"
-								name="surenameS" required class="form-control" />
+							<label style="width: 30%">Codice Cliente<span
+								style="color: #FF0000">*</span></label> <input id="CustomerS" type="text"
+								name="CustomerS" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome dipendente<span
-								style="color: #FF0000">*</span></label> <input id="employeeS" 
-								type="text" name="employeeS" 
-								required="required" class="form-control" />
+							<label style="width: 30%">Quantità<span
+								style="color: #FF0000">*</span></label> <input id="QuantityS" type="text"
+								name="QuantityS" required class="form-control" />
+						</div>
+						<br>
+
+						<div class="divHorizontal">
+							<label style="width: 30%">Variazioni<span
+								style="color: #FF0000">*</span></label> <input id="VariationS" type="text"
+								name="VariationS" class="form-control" />
+						</div>
+						<br>
+
+						<div class="divHorizontal">
+							<label style="width: 30%">Note<span style="color: #FF0000">*</span></label>
+							<input id="NoteS" type="text" name="NoteS" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
-								style="color: #FF0000">*</span></label> <input id="dateS"
-								type="date" readonly="readonly"
-								name="dateS" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="ReceiptDateS" type="date"
+								name="ReceiptDateS" required class="form-control" />
 						</div>
 						<br>
-
 						<div class="divHorizontal">
-							<label style="width: 30%">Ora<span style="color: #FF0000">*</span></label>
-							<input id="timeS" type="time" name="timeS" 
-							required="required" class="form-control" />
+							<label style="width: 30%">Data Restituzione<span
+								style="color: #FF0000">*</span></label> <input id="ReturnDateS" type="date"
+								name="ReturnDateS" required class="form-control" />
 						</div>
 						<br>
-
 						<div class="divHorizontal">
-							<label style="width: 30%">Tipo servizio<span
-								style="color: #FF0000">*</span></label> <input id="typeS" 
-								type="text" name="typeS" 
-								required="required" class="form-control" />
+							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
+							<input id="modEmployeeS" type="text" name="modEmployeeS" class="form-control" />
 						</div>
+						<br>
+						<div class="divHorizontal">
+							<label style="width: 30%">Codice Attività<span
+								style="color: #FF0000">*</span></label> <input id="AidS" type="text"
+								name="AidS" required class="form-control" />
+						</div>
+						<br>
 					</div>
 				</div>
 			</div>

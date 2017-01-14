@@ -68,15 +68,15 @@ public class ServiceController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
 					
-					String name 		= request.getParameter("nameS");
-					String employee 	= request.getParameter("employeeS");
-					String quantity 	= request.getParameter("quantityS");
-					String variation	= request.getParameter("variationS");
-					String note 		= request.getParameter("noteS");
-					String receiptDate	= request.getParameter("recepitDateS");
-					String returnDate	= request.getParameter("returnDateS");
-					String aid 			= request.getParameter("aidS");
-					String cid 			= request.getParameter("");
+					String name 		= request.getParameter("CodS");
+					String customer		= request.getParameter("CustomerS");
+					String quantity 	= request.getParameter("QuantityS");
+					String variation 	= request.getParameter("VariationS");
+					String note 		= request.getParameter("NoteS");
+					String receiptDate	= request.getParameter("RecepitDateS");
+					String returnDate 	= request.getParameter("ReturnDateS");
+					String employee 	= request.getParameter("EmployeeS");
+					String aid			= request.getParameter("AidS");
 					
 //					//control if empty
 //					if (
@@ -107,20 +107,21 @@ public class ServiceController extends HttpServlet {
 					
 					int  qt 	= Integer.parseInt(quantity);
 					int  aID	= Integer.parseInt(aid);
-					int	 cID 	= Integer.parseInt(cid);
+					int	 cID 	= Integer.parseInt(customer);
 					Date rec 	= Date.valueOf(receiptDate);
 					Date ret	= Date.valueOf(returnDate);
 					
 					Service service = new Service(employee, qt, variation, note, rec, ret, aID, cID);
 					LinkedList<Service> listService = modelDs.findAll();
 					
-					for (Service ser : listService) {
-						if(ser.equals(service)){
-							sendMessage("exist", response);
-							return;
+					if(listService != null){
+						for (Service ser : listService) {
+							if(ser.equals(service)){
+								sendMessage("exist", response);
+								return;
+							}
 						}
 					}
-					
 					try {
 						modelDs.insert(service);
 						sendMessage("insertOk", response);
@@ -134,22 +135,23 @@ public class ServiceController extends HttpServlet {
 				// UPDATE
 				if (action.equalsIgnoreCase("update")){
 					
-					int id = Integer.parseInt(request.getParameter("id"));
+					int id = Integer.parseInt(request.getParameter("modCodS"));
 					Service oldService = modelDs.findByKey(id);
+					
 					if (oldService == null){
 						sendMessage("noExist", response);
 						return;
 					}
-					String name 		= request.getParameter("modNameS");
-					String employee 	= request.getParameter("modEmployeeS");
+					
+					String name 		= request.getParameter("modCodS");
 					String customer		= request.getParameter("modCustomerS");
 					String quantity 	= request.getParameter("modQuantityS");
 					String variation 	= request.getParameter("modVariationS");
 					String note 		= request.getParameter("modNoteS");
-					String receiptDate	= request.getParameter("modRecepitDateS");
+					String receiptDate	= request.getParameter("modReceiptDateS");
 					String returnDate 	= request.getParameter("modReturnDateS");
+					String employee 	= request.getParameter("modEmployeeS");
 					String aid			= request.getParameter("modAidS");
-					String cid 			= request.getParameter("");
 					
 //					if(name.equals(""))
 //						name = oldService.getEmployee();
@@ -188,11 +190,11 @@ public class ServiceController extends HttpServlet {
 					
 					int qt = Integer.parseInt(quantity);
 					int aID = Integer.parseInt(aid);
-					int cID = Integer.parseInt(cid);
+					int cID = Integer.parseInt(customer);
 					Date rec = Date.valueOf(receiptDate);
 					Date ret = Date.valueOf(returnDate);
 					
-					Service newService = new Service(employee, qt, variation, note, rec, ret, aID, cID);
+					Service newService = new Service(id,employee, qt, variation, note, rec, ret, aID, cID);
 					newService.setId(oldService.getId());
 					try {
 						modelDs.update(newService);
@@ -265,6 +267,7 @@ public class ServiceController extends HttpServlet {
 					LinkedList<Service> listService = modelDs.findAll();
 					
 					if(listService.isEmpty()){
+						session.setAttribute("services", listService);
 						sendMessage("emptyList", response);
 						return;
 					}else{

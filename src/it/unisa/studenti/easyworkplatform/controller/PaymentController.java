@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.unisa.studenti.easyworkplatform.model.Customer;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.Payment;
 import it.unisa.studenti.easyworkplatform.model.PaymentModelDS;
@@ -70,20 +71,20 @@ public class PaymentController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
 					
-					String date		= request.getParameter("date");
-					String amount	= request.getParameter("amount");
-					String scid		= request.getParameter("serviceCustomerId");
-					String said		= request.getParameter("serviceArticleId");
-					String sid		= request.getParameter("serviceId");
+					String customerId	= request.getParameter("modCustomerP");
+					String id			= request.getParameter("modServiceP");
+					String articleId	= request.getParameter("modServiceTypeP");
+					String amount		= request.getParameter("modAmountP");
+					String date			= request.getParameter("modDateP");
 					
-					// control if empty
-					if (
-						date.equals("")	|| amount.equals("")	|| 
-						scid.equals("") || said.equals("")		|| sid.equals("")
-						){
-							sendMessage("empty", response);
-							return;
-					}
+//					// control if empty
+//					if (
+//						date.equals("")	|| amount.equals("")	|| 
+//						customerId.equals("") || customerId.equals("")		|| sid.equals("")
+//						){
+//							sendMessage("empty", response);
+//							return;
+//					}
 					
 //					//control if they respect the format
 //					if ( ! (Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", date) && Pattern.matches("[0-9]{2}[.][0-9]{2}", amount) && Pattern.matches("[0-9]*", scid) && 
@@ -92,22 +93,23 @@ public class PaymentController extends HttpServlet {
 //								return;
 //					}
 					
-					Date dt = Date.valueOf(date);
-					double am = Double.parseDouble(amount);
-					int scid2 = Integer.parseInt(scid);
-					int said2 = Integer.parseInt(said);
-					int sid2 = Integer.parseInt(sid);
+					Date date2 		= Date.valueOf(date);
+					double amount2	= Double.parseDouble(amount);
+					int customerId2 = Integer.parseInt(customerId);
+					int id2 		= Integer.parseInt(id);
+					int articleId2 	= Integer.parseInt(articleId);
 					
-					Payment payment = new Payment(am, dt, sid2, scid2, said2);
+					Payment payment = new Payment(amount2, date2, id2, customerId2, articleId2);
 					LinkedList<Payment> listPayment = modelDs.findAll();
-					
-					for (Payment pay : listPayment) {
-						if(pay.equals(payment)){
-							sendMessage("exists", response);
-							return;
+
+					if(listPayment != null){
+						for (Payment pay : listPayment) {
+							if(pay.equals(payment)){
+								sendMessage("exists", response);
+								return;
+							}
 						}
 					}
-					
 					try {
 						modelDs.insert(payment);
 						sendMessage("insertOk", response);
@@ -118,8 +120,32 @@ public class PaymentController extends HttpServlet {
 					}
 				}
 				
+				
+				// REMOVE
+				if (action.equalsIgnoreCase("remove")){
+					int id = Integer.parseInt(request.getParameter("id"));
+					
+					Payment toRemove = modelDs.findByKey(id);
+					
+					if(toRemove == null){
+						sendMessage("noExists", response);
+						return;
+					}
+					
+					try{
+						modelDs.remove(id);
+						sendMessage("removeOk", response);
+						return;
+					}catch(Exception e){
+						sendMessage("cError", response);
+						return;
+					}
+				}
+				
+				
 				// SEARCH
 				if (action.equalsIgnoreCase("update")){
+					
 					
 					String attribute = request.getParameter("attribute");
 					String toSearch = request.getParameter("toSearch");
@@ -155,6 +181,7 @@ public class PaymentController extends HttpServlet {
 					LinkedList<Payment> listPayment = modelDs.findAll();
 					
 					if (listPayment.isEmpty()){
+						session.setAttribute("services", listPayment);
 						sendMessage("emptyList", response);
 						return;
 					}else{

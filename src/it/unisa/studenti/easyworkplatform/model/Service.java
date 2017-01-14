@@ -38,6 +38,7 @@ public class Service implements Cloneable {
 	public Service(String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
 			int articleId, int customerId) {
 		super();
+		this.id = 0;
 		this.employee = employee;
 		this.quantity = quantity;
 		this.variation = variation;
@@ -48,7 +49,31 @@ public class Service implements Cloneable {
 		this.customerId = customerId;
 	}
 
-	
+	/**
+	 * Parametric constructor
+	 * @param employee of the service
+	 * @param quantity of the service
+	 * @param variation of the service
+	 * @param note of the service
+	 * @param receiptdate of the service
+	 * @param returnDate of the service
+	 * @param articleId of the service
+	 * @param customerId of the service
+	 */
+	public Service(int id, String employee, int quantity, String variation, String note, Date receiptdate, Date returnDate,
+			int articleId, int customerId) {
+		super();
+		this.id = id;
+		this.employee = employee;
+		this.quantity = quantity;
+		this.variation = variation;
+		this.note = note;
+		this.receiptDate = receiptdate;
+		this.returnDate = returnDate;
+		this.articleId = articleId;
+		this.customerId = customerId;
+	}
+
 
 
 	/**

@@ -10,43 +10,37 @@ function sendForm(type, form){
 			{
 				$("#status").html("");
 				if(xhr.responseText == "updateOk"){
-					$("#modalTitle").html("Messaggio:");
-					$("#status").html("Messaggio: Modifica effettuata con successo");
-					window.location.href="attivita.jsp";
+					$("#status").html("Modifica effettuata con successo");
 				}
 				else if(xhr.responseText == "insertOk"){
-					$("#modalTitle").html("Messaggio:");
-					$("#status").html("Messaggio: Registrazione effettuata con successo");
-					window.location.href="attivita.jsp";
+					$("#status").html("Inserimento effettuata con successo");
 				}
 				else if(xhr.responseText == "removeOk"){
-					$("#modalTitle").html("Messaggio:");
-					$("#status").html("Messaggio: Eliminazione effettuata con successo");
-					window.location.href="attivita.jsp";
+					$("#status").html("Eliminazione effettuata con successo");
 				}
 				else if(xhr.responseText == "exists"){
-					$("#status").html("Messaggio: Il cliente è stato registrato precedentemente");
+					$("#status").html("Elemento già esistente");
 				}
 				else if(xhr.responseText == "noExists"){
-					$("#status").html("Messaggio: I dati del cliente non sono presenti all'interno del db");
+					$("#status").html("Non sono presenti all'interno del db");
 				}
 				else if(xhr.responseText == "empty"){
-					$("#status").html("Messaggio: Compilare tutti i campi");
+					$("#status").html("Nessun elemento presente");
 				}
 				else if(xhr.responseText == "regExpError"){
-					$("#status").html("Messaggio: Rispettare il formato");
+					$("#status").html("Rispettare il formato");
 				}
 				else if(xhr.responseText == "emptyList"){
-					$("#status").html("Messaggio: Lista vuota");
+					$("#status").html("Nessun elemento presente");
 				}
 				else if(xhr.responseText == "cError"){
-					$("#status").html("Messaggio: Errore");
+					$("#status").html("Errore Di Connessione");
 				}
 				else if(xhr.responseText == "dbError"){
-					$("#status").html("Messaggio: Database Error");
+					$("#status").html("Errore di connessione al Database");
 				}
 				else{
-					$("#status").html("Messaggio: Errore Generico");
+					$("#status").html("Errore Generico");
 				}
 				
 			}
@@ -127,7 +121,7 @@ function setChangePayment(value){
 
 function setChangeService(value){
 	
-	var id = document.getElementById("id"+value).textContent;
+	var id		 = document.getElementById("id"+value).textContent;
 	var name 	 = document.getElementById("name"+value).textContent;
 	var customer = document.getElementById("customer"+value).textContent;
 	var quantity = document.getElementById("quantity"+value).textContent;
@@ -136,8 +130,9 @@ function setChangeService(value){
 	var receiptDate = document.getElementById("receiptDate"+value).textContent;
 	var returnDate 	= document.getElementById("returnDate"+value).textContent;
 	var employee = document.getElementById("employee"+value).textContent;
-	$('#modIdS').val(id);
-	$('#modNameS').val(name);
+	
+	$('#modCodS').val(id);
+	$('#modAidS').val(name);
 	$('#modCustomerS').val(customer);
 	$('#modQuantityS').val(quantity);
 	$('#modVariationS').val(variation);

@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a class="btn btn-info" data-dismiss="modal">OK</a>
+				<a class="btn btn-info" data-dismiss="modal" onclick="redirect()">OK</a>
 			</div>
 		</div>
 	</div>

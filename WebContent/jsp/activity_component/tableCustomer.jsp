@@ -32,7 +32,7 @@
 							style="padding: 0px;">
 							<thead class="cf">
 								<tr>
-									<th>Codice Cliente</th>
+									<th>Cod. Cliente</th>
 									<th>Nome</th>
 									<th>Cognome</th>
 									<th>Data di nascita</th>
@@ -52,26 +52,27 @@
 									if(customerList != null){
 										for(int i=0; i<customerList.size(); i++){
 											Customer customer = customerList.get(i);
-											out.write("<tr>");
-											out.write("<td data-title='Codice Cliente' id='id"+i+"'>"+customer.getId()+"</td>");
-											out.write("<td data-title='Nome' id='name"+i+"'>"+customer.getName()+"</td>");
-											out.write("<td data-title='Cognome' id='surename"+i+"'>"+customer.getSurname()+"</td>");
-											out.write("<td data-title='Data di nascita' id='birth"+i+"'>"+customer.getBirthdate()+"</td>");
-											out.write("<td data-title='Luogo di nascita' id='place"+i+"'>"+customer.getBirthplace()+"</td>");
-											out.write("<td data-title='Indirizzo' id='address"+i+"'>"+customer.getAddress()+"</td>");
-											out.write("<td data-title='Città' id='city"+i+"'>"+customer.getCity()+"</td>");
-											out.write("<td data-title='Provincia' id='province"+i+"'>"+customer.getProvince()+"</td>");
-											out.write("<td data-title='Cap' id='cap"+i+"'>"+customer.getCap()+"</td>");
-											out.write("<td data-title='Numero di Telefono' id='phone"+i+"'>"+customer.getPhoneNumber()+"</td>");
-											out.write("<td data-title='Email' id='email"+i+"'>"+customer.getEmail()+"</td>");
-											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModal'");
-											out.write("onclick='setChangeCustomer("+i+");'>");
-											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-											String cust = "Customer";
-											out.write("<button class='but' onclick='setClick("+customer.getId()+","+cust+")' data-toggle='modal' data-target='#question'>");
-											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
-											out.write("</td>");
-											out.write("</tr>");								
+								%>
+											<tr>
+												<td data-title="Cod. Cliente" id="<%="id"+i %>"><%=customer.getId()%></td>
+												<td data-title="Nome" id="<%="name"+i%>"><%=customer.getName()%></td>
+												<td data-title="Cognome" id="<%="surname"+i%>"><%=customer.getSurname()%></td>
+												<td data-title="Data di nascita" id="<%="birth"+i%>"><%=customer.getBirthdate()%></td>
+												<td data-title="Luogo di nascita" id="<%="place"+i%>"><%=customer.getBirthplace()%></td>
+												<td data-title="Indirizzo" id="<%="address"+i%>"><%=customer.getAddress()%></td>
+												<td data-title="Città" id="<%="city"+i%>"><%=customer.getCity()%></td>
+												<td data-title="Provincia" id="<%="province"+i%>"><%=customer.getProvince()%></td>
+												<td data-title="Cap" id="<%="cap"+i%>"><%=customer.getCap()%></td>
+												<td data-title="Numero di Telefono" id="<%="phone"+i%>"><%=customer.getPhoneNumber()%></td>
+												<td data-title="Email" id="<%="email"+i%>"><%=customer.getEmail()%></td>
+												<td data-title="Funzioni"><button class="but" data-toggle="modal" data-target="#mioModal"
+													onclick="setChangeCustomer(<%=i%>)">
+												<img src="icon/modifica.png" style="width: 20px"><br>Modifica</button>
+												<button class="but" onclick="setClick(<%=customer.getId()%>,'Customer')" data-toggle="modal" data-target="#question">
+												<img src="icon/remove.png" style='width: 20px'><br>Elimina</button>
+												</td>
+											</tr>								
+									<% 		
 											}
 									}
 									

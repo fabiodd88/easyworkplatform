@@ -111,13 +111,14 @@ public class ActivityController extends HttpServlet {
 					
 					LinkedList<Activity> listActivity = modelDs.findAll();
 					
-					for (Activity act : listActivity) {
-						if(act.equals(activity)){
-							sendMessage("exist", response);
-							return;
+					if(listActivity !=null){
+						for (Activity act : listActivity) {
+							if(act.equals(activity)){
+								sendMessage("exist", response);
+								return;
+							}
 						}
 					}
-					
 					try{
 						modelDs.insert(activity);
 						sendMessage("insertOk", response);

@@ -49,22 +49,27 @@
 								if(paymentList != null){
 									for(int i=0; i<paymentList.size(); i++){
 										Payment payment = paymentList.get(i);
-										out.write("<tr>");
-										out.write("<td data-title='Codice Pagamento' id='id"+i+"'>"+payment.getId()+"</td> ");
-										out.write("<td data-title='Cliente' id='customer"+i+"'>"+payment.getServiceCustomerId()+"</td>");
-										out.write("<td data-title='Servizio' id='service"+i+"'>"+payment.getServiceId()+"</td>");
-										out.write("<td data-title='Tipologia di Servizio' id='serviceType"+i+"'>"+payment.getServiceArticleId()+"</td>");
-										out.write("<td data-title='Data Di Pagamento' id='date"+i+"'>"+payment.getDate()+"</td>");
-										out.write("<td data-title='Ammontare' id='amount"+i+"'>"+payment.getAmount()+"</td>");
 										sum = sum+ payment.getAmount();
-										out.write("<td data-title='Funzioni'>");
-										String pay = "Payment";
-										out.write("<button class='but' onclick='setClick("+payment.getId()+","+pay+")' data-toggle='modal' data-target='#question'>");
-										out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
-										out.write("</td>");
-										out.write("</tr>");	
+							%>
+							
+										<tr>
+											<td data-title="Codice Pagamento" id="<%="id" + i%>"><%=payment.getId()%></td>
+											<td data-title="Cliente" id="<%="customer"+i%>"><%=payment.getServiceCustomerId()%></td>
+											<td data-title="Servizio" id="<%="service"+i%>"><%=payment.getServiceId()%></td>
+											<td data-title="Tipologia di Servizio" id="<%="serviceType"+i%>"><%=payment.getServiceArticleId()%></td>
+											<td data-title="Data Di Pagamento" id="<%="date"+i%>"><%=payment.getDate()%></td>
+											<td data-title="Ammontare" id="<%="amount"+i%>"><%=payment.getAmount()%></td>
+											<td data-title='Funzioni'>
+											<button class='but' 
+												onclick="setClick(<%=payment.getId()%>, 'Payment')" 
+												data-toggle='modal' data-target='#question'>
+												<img src='icon/remove.png' style='width: 20px'><br>Elimina
+											</button>
+											</td>
+										</tr>	
+							<%
 									}
-									out.write("<tr class='filterTable_no_results' ><td colspan='12'><label style='float: right'>Totale: "+sum+"</label></td></tr>");
+									out.write("<tr class='filterTable_no_results' ><td colspan='12'><h4 style='float: right'>Totale: "+sum+"</h4></td></tr>");
 								}
 							}
 							else{

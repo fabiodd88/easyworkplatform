@@ -1,9 +1,9 @@
-
 <!-- Modal per la modifica del servizio -->
 <form id="formChangeService" method="post" action="UserController" method="POST"
 	enctype="multipart/form-data">
 <div class="modal fade" id="mioModalService" role="dialog">
 	<div class="modal-dialog">
+	<input type="text" name="action" id="action" value="update" style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -13,14 +13,19 @@
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome Servizio<span
-								style="color: #FF0000">*</span></label> <input id="modNameS" type="text"
-								name="modNameS" required class="form-control" />
+							<label style="width: 30%">Codice Servizio<span
+								style="color: #FF0000">*</span></label> <input id="modCodS" type="text"
+								name="modCodS" required class="form-control" />
 						</div>
 						<br>
-
 						<div class="divHorizontal">
-							<label style="width: 30%">Cliente<span
+							<label style="width: 30%">Tipo di servizio<span
+								style="color: #FF0000">*</span></label> <input id="modAidS" type="text"
+								name="modAidS" required class="form-control" />
+						</div>
+						<br>
+						<div class="divHorizontal">
+							<label style="width: 30%">Codice Cliente<span
 								style="color: #FF0000">*</span></label> <input id="modCustomerS" type="text"
 								name="modCustomerS" required class="form-control" />
 						</div>
@@ -29,20 +34,20 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Quantità<span
 								style="color: #FF0000">*</span></label> <input id="modQuantityS" type="text"
-								name="employee" required class="form-control" />
+								name="modQuantityS" required class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Variazioni<span
 								style="color: #FF0000">*</span></label> <input id="modVariationS" type="text"
-								name="variation" class="form-control" />
+								name="modVariationS" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Note<span style="color: #FF0000">*</span></label>
-							<input id="modNoteS" type="text" name="note" class="form-control" />
+							<input id="modNoteS" type="text" name="modNoteS" class="form-control" />
 						</div>
 						<br>
 
@@ -62,10 +67,13 @@
 							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
 							<input id="modEmployeeS" type="text" name="modEmployeeS" class="form-control" />
 						</div>
+						<br>
+						
 					</div>
 				</div>
 			</div>
-			<input type="text" name="modIdS" id="modIdS" style="display: none;">
+			<div id="mess3" class="alert alert-danger"
+				style="display: none !important;"></div>
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori
@@ -73,7 +81,8 @@
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" onclick="sendForm('Service','#formChangeService');">Conferma</button>
+					data-target="#modalConf" data-dismiss="modal"
+					onclick="sendForm('Service','#formChangeService');">Conferma</button>
 			</div>
 		</div>
 	</div>

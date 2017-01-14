@@ -50,20 +50,22 @@
 									if(articleList != null){
 										for(int i=0; i<articleList.size(); i++){
 											Article article = articleList.get(i);
-											out.write("<tr>");
-											out.write("<td data-title='Codice Articolo' id='id"+i+"'>"+article.getId()+"</td>");
-											out.write("<td data-title='Nome' id='name"+i+"'>"+article.getName()+"</td>");
-											out.write("<td data-title='Descrizione' id='description"+i+"'>"+article.getDescription()+"</td>");
-											out.write("<td data-title='Prezzo' id='price"+i+"'>"+article.getPrice()+"</td>");
-											out.write("<td data-title='Durata' id='duration"+i+"'>"+article.getDuration()+"</td>");
-											out.write("<td data-title='Funzioni'><button class='but' data-toggle='modal' data-target='#mioModalArticle'");
-											out.write("onclick='setChangeArticle("+i+");'>");
-											out.write("<img src='icon/modifica.png' style='width: 20px'><br>Modifica</button>");
-											String art = "Article";
-											out.write("<button class='but' onclick='setClick("+article.getId()+","+art+")' data-toggle='modal' data-target='#question'>");
-											out.write("<img src='icon/remove.png' style='width: 20px'><br>Elimina</button>");
-											out.write("</td>");
-											out.write("</tr>");	
+								%>
+											<tr>
+												<td data-title="Codice Articolo" id="<%="id"+i%>"><%=article.getId()%></td>
+												<td data-title="Nome" id="<%="name"+i%>"><%=article.getName()%></td>
+												<td data-title="Descrizione" id="<%="description"+i%>"><%=article.getDescription()%></td>
+												<td data-title="Prezzo" id="<%="price"+i%>"><%=article.getPrice()%></td>
+												<td data-title="Durata" id="<%="duration"+i%>"><%=article.getDuration()%></td>
+												<td data-title="Funzioni"><button class="but" data-toggle="modal" 
+													data-target="#mioModalArticle" onclick="setChangeArticle(<%=i%>)">
+												<img src="icon/modifica.png" style="width: 20px"><br>Modifica</button>
+												<button class='but' onclick="setClick(<%=article.getId()%>,'Article')" 
+													data-toggle="modal" data-target="#question">
+												<img src="icon/remove.png" style='width: 20px'><br>Elimina</button>
+												</td>
+											</tr>
+								<%
 										}
 									}
 								}

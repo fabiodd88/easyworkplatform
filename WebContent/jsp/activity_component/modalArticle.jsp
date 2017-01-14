@@ -4,6 +4,7 @@
 	enctype="multipart/form-data">
 <div class="modal fade" id="mioModalArticle" role="dialog">
 	<div class="modal-dialog">
+	<input type="text" name="action" id="action" value="update"style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>

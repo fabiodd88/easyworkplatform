@@ -17,7 +17,6 @@
 <link href="css/tablet.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
 <script src="js/customer.js"></script>
-<script src="js/payment.js"></script>
 </head>
 
 <body>

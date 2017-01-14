@@ -11,9 +11,8 @@ $(document).ready(function()
 			{
 				$("#status").html("");
 				if(xhr.responseText == "loginOk"){
-					$("#modalTitle").html("Messaggio:");
 					$("#status").html("Messaggio: Login Successful.");	
-					window.location.href="attivita.jsp";
+					window.location.href="UserController";
 				}
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
@@ -46,21 +45,6 @@ $(document).ready(function()
 		});
 
 
-
-function deleteUser(row, userId)
-{
-	row = $(row).parent().parent();
-	$.ajax({
-		   type: "POST",
-		   url: "UserController",
-		   data: "action=remove&id="+userId,
-		   dataType: "text",
-		   success: function(data, status, xhr)
-		   {
-			   row.remove();
-		   }
-		 });
-}
 
 
 
@@ -378,9 +362,8 @@ function elimina(value, type){
 		dataType: "text",
 		success: function(data, status, xhr)
 		{
-			if(xhr.responseText == "succesfull"){
-				$("#modalTitle").html("Messaggio");
-				$("#status").html("Messaggio: Rimozione avvenuta con successo.");	
+			if(xhr.responseText == "removeOk"){
+				$("#status").html("Rimozione avvenuta con successo.");	
 			}
 		}
 		
@@ -391,10 +374,14 @@ function elimina(value, type){
 
 
 function setClick(value, type){
-		$("#confirmButtonModal").attr("onclick","elimina("+value+","+type+")");
+		var type1= "'"+type+"'";
+		$("#confirmButtonModal").attr("onclick","elimina("+value+","+type1+")");
 }
 
 
+function redirect(){
+	window.location.href="UserController";
+}
 
 
 
