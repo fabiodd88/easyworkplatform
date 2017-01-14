@@ -51,7 +51,7 @@
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
 					data-target="#modalConf" data-dismiss="modal"
-					onclick="sendForm('Article','#formAddArticle');">Conferma</button>
+					onclick="controlloArticle();sendForm('Article','#formAddArticle');">Conferma</button>
 			</div>
 		</div>
 	</div>

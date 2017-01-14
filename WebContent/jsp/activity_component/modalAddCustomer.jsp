@@ -103,7 +103,7 @@
 			<div class="modal-footer">
 				<button class="btn btn-info" data-toggle="modal"
 					data-target="#modalConf" data-dismiss="modal" 
-					onclick="sendForm('Customer','#formAddCustomer');">Conferma</button>
+					onclick="customerCustomer();sendForm('Customer','#formAddCustomer');">Conferma</button>
 			</div>
 		</div>
 	</div>
