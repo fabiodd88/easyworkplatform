@@ -9,23 +9,24 @@
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading color">
-					<h3 class="panel-title">Articoli</h3>
+					<h3 class="panel-title"><%=session.getAttribute("articolo")%></h3>
 					<div class="pull-right">
 						<label>Filtri</label>
 						<span class="clickable filter" data-toggle="tooltip"
 							title="Toggle table filter" data-container="body"> <i
 							class="glyphicon glyphicon-filter"></i>
 						</span>
+						<label>Aggiungi</label>
+						<a class="but" data-toggle="modal"
+							data-target="#modalAddArticle" style="color: white" onclick="modal('addArticle')">
+							<span class="glyphicon glyphicon-plus"></span>
+						</a>
 					</div>
 				</div>
 				<div class="panel-body">
 					<input type="text" class="form-control" id="dev-table-filter"
 						data-action="filter" data-filters="#dev-table"
 						placeholder="Filter Developers" />
-					<div class="but" data-toggle="modal"
-							data-target="#modalAddArticle" onclick="modal('addArticle')">
-								<img src="icon/add.png">
-					</div>
 				</div>
 				<div class="container" style="padding: 0px;">
 
@@ -35,7 +36,7 @@
 							style="padding: 0px;">
 							<thead class="cf">
 								<tr>
-									<th>Codice Articolo</th>
+									<th>Cod.<%=session.getAttribute("articolo")%></th>
 									<th>Nome</th>
 									<th>Descrizione</th>
 									<th>Prezzo</th>
@@ -52,7 +53,7 @@
 											Article article = articleList.get(i);
 								%>
 											<tr>
-												<td data-title="Codice Articolo" id="<%="id"+i%>"><%=article.getId()%></td>
+												<td data-title="Cod.<%=session.getAttribute("articolo")%>" id="<%="id"+i%>"><%=article.getId()%></td>
 												<td data-title="Nome" id="<%="name"+i%>"><%=article.getName()%></td>
 												<td data-title="Descrizione" id="<%="description"+i%>"><%=article.getDescription()%></td>
 												<td data-title="Prezzo" id="<%="price"+i%>"><%=article.getPrice()%></td>

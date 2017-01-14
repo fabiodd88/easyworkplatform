@@ -1,5 +1,5 @@
 <%@page import="javax.sql.rowset.serial.SerialArray"%>
-<%@ page contentType="text/html; charset=UTF-8"
+<%@page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Service"%>
 <script src="js/tab.js"></script>
 
@@ -8,23 +8,24 @@
 		<div class="col-md-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading color">
-					<h3 class="panel-title">Servizi</h3>
+					<h3 class="panel-title"><%=session.getAttribute("servizio")%></h3>
 					<div class="pull-right">
 						<label>Filtri</label> <span class="clickable filter"
 							data-toggle="tooltip" title="Toggle table filter"
 							data-container="body"> <i
 							class="glyphicon glyphicon-filter"></i>
 						</span>
+						<label>Aggiungi</label>
+						<a class="but" data-toggle="modal"
+							data-target="#modalAddService" style="color: white" onclick="modal('addService')">
+							<span class="glyphicon glyphicon-plus"></span>
+						</a>
 					</div>
 				</div>
 				<div class="panel-body">
 					<input type="text" class="form-control" id="dev-table-filter"
 						data-action="filter" data-filters="#dev-table"
 						placeholder="Filter Developers" />
-					<div class="but" data-toggle="modal" data-target="#modalAddService"
-						onclick="modal('addService')">
-						<img src="icon/add.png">
-					</div>
 				</div>
 				<div class="container" style="padding: 0px;">
 
@@ -34,8 +35,8 @@
 							style="padding: 0px;">
 							<thead class="cf">
 								<tr>
-									<th>Cod.Servizio</th>
-									<th>Tip.Servizio</th>
+									<th>Cod.<%=session.getAttribute("servizio")%></th>
+									<th>Tip.<%=session.getAttribute("servizio")%></th>
 									<th>Cod.Cliente</th>
 									<th>Quantità</th>
 									<th>Variazioni</th>
@@ -55,8 +56,8 @@
 												Service service = serviceList.get(i);
 								%>
 								<tr>
-									<td data-title="Cod.Servizio" id="<%="id" + i%>"><%=service.getId()%></td>
-									<td data-title="Tipo di Serv." id="<%="name" + i%>"><%=service.getArticleId()%></td>
+									<td data-title="Cod.<%=session.getAttribute("servizio")%>" id="<%="id" + i%>"><%=service.getId()%></td>
+									<td data-title="Tipo <%=session.getAttribute("servizio")%>" id="<%="name" + i%>"><%=service.getArticleId()%></td>
 									<td data-title="Nome Cliente" id="<%="customer" + i%>"><%=service.getCustomerId()%></td>
 									<td data-title="Quantità" id="<%="quantity" + i%>"><%=service.getQuantity()%></td>
 									<td data-title="Variazioni" id="<%="variation" + i%>"><%=service.getVariation()%></td>

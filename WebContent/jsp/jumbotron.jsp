@@ -3,7 +3,7 @@
 	<img src="icon/logo.png" width="200px" height="150px">
 		<%if(session.getAttribute("user") != null){ %>
 		
-		<h1 id="Title">Non Solo Pizza</h1>
+		<h1 id="Title"><%=session.getAttribute("activityName") %></h1>
 		<div class="dropdown" style="float: right;">
 			<button class="btn btn-primary dropdown-toggle" type="button"
 				data-toggle="dropdown">

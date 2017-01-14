@@ -9,12 +9,15 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.tools.ForwardingJavaFileObject;
 
 import it.unisa.studenti.easyworkplatform.model.Account;
 import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
@@ -105,16 +108,16 @@ public class UserController extends HttpServlet {
 					String address1 	= address+", "+civicNumber;
 					
 					
-					// control if empty
-					if (name.equals("") 		|| surname.equals("") 			 || birthDate.equals("") 	 	|| 
-						birthPlace.equals("") 	|| address.equals("") 			 || city.equals("") 			|| 
-						province.equals("") 	|| cap.equals("") 				 || taxCode.equals("") 		 	|| 
-						email.equals("") 		|| password.equals("")			 || secondKey.equals("")		||
-						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || civicNumber.equals("")
-						){
-							sendMessage("empty", response);
-							return;
-					}
+//					// control if empty
+//					if (name.equals("") 		|| surname.equals("") 			 || birthDate.equals("") 	 	|| 
+//						birthPlace.equals("") 	|| address.equals("") 			 || city.equals("") 			|| 
+//						province.equals("") 	|| cap.equals("") 				 || taxCode.equals("") 		 	|| 
+//						email.equals("") 		|| password.equals("")			 || secondKey.equals("")		||
+//						passwordCtrl.equals("") || secondKeyCtrl.equals("")		 || civicNumber.equals("")
+//						){
+//							sendMessage("empty", response);
+//							return;
+//					}
 					
 					//password and secondkey are the same
 					if(password.equals(secondKey)){
@@ -150,6 +153,14 @@ public class UserController extends HttpServlet {
 					}
 					try {
 						model.insert(user);
+						User userFind = modelDs.findByEmail(email);
+						if (userFind != null) {
+							String idUser = ""+userFind.getId();
+							session.setAttribute("userId", idUser);
+							ServletContext context = this.getServletContext();
+							RequestDispatcher dispatcher = context.getRequestDispatcher("/ActivityController");
+							dispatcher.forward(request, response);
+						}
 						sendMessage("insertOk", response);
 						return;
 					} catch (Exception e) {
@@ -183,7 +194,6 @@ public class UserController extends HttpServlet {
 							session.setAttribute("user", user);
 							String userName = user.getName()+" "+user.getSurname();
 							session.setAttribute("UserName", userName);
-							session.setAttribute("activityType", "pizzeria");
 							String name = user.getName()+ user.getSurname();
 							sendMessage("loginOk", response);
 							return;

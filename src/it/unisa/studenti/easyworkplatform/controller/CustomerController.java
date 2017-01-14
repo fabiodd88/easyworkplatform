@@ -67,18 +67,18 @@ public class CustomerController extends HttpServlet {
 				// INSERT
 				if (action.equalsIgnoreCase("insert")) {
 					
-					String name 		= request.getParameter("modNameCl");
-					String surname 		= request.getParameter("modSurnameCl");
-					String birthDate 	= request.getParameter("modBirthCl");
-					String birthPlace	= request.getParameter("modPlaceCl");
-					String address		= request.getParameter("modAddressCl");
-					String civicNumber	= request.getParameter("modCivicNumber");
-					String city			= request.getParameter("modCityCl");
-					String province		= request.getParameter("modProvinceCl");
-					String cap 			= request.getParameter("modCapCl");
-					String email		= request.getParameter("modEmailCl");
+					String name 		= request.getParameter("nameCl");
+					String surname 		= request.getParameter("surnameCl");
+					String birthDate 	= request.getParameter("birthCl");
+					String birthPlace	= request.getParameter("placeCl");
+					String address		= request.getParameter("addressCl");
+					String civicNumber	= request.getParameter("civicNumber");
+					String city			= request.getParameter("cityCl");
+					String province		= request.getParameter("provinceCl");
+					String cap 			= request.getParameter("capCl");
+					String email		= request.getParameter("emailCl");
 					String newsletter 	= request.getParameter("newsletter");
-					String phoneNumber 	= request.getParameter("modPhoneCl");
+					String phoneNumber 	= request.getParameter("phoneCl");
 					
 //					// control if empty
 //					if (name.equals("") || surname.equals("") || birthDate.equals("") || 

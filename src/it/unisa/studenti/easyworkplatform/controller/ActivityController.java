@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.Activity;
 import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
+import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.User;
 
@@ -33,37 +34,37 @@ public class ActivityController extends HttpServlet {
 	/** 
 	 *	Empty Constructor
 	 */
-    public ActivityController() {
-    	super();
-    }
-    
-    /**
+	public ActivityController() {
+		super();
+	}
+
+	/**
 	 * Response of the server to the browser
-     * @param message to be send to the browser
-     * @param response HTTP from server to browser
-     * @throws IOException
-     */
-    private void sendMessage(String message,HttpServletResponse response) throws IOException{
+	 * @param message to be send to the browser
+	 * @param response HTTP from server to browser
+	 * @throws IOException
+	 */
+	private void sendMessage(String message,HttpServletResponse response) throws IOException{
 		PrintWriter out = response.getWriter();
 		out.print(message);
 	}
-    
-    /**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+
+	/**
+	 *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+	 *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String 		action 	= request.getParameter("action");
 		HttpSession session = request.getSession();
 
-		
+
 		try {
 			if (action == null) {
 				sendMessage("noAction", response);
@@ -72,16 +73,8 @@ public class ActivityController extends HttpServlet {
 
 				// INSERT
 				if (action.equalsIgnoreCase("insert")){
-					
-					int userId = Integer.parseInt(request.getParameter("userId"));
-					AccountModelDS modelDsAccount = new AccountModelDS();
-					User user = modelDsAccount.findByKey(userId);
-					
-					if(user == null){
-						sendMessage("notFound", response);
-						return;
-					}
-					
+
+					String uid				= (String)session.getAttribute("userId");
 					String activityName 	= request.getParameter("activityName"); 
 					String vatCode 			= request.getParameter("vatCode"); 
 					String tipology 		= request.getParameter("tipology"); 
@@ -91,26 +84,26 @@ public class ActivityController extends HttpServlet {
 					String activityCap		= request.getParameter("activityCap"); 
 					String activityProvince	= request.getParameter("activityProvince");
 					String address			= activityAddress+", "+activityCivicNumber;
-					
-					//Control if empty
-					if (
-							activityName.equals("")	||	vatCode.equals("")				|| 
-							tipology.equals("") 	||	activityAddress.equals("") 		|| 
-							activityCity.equals("") ||	activityCivicNumber.equals("")	||
-							activityCap.equals("")	||	activityProvince.equals("")		
-						){
-							sendMessage("empty", response);
-							return;
-					}
-					
-					
-					
+//
+//					//Control if empty
+//					if (
+//							activityName.equals("")	||	vatCode.equals("")				|| 
+//							tipology.equals("") 	||	activityAddress.equals("") 		|| 
+//							activityCity.equals("") ||	activityCivicNumber.equals("")	||
+//							activityCap.equals("")	||	activityProvince.equals("")		
+//							){
+//						sendMessage("empty", response);
+//						return;
+//					}
+
+
+					int userId 	= Integer.parseInt(uid);
 					int cap = Integer.parseInt(activityCap);
-					
+
 					Activity activity = new Activity(activityName, tipology, address, activityCity, activityProvince, cap, vatCode, userId);
-					
+
 					LinkedList<Activity> listActivity = modelDs.findAll();
-					
+
 					if(listActivity !=null){
 						for (Activity act : listActivity) {
 							if(act.equals(activity)){
@@ -129,10 +122,55 @@ public class ActivityController extends HttpServlet {
 					}
 				}
 				
+				//VIEW LIST
+				if(action.equalsIgnoreCase("viewList")){
+					
+					LinkedList<Activity> listActivity = modelDs.findAll();
+					
+					if(listActivity.isEmpty()){
+						sendMessage("emptyList", response);
+						return;
+					}else{
+						session.setAttribute("articles", listActivity);
+						sendMessage("list", response);
+						return;
+					}
+					
+				}
+				
+				if(action.equalsIgnoreCase("findById")){
+					String id = (String)request.getParameter("u");
+					int id1 = Integer.parseInt(id);
+					Activity activity = model.findByKey(id1);
+					if(activity != null){
+						String servizio;
+						String articoli;
+						String active = activity.getType();
+						if(active.equalsIgnoreCase("pizzeria")){ 					servizio 	=  "Comanda";		articoli	= "Menu";				}
+						else if(active.equalsIgnoreCase("lavanderia")){ 			servizio 	=  "Ricezione";		articoli	= "Capo";				}
+						else if(active.equalsIgnoreCase("centro estetico")){		servizio 	=  "Appuntamento";	articoli	= "Trattamento";		}
+						else if(active.equalsIgnoreCase("centro riparazioni")){ 	servizio	=  "Riparazione";	articoli	= "Servizio Assistenza";}
+						else{ 														servizio	=  "Servizio";		articoli	= "Articoli";			}
+						session.setAttribute("activityName", activity.getName());
+						session.setAttribute("activityType", active);
+						session.setAttribute("servizio", servizio);
+						session.setAttribute("articolo", articoli);
+						sendMessage("findIt", response);
+					}
+					else{
+						sendMessage("nofind", response);
+					}
+				}
+				
+				
+				
 			}
 		} catch (SQLException e) {
 			this.sendMessage("genericError", response);
 		}
 	}
 
+
 }
+
+

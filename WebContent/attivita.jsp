@@ -18,14 +18,13 @@
 <script src="js/ajax.js"></script>
 <script src="js/customer.js"></script>
 </head>
-
 <body>
-	<%
-		if (session.getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/PROGETTOIS/UserController");
-	%>
-
-
+<%
+	User user1 = (User)session.getAttribute("user"); 
+	String id = ""+user1.getId();
+%>
+<button id="foo" onclick="activityLoad(<%=id%>) " style="display: none;"> </button>
+<script type="text/javascript"> $("#foo").trigger("click");  </script>
 
 	<%@include file="/jsp/formList.jsp"%>
 	<!-- Contenitore della pagina -->

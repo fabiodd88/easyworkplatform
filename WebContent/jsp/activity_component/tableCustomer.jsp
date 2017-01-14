@@ -13,16 +13,17 @@
 							title="Toggle table filter" data-container="body"> <i
 							class="glyphicon glyphicon-filter"></i>
 						</span>
+						<label>Aggiungi</label>
+						<a class="but" data-toggle="modal"
+							data-target="#modalAddCustomer" style="color: white" onclick="modal('addCustomer')">
+							<span class="glyphicon glyphicon-plus"></span>
+						</a>
 					</div>
 				</div>
 				<div class="panel-body">
 					<input type="text" class="form-control" id="dev-table-filter"
 						data-action="filter" data-filters="#dev-table"
 						placeholder="Filter Developers" />
-						<div class="but" data-toggle="modal"
-							data-target="#modalAddCustomer" onclick="modal('addCustomer')">
-								<img src="icon/add.png">
-						</div>
 				</div>
 				<div class="container" style="padding: 0px;">
 

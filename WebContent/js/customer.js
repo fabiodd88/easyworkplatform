@@ -67,7 +67,7 @@ function setChangeCustomer(value){
 	var phone = document.getElementById("phone"+value).textContent;
 	var email = document.getElementById("email"+value).textContent;
 	var cap1= parseInt(cap);
-	$('#modIdCl').val(id);
+	$('#idCustomer').val(id);
 	$('#modNameCl').val(name);
 	$('#modSurnameCl').val(surname);
 	$('#modBirthCl').val(birth);

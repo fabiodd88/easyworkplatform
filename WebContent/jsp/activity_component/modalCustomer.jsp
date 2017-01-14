@@ -99,7 +99,7 @@
 					</div>
 				</div>
 			</div>
-			<input type="text" name="idCustomer" id="modIdCl" style="display: none;">
+			<input type="text" name="idCustomer" id="idCustomer" style="display: none;">
 			<div style="text-align: left">
 				<label>I campi con <span style="color: #FF0000">*</span>
 					sono obbligatori

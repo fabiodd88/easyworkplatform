@@ -19,10 +19,6 @@
 					<input type="text" class="form-control" id="dev-table-filter"
 						data-action="filter" data-filters="#dev-table"
 						placeholder="Filter Developers" />
-					<div class="but" data-toggle="modal"
-							data-target="#modalAddPayment" onclick="modal('addPayment')">
-								<img src="icon/add.png">
-					</div>
 				</div>
 				<div class="container" style="padding: 0px;">
 

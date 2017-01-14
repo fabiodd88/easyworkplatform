@@ -19,7 +19,7 @@ $(document).ready(function()
 				}
 				else if(xhr.responseText == "insertOk"){
 					$("#status").html("Messaggio: User insert");
-
+					window.location.href="UserController";
 				}
 				else if(xhr.responseText == "noInsert"){
 					$("#status").html("Messaggio: Errore insert");
@@ -384,6 +384,17 @@ function redirect(){
 }
 
 
-
-
-
+function activityLoad(value){
+	$.ajax({
+		type: "POST",
+		url: "ActivityController",
+		data: "action=findById&u="+value,
+		dataType: "text",
+		success: function(data, status, xhr)
+		{
+				if(xhr.responseText == "findIt"){
+						
+				}
+		}
+	});
+}
