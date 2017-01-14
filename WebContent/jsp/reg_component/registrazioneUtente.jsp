@@ -69,7 +69,7 @@
 
 								<div class="divHorizontal">
 									<label style="width:30%">Provincia<span style="color: #FF0000">*</span></label> <select
-										class="form-control" name="province" id="province" required="required">
+										class="form-control" name="activityProvince" id="activityProvince" required="required">
 										<%@include file="/jsp/province.jsp" %>
 									</select>
 								</div>

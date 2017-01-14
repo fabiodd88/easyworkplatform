@@ -98,7 +98,7 @@ public class UserController extends HttpServlet {
 					String civicNumber	= request.getParameter("civicNumber");
 					String city			= request.getParameter("city");
 					String province		= request.getParameter("province");
-					String cap			= request.getParameter("cap");
+					String cap			= request.getParameter("activityCap");
 					String taxCode		= request.getParameter("taxCode");
 					String email		= request.getParameter("email");
 					String password		= request.getParameter("password");

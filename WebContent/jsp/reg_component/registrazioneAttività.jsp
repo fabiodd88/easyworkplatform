@@ -51,6 +51,14 @@
 										class="form-control" placeholder="Only number" min="0" />
 								</div>
 								<br>
+								
+								<div class="divHorizontal">
+									<label style="width:30%">Provincia<span style="color: #FF0000">*</span></label> <select
+										class="form-control" name="province" id="province" required="required">
+										<%@include file="/jsp/province.jsp" %>
+									</select>
+								</div>
+								<br>
 
 								<div class="divHorizontal">
 									<label style="width:30%">CAP<span style="color: #FF0000">*</span></label> 
