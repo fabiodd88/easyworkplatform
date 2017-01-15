@@ -38,7 +38,7 @@
 				<img alt="" src="icon/trattamento.png"><br> <label>Trattamento</label><br>
 			</div>
 			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-				<img alt="" src="icon/appuntamneto.png"><br> <label>Appuntamento</label><br>
+				<img alt="" src="icon/appuntamento.png"><br> <label>Appuntamento</label><br>
 			</div>
 
 			<%	
@@ -48,7 +48,7 @@
 					
 			%>
 			<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-				<img alt="" src="icon/servizio_assistenza.png"><br>
+				<img alt="" src="icon/assistenza.png"><br>
 				<label>Servizio Assistenza</label><br>
 			</div>
 			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
