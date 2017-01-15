@@ -22,7 +22,7 @@
 						<div class="modal-footer">
 							<a href="#" data-dismiss="modal" class="btn">Close</a>
 							<!--  <input type="submit" class="btn btn-primary" id='mySubmit'/> -->
-							<button class="btn" type="submit">Conferma</button>
+							<button id="send" 	 class="btn" type="submit">Conferma</button>
 						</div>
 					</form>
 				</div>

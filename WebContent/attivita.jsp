@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <html>
 <head>
 <!-- Esempio di metadati file di appoggio necessari per il nostro progetto -->
@@ -19,12 +20,19 @@
 <script src="js/customer.js"></script>
 </head>
 <body>
-<%
-	User user1 = (User)session.getAttribute("user"); 
-	String id = ""+user1.getId();
-%>
+<% String id = session.getAttribute("userId").toString();%>
 <button id="foo" onclick="activityLoad(<%=id%>) " style="display: none;"> </button>
 <script type="text/javascript"> $("#foo").trigger("click");  </script>
+<script type="text/javascript">
+	window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#Attività.jsp';
+        window.location.reload();
+    }
+}
+</script>
+
+
 
 	<%@include file="/jsp/formList.jsp"%>
 	<!-- Contenitore della pagina -->

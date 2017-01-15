@@ -9,11 +9,10 @@ $(document).ready(function()
 			dataType: "text",
 			success: function(data, status, xhr)
 			{
-				$("#status").html("");
 				if(xhr.responseText == "loginOk"){
-					$("#status").html("Messaggio: Login Successful.");	
-					window.location.href="UserController";
-				}
+				$("#status").html("Messaggio: Login Successful.");	
+				window.location.href="UserController";
+				}	
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
 				}
@@ -385,16 +384,12 @@ function redirect(){
 
 
 function activityLoad(value){
-	$.ajax({
-		type: "POST",
-		url: "ActivityController",
-		data: "action=findById&u="+value,
-		dataType: "text",
-		success: function(data, status, xhr)
-		{
-				if(xhr.responseText == "findIt"){
-						
-				}
-		}
+	$.post("ActivityController",
+			{
+				action: "findById",
+				u: value
+			},
+			function(data, status){
+				
 	});
 }

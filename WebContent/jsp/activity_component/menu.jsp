@@ -59,6 +59,17 @@
 			<%			
 				}
 							
+				
+			}
+				else{
+					%>
+					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
+					<img alt="" src="icon/no.png"><br> <label>Articolo</label><br>
+				</div>
+				<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
+					<img alt="" src="icon/no.png"><br> <label>Servizio</label><br>
+				</div>
+				<%
 				}
 			%>
 			<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
