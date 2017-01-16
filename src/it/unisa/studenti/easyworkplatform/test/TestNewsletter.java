@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Newsletter methods 
+ *
  *	@author AdminEWP
 */
 public class TestNewsletter extends TestCase {
@@ -12,14 +13,16 @@ public class TestNewsletter extends TestCase {
 	private Newsletter newsletter;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the newsletter 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		newsletter = new Newsletter();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the newsletter
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		newsletter = null;

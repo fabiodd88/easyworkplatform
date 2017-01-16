@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Service methods 
+ *
  *	@author AdminEWP
 */
 public class TestService extends TestCase {
@@ -14,14 +15,16 @@ public class TestService extends TestCase {
 	private Service service;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the service 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		service = new Service();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the service
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		service = null;

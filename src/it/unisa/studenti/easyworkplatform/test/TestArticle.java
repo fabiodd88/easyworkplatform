@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Article methods 
+ *
  *	@author AdminEWP
 */
 public class TestArticle extends TestCase {
@@ -12,14 +13,16 @@ public class TestArticle extends TestCase {
 	private Article article;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the article 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		article = new Article();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the article
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		article = null;

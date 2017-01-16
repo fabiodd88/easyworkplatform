@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Activity methods 
+ *
  *	@author AdminEWP
 */
 public class TestActivity extends TestCase {
@@ -12,14 +13,16 @@ public class TestActivity extends TestCase {
 	private Activity activity;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the activity 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		activity = new Activity();
 	}
 	
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the activity
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		activity = null;

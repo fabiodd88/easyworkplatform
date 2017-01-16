@@ -15,11 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ArticleModelDS;
-import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
-/**	ArticleController
- * 	Class that handles requests from the browser to the database of an Article
- *  @author AdminEWP
+/**	
+ * Class that handles requests from the browser to the database of an Article
+ *  
+ * @author AdminEWP
  */
 @WebServlet("/ArticleController")
 public class ArticleController extends HttpServlet {
@@ -45,15 +45,25 @@ public class ArticleController extends HttpServlet {
 	}
     
     /**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+	 * Called by the server to allow a servlet to handle a GET request, for Article's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+    /**
+	 * Called by the server to allow a servlet to handle a POST request, for Article's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session	= request.getSession();

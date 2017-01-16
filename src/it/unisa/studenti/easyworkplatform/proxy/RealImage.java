@@ -9,7 +9,7 @@ public class RealImage implements Image{
 
 	public RealImage(String filename) {
 
-		this.fileName = fileName;
+		this.fileName = filename;
 		loadFromDisk(fileName);
 	}
 

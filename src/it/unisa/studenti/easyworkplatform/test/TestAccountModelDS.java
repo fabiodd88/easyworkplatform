@@ -13,12 +13,21 @@ import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.User;
 import junit.framework.TestCase;
 
+/**
+ *	Class that tests important AccountModelDS methods
+ * 
+ *	@author AdminEWP
+*/
 public class TestAccountModelDS extends TestCase {
 
 	private AccountModelDS modelDS;
 	private Connection connection;
 	private static final String TABLE_NAME = "user";
 
+	/**
+	 * Sets up the fixture, initializing the account model DS and connect to database 
+	 * This method is called before a test is executed
+	 */
 	protected void setUp() throws Exception {
 		modelDS = new AccountModelDS();
 		Class.forName("com.mysql.jdbc.Driver");
@@ -26,6 +35,10 @@ public class TestAccountModelDS extends TestCase {
 		connection.setAutoCommit(false);
 	}
 
+	/**
+	 * Tears down the fixture, setting to null the account model DS and close connection
+	 * This method is called after a test is executed.
+	 */
 	protected void tearDown() throws Exception {
 		modelDS = null;
 		if (null != connection) {
@@ -34,6 +47,11 @@ public class TestAccountModelDS extends TestCase {
 		}
 	}
 
+	/**
+	 * Testing the method findAll()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindAll() throws SQLException, ClassNotFoundException {
 		// method to test
 		LinkedList<User> listUser = modelDS.findAll();
@@ -64,6 +82,11 @@ public class TestAccountModelDS extends TestCase {
 		assertEquals(size, listUser.size());
 	}
 
+	/**
+	 * Testing the method insert()
+	 * @throws SQLException - if database insert error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testInsert() throws SQLException, ClassNotFoundException {
 		Account account = new Account("email", "password", "secondKey");
 		Date date = Date.valueOf("2017-12-12");
@@ -102,6 +125,11 @@ public class TestAccountModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByEmail()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByEmail() throws SQLException, ClassNotFoundException {
 		Account account = new Account("email", "password", "secondKey");
 		Date date = Date.valueOf("2017-12-12");
@@ -141,6 +169,11 @@ public class TestAccountModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByKey()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 
 		User user = modelDS.findByKey(5);
@@ -172,6 +205,11 @@ public class TestAccountModelDS extends TestCase {
 		assertEquals(expected, user);
 	}
 
+	/**
+	 * Testing the method update()
+	 * @throws SQLException - if database update error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testUpdate() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Account account = new Account("email", "password", "secondKey");
@@ -217,6 +255,11 @@ public class TestAccountModelDS extends TestCase {
 
 	}
 
+	/**
+	 * Testing the method remove()
+	 * @throws SQLException - if database delete error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testRemove() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Account account = new Account("email", "password", "secondKey");

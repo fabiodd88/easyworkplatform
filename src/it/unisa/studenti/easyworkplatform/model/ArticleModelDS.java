@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 
 
 /**
- * 	ArticleModelDs
  *	Class that interacts with the database through the information of Article
  */
 public class ArticleModelDS implements ModelInterface<Article> {
@@ -32,6 +31,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	/**
 	 * Parametric constructor with the name of the database
 	 * @param nomeDb of the database
+	 * @param activity - Name of the activity
 	 */
 	public ArticleModelDS(String nomeDb,String activity) {
 		try {
@@ -139,8 +139,8 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 * Return a list of specific articles
 	 * @param attribute of articles
 	 * @param toSearch parameter
-	 * @return
-	 * @throws SQLException
+	 * @return List of Article
+	 * @throws SQLException if a database select error occurs.
 	 */
 	public LinkedList<Article> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Article> listArticle = new LinkedList<Article>();

@@ -1,8 +1,9 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-/**	Account 	
- *	Class that collects account information for authentication of a User
- *  @author AdminEWP
+/** 	
+ * Class that collects account information for authentication of a User
+ * 
+ * @author AdminEWP
 */
 public class Account implements Cloneable{
 
@@ -28,7 +29,6 @@ public class Account implements Cloneable{
 		this.secondKey = secondKey;
 	}
 
-	
 	/**
 	 * Get the email
 	 * @return this email
@@ -36,11 +36,10 @@ public class Account implements Cloneable{
 	public String getEmail() {
 		return email;
 	}
-
 	
 	/**
 	 * Set an email
-	 * @param email
+	 * @param email - Account email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -56,7 +55,7 @@ public class Account implements Cloneable{
 
 	/** 
 	 * Set a password
-	 * @param password
+	 * @param password - Account password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -72,7 +71,7 @@ public class Account implements Cloneable{
 
 	/**
 	 * Set a second key
-	 * @param secondKey
+	 * @param secondKey - Account second key
 	 */
 	public void setSecondKey(String secondKey) {
 		this.secondKey = secondKey;
@@ -80,7 +79,7 @@ public class Account implements Cloneable{
 
 	/**
 	 * Get the id
-	 * @return
+	 * @return this id
 	 */
 	public int getId() {
 		return id;
@@ -88,7 +87,7 @@ public class Account implements Cloneable{
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id  - Account id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -96,7 +95,7 @@ public class Account implements Cloneable{
 
 	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -104,8 +103,9 @@ public class Account implements Cloneable{
 	}
 
 	/**
-	 *  Compares 2 "account" object 
-	 * 	@see java.lang.Object#equals(java.lang.Object)
+	 * Compares 2 "account" object 
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object) {
@@ -120,7 +120,7 @@ public class Account implements Cloneable{
 	
 	/**
 	 * Duplicate an account
-	 * @see java.lang.Object#clone()
+	 * @return a clone of this account.
 	 */
 	public Account clone(){
 		try{

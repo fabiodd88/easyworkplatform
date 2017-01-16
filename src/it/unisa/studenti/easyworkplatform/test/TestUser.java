@@ -7,7 +7,8 @@ import it.unisa.studenti.easyworkplatform.model.User;
 import junit.framework.TestCase;
 
 /**
- *	Class that tests important Activity methods 
+ *	Class that tests important User methods 
+ *
  *	@author AdminEWP
 */
 public class TestUser extends TestCase {
@@ -15,14 +16,16 @@ public class TestUser extends TestCase {
 	private User user;
 	
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the user 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		user = new User();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the user
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		user = null;

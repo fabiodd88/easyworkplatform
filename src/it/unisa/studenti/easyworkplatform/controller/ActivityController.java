@@ -12,17 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.unisa.studenti.easyworkplatform.model.AccountModelDS;
 import it.unisa.studenti.easyworkplatform.model.Activity;
 import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
-import it.unisa.studenti.easyworkplatform.model.Article;
 import it.unisa.studenti.easyworkplatform.model.ModelInterface;
-import it.unisa.studenti.easyworkplatform.model.User;
 
 /**
- * 	ActivityController
- * 	Class that handles requests from the browser to the database of an Activity
- * 	@author AdminEWP
+ * Class that handles requests from the browser to the database of an Activity
+ * 	
+ * @author AdminEWP
  *
  */
 @WebServlet("/ActivityController")
@@ -50,14 +47,24 @@ public class ActivityController extends HttpServlet {
 	}
 
 	/**
-	 *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Called by the server to allow a servlet to handle a GET request, for Activity's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Called by the server to allow a servlet to handle a POST request, for Activity's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

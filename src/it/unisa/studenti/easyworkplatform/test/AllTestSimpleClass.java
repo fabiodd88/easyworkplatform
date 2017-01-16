@@ -4,20 +4,20 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 /**
- * 	AllTest
- *	Class that tests all the testClass
- *	@author AdminEWP
+ * Class that tests all the test SimpleClass
+ *
+ * @author AdminEWP
 */
 public class AllTestSimpleClass{
 
 	/**
-	 * Test all the testClass
-	 * @return suite 
+	 * Manually built a suite containing all the testSimpleClass to run them all in one time
+	 * @return suite - suite containing all the testSimpleClass
 	 */
 	public static Test suite(){
 		TestSuite suite = new TestSuite();
 		
-		//Test class
+		// Test SimpleClass
 		suite.addTestSuite(TestAccount.class);
 		suite.addTestSuite(TestActivity.class);
 		suite.addTestSuite(TestArticle.class);

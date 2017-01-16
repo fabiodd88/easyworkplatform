@@ -13,9 +13,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * 	AccountModelDs
- *	Class that interacts with the database through the information of Account and User
- * 	@author AdminEWP
+ * Class that interacts with the database through the information of Account and User
+ * 
+ * @author AdminEWP
 */
 public class AccountModelDS implements ModelInterface<User> {
 
@@ -43,7 +43,9 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 * Insert a new instance of user
+	 * @param user - User to insert
+	 * @throws SQLException if a database insert error occurs.
 	 */
 	@Override
 	public void insert(User user) throws SQLException {
@@ -71,7 +73,9 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 * Update an existing user
+	 * @param user - User to update
+	 * @throws SQLException if a database update error occurs.
 	 */
 	@Override
 	public void update(User user) throws SQLException {
@@ -102,7 +106,9 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 * Remove a user with a specific id
+	 * @param id - User id to remove
+	 * @throws SQLException if a database delete error occurs.
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
@@ -118,7 +124,10 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 * Find a user by its id
+	 * @param id - User id to find
+	 * @return User found
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	@Override
 	public User findByKey(int id) throws SQLException {
@@ -152,7 +161,9 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 * Return a List of all the User
+	 * @return List of User
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	@Override
 	public LinkedList<User> findAll() throws SQLException {
@@ -187,9 +198,9 @@ public class AccountModelDS implements ModelInterface<User> {
 
 	/**
 	 * Find a user by his email
-	 * @param email of the user
-	 * @return User
-	 * @throws SQLException
+	 * @param email - User email to find
+	 * @return User found
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	public User findByEmail(String email) throws SQLException {
 		User user = null;
@@ -223,7 +234,8 @@ public class AccountModelDS implements ModelInterface<User> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 * Close connection to the database
+	 * @throws SQLException - if a database error occurs.
 	 */
 	@Override
 	public void closeConnection() throws SQLException {

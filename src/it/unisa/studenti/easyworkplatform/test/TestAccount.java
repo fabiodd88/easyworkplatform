@@ -4,7 +4,8 @@ import it.unisa.studenti.easyworkplatform.model.Account;
 import junit.framework.TestCase;
 
 /**
- *	Class that tests important Account methods 
+ *	Class that tests important Account methods
+ * 
  *	@author AdminEWP
 */
 public class TestAccount extends TestCase {
@@ -12,14 +13,16 @@ public class TestAccount extends TestCase {
 	private Account account;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the account 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		account = new Account();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the account
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		account = null;

@@ -11,8 +11,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-/*	ActivityModelDs
- *	Class that interacts with the database through the information of Activity
+/**
+ * Class that interacts with the database through the information of Activity
+ *
+ * @author AdminEWP
 */
 public class ActivityModelDS implements ModelInterface<Activity> {
 
@@ -21,10 +23,6 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 
-	public ActivityModelDS() {
-		
-	}
-	
 	static {
 		try {
 			Context initCtx = new InitialContext();
@@ -43,7 +41,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 * Insert a new instance of activity
+	 * @param activity - Activity to insert
+	 * @throws SQLException if a database insert error occurs.
 	 */
 	@Override
 	public void insert(Activity activity) throws SQLException {
@@ -68,7 +68,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 * Update an existing activity
+	 * @param activity - Activity to update
+	 * @throws SQLException if a database update error occurs.
 	 */
 	@Override
 	public void update(Activity activity) throws SQLException {
@@ -94,7 +96,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 * Remove an activity with a specific id
+	 * @param id - Activity id to remove
+	 * @throws SQLException if a database delete error occurs.
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
@@ -111,7 +115,10 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 * Find an activity by its id
+	 * @param id - Activity id to find
+	 * @return Activity found
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	@Override
 	public Activity findByKey(int id) throws SQLException {
@@ -140,11 +147,12 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 		return activity;
 	}
 
-	 /** Return a list of specific activities
-	 * @param attribute of activities
-	 * @param toSearch parameter
-	 * @return
-	 * @throws SQLException
+	/**
+	 * Find an activity by a selected attribute and the parameter to search 
+	 * @param attribute - Attribute of the activity
+	 * @param toSearch - Parameters to search in the attribute field of the activity
+	 * @return List of Activity
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	public LinkedList<Activity> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Activity> listActivity = new LinkedList<Activity>();
@@ -173,7 +181,9 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 	
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 * Return a List of all the Activity
+	 * @return List of Activity
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	@Override
 	public LinkedList<Activity> findAll() throws SQLException {
@@ -203,7 +213,8 @@ public class ActivityModelDS implements ModelInterface<Activity> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 * Close connection to the database
+	 * @throws SQLException - if a database error occurs.
 	 */
 	@Override
 	public void closeConnection() throws SQLException {

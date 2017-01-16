@@ -5,19 +5,21 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import it.unisa.studenti.easyworkplatform.model.Customer;
 import it.unisa.studenti.easyworkplatform.model.CustomerModelDS;
-import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 
-/**	CustomerController
- * 	Class that handles requests from the browser to the database of a Customer
- * 	@author AdminEWP
+/**
+ * Class that handles requests from the browser to the database of a Customer
+ * 
+ * @author AdminEWP
  */
 @WebServlet("/CustomerController")
 public class CustomerController extends HttpServlet {
@@ -42,15 +44,25 @@ public class CustomerController extends HttpServlet {
 	}
     
     /**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+	 * Called by the server to allow a servlet to handle a GET request, for Customer's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
+	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
     /**
-     *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+	 * Called by the server to allow a servlet to handle a POST request, for Customer's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session		= request.getSession();

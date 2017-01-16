@@ -26,9 +26,9 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 import it.unisa.studenti.easyworkplatform.model.User;
 
 /**
- * 	UserController
- * 	Class that handles requests from the browser to the database of a User
- * 	@author AdminEWP
+ * Class that handles requests from the browser to the database of a User
+ * 
+ * @author AdminEWP
  *
  */
 @WebServlet("/UserController")
@@ -57,7 +57,12 @@ public class UserController extends HttpServlet {
 	}
     
     /**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Called by the server to allow a servlet to handle a GET request, for User's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -73,7 +78,12 @@ public class UserController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Called by the server to allow a servlet to handle a POST request, for User's data.
+	 * 
+	 * @param request an HttpServletRequest object that contains the request the client has made to the servlet
+	 * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+	 * @throws ServletException if an input or output error is detected when the servlet handles the GET request
+	 * @throws IOException if the request for the GET could not be handled
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -422,9 +432,10 @@ public class UserController extends HttpServlet {
 		}
 	}
 
-	/** Encrypt data
-	 * @param convertme bytes array to be encrypt
-	 * @return
+	/**
+	 * Encrypt data into String type
+	 * @param convertme array of bytes to be encrypt
+	 * @return encrypted bytes
 	 */
 	public static String toSHA1(byte[] convertme) {
 		MessageDigest md = null;

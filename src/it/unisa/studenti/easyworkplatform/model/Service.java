@@ -3,9 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 /**	
- * 	Service 	
- *	Class that collects service information
- * 	@author AdminEWP
+ * Class that collects service information
+ * 
+ * @author AdminEWP
 */
 public class Service implements Cloneable {
 
@@ -51,6 +51,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Parametric constructor
+	 * @param id of the service
 	 * @param employee of the service
 	 * @param quantity of the service
 	 * @param variation of the service
@@ -86,7 +87,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set an employee
-	 * @param employee
+	 * @param employee - Service employee
 	 */
 	public void setEmployee(String employee) {
 		this.employee = employee;
@@ -102,7 +103,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a quantity
-	 * @param quantity
+	 * @param quantity - Service quantity
 	 */
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
@@ -118,7 +119,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a variation
-	 * @param variation
+	 * @param variation - Service variation
 	 */
 	public void setVariation(String variation) {
 		this.variation = variation;
@@ -134,7 +135,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a note
-	 * @param note
+	 * @param note - Service note
 	 */
 	public void setNote(String note) {
 		this.note = note;
@@ -150,7 +151,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a receipt date
-	 * @param receiptDate
+	 * @param receiptDate - Service receipt date
 	 */
 	public void setReceiptDate(Date receiptDate) {
 		this.receiptDate = receiptDate;
@@ -158,7 +159,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Get the return date
-	 * @return return date
+	 * @return this return date
 	 */
 	public Date getReturnDate() {
 		return returnDate;
@@ -166,7 +167,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a return date
-	 * @param returnDate
+	 * @param returnDate - Service return date
 	 */
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
@@ -182,7 +183,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set an article id
-	 * @param articleId
+	 * @param articleId - Service Article id
 	 */
 	public void setArticleId(int articleId) {
 		this.articleId = articleId;
@@ -198,7 +199,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set a customer id
-	 * @param customerId
+	 * @param customerId - Service Customer id
 	 */
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
@@ -214,15 +215,15 @@ public class Service implements Cloneable {
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id - Service id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -233,7 +234,8 @@ public class Service implements Cloneable {
 
 	/**
 	 * Compares 2 "service" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -254,7 +256,7 @@ public class Service implements Cloneable {
 
 	/**
 	 * Duplicate a service
-	 * @see java.lang.Object#clone()
+	 * @return a clone of this service.
 	 */
 	@Override
 	public Service clone(){

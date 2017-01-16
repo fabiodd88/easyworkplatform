@@ -1,7 +1,9 @@
 package it.unisa.studenti.easyworkplatform.model;
 
-/*	Article 	
- *	Class that collects article information
+/**
+ * Class that collects article information
+ * 
+ * @author AdminEWP
 */
 public class Article implements Cloneable{
 	private int id;
@@ -39,7 +41,7 @@ public class Article implements Cloneable{
 
 	/**
 	 * Set a name
-	 * @param name
+	 * @param name - Article name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -55,7 +57,7 @@ public class Article implements Cloneable{
 
 	/**
 	 * Set a price
-	 * @param price
+	 * @param price - Article price
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -71,7 +73,7 @@ public class Article implements Cloneable{
 
 	/**
 	 * Set a description
-	 * @param description
+	 * @param description - Article description
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -87,7 +89,7 @@ public class Article implements Cloneable{
 
 	/**
 	 * Set a duration
-	 * @param duration
+	 * @param duration - Article duration
 	 */
 	public void setDuration(int duration) {
 		this.duration = duration;
@@ -103,15 +105,15 @@ public class Article implements Cloneable{
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id - Article id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -121,7 +123,8 @@ public class Article implements Cloneable{
 	
 	/**
 	 * Compares 2 "article" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -136,7 +139,7 @@ public class Article implements Cloneable{
 	
 	/**
 	 * Duplicate an article
-	 * @see java.lang.Object#clone()
+	 * @return a clone of this article.
 	 */
 	@Override
 	public Article clone(){

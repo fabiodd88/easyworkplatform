@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Payment methods 
+ *
  *	@author AdminEWP
 */
 public class TestPayment extends TestCase {
@@ -14,14 +15,16 @@ public class TestPayment extends TestCase {
 	private Payment payment;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the payment 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		payment = new Payment();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the payment
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		payment = null;

@@ -14,9 +14,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**	
- * 	ServiceModelDs
- *	Class that interacts with the database through the information of Service
- *	@author AdminEWP
+ * Class that interacts with the database through the information of Service
+ *
+ * @author AdminEWP
 */
 public class ServiceModelDS implements ModelInterface<Service> {
 
@@ -25,6 +25,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 	private String tableName;
+	
 	/**
 	 * Empty constructor
 	 */
@@ -33,7 +34,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	/**
 	 * Parametric constructor with the name of the database
-	 * @param nomeDb of the database
+	 * @param nomeDb - Name of the database
+	 * @param activity - Name of the activity
 	 */
 	public ServiceModelDS(String nomeDb, String activity) {
 		try {
@@ -55,7 +57,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 * Insert a new instance of service
+	 * @param service - Service to insert
+	 * @throws SQLException if a database insert error occurs.
 	 */
 	@Override
 	public void insert(Service service) throws SQLException {
@@ -80,7 +84,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 * Update an existing service
+	 * @param service - Service to update
+	 * @throws SQLException if a database update error occurs.
 	 */
 	@Override
 	public void update(Service service) throws SQLException {
@@ -105,7 +111,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 * Remove a service with a specific id
+	 * @param id - Service id to remove
+	 * @throws SQLException if a database delete error occurs.
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
@@ -121,7 +129,10 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 * Find a service by its id
+	 * @param id - Service id to find
+	 * @return Service found
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	@Override
 	public Service findByKey(int id) throws SQLException {
@@ -151,12 +162,12 @@ public class ServiceModelDS implements ModelInterface<Service> {
 
 	}
 
-	/** 
-	 * Return a list of specific services
-	 * @param attribute of services
-	 * @param toSearch parameter
-	 * @return
-	 * @throws SQLException
+	/**
+	 * Find a service by a selected attribute and the parameter to search 
+	 * @param attribute - Attribute of the service
+	 * @param toSearch - Parameters to search in the attribute field of the service
+	 * @return List of Service
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	public LinkedList<Service> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Service> listService = new LinkedList<Service>();
@@ -185,7 +196,9 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 	
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 * Return a List of all the Service
+	 * @return List of Service
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	@Override
 	public LinkedList<Service> findAll() throws SQLException {
@@ -214,7 +227,8 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 * Close connection to the database
+	 * @throws SQLException - if a database error occurs.
 	 */
 	public void closeConnection() throws SQLException {
 		try {

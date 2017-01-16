@@ -2,8 +2,10 @@ package it.unisa.studenti.easyworkplatform.model;
 
 import java.util.Date;
 
-/*	User 	
- *	Class that collects user information
+/**	
+ * Class that collects user information
+ * 
+ * @author AdminEWP
 */
 public class User extends Account{
 	
@@ -59,7 +61,7 @@ public class User extends Account{
 
 	/**
 	 * Set a name
-	 * @param name
+	 * @param name - User name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -67,7 +69,7 @@ public class User extends Account{
 
 	/**
 	 * Get the surname
-	 * @return
+	 * @return this surname
 	 */
 	public String getSurname() {
 		return surname;
@@ -75,7 +77,7 @@ public class User extends Account{
 
 	/**
 	 * Set a surname
-	 * @param surname
+	 * @param surname - User surname
 	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
@@ -91,7 +93,7 @@ public class User extends Account{
 
 	/**
 	 * Set a birthdate
-	 * @param birthdate
+	 * @param birthdate - User birthdate
 	 */
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
@@ -107,7 +109,7 @@ public class User extends Account{
 
 	/**
 	 * Set a birthplace
-	 * @param birthplace
+	 * @param birthplace - User birthplace
 	 */
 	public void setBirthplace(String birthplace) {
 		this.birthplace = birthplace;
@@ -123,7 +125,7 @@ public class User extends Account{
 
 	/**
 	 * Set an address
-	 * @param address
+	 * @param address - User address
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -139,7 +141,7 @@ public class User extends Account{
 
 	/**
 	 * Set a city
-	 * @param city
+	 * @param city - User city
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -155,7 +157,7 @@ public class User extends Account{
 
 	/**
 	 * Set a province
-	 * @param province
+	 * @param province - User province
 	 */
 	public void setProvince(String province) {
 		this.province = province;
@@ -171,7 +173,7 @@ public class User extends Account{
 
 	/**
 	 * Set a cap
-	 * @param cap
+	 * @param cap - User cap
 	 */
 	public void setCap(int cap) {
 		this.cap = cap;
@@ -187,15 +189,15 @@ public class User extends Account{
 
 	/**
 	 * Set a tax code
-	 * @param taxCode
+	 * @param taxCode - User tax code
 	 */
 	public void setTaxCode(String taxCode) {
 		this.taxCode = taxCode;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see it.unisa.studenti.easyworkplatform.model.Account#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -206,7 +208,8 @@ public class User extends Account{
 	
 	/**
 	 * Compares 2 "user" object
-	 * @see it.unisa.studenti.easyworkplatform.model.Account#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -227,7 +230,7 @@ public class User extends Account{
 	
 	/**
 	 * Duplicate a user
-	 * @see it.unisa.studenti.easyworkplatform.model.Account#clone()
+	 * @return a clone of this user.
 	 */
 	@Override
 	public User clone(){

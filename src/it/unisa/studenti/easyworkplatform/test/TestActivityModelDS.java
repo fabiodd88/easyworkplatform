@@ -11,12 +11,21 @@ import it.unisa.studenti.easyworkplatform.model.Activity;
 import it.unisa.studenti.easyworkplatform.model.ActivityModelDS;
 import junit.framework.TestCase;
 
+/**
+ *	Class that tests important ActivityModelDS methods
+ * 
+ *	@author AdminEWP
+*/
 public class TestActivityModelDS extends TestCase {
 
 	private ActivityModelDS modelDS;
 	private Connection connection;
 	private static final String TABLE_NAME = "activity";
 
+	/**
+	 * Sets up the fixture, initializing the activity model DS and connect to database 
+	 * This method is called before a test is executed
+	 */
 	protected void setUp() throws Exception {
 		modelDS = new ActivityModelDS();
 		Class.forName("com.mysql.jdbc.Driver");
@@ -24,6 +33,10 @@ public class TestActivityModelDS extends TestCase {
 		connection.setAutoCommit(false);
 	}
 
+	/**
+	 * Tears down the fixture, setting to null the activity model DS and close connection
+	 * This method is called after a test is executed.
+	 */
 	protected void tearDown() throws Exception {
 		modelDS = null;
 		if (null != connection) {
@@ -32,6 +45,11 @@ public class TestActivityModelDS extends TestCase {
 		}
 	}
 
+	/**
+	 * Testing the method findAll()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindAll() throws SQLException, ClassNotFoundException {
 		// method to test
 		LinkedList<Activity> listActivity = modelDS.findAll();
@@ -59,6 +77,11 @@ public class TestActivityModelDS extends TestCase {
 		assertEquals(size, listActivity.size());
 	}
 
+	/**
+	 * Testing the method insert()
+	 * @throws SQLException - if database insert error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testInsert() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Activity activity = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
@@ -91,6 +114,11 @@ public class TestActivityModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByKey()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
@@ -132,6 +160,11 @@ public class TestActivityModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByField()
+	 * @throws SQLException - if database update error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByField() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
@@ -165,6 +198,11 @@ public class TestActivityModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method update()
+	 * @throws SQLException - if database update error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testUpdate() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);
@@ -208,6 +246,11 @@ public class TestActivityModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method remove()
+	 * @throws SQLException - if database delete error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testRemove() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Activity act = new Activity("name", "type", "address", "city", "province", 0, "vatNumber", 5);

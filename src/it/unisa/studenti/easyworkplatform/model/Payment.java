@@ -3,9 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 /**
- * 	Payment 	
- *	Class that collects payment information
- *	@author AdminEWP
+ * Class that collects payment information
+ * 
+ * @author AdminEWP
 */
 public class Payment implements Cloneable {
 
@@ -50,7 +50,7 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set a date
-	 * @param date
+	 * @param date - Payment date
 	 */
 	public void setDate(Date date) {
 		this.date = date;
@@ -66,7 +66,7 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set an amount
-	 * @param amount
+	 * @param amount - Payment amount
 	 */
 	public void setAmount(double amount) {
 		this.amount = amount;
@@ -82,7 +82,7 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set a service customer id
-	 * @param serviceCustomerId
+	 * @param serviceCustomerId - Payment Service Customer Id 
 	 */
 	public void setServiceCustomerId(int serviceCustomerId) {
 		this.serviceCustomerId = serviceCustomerId;
@@ -98,7 +98,7 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set a service id
-	 * @param serviceId
+	 * @param serviceId - Payment Service id
 	 */
 	public void setServiceId(int serviceId) {
 		this.serviceId = serviceId;
@@ -114,7 +114,7 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set a service article id
-	 * @param serviceArticleId
+	 * @param serviceArticleId - Payment Service Article Id
 	 */
 	public void setServiceArticleId(int serviceArticleId) {
 		this.serviceArticleId = serviceArticleId;
@@ -130,15 +130,15 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id - Payment id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -148,7 +148,8 @@ public class Payment implements Cloneable {
 
 	/**
 	 * Compares 2 "payment" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -164,7 +165,7 @@ public class Payment implements Cloneable {
 	
 	/**
 	 * Duplicate a payment
-	 * @see java.lang.Object#clone()
+	 * @return a clone of this payment.
 	 */
 	@Override
 	public Payment clone(){

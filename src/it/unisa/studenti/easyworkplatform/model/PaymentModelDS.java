@@ -14,9 +14,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**	
- * 	PaymentModelDs
- *	Class that interacts with the database through the information of Payment
- *	@author AdminEWP
+ * Class that interacts with the database through the information of Payment
+ *
+ * @author AdminEWP
 */
 public class PaymentModelDS implements ModelInterface<Payment> {
 
@@ -25,6 +25,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	private static PreparedStatement preparedStatement;
 	private static DataSource ds;
 	private String tableName;
+	
 	/**
 	 * Empty constructor
 	 */
@@ -33,7 +34,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	/**
 	 * Parametric constructor with the name of the database
-	 * @param nomeDb of the database
+	 * @param nomeDb - Name of the database
+	 * @param activity - Name of the activity
 	 */
 	public PaymentModelDS(String nomeDb, String activity) {
 		try {
@@ -54,7 +56,9 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 * Insert a new instance of payment
+	 * @param payment - Payment to insert
+	 * @throws SQLException if a database insert error occurs.
 	 */
 	@Override
 	public void insert(Payment payment) throws SQLException {
@@ -75,7 +79,9 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 * Update an existing payment
+	 * @param payment - Payment to update
+	 * @throws SQLException if a database update error occurs.
 	 */
 	@Override
 	public void update(Payment payment) throws SQLException {
@@ -98,7 +104,9 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 * Remove a payment with a specific id
+	 * @param id - Payment id to remove
+	 * @throws SQLException if a database delete error occurs.
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
@@ -114,7 +122,10 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 * Find a payment by its id
+	 * @param id - Payment id to find
+	 * @return Payment found
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	@Override
 	public Payment findByKey(int id) throws SQLException {
@@ -141,12 +152,12 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 
 	}
 
-	/** 
-	 * Return a list of specific payments
-	 * @param attribute of payments
-	 * @param toSearch parameter
-	 * @return
-	 * @throws SQLException
+	/**
+	 * Find a payment by a selected attribute and the parameter to search 
+	 * @param attribute - Attribute of the payment
+	 * @param toSearch - Parameters to search in the attribute field of the payment
+	 * @return List of Payment
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	public LinkedList<Payment> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
@@ -172,7 +183,9 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 	
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 * Return a List of all the Payment
+	 * @return List of Payment
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	@Override
 	public LinkedList<Payment> findAll() throws SQLException {
@@ -198,7 +211,8 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 * Close connection to the database
+	 * @throws SQLException - if a database error occurs.
 	 */
 	public void closeConnection() throws SQLException {
 		try {

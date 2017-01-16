@@ -12,12 +12,21 @@ import it.unisa.studenti.easyworkplatform.model.Service;
 import it.unisa.studenti.easyworkplatform.model.ServiceModelDS;
 import junit.framework.TestCase;
 
+/**
+ *	Class that tests important ServiceModelDS methods
+ * 
+ *	@author AdminEWP
+*/
 public class TestServiceModelDS extends TestCase {
 
 	private ServiceModelDS modelDS;
 	private Connection connection;
 	private static final String TABLE_NAME = "pizzeria_service";
 
+	/**
+	 * Sets up the fixture, initializing the service model DS and connect to database 
+	 * This method is called before a test is executed
+	 */
 	protected void setUp() throws Exception {
 		modelDS = new ServiceModelDS("dbtest","pizzeria_service");
 		Class.forName("com.mysql.jdbc.Driver");
@@ -25,6 +34,10 @@ public class TestServiceModelDS extends TestCase {
 		connection.setAutoCommit(false);
 	}
 
+	/**
+	 * Tears down the fixture, setting to null the service model DS and close connection
+	 * This method is called after a test is executed.
+	 */
 	protected void tearDown() throws Exception {
 		modelDS = null;
 		if (null != connection) {
@@ -33,6 +46,11 @@ public class TestServiceModelDS extends TestCase {
 		}
 	}
 
+	/**
+	 * Testing the method findAll()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindAll() throws SQLException, ClassNotFoundException {
 		// method to test
 		LinkedList<Service> listService = modelDS.findAll();
@@ -60,6 +78,11 @@ public class TestServiceModelDS extends TestCase {
 		assertEquals(size, listService.size());
 	}
 
+	/**
+	 * Testing the method insert()
+	 * @throws SQLException - if database insert error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testInsert() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
@@ -93,6 +116,11 @@ public class TestServiceModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByKey()
+	 * @throws SQLException - if database select error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByKey() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
@@ -135,6 +163,11 @@ public class TestServiceModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method findByField()
+	 * @throws SQLException - if database update error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testFindByField() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
@@ -169,6 +202,11 @@ public class TestServiceModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method update()
+	 * @throws SQLException - if database update error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testUpdate() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");
@@ -212,6 +250,11 @@ public class TestServiceModelDS extends TestCase {
 											// database before test
 	}
 
+	/**
+	 * Testing the method remove()
+	 * @throws SQLException - if database delete error occurs.
+	 * @throws ClassNotFoundException - if jdbc Driver is not found
+	 */
 	public void testRemove() throws SQLException, ClassNotFoundException {
 		// create an instance to be test
 		Date d = Date.valueOf("2017-01-01");

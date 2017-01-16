@@ -1,9 +1,9 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 /**
- * 	Activity 	
- *	Class that collects activity information
- *	@author AdminEWP
+ * Class that collects activity information
+ * 
+ * @author AdminEWP
 */
 public class Activity implements Cloneable{
 	
@@ -54,7 +54,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a name
-	 * @param name
+	 * @param name - Activity name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -70,7 +70,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a type
-	 * @param type
+	 * @param type - Activity type
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -86,7 +86,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set an address
-	 * @param address
+	 * @param address - Activity address
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -102,7 +102,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a city
-	 * @param city
+	 * @param city - Activity city
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -118,7 +118,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a province
-	 * @param province
+	 * @param province - Activity province
 	 */
 	public void setProvince(String province) {
 		this.province = province;
@@ -134,7 +134,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a cap
-	 * @param cap
+	 * @param cap - Activity cap
 	 */
 	public void setCap(int cap) {
 		this.cap = cap;
@@ -142,7 +142,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Get the vat number
-	 * @return
+	 * @return this vat number
 	 */
 	public String getVatNumber() {
 		return vatNumber;
@@ -150,7 +150,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set a vat number
-	 * @param vatNumber
+	 * @param vatNumber  - Activity vat number
 	 */
 	public void setVatNumber(String vatNumber) {
 		this.vatNumber = vatNumber;
@@ -166,7 +166,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id - Activity id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -174,7 +174,7 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Get the user id
-	 * @return this id
+	 * @return this user id
 	 */
 	public int getUserId() {
 		return userId;
@@ -182,14 +182,15 @@ public class Activity implements Cloneable{
 
 	/**
 	 * Set an user id
-	 * @param userId
+	 * @param userId - Activity User id
 	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
-	/** Return all the information in string format
-	 * @see java.lang.Object#toString()
+	/** 
+	 * Return all the information in string format
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -197,8 +198,10 @@ public class Activity implements Cloneable{
 				+ province + ", cap=" + cap + ", vatNumber=" + vatNumber + "]";
 	}
 	
-	/** Compares 2 "activity" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Compares 2 "activity" object
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -215,8 +218,9 @@ public class Activity implements Cloneable{
 				this.userId == activity.getUserId();
 	}
 	
-	/** Duplicate an activity
-	 * @see java.lang.Object#clone()
+	/**
+	 * Duplicate an activity
+	 * @return a clone of this activity.
 	 */
 	@Override
 	public Activity clone(){

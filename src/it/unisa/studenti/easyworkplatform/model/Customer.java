@@ -3,9 +3,9 @@ package it.unisa.studenti.easyworkplatform.model;
 import java.util.Date;
 
 /**
- * 	Customer 	
- *	Class that collects customer information
- *	@author AdminEWP
+ * Class that collects customer information
+ * 
+ * @author AdminEWP
 */
 public class Customer implements Cloneable{
 	private int id;
@@ -23,7 +23,6 @@ public class Customer implements Cloneable{
 	
 	/**
 	 * Empty constructor
-	 * 
 	 */
 	public Customer(){}
 	
@@ -103,7 +102,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a name
-	 * @param name
+	 * @param name - Customer name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -119,7 +118,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a surname
-	 * @param surname
+	 * @param surname - Customer surname
 	 */
 	public void setSurname(String surname) {
 		this.surname = surname;
@@ -135,7 +134,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a birthdate
-	 * @param birthdate
+	 * @param birthdate - Customer birthdate
 	 */
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
@@ -151,7 +150,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a birthplace
-	 * @param birthplace
+	 * @param birthplace - Customer birthplace
 	 */
 	public void setBirthplace(String birthplace) {
 		this.birthplace = birthplace;
@@ -167,7 +166,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set an address
-	 * @param address
+	 * @param address - Customer address
 	 */
 	public void setAddress(String address) {
 		this.address = address;
@@ -183,7 +182,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a city
-	 * @param city
+	 * @param city - Customer city
 	 */
 	public void setCity(String city) {
 		this.city = city;
@@ -199,7 +198,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a province
-	 * @param province
+	 * @param province - Customer province
 	 */
 	public void setProvince(String province) {
 		this.province = province;
@@ -215,7 +214,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a cap
-	 * @param cap
+	 * @param cap - Customer cap
 	 */
 	public void setCap(int cap) {
 		this.cap = cap;
@@ -231,7 +230,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a newsletter
-	 * @param newsletter
+	 * @param newsletter - Customer newsletter
 	 */
 	public void setNewsletter(int newsletter) {
 		this.newsletter = newsletter;
@@ -247,7 +246,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set a phone number
-	 * @param phoneNumber
+	 * @param phoneNumber - Customer phone number
 	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -255,7 +254,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Get the email
-	 * @return email
+	 * @return this email
 	 */
 	public String getEmail() {
 		return email;
@@ -263,7 +262,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set an email
-	 * @param email
+	 * @param email - Customer email
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -271,7 +270,7 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Get the id
-	 * @return id
+	 * @return this id
 	 */
 	public int getId() {
 		return id;
@@ -279,15 +278,15 @@ public class Customer implements Cloneable{
 
 	/**
 	 * Set an id
-	 * @param id
+	 * @param id - Customer id
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -298,7 +297,8 @@ public class Customer implements Cloneable{
 	
 	/**
 	 * Compares 2 "customer" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){

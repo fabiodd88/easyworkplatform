@@ -1,9 +1,9 @@
 package it.unisa.studenti.easyworkplatform.model;
 
 /**	
- * 	Newsletter
- *	Class that collects newsletter information
- *	@author AdminEWP
+ * Class that collects newsletter information
+ * 
+ * @author AdminEWP
 */
 public class Newsletter implements Cloneable {
 
@@ -42,7 +42,7 @@ public class Newsletter implements Cloneable {
 
 	/**
 	 * Set a sender
-	 * @param sender
+	 * @param sender - Newsletter sender
 	 */
 	public void setSender(String sender) {
 		this.sender = sender;
@@ -58,7 +58,7 @@ public class Newsletter implements Cloneable {
 
 	/**
 	 * Set a receiver
-	 * @param receiver
+	 * @param receiver - Newsletter receiver
 	 */
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
@@ -74,7 +74,7 @@ public class Newsletter implements Cloneable {
 
 	/**
 	 * Set an object
-	 * @param object
+	 * @param object - Newsletter object
 	 */
 	public void setObject(String object) {
 		this.object = object;
@@ -90,15 +90,15 @@ public class Newsletter implements Cloneable {
 
 	/**
 	 * Set a message
-	 * @param message
+	 * @param message - Newsletter message
 	 */
 	public void setMessage(String message) {
 		this.message = message;
 	}
 
-	/**
+	/** 
 	 * Return all the information in string format
-	 * @see java.lang.Object#toString()
+	 * @return a string representation of the object.
 	 */
 	@Override
 	public String toString() {
@@ -108,7 +108,8 @@ public class Newsletter implements Cloneable {
 	
 	/**
 	 * Compares 2 "newsletter" object
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @param object the reference object with which to compare
+	 * @return true if this object is the same as the object argument; false otherwise.
 	 */
 	@Override
 	public boolean equals(Object object){
@@ -123,7 +124,7 @@ public class Newsletter implements Cloneable {
 	
 	/**
 	 * Duplicate a newsletter
-	 * @see java.lang.Object#clone()
+	 * @return a clone of this newsletter.
 	 */
 	@Override
 	public Newsletter clone(){

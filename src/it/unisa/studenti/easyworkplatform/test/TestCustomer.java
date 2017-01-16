@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 /**
  *	Class that tests important Customer methods 
+ *
  *	@author AdminEWP
 */
 public class TestCustomer extends TestCase {
@@ -14,14 +15,16 @@ public class TestCustomer extends TestCase {
 	private Customer customer;
 
 	/**
-	 * @see junit.framework.TestCase#setUp()
+	 * Sets up the fixture, initializing the customer 
+	 * This method is called before a test is executed
 	 */
 	protected void setUp() throws Exception {
 		customer = new Customer();
 	}
 
 	/**
-	 * @see junit.framework.TestCase#tearDown()
+	 * Tears down the fixture, setting to null the customer
+	 * This method is called after a test is executed.
 	 */
 	protected void tearDown() throws Exception {
 		customer = null;

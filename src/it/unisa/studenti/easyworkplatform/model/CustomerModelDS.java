@@ -14,9 +14,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * 	CustomerModelDs
- *	Class that interacts with the database through the information of Customer
- *	@author AdminEWP
+ * Class that interacts with the database through the information of Customer
+ *
+ * @author AdminEWP
 */
 public class CustomerModelDS implements ModelInterface<Customer> {
 
@@ -25,6 +25,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 	private String tableName;
+	
 	/**
 	 * Empty constructor
 	 */
@@ -33,7 +34,8 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 
 	/**
 	 * Parametric constructor with the name of the database
-	 * @param nomeDb of the database
+	 * @param nomeDb - Name of the database
+	 * @param activity - Name of the activity
 	 */
 	public CustomerModelDS(String nomeDb, String activity) {
 		try {
@@ -54,7 +56,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#insert(java.lang.Object)
+	 * Insert a new instance of customer
+	 * @param customer - Customer to insert
+	 * @throws SQLException if a database insert error occurs.
 	 */
 	@Override
 	public void insert(Customer customer) throws SQLException {
@@ -83,9 +87,10 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#update(java.lang.Object)
+	 * Update a existing customer
+	 * @param customer - Customer to update
+	 * @throws SQLException if a database update error occurs.
 	 */
-	@Override
 	public void update(Customer customer) throws SQLException {
 		String updateSql = "UPDATE " + tableName
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
@@ -112,7 +117,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#remove(int)
+	 * Remove a customer with a specific id
+	 * @param id - Customer id to remove
+	 * @throws SQLException if a database delete error occurs.
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
@@ -128,7 +135,10 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findByKey(int)
+	 * Find a customer by its id
+	 * @param id - Customer id to find
+	 * @return Customer found
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	@Override
 	public Customer findByKey(int id) throws SQLException {
@@ -161,11 +171,11 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * Return a list of specific customers
-	 * @param attribute of customer
-	 * @param toSearch parameter
-	 * @return
-	 * @throws SQLException
+	 * Find a customer by a selected attribute and the parameter to search 
+	 * @param attribute - Attribute of the customer
+	 * @param toSearch - Parameters to search in the attribute field of the customer
+	 * @return List of Customer
+	 * @throws SQLException if a database select error occurs. 
 	 */
 	public LinkedList<Customer> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
@@ -197,7 +207,9 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 	
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#findAll()
+	 * Return a List of all the Customer
+	 * @return List of Customer
+	 * @throws SQLException - if a database select error occurs.
 	 */
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
@@ -229,7 +241,8 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	}
 
 	/**
-	 * @see it.unisa.studenti.easyworkplatform.model.ModelInterface#closeConnection()
+	 * Close connection to the database
+	 * @throws SQLException - if a database error occurs.
 	 */
 	public void closeConnection() throws SQLException {
 		try {
