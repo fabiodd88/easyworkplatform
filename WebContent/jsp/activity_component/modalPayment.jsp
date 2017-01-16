@@ -15,19 +15,19 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Cliente<span
 								style="color: #FF0000">*</span></label> <input id="modCustomerP" type="text"
-								name="modCustomerP" required class="form-control" />
+								name="modCustomerP" required class="form-control" readonly="readonly" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Servizio<span
 								style="color: #FF0000">*</span></label> <input id="modServiceP" type="text"
-								name="modServiceP" required class="form-control" />
+								name="modServiceP" required class="form-control" readonly="readonly" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Tipologia di servizio<span
 								style="color: #FF0000">*</span></label> <input id="modServiceTypeP" type="text"
-								name="modServiceTypeP" required class="form-control" />
+								name="modServiceTypeP" required class="form-control" readonly="readonly" />
 						</div>
 						<br>
 						<div class="divHorizontal">
@@ -51,7 +51,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-info" 
-				onclick="sendForm('Payment','#formAddPayment','');">Conferma</button>
+				onclick="sendForm('Payment','#formAddPayment','mod');">Conferma</button>
 			</div>
 		</div>
 	</div>

@@ -65,7 +65,7 @@ function sendForm(type, form, mod){
 			var amount		= document.getElementById(mod+"AmountP").value;
 			var date		= document.getElementById(mod+"DateP").value;
 
-			if(custome==""||service==""||serviceType==""||amount==""||date==""){
+			if(customer==""||service==""||serviceType==""||amount==""||date==""){
 				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 				return;
 			}
@@ -176,16 +176,22 @@ function setChangePayment(value){
 	
 	var id = document.getElementById("id"+value).textContent;
 	var customer= document.getElementById("customer"+value).textContent;
-	var service = document.getElementById("service"+value).textContent;
-	var serviceType = document.getElementById("serviceType"+value).textContent;
-	var amount	= document.getElementById("amount"+value).textContent;
-	var date	= document.getElementById("date"+value).textContent;
-	$('#modIdP').val(id);
+	var service = document.getElementById("name"+value).textContent;
+	$('#modServiceP').val(id);
 	$('#modCustomerP').val(customer);
-	$('#modServiceP').val(service);
-	$('#modServiceTypeP').val(serviceType);
-	$('#modAmountP').val(amount);
-	$('#modDateP').val(date);
+	$('#modServiceTypeP').val(service);
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	    dd='0'+dd;
+	} 
+	if(mm<10){
+	    mm='0'+mm;
+	} 
+	var today1 = yyyy+'-'+mm+'-'+dd;
+	$('#modDateP').val(today1);
 	
 }
 

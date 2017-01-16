@@ -67,7 +67,7 @@
 									<td data-title="Nome Dipendente" id="<%="employee" + i%>"><%=service.getEmployee()%></td>
 									<td data-title="Funzioni">
 										<button class="but" data-toggle="modal"
-											data-target="#mioModalPayment" onclick="modal('payment')">
+											data-target="#mioModalPayment" onclick="setChangePayment(<%=i%>)">
 											<img src="icon/add.png"><br>Eff. Pagamento
 										</button>
 										<button class="but" data-toggle="modal"
