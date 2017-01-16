@@ -54,9 +54,10 @@ public class CustomerController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String action = request.getParameter("action");
-		HttpSession session = request.getSession();
-		CustomerModelDS custDs = new CustomerModelDS("dbtest");
+		HttpSession session		= request.getSession();
+		String action 			= request.getParameter("action");
+		String activity			= request.getParameter("activity");
+		CustomerModelDS custDs 	= new CustomerModelDS("dbtest",activity);
 		
 		try {
 			if (action == null) {

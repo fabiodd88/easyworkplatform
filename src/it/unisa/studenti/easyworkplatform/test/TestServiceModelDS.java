@@ -19,7 +19,7 @@ public class TestServiceModelDS extends TestCase {
 	private static final String TABLE_NAME = "pizzeria_service";
 
 	protected void setUp() throws Exception {
-		modelDS = new ServiceModelDS("dbtest");
+		modelDS = new ServiceModelDS("dbtest","pizzeria_service");
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
 		connection.setAutoCommit(false);

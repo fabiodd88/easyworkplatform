@@ -19,7 +19,7 @@ public class TestPaymentModelDS extends TestCase {
 	private static final String TABLE_NAME = "pizzeria_payment";
 
 	protected void setUp() throws Exception {
-		modelDS = new PaymentModelDS("dbtest");
+		modelDS = new PaymentModelDS("dbtest","pizzeria_payment");
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
 		connection.setAutoCommit(false);

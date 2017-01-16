@@ -60,7 +60,7 @@ public class ArticleController extends HttpServlet {
 		HttpSession session	= request.getSession();
 		String action		= request.getParameter("action");
 		String activity		= request.getParameter("activity");
-		ArticleModelDS custDs = new ArticleModelDS("dbtest");
+		ArticleModelDS custDs = new ArticleModelDS("dbtest",activity);
 		try{
 			if(action == null){
 				sendMessage("noAction", response);

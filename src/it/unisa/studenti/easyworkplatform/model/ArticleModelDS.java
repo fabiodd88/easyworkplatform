@@ -20,10 +20,10 @@ import javax.sql.DataSource;
 public class ArticleModelDS implements ModelInterface<Article> {
 
 	private static DataSource ds;
-	private static final String TABLE_NAME = "pizzeria_article";
+	private String table = "_article";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-
+	private String tableName ;
 	/**
 	 * Empty constructor
 	 */
@@ -33,12 +33,14 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 * Parametric constructor with the name of the database
 	 * @param nomeDb of the database
 	 */
-	public ArticleModelDS(String nomeDb) {
+	public ArticleModelDS(String nomeDb,String activity) {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
 			connection = ds.getConnection();
+			this.tableName = activity.toLowerCase()+table;
+			
 		 } catch (NamingException | SQLException e) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -55,7 +57,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	@Override
 	public void insert(Article article) throws SQLException {
-		String insertSql = "INSERT INTO " + ArticleModelDS.TABLE_NAME + "(name, price, description, duration)"
+		String insertSql = "INSERT INTO " + tableName + "(name, price, description, duration)"
 				+ " VALUES (?,?,?,?)";
 		try {
 			//connection = ds.getConnection();
@@ -75,7 +77,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	@Override
 	public void update(Article article) throws SQLException {
-		String updateSql = "UPDATE " + ArticleModelDS.TABLE_NAME
+		String updateSql = "UPDATE " + tableName
 				+ " SET name = ?, price = ?, description = ?, duration = ?" + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
@@ -96,7 +98,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String removeSql = "DELETE FROM " + tableName + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -113,7 +115,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public Article findByKey(int id) throws SQLException {
 		Article article = null;
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String selectSql = "SELECT * FROM " + tableName + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);
@@ -142,7 +144,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	 */
 	public LinkedList<Article> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Article> listArticle = new LinkedList<Article>();
-		String selectSql = "SELECT * FROM " +ArticleModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
+		String selectSql = "SELECT * FROM " + tableName +" WHERE ("+attribute+" LIKE ?)";
 		Article article = new Article();
 		try {
 			//connection = ds.getConnection();
@@ -168,7 +170,7 @@ public class ArticleModelDS implements ModelInterface<Article> {
 	@Override
 	public LinkedList<Article> findAll() throws SQLException {
 		LinkedList<Article> listArticle = new LinkedList<Article>();
-		String selectSql = "SELECT * FROM " + ArticleModelDS.TABLE_NAME+ ";";
+		String selectSql = "SELECT * FROM " + tableName + ";";
 		
 		try {
 			//connection = ds.getConnection();

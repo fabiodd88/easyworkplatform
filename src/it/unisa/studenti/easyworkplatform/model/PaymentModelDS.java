@@ -20,11 +20,11 @@ import javax.sql.DataSource;
 */
 public class PaymentModelDS implements ModelInterface<Payment> {
 
-	private static final String TABLE_NAME = "pizzeria_payment";
+	private String table = "_payment";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
 	private static DataSource ds;
-	
+	private String tableName;
 	/**
 	 * Empty constructor
 	 */
@@ -35,12 +35,13 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 * Parametric constructor with the name of the database
 	 * @param nomeDb of the database
 	 */
-	public PaymentModelDS(String nomeDb) {
+	public PaymentModelDS(String nomeDb, String activity) {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
 			connection = ds.getConnection();
+			this.tableName = activity.toLowerCase()+table;
 		 } catch (NamingException | SQLException e) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -57,7 +58,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	@Override
 	public void insert(Payment payment) throws SQLException {
-		String insertSql = "INSERT INTO " + PaymentModelDS.TABLE_NAME
+		String insertSql = "INSERT INTO " + tableName
 				+ "(amount, date_payment, service_id, service_customer_id, service_article_id) VALUES (?,?,?,?,?)";
 		try {
 			//connection = ds.getConnection();
@@ -78,7 +79,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	@Override
 	public void update(Payment payment) throws SQLException {
-		String updateSql = "UPDATE " + PaymentModelDS.TABLE_NAME
+		String updateSql = "UPDATE " + tableName
 				+ " SET amount=?, date_payment=?, service_id=?, service_customer_id=?,"
 				+ " service_article_id=? WHERE (id = ?)";
 		try {
@@ -101,7 +102,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String removeSql = "DELETE FROM " + tableName + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -117,7 +118,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	@Override
 	public Payment findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String selectSql = "SELECT * FROM " + tableName + " WHERE (id = ?)";
 		Payment payment = null;
 		try {
 			//connection = ds.getConnection();
@@ -149,7 +150,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	 */
 	public LinkedList<Payment> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
-		String selectSql = "SELECT * FROM " +PaymentModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
+		String selectSql = "SELECT * FROM " +tableName+" WHERE ("+attribute+" LIKE ?)";
 		Payment payment = new Payment();
 		try {
 			//connection = ds.getConnection();
@@ -176,7 +177,7 @@ public class PaymentModelDS implements ModelInterface<Payment> {
 	@Override
 	public LinkedList<Payment> findAll() throws SQLException {
 		LinkedList<Payment> listPayment = new LinkedList<Payment>();
-		String selectSql = "SELECT * FROM " + PaymentModelDS.TABLE_NAME+";";
+		String selectSql = "SELECT * FROM " + tableName+";";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);

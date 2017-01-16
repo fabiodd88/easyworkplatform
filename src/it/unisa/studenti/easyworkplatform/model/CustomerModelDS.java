@@ -21,10 +21,10 @@ import javax.sql.DataSource;
 public class CustomerModelDS implements ModelInterface<Customer> {
 
 	private static DataSource ds;
-	private static final String TABLE_NAME = "pizzeria_customer";
+	private String table = "_customer";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-
+	private String tableName;
 	/**
 	 * Empty constructor
 	 */
@@ -35,12 +35,13 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 * Parametric constructor with the name of the database
 	 * @param nomeDb of the database
 	 */
-	public CustomerModelDS(String nomeDb) {
+	public CustomerModelDS(String nomeDb, String activity) {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
 			connection = ds.getConnection();
+			this.tableName = activity.toLowerCase()+table;
 		 } catch (NamingException | SQLException e) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -58,7 +59,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	@Override
 	public void insert(Customer customer) throws SQLException {
 
-		String insertSql = "INSERT INTO " + CustomerModelDS.TABLE_NAME
+		String insertSql = "INSERT INTO " + tableName
 				+ "(name, surname, birth_date, birth_place, address, city, province, cap, phone_number, newsletter, email)"
 				+ " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		try {
@@ -86,7 +87,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	@Override
 	public void update(Customer customer) throws SQLException {
-		String updateSql = "UPDATE " + CustomerModelDS.TABLE_NAME
+		String updateSql = "UPDATE " + tableName
 				+ " SET name=?,surname=?,birth_date=?,birth_place=?,address=?,city=?,province=?,"
 				+ " cap=?,phone_number=?,newsletter=?,email=?" + "WHERE (id = ?)";
 		try {
@@ -115,7 +116,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String removeSql = "DELETE FROM " + tableName + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -131,7 +132,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	@Override
 	public Customer findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String selectSql = "SELECT * FROM " + tableName + " WHERE (id = ?)";
 		Customer customer = null;
 		try {
 			//connection = ds.getConnection();
@@ -168,7 +169,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	 */
 	public LinkedList<Customer> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
+		String selectSql = "SELECT * FROM " + tableName +" WHERE ("+attribute+" LIKE ?)";
 		Customer customer = new Customer();
 		try {
 			//connection = ds.getConnection();
@@ -201,7 +202,7 @@ public class CustomerModelDS implements ModelInterface<Customer> {
 	@Override
 	public LinkedList<Customer> findAll() throws SQLException {
 		LinkedList<Customer> listCustomer = new LinkedList<Customer>();
-		String selectSql = "SELECT * FROM " + CustomerModelDS.TABLE_NAME+ ";";
+		String selectSql = "SELECT * FROM " + tableName + ";";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);

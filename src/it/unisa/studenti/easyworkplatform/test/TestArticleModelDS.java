@@ -18,7 +18,7 @@ public class TestArticleModelDS extends TestCase {
 	private static final String TABLE_NAME = "pizzeria_article";
 
 	protected void setUp() throws Exception {
-		modelDS = new ArticleModelDS("dbtest");
+		modelDS = new ArticleModelDS("dbtest","pizzeria_article");
 		Class.forName("com.mysql.jdbc.Driver");
 		connection = DriverManager.getConnection("jdbc:mysql://localhost/dbtest", "root", "");
 		connection.setAutoCommit(false);

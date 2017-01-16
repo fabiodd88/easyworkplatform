@@ -21,10 +21,10 @@ import javax.sql.DataSource;
 public class ServiceModelDS implements ModelInterface<Service> {
 
 	private static DataSource ds;
-	private static final String TABLE_NAME = "pizzeria_service";
+	private String table = "_service";
 	private static Connection connection;
 	private static PreparedStatement preparedStatement;
-
+	private String tableName;
 	/**
 	 * Empty constructor
 	 */
@@ -35,12 +35,14 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 * Parametric constructor with the name of the database
 	 * @param nomeDb of the database
 	 */
-	public ServiceModelDS(String nomeDb) {
+	public ServiceModelDS(String nomeDb, String activity) {
 		try {
 			Context initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
 			ds = (DataSource) envCtx.lookup("jdbc/"+nomeDb);
 			connection = ds.getConnection();
+			this.tableName = activity.toLowerCase()+table;
+			
 		 } catch (NamingException | SQLException e) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -57,7 +59,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void insert(Service service) throws SQLException {
-		String insertSql = "INSERT INTO " + ServiceModelDS.TABLE_NAME
+		String insertSql = "INSERT INTO " + tableName
 				+ "(employee, quantity, variation, note, receipt_date, return_date, article_id, customer_id)"
 				+ " VALUES (?,?,?,?,?,?,?,?)";
 		try {
@@ -82,7 +84,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void update(Service service) throws SQLException {
-		String updateSql = "UPDATE " + ServiceModelDS.TABLE_NAME + " SET employee=?, quantity=?, variation=?, note=?,"
+		String updateSql = "UPDATE " + tableName + " SET employee=?, quantity=?, variation=?, note=?,"
 				+ " receipt_date=?, return_date=?, article_id=?, customer_id=? WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
@@ -107,7 +109,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public void remove(int id) throws SQLException {
-		String removeSql = "DELETE FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String removeSql = "DELETE FROM " + tableName + " WHERE (id = ?)";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(removeSql);
@@ -123,7 +125,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	@Override
 	public Service findByKey(int id) throws SQLException {
-		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + " WHERE (id = ?)";
+		String selectSql = "SELECT * FROM " + tableName + " WHERE (id = ?)";
 		Service service = null;
 		try {
 			//connection = ds.getConnection();
@@ -158,7 +160,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	 */
 	public LinkedList<Service> findByField(String attribute, String toSearch) throws SQLException{
 		LinkedList<Service> listService = new LinkedList<Service>();
-		String selectSql = "SELECT * FROM " +ServiceModelDS.TABLE_NAME+" WHERE ("+attribute+" LIKE ?)";
+		String selectSql = "SELECT * FROM " + tableName+" WHERE ("+attribute+" LIKE ?)";
 		Service service = new Service();
 		try {
 			//connection = ds.getConnection();
@@ -188,7 +190,7 @@ public class ServiceModelDS implements ModelInterface<Service> {
 	@Override
 	public LinkedList<Service> findAll() throws SQLException {
 		LinkedList<Service> listService = new LinkedList<Service>();
-		String selectSql = "SELECT * FROM " + ServiceModelDS.TABLE_NAME + ";";
+		String selectSql = "SELECT * FROM " + tableName + ";";
 		try {
 			//connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSql);

@@ -56,9 +56,11 @@ public class ServiceController extends HttpServlet {
      *	@see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		ServiceModelDS custDb= new ServiceModelDS("dbtest");
+		
 		HttpSession session = request.getSession();
+		String action 	= request.getParameter("action");
+		String activity	= request.getParameter("activity");
+		ServiceModelDS custDb= new ServiceModelDS("dbtest",activity);
 		try{
 			if(action == null){
 				sendMessage("noAction", response);

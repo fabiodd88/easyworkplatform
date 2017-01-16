@@ -59,9 +59,10 @@ public class PaymentController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PaymentModelDS custDs = new PaymentModelDS("dbtest");
-		HttpSession session = request.getSession();
-		String action = request.getParameter("action");
+		HttpSession session 	= request.getSession();
+		String 	activity 		= request.getParameter("activity");
+		String 	action 			= request.getParameter("action");
+		PaymentModelDS custDs 	= new PaymentModelDS("dbtest",activity);
 		try{
 			if(action == null){
 				sendMessage("noAction", response);
