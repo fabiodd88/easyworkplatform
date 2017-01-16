@@ -22,8 +22,7 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 @WebServlet("/CustomerController")
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ModelInterface<Customer> model = new CustomerModelDS();
-	private CustomerModelDS modelDs = (CustomerModelDS) model;
+	
 	
 	/** 
 	 *	Empty Constructor
@@ -100,7 +99,7 @@ public class CustomerController extends HttpServlet {
 						}
 					}
 					try {
-						modelDs.insert(customer);
+						custDs.insert(customer);
 						sendMessage("insertOk", response);
 						return;
 					} catch (Exception e) {
@@ -142,7 +141,7 @@ public class CustomerController extends HttpServlet {
 					Customer newCustomer = new Customer(id, name, surname, bd, birthPlace, address, city, province, CAP, nl, phoneNumber, email);
 					newCustomer.setId(oldCustomer.getId());
 					try{
-						modelDs.update(newCustomer);
+						custDs.update(newCustomer);
 						sendMessage("updateOk", response);
 						return;
 					}catch(Exception e){
@@ -163,7 +162,7 @@ public class CustomerController extends HttpServlet {
 					}
 					
 					try{
-						modelDs.remove(id);
+						custDs.remove(id);
 						sendMessage("removeOk", response);
 						return;
 					}catch(Exception e){

@@ -24,8 +24,7 @@ import it.unisa.studenti.easyworkplatform.model.ModelInterface;
 @WebServlet("/ArticleController")
 public class ArticleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ModelInterface<Article> model = new ArticleModelDS();
-	private ArticleModelDS modelDs = (ArticleModelDS) model;
+
 
 	/** 
 	 *	Empty Constructor
@@ -88,7 +87,7 @@ public class ArticleController extends HttpServlet {
 						}
 					}
 					try{
-						model.insert(newArticle);
+						custDs.insert(newArticle);
 						sendMessage("insertOk", response);
 						return;
 					}catch(Exception e){
@@ -118,7 +117,7 @@ public class ArticleController extends HttpServlet {
 					newArticle.setId(oldArticle.getId());
 					
 					try{
-						modelDs.update(newArticle);
+						custDs.update(newArticle);
 						sendMessage("updateOk", response);
 						return;
 					}catch(Exception e){
@@ -140,7 +139,7 @@ public class ArticleController extends HttpServlet {
 					}
 					
 					try{
-						modelDs.remove(id);
+						custDs.remove(id);
 						sendMessage("removeOk", response);
 						return;
 					}catch(Exception e){

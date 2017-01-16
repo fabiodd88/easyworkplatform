@@ -25,8 +25,7 @@ import it.unisa.studenti.easyworkplatform.model.ServiceModelDS;
 @WebServlet("/ServiceController")
 public class ServiceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ModelInterface<Service> model = new ServiceModelDS();
-	private ServiceModelDS modelDs = (ServiceModelDS) model;
+
 
 	/** 
 	 *	Empty Constructor
@@ -100,7 +99,7 @@ public class ServiceController extends HttpServlet {
 						}
 					}
 					try {
-						modelDs.insert(service);
+						custDs.insert(service);
 						sendMessage("insertOk", response);
 						return;
 					} catch (Exception e) {
@@ -139,7 +138,7 @@ public class ServiceController extends HttpServlet {
 					Service newService = new Service(id,employee, qt, variation, note, rec, ret, aID, cID);
 					newService.setId(oldService.getId());
 					try {
-						modelDs.update(newService);
+						custDs.update(newService);
 						sendMessage("updateOk", response);
 						return;
 					} catch (Exception e) {
@@ -159,7 +158,7 @@ public class ServiceController extends HttpServlet {
 					}
 					
 					try{
-						modelDs.remove(id);
+						custDs.remove(id);
 						sendMessage("removeOk", response);
 						return;
 					}catch(Exception e){

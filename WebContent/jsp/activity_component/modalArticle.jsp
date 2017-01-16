@@ -15,7 +15,7 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="modName" type="text"
+								style="color: #FF0000">*</span></label> <input id="modNameA" type="text"
 								name="modNameA" required="required" class="form-control" />
 						</div>
 						<br>

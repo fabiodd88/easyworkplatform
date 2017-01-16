@@ -26,8 +26,7 @@ import it.unisa.studenti.easyworkplatform.model.PaymentModelDS;
 @WebServlet("/PaymentController")
 public class PaymentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static ModelInterface<Payment> model = new PaymentModelDS();
-	private PaymentModelDS modelDs = (PaymentModelDS) model;
+	
 
 	/** 
 	 *	Empty Constructor
@@ -97,7 +96,7 @@ public class PaymentController extends HttpServlet {
 						}
 					}
 					try {
-						modelDs.insert(payment);
+						custDs.insert(payment);
 						sendMessage("insertOk", response);
 						return;
 					} catch (Exception e) {
@@ -119,7 +118,7 @@ public class PaymentController extends HttpServlet {
 					}
 					
 					try{
-						modelDs.remove(id);
+						custDs.remove(id);
 						sendMessage("removeOk", response);
 						return;
 					}catch(Exception e){
