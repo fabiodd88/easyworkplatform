@@ -15,58 +15,58 @@
 						<div class="divHorizontal">
 								<label style="width: 30%">Codice Servizio<span
 								style="color: #FF0000">*</span></label> <input id="CodS" type="text"
-								name="CodS" required class="form-control" />
+								name="CodS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice Cliente<span
 								style="color: #FF0000">*</span></label> <input id="CustomerS" type="text"
-								name="CustomerS" required class="form-control" />
+								name="CustomerS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Quantità<span
 								style="color: #FF0000">*</span></label> <input id="QuantityS" type="text"
-								name="QuantityS" required class="form-control" />
+								name="QuantityS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Variazioni<span
 								style="color: #FF0000">*</span></label> <input id="VariationS" type="text"
-								name="VariationS" class="form-control" />
+								name="VariationS" class="form-control" required="required"/>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Note<span style="color: #FF0000">*</span></label>
-							<input id="NoteS" type="text" name="NoteS" class="form-control" />
+							<input id="NoteS" type="text" name="NoteS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
 								style="color: #FF0000">*</span></label> <input id="ReceiptDateS" type="date"
-								name="ReceiptDateS" required class="form-control" />
+								name="ReceiptDateS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Data Restituzione<span
 								style="color: #FF0000">*</span></label> <input id="ReturnDateS" type="date"
-								name="ReturnDateS" required class="form-control" />
+								name="ReturnDateS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
-							<input id="modEmployeeS" type="text" name="modEmployeeS" class="form-control" />
+							<input id="EmployeeS" type="text" name="EmployeeS" required="required"" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice Attività<span
 								style="color: #FF0000">*</span></label> <input id="AidS" type="text"
-								name="AidS" required class="form-control" />
+								name="AidS" required="required" class="form-control" />
 						</div>
 						<br>
 					</div>
@@ -80,9 +80,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal"
-					onclick="controlloService();sendForm('Service','#formAddService');">Conferma</button>
+				<button type="button" class="btn btn-info" 
+					onclick="sendForm('Service','#formAddService','');">Conferma</button>
 			</div>
 		</div>
 	</div>

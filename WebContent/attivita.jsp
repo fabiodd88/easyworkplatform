@@ -17,7 +17,7 @@
 <link href="css/browser.css" rel="stylesheet" type="text/css" />
 <link href="css/tablet.css" rel="stylesheet" type="text/css">
 <script src="js/ajax.js"></script>
-<script src="js/customer.js"></script>
+<script src="js/mod.js"></script>
 </head>
 <body>
 <% String id = session.getAttribute("userId").toString();%>

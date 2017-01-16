@@ -57,9 +57,9 @@ public class ArticleController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String action	= request.getParameter("action");
-		String db		= request.getParameter("activity");
-		HttpSession session = request.getSession();
+		HttpSession session	= request.getSession();
+		String action		= request.getParameter("action");
+		String activity		= request.getParameter("activity");
 		ArticleModelDS custDs = new ArticleModelDS("dbtest");
 		try{
 			if(action == null){
@@ -68,29 +68,16 @@ public class ArticleController extends HttpServlet {
 			}else{
 				//INSERT
 				if(action.equalsIgnoreCase("insert")){
-					String name = request.getParameter("nameA");
-					String pri = request.getParameter("priceA");
-					String description = request.getParameter("descriptionA");
-					String dur = request.getParameter("durationA");
 					
-//					//control if empty
-//					if (name.equals("") || pri.equals("") || description.equals("") || dur.equals("")){
-//						sendMessage("empty", response);
-//						return;
-//					}
-//
-//					//control if they respect the format					
-//					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
-//						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
-//						sendMessage("regExpError", response);
-//						return;
-//					}
-//					
+					String name	 		= request.getParameter("NameA");
+					String pri			= request.getParameter("PriceA");
+					String description 	= request.getParameter("DescriptionA");
+					String dur 			= request.getParameter("DurationA");
 					double price = Double.parseDouble(pri);
 					int duration = Integer.parseInt(dur);
-					
 					Article newArticle = new Article(name, price, description, duration);
 					LinkedList<Article> listArticle = modelDs.findAll();
+					
 					
 					if(listArticle != null){
 						for(Article art : listArticle){
@@ -121,37 +108,15 @@ public class ArticleController extends HttpServlet {
 						return;
 					}
 					
-					String name = request.getParameter("modName");
-					String pri = request.getParameter("modPrice");
-					String description = request.getParameter("modDescription");
-					String dur = request.getParameter("modDuration");
-					
-//					//control if not empty
-//					if (name.equals(""))
-//						name = oldArticle.getName();
-//					
-//					if (pri.equals(""))
-//						pri = String.valueOf(oldArticle.getPrice());
-//					
-//					
-//					if (description.equals(""))
-//						description = oldArticle.getDescription();
-//					
-//					if (dur.equals(""))
-//						dur = String.valueOf(oldArticle.getDuration());
-//
-//						//control if they respect the format						
-//					if (!(Pattern.matches("[a-zA-Z]*", name) && Pattern.matches("[a-zA-Z]*", description) && 
-//						Pattern.matches("[0-9]{2}[.][0-9]{2}", pri) &&	Pattern.matches("[0-9]{3}", dur))){
-//						sendMessage("regExpError", response);
-//						return;
-//					}
-
-					double price = Double.parseDouble(pri);
-					int duration = Integer.parseInt(dur);
-					
-					Article newArticle = new Article(name, price, description, duration);
+					String name 		= request.getParameter("modNameA");
+					String pri 			= request.getParameter("modPriceA");
+					String description	= request.getParameter("modDescriptionA");
+					String dur 			= request.getParameter("modDurationA");
+					double price		= Double.parseDouble(pri);
+					int duration		= Integer.parseInt(dur);
+					Article newArticle	= new Article(name, price, description, duration);
 					newArticle.setId(oldArticle.getId());
+					
 					try{
 						modelDs.update(newArticle);
 						sendMessage("updateOk", response);

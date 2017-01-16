@@ -300,56 +300,6 @@ function visualizzaDiv(x){
 
 
 
-function controlloCustomer(){
-	var name = document.getElementById("name").value;
-	var surename = document.getElementById("surename").value;
-	var birthDate = document.getElementById("birthDate").value;
-	var taxCode = document.getElementById("taxCode").value;
-	var province = document.getElementById("province").value;
-	var address = document.getElementById("address").value;
-	var civicNumber = document.getElementById("civicNumber").value;
-	var city = document.getElementById("city").value;
-	var prov = document.getElementById("prov").value;
-	var cap = document.getElementById("cap").value;
-	
-	if(name==""||surename==""||birthDate==""||taxCode==""||province==""||address==""||civicNumber==""||city==""|| city==""||prov==""||cap==""){
-		$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-		document.getElementById("modalConf").style.display="none";
-		document.getElementById("modalAddCustomer").style.display="block";
-		document.getElementById("mess1").style.display="block";
-	}else if(tax.length != 16){
-		$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
-		document.getElementById("modalConf").style.display="none";
-		document.getElementById("modalAddCustomer").style.display="block";
-		document.getElementById("mess1").style.display="block";
-	}
-}
-
-function controlloArticle(){
-	var name = document.getElementById("name").value;
-	var price = document.getElementById("price").value;
-	var description = document.getElementById("description").value;
-	
-	if(name=="" || price=="" || description==""){
-		$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-		document.getElementById("mess2").style.display="block";
-	}
-}
-
-function controlloService(){
-	var name = document.getElementById("name").value;
-	var surename = document.getElementById("surename").value;
-	var employee = document.getElementById("employee").value;
-	var date = document.getElementById("date").value;
-	var time = document.getElementById("time").value;
-	var type = document.getElementById("type").value;
-	
-	if(name=="" || surename=="" || employee=="" || date=="" || date==""|| time=="" || type==""){
-		$("#mess3").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-		document.getElementById("mess3").style.display="block";
-	}
-}
-
 
 
 

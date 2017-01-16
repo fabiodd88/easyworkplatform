@@ -16,28 +16,28 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="modName" type="text"
-								name="modName" required class="form-control" />
+								name="modNameA" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
-								style="color: #FF0000">*</span></label> <input id="modPrice"
-								type="number" name="modPrice" required class="form-control"
+								style="color: #FF0000">*</span></label> <input id="modPriceA"
+								type="number" name="modPriceA" required="required" class="form-control"
 								min="0" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Descrizione<span
-								style="color: #FF0000">*</span></label> <input id="modDescription"
-								type="text" name="modDescription" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="modDescriptionA"
+								type="text" name="modDescriptionA" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
-							<label style="width: 30%">Durata</label> <input id="modDuration"
-								type="number" name="modDuration" class="form-control" min="0" />
+							<label style="width: 30%">Durata</label> <input id="modDurationA"
+								type="number" name="modDurationA" required="required" class="form-control" min="0" />
 						</div>
 					</div>
 				</div>
@@ -49,8 +49,7 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" onclick="controlloArticle();sendForm('Article','#formChangeArticle');">Conferma</button>
+				<button type="button" class="btn btn-info"  onclick="sendForm('Article','#formChangeArticle','mod');">Conferma</button>
 			</div>
 		</div>
 	</div>

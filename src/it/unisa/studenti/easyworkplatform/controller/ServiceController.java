@@ -78,32 +78,7 @@ public class ServiceController extends HttpServlet {
 					String employee 	= request.getParameter("EmployeeS");
 					String aid			= request.getParameter("AidS");
 					
-//					//control if empty
-//					if (
-//							name.equals("") 		||employee.equals("") 	|| quantity.equals("")		||
-//							variation.equals("") 	||	note.equals("") 	|| receiptDate.equals("") 	||
-//							returnDate.equals("") 	|| aid.equals("") 		|| cid.equals("")
-//						){
-//							sendMessage("empty", response);
-//							return;
-//					}
-//					
-//					//control if they respect the format
-//					if ( ! (
-//							Pattern.matches("[a-zA-Z]*", employee)	|| 
-//							Pattern.matches("[0-9]*", quantity) 	|| 
-//							Pattern.matches("[a-zA-Z]*", variation) || 
-//							Pattern.matches("[a-zA-Z]*", note) 		|| 
-//							Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", receiptDate)	|| 
-//							Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", returnDate) 	|| 
-//							Pattern.matches("[0-9]*", aid) || 
-//							Pattern.matches("[0-9]*", cid) || 
-//							Pattern.matches("[a-zA-Z]*", name)
-//							)
-//						){
-//								sendMessage("regExpError", response);
-//								return;
-//					}
+
 					
 					int  qt 	= Integer.parseInt(quantity);
 					int  aID	= Integer.parseInt(aid);
@@ -152,41 +127,6 @@ public class ServiceController extends HttpServlet {
 					String returnDate 	= request.getParameter("modReturnDateS");
 					String employee 	= request.getParameter("modEmployeeS");
 					String aid			= request.getParameter("modAidS");
-					
-//					if(name.equals(""))
-//						name = oldService.getEmployee();
-//					
-//					if(employee.equals(""))
-//						employee = oldService.getEmployee();
-//					
-//					if(quantity.equals(""))
-//						quantity = String.valueOf(oldService.getQuantity());
-//					
-//					if(variation.equals(""))
-//						variation = oldService.getVariation();
-//					
-//					if(note.equals(""))
-//						note = oldService.getNote();
-//					
-//					if(receiptDate.equals(""))
-//						receiptDate = String.valueOf(oldService.getReceiptDate());
-//					
-//					if(returnDate.equals(""))
-//						returnDate = String.valueOf(oldService.getReturnDate());
-//					
-//					if(aid.equals(""))
-//						aid = String.valueOf(oldService.getArticleId());
-//					
-//					if(cid.equals(""))
-//						cid = String.valueOf(oldService.getCustomerId());
-//					
-//					//control if they respect the format
-//					if ( ! (Pattern.matches("[a-zA-Z]*", employee) || Pattern.matches("[0-9]*", quantity) || Pattern.matches("[a-zA-Z]*", variation) || 
-//							Pattern.matches("[a-zA-Z]*", note) || Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", receiptDate) || Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", returnDate) || 
-//							Pattern.matches("[0-9]*", aid) || Pattern.matches("[0-9]*", cid) || Pattern.matches("[a-zA-Z]*", name))){
-//								sendMessage("regExpError", response);
-//								return;
-//					}
 					
 					int qt = Integer.parseInt(quantity);
 					int aID = Integer.parseInt(aid);

@@ -15,57 +15,57 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice Servizio<span
 								style="color: #FF0000">*</span></label> <input id="modCodS" type="text"
-								name="modCodS" required class="form-control" />
+								name="modCodS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Tipo di servizio<span
 								style="color: #FF0000">*</span></label> <input id="modAidS" type="text"
-								name="modAidS" required class="form-control" />
+								name="modAidS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice Cliente<span
 								style="color: #FF0000">*</span></label> <input id="modCustomerS" type="text"
-								name="modCustomerS" required class="form-control" />
+								name="modCustomerS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Quantità<span
 								style="color: #FF0000">*</span></label> <input id="modQuantityS" type="text"
-								name="modQuantityS" required class="form-control" />
+								name="modQuantityS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Variazioni<span
 								style="color: #FF0000">*</span></label> <input id="modVariationS" type="text"
-								name="modVariationS" class="form-control" />
+								name="modVariationS" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Note<span style="color: #FF0000">*</span></label>
-							<input id="modNoteS" type="text" name="modNoteS" class="form-control" />
+							<input id="modNoteS" type="text" required="required" name="modNoteS" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data<span
 								style="color: #FF0000">*</span></label> <input id="modReceiptDateS" type="date"
-								name="modReceiptDateS" required class="form-control" />
+								name="modReceiptDateS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Data Restituzione<span
 								style="color: #FF0000">*</span></label> <input id="modReturnDateS" type="date"
-								name="modReturnDateS" required class="form-control" />
+								name="modReturnDateS" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Dipendente<span style="color: #FF0000">*</span></label>
-							<input id="modEmployeeS" type="text" name="modEmployeeS" class="form-control" />
+							<input id="modEmployeeS" type="text" required="required" name="modEmployeeS" class="form-control" />
 						</div>
 						<br>
 						
@@ -80,9 +80,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal"
-					onclick="controlloService();sendForm('Service','#formChangeService');">Conferma</button>
+				<button type="button" class="btn btn-info"
+					onclick="sendForm('Service','#formChangeService','');">Conferma</button>
 			</div>
 		</div>
 	</div>

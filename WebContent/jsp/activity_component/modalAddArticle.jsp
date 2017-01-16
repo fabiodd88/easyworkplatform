@@ -14,27 +14,27 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="nameA" type="text"
-								name="nameA" required class="form-control"  />
+								style="color: #FF0000">*</span></label> <input id="NameA" type="text"
+								name="NameA" required="required" class="form-control"  />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Prezzo<span
-								style="color: #FF0000">*</span></label> <input id="priceA" type="number"
-								name="priceA" required class="form-control" min="0" />
+								style="color: #FF0000">*</span></label> <input id="PriceA" type="number"
+								name="PriceA" required="required" class="form-control" min="0" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Descrizione<span
-								style="color: #FF0000">*</span></label> <input id="descriptionA"
-								type="text" name="descriptionA" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="DescriptionA"
+								type="text" name="DescriptionA" required="required" class="form-control" />
 						</div>
 						<br>
 						<div class="divHorizontal">
-							<label style="width: 30%">Durata</label> <input id="durationA"
-								type="number" name="durationA" class="form-control" min="0" />
+							<label style="width: 30%">Durata</label> <input id="DurationA"
+								type="number" name="DurationA" required="required" class="form-control" min="0" />
 						</div>
 					</div>
 				</div>
@@ -49,9 +49,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal"
-					onclick="controlloArticle();sendForm('Article','#formAddArticle');">Conferma</button>
+				<button type="button" class="btn btn-info" 
+					onclick="sendForm('Article','#formAddArticle','');">Conferma</button>
 			</div>
 		</div>
 	</div>

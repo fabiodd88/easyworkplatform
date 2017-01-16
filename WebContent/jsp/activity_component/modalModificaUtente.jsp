@@ -18,28 +18,28 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
 								style="color: #FF0000">*</span></label> <input id="name" type="text"
-								name="name" required class="form-control" value="<%out.write(user.getName());%>" />
+								name="name" required="required" class="form-control" value="<%out.write(user.getName());%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
 								style="color: #FF0000">*</span></label> <input id="surename" type="text"
-								name="surename" required class="form-control" value="<%out.write(user.getSurname());%>"/>
+								name="surename" required="required" class="form-control" value="<%out.write(user.getSurname());%>"/>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required id="birthDate" class="form-control" value="<%out.write(user.getBirthdate()+"");%>" />
+								name="dateofBirth" required="required" id="birthDate" class="form-control" value="<%out.write(user.getBirthdate()+"");%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice fiscale<span
 								style="color: #FF0000">*</span></label> <input id="taxCode" type="text"
-								name="taxCode" required class="form-control" value="<%out.write(user.getTaxCode());%>" />
+								name="taxCode" required="required" class="form-control" value="<%out.write(user.getTaxCode());%>" />
 						</div>
 						<br>
 
@@ -55,14 +55,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
 								style="color: #FF0000">*</span></label> <input id="address" type="text"
-								name="address" required class="form-control" value="<%out.write(user.getAddress());%>" />
+								name="address" required="required" class="form-control" value="<%out.write(user.getAddress());%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="civicNumber" required id="civicNumber"
+								name="civicNumber" required="required" id="civicNumber"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
@@ -70,14 +70,14 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
 								style="color: #FF0000">*</span></label> <input id="city" type="text"
-								name="city" required class="form-control" value="<%out.write(user.getCity());%>"/>
+								name="city" required="required" class="form-control" value="<%out.write(user.getCity());%>"/>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
 								style="color: #FF0000">*</span></label> <select class="form-control" id="prov"
-								name="province" required>
+								name="province" required="required">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -85,7 +85,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
-							<input id="cap" type="number" name="cap" required
+							<input id="cap" type="number" name="cap" required="required"
 								class="form-control" placeholder="81020" min="0" />
 						</div>
 						<br>
@@ -100,7 +100,7 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
+				<button type="submit" class="btn btn-info" data-toggle="modal"
 					data-target="#modalConf" data-dismiss="modal"
 					onclick="sendForm('User','#formModUser');">>Conferma</button>
 			</div>

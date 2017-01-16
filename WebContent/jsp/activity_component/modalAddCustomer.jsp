@@ -14,29 +14,29 @@
 					<div class="vertical">
 						<div class="divHorizontal">
 							<label style="width: 30%">Nome<span
-								style="color: #FF0000">*</span></label> <input id="nameCl" type="text"
-								name="nameCl" required="required" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="NameCl" type="text"
+								name="NameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surnameCl" type="text"
-								name="surnameCl" required="required" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="SurnameCl" type="text"
+								name="SurnameCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="birthCl" required="required" id="modBirthCl" class="form-control" />
+								name="BirthCl" required="required" id="BirthCl" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="placeCl" required="required" id="placeCl">
+								<select class="form-control" name="PlaceCl" required="required" id="PlaceCl">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -44,30 +44,30 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
-								style="color: #FF0000">*</span></label> <input id="addressCl" type="text"
-								name="addressCl" required="required" class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="AddressCl" type="text"
+								name="AddressCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
 								style="color: #FF0000">*</span></label> <input type="number"
-								name="civicNumberCl" required="required" id="civicNumberCl"
+								name="CivicNumberCl" required="required" id="CivicNumberCl"
 								class="form-control" placeholder="Only number" min="0" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
-								style="color: #FF0000">*</span></label> <input id="cityCl" type="text"
-								name="cityCl" required class="form-control" />
+								style="color: #FF0000">*</span></label> <input id="CityCl" type="text"
+								name="CityCl" required="required" class="form-control" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
-								style="color: #FF0000">*</span></label> <select class="form-control" id="provinceCl"
-								name="provinceCl" required="required">
+								style="color: #FF0000">*</span></label> <select class="form-control" id="ProvinceCl"
+								name="ProvinceCl" required="required">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
 						</div>
@@ -75,21 +75,21 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
-							<input id="capCl" type="number" name="capCl" required="required"
+							<input id="CapCl" type="number" name="CapCl" required="required"
 								class="form-control" placeholder="81020" min="0" />
 						</div>
 						<br>
 						
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero di Telefono<span style="color: #FF0000">*</span></label>
-							<input id="phoneCl" type="text" name="phoneCl" required="required"
+							<input id="PhoneCl" type="text" name="PhoneCl" required="required"
 								class="form-control" placeholder="340999888" min="0" />
 						</div>
 						<br>
 						
 						<div class="divHorizontal">
 							<label style="width: 30%">Email<span style="color: #FF0000">*</span></label>
-							<input id="emailCl" type="text" name="emailCl" required="required"
+							<input id="EmailCl" type="text" name="EmailCl" required="required"
 								class="form-control" placeholder="prova@gmail.com" min="0" />
 						</div>
 					</div>
@@ -101,9 +101,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal" 
-					onclick="customerCustomer();sendForm('Customer','#formAddCustomer');">Conferma</button>
+				<button class="btn btn-info" type="button"
+					onclick="sendForm('Customer','#formAddCustomer','');">Conferma</button>
 			</div>
 		</div>
 	</div>

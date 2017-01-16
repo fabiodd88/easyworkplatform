@@ -60,7 +60,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Città<span
 								style="color: #FF0000">*</span></label> <input id="modCityCl" type="text"
-								name="modCityCl" required class="form-control" />
+								name="modCityCl" required="required" class="form-control" />
 						</div>
 						<br>
 
@@ -106,8 +106,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-info" data-toggle="modal" type="submit"
-					data-target="#modalConf" data-dismiss="modal" onclick="controlloCustomer();sendForm('Customer','#formChangeCustomer');">Conferma</button>
+				<button class="btn btn-info" type="button"
+					 onclick="sendForm('Customer','#formChangeCustomer','mod');">Conferma</button>
 			</div>
 		</div>
 	</div>

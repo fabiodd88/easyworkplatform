@@ -5,10 +5,12 @@ package it.unisa.studenti.easyworkplatform.proxy;
  */
 public class RealImage implements Image{
 
-	
-public RealImage(String imageFilePath) {
-		
-		loadImage(imageFilePath);
+	private String fileName;
+
+	public RealImage(String filename) {
+
+		this.fileName = fileName;
+		loadFromDisk(fileName);
 	}
 
 	private void loadImage(String imageFilePath) {
@@ -18,9 +20,13 @@ public RealImage(String imageFilePath) {
 	}
 
 	@Override
-	public void showImage() {
+	public void display() {
 
 		// Actual Image rendering logic
 
+	}
+	
+	private void loadFromDisk(String fileName){
+		getClass().getResource(fileName);
 	}
 }
