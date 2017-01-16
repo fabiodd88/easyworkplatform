@@ -98,7 +98,7 @@ public class ActivityController extends HttpServlet {
 
 
 					int userId 	= Integer.parseInt(uid);
-					int cap = Integer.parseInt(activityCap);
+					int cap 	= Integer.parseInt(activityCap);
 
 					Activity activity = new Activity(activityName, tipology, address, activityCity, activityProvince, cap, vatCode, userId);
 

@@ -56,7 +56,7 @@ public class CustomerController extends HttpServlet {
 		
 		HttpSession session		= request.getSession();
 		String action 			= request.getParameter("action");
-		String activity			= request.getParameter("activity");
+		String activity			= (String)session.getAttribute("activityType");
 		CustomerModelDS custDs 	= new CustomerModelDS("dbtest",activity);
 		
 		try {
@@ -89,7 +89,7 @@ public class CustomerController extends HttpServlet {
 					
 					
 					Customer customer = new Customer(name, surname, bd, birthPlace, address1, city, province, CAP, nl, phoneNumber, email);
-					LinkedList<Customer> listCustomer = modelDs.findAll();
+					LinkedList<Customer> listCustomer = custDs.findAll();
 					
 					if(listCustomer != null){
 						for (Customer cus : listCustomer) {
@@ -115,7 +115,7 @@ public class CustomerController extends HttpServlet {
 					
 					int id = Integer.parseInt(request.getParameter("idCustomer"));
 					
-					Customer oldCustomer = modelDs.findByKey(id);
+					Customer oldCustomer = custDs.findByKey(id);
 					
 					if(oldCustomer == null){
 						sendMessage("noExist", response);
@@ -155,7 +155,7 @@ public class CustomerController extends HttpServlet {
 				if (action.equalsIgnoreCase("remove")){
 					int id = Integer.parseInt(request.getParameter("id"));
 					
-					Customer toRemove = modelDs.findByKey(id);
+					Customer toRemove = custDs.findByKey(id);
 					
 					if(toRemove == null){
 						sendMessage("noExists", response);
@@ -185,7 +185,7 @@ public class CustomerController extends HttpServlet {
 					}
 					
 					
-					LinkedList<Customer> listCustomer = modelDs.findByField(attribute, toSearch);
+					LinkedList<Customer> listCustomer = custDs.findByField(attribute, toSearch);
 					
 					if (listCustomer.isEmpty()){
 						sendMessage("emptyList", response);
@@ -199,7 +199,7 @@ public class CustomerController extends HttpServlet {
 				
 				// VIEW LIST
 				if (action.equalsIgnoreCase("viewList")){
-					LinkedList<Customer> listCustomer = modelDs.findAll();
+					LinkedList<Customer> listCustomer = custDs.findAll();
 					if (listCustomer.isEmpty()){
 						sendMessage("emptyList", response);
 						return;

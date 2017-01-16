@@ -57,10 +57,10 @@ public class ServiceController extends HttpServlet {
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		String action 	= request.getParameter("action");
-		String activity	= request.getParameter("activity");
-		ServiceModelDS custDb= new ServiceModelDS("dbtest",activity);
+		HttpSession session 	= request.getSession();
+		String 		action 		= request.getParameter("action");
+		String 		activity	= (String)session.getAttribute("activityType");
+		ServiceModelDS custDs	= new ServiceModelDS("dbtest",activity);
 		try{
 			if(action == null){
 				sendMessage("noAction", response);
@@ -89,7 +89,7 @@ public class ServiceController extends HttpServlet {
 					Date ret	= Date.valueOf(returnDate);
 					
 					Service service = new Service(employee, qt, variation, note, rec, ret, aID, cID);
-					LinkedList<Service> listService = modelDs.findAll();
+					LinkedList<Service> listService = custDs.findAll();
 					
 					if(listService != null){
 						for (Service ser : listService) {
@@ -113,7 +113,7 @@ public class ServiceController extends HttpServlet {
 				if (action.equalsIgnoreCase("update")){
 					
 					int id = Integer.parseInt(request.getParameter("modCodS"));
-					Service oldService = modelDs.findByKey(id);
+					Service oldService = custDs.findByKey(id);
 					
 					if (oldService == null){
 						sendMessage("noExist", response);
@@ -152,7 +152,7 @@ public class ServiceController extends HttpServlet {
 				// REMOVE
 				if (action.equalsIgnoreCase("remove")){
 					int id = Integer.parseInt(request.getParameter("id"));
-					Service oldService = modelDs.findByKey(id);
+					Service oldService = custDs.findByKey(id);
 					if (oldService == null){
 						sendMessage("noExist", response);
 						return;
@@ -179,20 +179,7 @@ public class ServiceController extends HttpServlet {
 						return;
 					}
 					
-					String regex = "";
-					switch(attribute){
-						case "employee":{regex = "[a-zA-Z]*";}break;
-						case "articleId":{regex ="[0-9]*";}break;
-						case "customerId":{regex = "[0-9]*";}break;
-						case "receiptDate":{regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";}break;
-					}
-					
-					if (!Pattern.matches(regex, toSearch)){
-						sendMessage("regExpError", response);
-						return;
-					}
-					
-					LinkedList<Service> listService = modelDs.findByField(attribute, toSearch);
+					LinkedList<Service> listService = custDs.findByField(attribute, toSearch);
 					
 					if(listService.isEmpty()){
 						sendMessage("emptyList", response);
@@ -206,7 +193,7 @@ public class ServiceController extends HttpServlet {
 				
 				// VIEW LIST
 				if (action.equalsIgnoreCase("viewList")){
-					LinkedList<Service> listService = modelDs.findAll();
+					LinkedList<Service> listService = custDs.findAll();
 					
 					if(listService.isEmpty()){
 						session.setAttribute("services", listService);

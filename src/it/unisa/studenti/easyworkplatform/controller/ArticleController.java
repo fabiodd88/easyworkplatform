@@ -59,7 +59,7 @@ public class ArticleController extends HttpServlet {
 		
 		HttpSession session	= request.getSession();
 		String action		= request.getParameter("action");
-		String activity		= request.getParameter("activity");
+		String activity		= (String)session.getAttribute("activityType");
 		ArticleModelDS custDs = new ArticleModelDS("dbtest",activity);
 		try{
 			if(action == null){
@@ -76,7 +76,7 @@ public class ArticleController extends HttpServlet {
 					double price = Double.parseDouble(pri);
 					int duration = Integer.parseInt(dur);
 					Article newArticle = new Article(name, price, description, duration);
-					LinkedList<Article> listArticle = modelDs.findAll();
+					LinkedList<Article> listArticle = custDs.findAll();
 					
 					
 					if(listArticle != null){
@@ -101,7 +101,7 @@ public class ArticleController extends HttpServlet {
 				if(action.equalsIgnoreCase("update")){
 					
 					int id = Integer.parseInt(request.getParameter("idArticle"));
-					Article oldArticle = modelDs.findByKey(id);
+					Article oldArticle = custDs.findByKey(id);
 					
 					if(oldArticle == null){
 						sendMessage("noExists", response);
@@ -132,7 +132,7 @@ public class ArticleController extends HttpServlet {
 					
 					int id = Integer.parseInt(request.getParameter("id"));
 					
-					Article toRemoveArticle = modelDs.findByKey(id);
+					Article toRemoveArticle = custDs.findByKey(id);
 					
 					if(toRemoveArticle == null){
 						sendMessage("noExists", response);
@@ -171,7 +171,7 @@ public class ArticleController extends HttpServlet {
 						return;
 					}
 					
-					LinkedList<Article> listArticle = modelDs.findByField(attribute, toSearch);
+					LinkedList<Article> listArticle = custDs.findByField(attribute, toSearch);
 					
 					if (listArticle.isEmpty()){
 						sendMessage("emptyList", response);
@@ -187,7 +187,7 @@ public class ArticleController extends HttpServlet {
 				//VIEW LIST
 				if(action.equalsIgnoreCase("viewList")){
 					
-					LinkedList<Article> listArticle = modelDs.findAll();
+					LinkedList<Article> listArticle = custDs.findAll();
 					
 					if(listArticle.isEmpty()){
 						sendMessage("emptyList", response);

@@ -60,7 +60,7 @@ public class PaymentController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session 	= request.getSession();
-		String 	activity 		= request.getParameter("activity");
+		String activity			= (String)session.getAttribute("activityType");
 		String 	action 			= request.getParameter("action");
 		PaymentModelDS custDs 	= new PaymentModelDS("dbtest",activity);
 		try{
@@ -78,21 +78,6 @@ public class PaymentController extends HttpServlet {
 					String amount		= request.getParameter("modAmountP");
 					String date			= request.getParameter("modDateP");
 					
-//					// control if empty
-//					if (
-//						date.equals("")	|| amount.equals("")	|| 
-//						customerId.equals("") || customerId.equals("")		|| sid.equals("")
-//						){
-//							sendMessage("empty", response);
-//							return;
-//					}
-					
-//					//control if they respect the format
-//					if ( ! (Pattern.matches("(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)", date) && Pattern.matches("[0-9]{2}[.][0-9]{2}", amount) && Pattern.matches("[0-9]*", scid) && 
-//							Pattern.matches("[0-9]*", said) && Pattern.matches("[0-9]*", sid)) ){
-//								sendMessage("regExpError", response);
-//								return;
-//					}
 					
 					Date date2 		= Date.valueOf(date);
 					double amount2	= Double.parseDouble(amount);
@@ -101,7 +86,7 @@ public class PaymentController extends HttpServlet {
 					int articleId2 	= Integer.parseInt(articleId);
 					
 					Payment payment = new Payment(amount2, date2, id2, customerId2, articleId2);
-					LinkedList<Payment> listPayment = modelDs.findAll();
+					LinkedList<Payment> listPayment = custDs.findAll();
 
 					if(listPayment != null){
 						for (Payment pay : listPayment) {
@@ -126,7 +111,7 @@ public class PaymentController extends HttpServlet {
 				if (action.equalsIgnoreCase("remove")){
 					int id = Integer.parseInt(request.getParameter("id"));
 					
-					Payment toRemove = modelDs.findByKey(id);
+					Payment toRemove = custDs.findByKey(id);
 					
 					if(toRemove == null){
 						sendMessage("noExists", response);
@@ -150,22 +135,9 @@ public class PaymentController extends HttpServlet {
 					
 					String attribute = request.getParameter("attribute");
 					String toSearch = request.getParameter("toSearch");
+
 					
-//					//control if empty
-//					if (attribute.equals("") && toSearch.equals("")){
-//						sendMessage("empty", response);
-//						return;
-//					}
-//					
-//					String regex = "(0[1-9]|[12][0-9]|3[01])[-/]([0][0-9]|[1][012])[-/]([12]\\d\\d\\d)";
-//					if (attribute.equals("serviceCustomerId")) regex = "[0-9]*";
-//					
-//					if(!(Pattern.matches(regex, toSearch))){
-//						sendMessage("regExpError", response);
-//						return;
-//					}
-					
-					LinkedList<Payment> listPayment = modelDs.findByField(attribute, toSearch);
+					LinkedList<Payment> listPayment = custDs.findByField(attribute, toSearch);
 					
 					if (listPayment.isEmpty()){
 						sendMessage("emptyList", response);
@@ -179,7 +151,7 @@ public class PaymentController extends HttpServlet {
 				}
 				// VIEW LIST
 				if (action.equalsIgnoreCase("viewList")){
-					LinkedList<Payment> listPayment = modelDs.findAll();
+					LinkedList<Payment> listPayment = custDs.findAll();
 					
 					if (listPayment.isEmpty()){
 						session.setAttribute("services", listPayment);
