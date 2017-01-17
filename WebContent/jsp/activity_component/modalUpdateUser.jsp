@@ -5,7 +5,7 @@
 	enctype="multipart/form-data">
 <div class="modal fade" id="modalUser" role="dialog">
 	<div class="modal-dialog">
-	<input type="text" name="action" id="action" value="insert"style="display: none;" />
+	<input type="text" name="action" id="action" value="update"style="display: none;" />
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -24,15 +24,15 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Cognome<span
-								style="color: #FF0000">*</span></label> <input id="surename" type="text"
-								name="surename" required="required" class="form-control" value="<%out.write(user.getSurname());%>"/>
+								style="color: #FF0000">*</span></label> <input id="surname" type="text"
+								name="surname" required="required" class="form-control" value="<%out.write(user.getSurname());%>"/>
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Data di nascita<span
 								style="color: #FF0000">*</span></label> <input type="date"
-								name="dateofBirth" required="required" id="birthDate" class="form-control" value="<%out.write(user.getBirthdate()+"");%>" />
+								name="birthDate" required="required" id="birthDate" class="form-control" value="<%out.write(user.getBirthdate()+"");%>" />
 						</div>
 						<br>
 
@@ -46,7 +46,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">Luogo di nascita<span
 								style="color: #FF0000">*</span></label>
-								<select class="form-control" name="province" required="required" id="province">
+								<select class="form-control" name="birthPlace" required="required" id="birthPlace">
 								<%@include file="/jsp/province.jsp" %>
 								</select>
 						</div>
@@ -76,7 +76,7 @@
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Provincia<span
-								style="color: #FF0000">*</span></label> <select class="form-control" id="prov"
+								style="color: #FF0000">*</span></label> <select class="form-control" id="province"
 								name="province" required="required">
 								<%@include file="/jsp/province.jsp" %>
 							</select>
@@ -86,9 +86,44 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
 							<input id="cap" type="number" name="cap" required="required"
-								class="form-control" placeholder="81020" min="0" />
+								class="form-control" placeholder="81020" min="0" value="<%out.write(user.getCap());%>"/>
 						</div>
 						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Email<span style="color: #FF0000">*</span></label>
+							<input id="email" type="text" name="email" required="required"
+								class="form-control" placeholder="prova@gmail.com" min="0" value="<%out.write(user.getEmail());%>"/>
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Password<span style="color: #FF0000">*</span></label>
+							<input id="password" type="password" name="password" required="required"
+								class="form-control" placeholder="Da 6 a 8 caratteri" min="0" />
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Conferma Password<span style="color: #FF0000">*</span></label>
+							<input id="confPassword" type="password" name="confPassword" required="required"
+								class="form-control" placeholder="Da 6 a 8 caratteri" min="0" />
+						</div>
+						<br>
+						<div class="divHorizontal">
+							<label style="width: 30%">Second Key<span style="color: #FF0000">*</span></label>
+							<input id="secondKey" type="password" name="secondKey" required="required"
+								class="form-control" placeholder="Da 6 a 8 caratteri" min="0" />
+						</div>
+						<br>
+						
+						<div class="divHorizontal">
+							<label style="width: 30%">Conf. Second Key<span style="color: #FF0000">*</span></label>
+							<input id="confSecondKey" type="password" name="confSecondKey" required="required"
+								class="form-control" placeholder="Da 6 a 8 caratteri" min="0" />
+						</div>
+						<br>
+						<input id="id" name="id" value="<%=user.getId()%>" style="display: none">
 						<div id="mess1" class="alert alert-danger"
 							style="display: none !important;"></div>
 					</div>
@@ -100,9 +135,8 @@
 				</label>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-info" data-toggle="modal"
-					data-target="#modalConf" data-dismiss="modal"
-					onclick="sendForm('User','#formModUser');">>Conferma</button>
+				<button type="button" class="btn btn-info" 
+					onclick="sendForm('User','#formModUser','');">Conferma</button>
 			</div>
 		</div>
 	</div>

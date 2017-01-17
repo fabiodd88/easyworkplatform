@@ -63,7 +63,7 @@ $(document).ready(function()
  * @param mod  - Specific a field input
  * @returns
  */
-function sendForm(type, form, mod){
+function sendForm(type, form, mod,e){
 	{
 		if(type == "Customer"){		
 			
@@ -133,6 +133,32 @@ function sendForm(type, form, mod){
 				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 				return;
 			}
+		}
+		else if(type == "User"){
+			var name			= document.getElementById(mod+"name").value;
+			var surname			= document.getElementById(mod+"surname").value;
+			var birthDate		= document.getElementById(mod+"birthDate").value;
+			var birthPlace		= document.getElementById(mod+"birthPlace").value;
+			var address			= document.getElementById(mod+"address").value;
+			var civicNumber		= document.getElementById(mod+"civicNumber").value;
+			var city			= document.getElementById(mod+"city").value;
+			var province		= document.getElementById(mod+"province").value;
+			var cap				= document.getElementById(mod+"cap").value;
+			var email			= document.getElementById(mod+"email").value;
+			var taxCode			= document.getElementById(mod+"taxCode").value;
+			var password		= document.getElementById(mod+"password").value;
+			var confPassword	= document.getElementById(mod+"confPassword").value;
+			
+			if(	name==""	||	surname==""		||	birthDate==""	||	birthPlace==""	||
+				address==""	||	civicNumber==""||	city==""		||	province==""	||
+				cap==""		||	email==""		||	taxCode==""		||	password==""	||
+				confPassword==""){
+				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");				
+				return;
+			
+			}
+				
+			
 		}
 		
 			$.ajax({
