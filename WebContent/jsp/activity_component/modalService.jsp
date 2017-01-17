@@ -7,27 +7,27 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4>Modifica dati servizio</h4>
+				<h4>Modifica dati <%=session.getAttribute("servizio") %></h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-							<label style="width: 30%">Codice Servizio<span
+							<label style="width: 30%">Codice <%=session.getAttribute("servizio") %><span
 								style="color: #FF0000">*</span></label> <input id="modCodS" type="text"
-								name="modCodS" required="required" class="form-control" />
+								name="modCodS" required="required" class="form-control" readonly="readonly" />
 						</div>
 						<br>
 						<div class="divHorizontal">
-							<label style="width: 30%">Tipo di servizio<span
+							<label style="width: 30%">Tipo di <%=session.getAttribute("servizio") %><span
 								style="color: #FF0000">*</span></label> <input id="modAidS" type="text"
-								name="modAidS" required="required" class="form-control" />
+								name="modAidS" required="required" class="form-control" readonly="readonly" />
 						</div>
 						<br>
 						<div class="divHorizontal">
 							<label style="width: 30%">Codice Cliente<span
 								style="color: #FF0000">*</span></label> <input id="modCustomerS" type="text"
-								name="modCustomerS" required="required" class="form-control" />
+								name="modCustomerS" required="required" class="form-control" readonly="readonly"/>
 						</div>
 						<br>
 

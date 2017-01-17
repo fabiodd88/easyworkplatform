@@ -7,13 +7,13 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4>Modifica dati articolo</h4>
+				<h4>Inserisci dati <%=session.getAttribute("articolo") %></h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-							<label style="width: 30%">Nome<span
+							<label style="width: 30%">Nome <span
 								style="color: #FF0000">*</span></label> <input id="NameA" type="text"
 								name="NameA" required="required" class="form-control"  />
 						</div>

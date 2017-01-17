@@ -51,19 +51,29 @@
 								</select>
 						</div>
 						<br>
-
+						<% 
+						String address	= 	"";
+						String civic		=	"";
+							String addressFull = user.getAddress();
+							if(addressFull != null){
+								String[] parts = addressFull.split(",");
+								address = parts[0];
+								civic   = parts[1];
+							}
+							
+						%>
 						<div class="divHorizontal">
 							<label style="width: 30%">Indirizzo<span
 								style="color: #FF0000">*</span></label> <input id="address" type="text"
-								name="address" required="required" class="form-control" value="<%out.write(user.getAddress());%>" />
+								name="address" required="required" class="form-control" value="<%=address%>" />
 						</div>
 						<br>
 
 						<div class="divHorizontal">
 							<label style="width: 30%">Numero civico<span
-								style="color: #FF0000">*</span></label> <input type="number"
+								style="color: #FF0000">*</span></label> <input type="text"
 								name="civicNumber" required="required" id="civicNumber"
-								class="form-control" placeholder="Only number" min="0" />
+								class="form-control" placeholder="Only number" min="0"  value="<%=civic%>"/>
 						</div>
 						<br>
 
@@ -86,7 +96,7 @@
 						<div class="divHorizontal">
 							<label style="width: 30%">CAP<span style="color: #FF0000">*</span></label>
 							<input id="cap" type="number" name="cap" required="required"
-								class="form-control" placeholder="81020" min="0" value="<%out.write(user.getCap());%>"/>
+								class="form-control" placeholder="81020" min="0" value="<%=user.getCap()%>"/>
 						</div>
 						<br>
 						

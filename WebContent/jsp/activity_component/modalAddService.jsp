@@ -7,15 +7,21 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4>Inserisci dati servizio</h4>
+				<h4>Inserisci dati <%=session.getAttribute("servizio") %></h4>
 			</div>
 			<div class="modal-body">
 				<div class="table-responsive">
 					<div class="vertical">
 						<div class="divHorizontal">
-								<label style="width: 30%">Codice Servizio<span
+								<label style="width: 30%">Cod. <%=session.getAttribute("servizio") %><span
 								style="color: #FF0000">*</span></label> <input id="CodS" type="text"
 								name="CodS" required="required" class="form-control" />
+						</div>
+						<br>
+						<div class="divHorizontal">
+							<label style="width: 30%">Tipo di <%=session.getAttribute("servizio") %><span
+								style="color: #FF0000">*</span></label> <input id="AidS" type="text"
+								name="AidS" required="required" class="form-control"  />
 						</div>
 						<br>
 

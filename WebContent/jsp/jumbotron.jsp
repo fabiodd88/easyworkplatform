@@ -17,7 +17,7 @@
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="#" class="but" role="button" data-toggle="modal"
-					data-target="#modalUser" onclick="modal('user')">Modifica dati</a>
+					data-target="#modalUser">Modifica dati</a>
 				</li>
 
 				<li><a class="but" role="button" type="submit"

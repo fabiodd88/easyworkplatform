@@ -220,26 +220,29 @@ function sendForm(type, form, mod,e){
  */
 function setChangeCustomer(value){
 
-	var id = document.getElementById("id"+value).textContent;
-	var name = document.getElementById("name"+value).textContent;
-	var surname = document.getElementById("surname"+value).textContent;
-	var birth = document.getElementById("birth"+value).textContent;
-	var place = document.getElementById("place"+value).textContent;
-	var address = document.getElementById("address"+value).textContent;
-//	var civicNumber = document.getElementById("civicNumber"+value).textContent;
-	var city = document.getElementById("city"+value).textContent;
-	var province = document.getElementById("province"+value).textContent;
-	var cap = document.getElementById("cap"+value).textContent;
-	var phone = document.getElementById("phone"+value).textContent;
-	var email = document.getElementById("email"+value).textContent;
-	var cap1= parseInt(cap);
+	var id 			= document.getElementById("id"+value).textContent;
+	var name 		= document.getElementById("name"+value).textContent;
+	var surname 	= document.getElementById("surname"+value).textContent;
+	var birth 		= document.getElementById("birth"+value).textContent;
+	var place 		= document.getElementById("place"+value).textContent;
+	var addressC 	= document.getElementById("address"+value).textContent;
+	var parts 		= addressC.split(",");
+	var address		= parts[0];
+	var civicNumber = parts[1];
+	var city 		= document.getElementById("city"+value).textContent;
+	var province	= document.getElementById("province"+value).textContent;
+	var cap 		= document.getElementById("cap"+value).textContent;
+	var phone 		= document.getElementById("phone"+value).textContent;
+	var email 		= document.getElementById("email"+value).textContent;
+	var cap1		= parseInt(cap);
+	var civ			= parseInt(civicNumber);
 	$('#idCustomer').val(id);
 	$('#modNameCl').val(name);
 	$('#modSurnameCl').val(surname);
 	$('#modBirthCl').val(birth);
 	$('#modPlaceCl').val(place);
 	$('#modAddressCl').val(address);
-//	$('#modCivicNumberCl').val(civicNumber);
+	$('#modCivicNumberCl').val(civ);
 	$('#modCityCl').val(city);
 	$('#modProvinceCl').val(province);
 	$('#modCapCl').val(cap1);
