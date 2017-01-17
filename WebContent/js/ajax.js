@@ -1,3 +1,7 @@
+/**
+ * Prepare submit function on login button in a login modal.
+ * 
+ */
 $(document).ready(function()
 		{
 	$("#newUserForm").submit(function(e)
@@ -10,8 +14,14 @@ $(document).ready(function()
 			success: function(data, status, xhr)
 			{
 				if(xhr.responseText == "loginOk"){
-				$("#status").html("Messaggio: Login Successful.");	
-				window.location.href="UserController";
+					$.post("ActivityController",
+							{
+								action: "findById",
+							},
+							function(data, status){
+								$("#status").html("Messaggio: Login Successful.");	
+								window.location.href="UserController";		
+					});
 				}	
 				else if(xhr.responseText == "nUser"){
 					$("#status").html("Messaggio: User dosn't not exist.");
@@ -45,301 +55,253 @@ $(document).ready(function()
 
 
 
-
-
-function setAction(action){
-	$('#action').attr('value', action);
-
-	switch(action)
+/**
+ * Send a form to specific Servlet.
+ * 
+ * @param type - Specific Controller to call
+ * @param form - How form to serialize
+ * @param mod  - Specific a field input
+ * @returns
+ */
+function sendForm(type, form, mod){
 	{
-	case 'retrive':
-		$('#modalTitle').text('Recupera password');
-		$('#mySubmit').val('Retrive');
-		var psw=document.getElementById('password');
-		psw.setAttribute("type", "hidden");
-		document.getElementById("passLab").style.display="none";
-		break;
-
-	case 'login':
-		$('#modalTitle').text('Login User');
-		$('#mySubmit').val('Log-In');
-		$('#mySubmit').addClass("btn-primary");
-		var psw=document.getElementById('password');
-		psw.setAttribute("type", "password");
-		break;
-	}	
-}
-
-
-
-
-function forward(value){
-	if(value == "reg1"){
-			document.getElementById(value).style.display="inline";
-			document.getElementById("rec1").style.display="none";
-			document.getElementById("reg2").style.display="none";
+		if(type == "Customer"){		
 			
-	}
-	
-	
-	else if(value == "reg2"){
-		var non =document.getElementById("rec2").style.display;
-		var nom =document.getElementById("reg3").style.display;
-		if(non == "inline" || nom == "inline" ){
-			document.getElementById("reg2").style.display="inline";
-			document.getElementById("reg3").style.display="none";
-			document.getElementById("rec2").style.display="none";
-			document.getElementById("mess3").style.display="none";
+			var name 		= document.getElementById(mod+"NameCl").value;
+			var surname		= document.getElementById(mod+"SurnameCl").value;
+			var birthDate 	= document.getElementById(mod+"BirthCl").value;
+			var birthPlace 	= document.getElementById(mod+"PlaceCl").value;
+			var address 	= document.getElementById(mod+"AddressCl").value;
+			var civicNumber = document.getElementById(mod+"CivicNumberCl").value;
+			var city 		= document.getElementById(mod+"CityCl").value;
+			var province 	= document.getElementById(mod+"ProvinceCl").value;
+			var cap 		= document.getElementById(mod+"CapCl").value;
+			var phone 		= document.getElementById(mod+"PhoneCl").value;
+			var email 		= document.getElementById(mod+"EmailCl").value;
+			
+			if( name==""	||surname==""	||birthDate==""		||birthPlace==""||
+				province==""||address==""	||civicNumber==""	||city==""		||
+				phone==""	||prov==""		||cap==""			||email==""			)
+			{
+				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+				return;		
+			}
+			
+			
 		}
-		else{
-			var name	= document.getElementById("name").value;
-			var surname	= document.getElementById("surname").value;
-			var date	= document.getElementById("birthDate").value;
-			var place	= $("#birthPlace").val();
-			var tax		= document.getElementById("taxCode").value;
-			var address	= document.getElementById("address").value;
-			var civic	= document.getElementById("civicNumber").value;
-			var city	= document.getElementById("city").value;
-			var province=  $("#province").val();
-			var cap		= document.getElementById("cap").value;
+		else if(type == "Article"){	
 			
-			if(		name == ""	|| surname == ""	|| date   == ""	|| 
-					tax	 == ""	|| civic   == ""	|| city   == "" ||
-					cap  == ""	|| place   == ""	|| address== ""	||
-					province == ""
-			){
-				$("#mess1").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-				document.getElementById("mess1").style.display="block";
+			var name		= document.getElementById(mod+"NameA").value;
+			var price		= document.getElementById(mod+"PriceA").value;
+			var description = document.getElementById(mod+"DescriptionA").value;
+			var duration 	= document.getElementById(mod+"DurationA").value;
+			
+			if(name=="" || price=="" || description==""||duration==""){
+				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+				return;
 			}
-			else if(tax.length != 16){
-				$("#mess1").html("<strong>Warning!</strong>  Inserire 16 cifre per il codice fiscale");
-				document.getElementById("mess1").style.display="block";
-			}
-			else{
-				$("#repName").val(name);;
-				$("#repSurname").val(surname);
-				$("#repBirth").val(date);
-				$("#repPlace").val(place);
-				$("#repTax").val(tax);
-				$("#repAddress").val(address);
-				$("#repCivic").val(civic);
-				$("#repCity").val(city);
-				$("#repProvince").val(province);
-				$("#repCap").val(cap);
-				document.getElementById(value).style.display="inline";
-				document.getElementById("reg1").style.display="none";
-				document.getElementById("rec2").style.display="none";
-				document.getElementById("mess1").style.display="none";
+			
+		}
+		else if(type == "Service"){	
+			
+			var codService	= document.getElementById(mod+"CodS").value;
+			var customer	= document.getElementById(mod+"CustomerS").value;
+			var quantity	= document.getElementById(mod+"QuantityS").value;
+			var variation	= document.getElementById(mod+"VariationS").value;
+			var note	 	= document.getElementById(mod+"NoteS").value;
+			var date		= document.getElementById(mod+"ReceiptDateS").value;
+			var rest	 	= document.getElementById(mod+"ReturnDateS").value;
+			var employee	= document.getElementById(mod+"EmployeeS").value;
+			var articleId	= document.getElementById(mod+"AidS").value;
+			
+			
+			if( codService==""	||customer==""	||quantity==""	||variation==""	||
+				note==""		||date==""		||rest==""		||employee==""	|| articleId==""){
+				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");				
+				return;
+			}	
+		}
+		else if(type == "Payment"){		
+			
+			var customer	= document.getElementById(mod+"CustomerP").value;
+			var service		= document.getElementById(mod+"ServiceP").value;
+			var serviceType	= document.getElementById(mod+"ServiceTypeP").value;
+			var amount		= document.getElementById(mod+"AmountP").value;
+			var date		= document.getElementById(mod+"DateP").value;
+
+			if(customer==""||service==""||serviceType==""||amount==""||date==""){
+				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
+				return;
 			}
 		}
 		
-	}
-	
-	
-	else if(value == "reg3"){
-		var non =document.getElementById("rec3").style.display;
-		if(non == "inline"){
-			document.getElementById("reg3").style.display="inline";
-			document.getElementById("rec3").style.display="none";
-			document.getElementById("mess3").style.display="none";
-		}
-		else{
-			var email	= document.getElementById("email").value;
-			var pass	= document.getElementById("password").value;
-			var confermaPass= document.getElementById("confPassword").value;
-			var secondKey	= document.getElementById("secondKey").value;
-			var confSecondKey= document.getElementById("confSecondKey").value;
-			if(email=="" || pass=="" || confermaPass=="" || 
-					secondKey=="" || confSecondKey==""){
-				$("#mess2").html("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
-				document.getElementById("mess2").style.display="block";
-			}
-			else if(secondKey == pass){
-				$("#mess2").html("<strong>Warning!</strong>  La password e la chiave secondaria devono essere distinte !!");
-				document.getElementById("mess2").style.display="block";
-			}
-			else if(secondKey != confSecondKey || pass  != confermaPass){
-				$("#mess2").html("<strong>Warning!</strong>  Le password non coincidono!!");
-				document.getElementById("mess2").style.display="block";
-			}
-			else if(pass.length<6 || secondKey.length<6){
-				$("#mess2").html("<strong>Warning!</strong>  Le password devono essere minimo 6 caratteri!!");
-				document.getElementById("mess2").style.display="block";
-			}
-			else if(pass.length>8 || secondKey.length>8){
-				$("#mess2").html("<strong>Warning!</strong>  Le password devono essere massimo 8 caratteri!!");
-				document.getElementById("mess2").style.display="block";
-			}
-			else{
-				$("#repEmail").val(email);
-				$("#repPass").val(pass);
-				$("#repConfPass").val(confermaPass);
-				$("#repSecondKey").val(secondKey);
-				$("#repConfSecondKey").val(confSecondKey);
-				document.getElementById(value).style.display="inline";
-				document.getElementById("reg2").style.display="none";
-				document.getElementById("rec3").style.display="none";
-				document.getElementById("mess2").style.display="none";
-			}
-		}
-	}
-	
-	
-	else if(value == "rec1"){
+			$.ajax({
+				type: "POST",
+				url: type+"Controller",
+				data: $(form).serialize(),
+				dataType: "text",
+				success: function(data, status, xhr)
+				{
+					$('.modal').modal('hide');
+					$('#modalConf').modal('show');
+					if(xhr.responseText == "updateOk"){
+						$("#status").html("Modifica effettuata con successo");
+					}
+					else if(xhr.responseText == "insertOk"){
+						$("#status").html("Inserimento effettuata con successo");
+					}
+					else if(xhr.responseText == "removeOk"){
+						$("#status").html("Eliminazione effettuata con successo");
+					}
+					else if(xhr.responseText == "exists"){
+						$("#status").html("Elemento già esistente");
+					}
+					else if(xhr.responseText == "noExists"){
+						$("#status").html("Non sono presenti all'interno del db");
+					}
+					else if(xhr.responseText == "empty"){
+						$("#status").html("Nessun elemento presente");
+					}
+					else if(xhr.responseText == "regExpError"){
+						$("#status").html("Rispettare il formato");
+					}
+					else if(xhr.responseText == "emptyList"){
+						$("#status").html("Nessun elemento presente");
+					}
+					else if(xhr.responseText == "cError"){
+						$("#status").html("Errore Di Connessione");
+					}
+					else if(xhr.responseText == "dbError"){
+						$("#status").html("Errore di connessione al Database");
+					}
+					else{
+						$("#status").html("Errore Generico");
+					}
+					
+				}
+			});
+			e.preventDefault();
 		
-			var activityName= document.getElementById("activityName").value;
-			var vatCode		= document.getElementById("vatCode").value;
-			var tipology	= document.getElementById("tipology").value;
-			var activityAddress	= document.getElementById("activityAddress").value;
-			var activityCity= document.getElementById("activityCity").value;
-			var activityCivicNumber	= document.getElementById("activityCivicNumber").value;
-			var activityCap	= document.getElementById("activityCap").value;
-			if(activityName=="" || vatCode=="" || tipology=="" ||
-					activityAddress=="" || activityCity=="" || 
-					activityCivicNumber=="" || activityCap==""){
-				$("#mess3").html("<strong>Warning!</strong> Campi vuoti o non conformi!!");
-				document.getElementById("mess3").style.display="block";
-			}
-			else if(vatCode.length != 11){
-				$("#mess3").html("<strong>Warning!</strong>  Inserire 11 cifre per la partita iva");
-				document.getElementById("mess3").style.display="block";
-			}
-			else{
-				$("#repActivityName").val(activityName);
-				$("#repVatCode").val(vatCode);
-				$("#repTipology").val(tipology);
-				$("#repActivityAddress").val(activityAddress);
-				$("#repActivityCivicNumber").val(activityCivicNumber);
-				$("#repActivityCity").val(activityCity);
-				$("#repActivityCap").val(activityCap);
-				document.getElementById("rec1").style.display="inline";
-				document.getElementById("reg3").style.display="none";
-				document.getElementById("rec2").style.display="none";
-				document.getElementById("mess3").style.display="none";
-			}
-		
-		
-		
-	}
-	else if(value == "rec2"){
-		document.getElementById("rec2").style.display="inline";
-		document.getElementById("rec1").style.display="none";
-		document.getElementById("rec3").style.display="none";
-	}
-	else if(value == "rec3"){
-		document.getElementById("rec3").style.display="inline";
-		document.getElementById("rec2").style.display="none";
 	}
 }
 
 
+/**
+ * Fill all input fields for modal Customer
+ * 
+ * @param value -Specific row of table to update
+ * @returns
+ */
+function setChangeCustomer(value){
 
-function visualizzaDiv(x){	
-	var customer = document.getElementById('list-customer');
-	var service= document.getElementById('list-service');
-	var article= document.getElementById('list-article');
-	var payment= document.getElementById('list-payment');
-	if(customer  != null) customer.remove();
-	if(service != null) service.remove();
-	if(article != null) article.remove();
-	if(payment != null) payment.remove();
-	if(x==0){
-		$.ajax({
-			type: "POST",
-			url: "CustomerController",
-			data: "action=viewList",
-			dataType: "text",
-			success: function(data, status, xhr)
-			{
-				$('#list-c').load('jsp/activity_component/tableCustomer.jsp');
-			}
-			
-		});
-	}
-	else if(x==1){
-		$.ajax({
-			type: "POST",
-			url: "ServiceController",
-			data: $("#serviceList").serialize(),
-			dataType: "text",
-			success: function(data, status, xhr)
-			{
-				$('#list-s').load('jsp/activity_component/tableService.jsp');
-			}
-			
-		});
-	}
-	else if(x==2){
-		$.ajax({
-			type: "POST",
-			url: "ArticleController",
-			data: $("#articleList").serialize(),
-			dataType: "text",
-			success: function(data, status, xhr)
-			{
-				$('#list-a').load('jsp/activity_component/tableArticle.jsp');	
-			}
-			
-		});
-	}
-	else if(x==3){
-		$.ajax({
-			type: "POST",
-			url: "PaymentController",
-			data: $("#paymentList").serialize(),
-			dataType: "text",
-			success: function(data, status, xhr)
-			{
-					$('#list-p').load('jsp/activity_component/tablePayment.jsp');
-			}
-			
-		});
-	}
+	var id = document.getElementById("id"+value).textContent;
+	var name = document.getElementById("name"+value).textContent;
+	var surname = document.getElementById("surname"+value).textContent;
+	var birth = document.getElementById("birth"+value).textContent;
+	var place = document.getElementById("place"+value).textContent;
+	var address = document.getElementById("address"+value).textContent;
+//	var civicNumber = document.getElementById("civicNumber"+value).textContent;
+	var city = document.getElementById("city"+value).textContent;
+	var province = document.getElementById("province"+value).textContent;
+	var cap = document.getElementById("cap"+value).textContent;
+	var phone = document.getElementById("phone"+value).textContent;
+	var email = document.getElementById("email"+value).textContent;
+	var cap1= parseInt(cap);
+	$('#idCustomer').val(id);
+	$('#modNameCl').val(name);
+	$('#modSurnameCl').val(surname);
+	$('#modBirthCl').val(birth);
+	$('#modPlaceCl').val(place);
+	$('#modAddressCl').val(address);
+//	$('#modCivicNumberCl').val(civicNumber);
+	$('#modCityCl').val(city);
+	$('#modProvinceCl').val(province);
+	$('#modCapCl').val(cap1);
+	$('#modPhoneCl').val(phone);
+	$('#modEmailCl').val(email);
+
 }
 
 
-
-
-
-
-
-function elimina(value, type){
-	$.ajax({
-		type: "POST",
-		url: type+"Controller",
-		data: "action=remove&id="+value,
-		dataType: "text",
-		success: function(data, status, xhr)
-		{
-			if(xhr.responseText == "removeOk"){
-				$("#status").html("Rimozione avvenuta con successo.");	
-			}
-		}
-		
-	});
+/**
+ * Fill all input fields for modal Article
+ * 
+ * @param value - Specific row of table to update
+ * @returns
+ */
+function setChangeArticle(value){
+	
+	var id = document.getElementById("id"+value).textContent;
+	var name = document.getElementById("name"+value).textContent;
+	var price = document.getElementById("price"+value).textContent;
+	var description = document.getElementById("description"+value).textContent;
+	var duration = document.getElementById("duration"+value).textContent;
+	$('#modIdA').val(id);
+	$('#modNameA').val(name);
+	$('#modPriceA').val(price);
+	$('#modDescriptionA').val(description);
+	$('#modDurationA').val(duration);
 	
 }
 
 
-
-function setClick(value, type){
-		var type1= "'"+type+"'";
-		$("#confirmButtonModal").attr("onclick","elimina("+value+","+type1+")");
+/**
+ * Fill all input fields for modak Payment
+ * 
+ * @param value -Specific row of table to update 
+ * @returns
+ */
+function setChangePayment(value){
+	
+	var id = document.getElementById("id"+value).textContent;
+	var customer= document.getElementById("customer"+value).textContent;
+	var service = document.getElementById("name"+value).textContent;
+	$('#modServiceP').val(id);
+	$('#modCustomerP').val(customer);
+	$('#modServiceTypeP').val(service);
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10){
+	    dd='0'+dd;
+	} 
+	if(mm<10){
+	    mm='0'+mm;
+	} 
+	var today1 = yyyy+'-'+mm+'-'+dd;
+	$('#modDateP').val(today1);
+	
 }
 
+/**
+ * Fill all input fields for modal Service
+ * 
+ * @param value - Specific row of table to update
+ * @returns
+ */
+function setChangeService(value){
+	
+	var id		 = document.getElementById("id"+value).textContent;
+	var name 	 = document.getElementById("name"+value).textContent;
+	var customer = document.getElementById("customer"+value).textContent;
+	var quantity = document.getElementById("quantity"+value).textContent;
+	var variation= document.getElementById("variation"+value).textContent;
+	var note	 = document.getElementById("note"+value).textContent;
+	var receiptDate = document.getElementById("receiptDate"+value).textContent;
+	var returnDate 	= document.getElementById("returnDate"+value).textContent;
+	var employee = document.getElementById("employee"+value).textContent;
+	
+	$('#modCodS').val(id);
+	$('#modAidS').val(name);
+	$('#modCustomerS').val(customer);
+	$('#modQuantityS').val(quantity);
+	$('#modVariationS').val(variation);
+	$('#modNoteS').val(note);
+	$('#modReceiptDateS').val(receiptDate);
+	$('#modReturnDateS').val(returnDate);
+	$('#modEmployeeS').val(employee);
 
-function redirect(){
-	window.location.href="UserController";
+	
 }
 
-
-function activityLoad(value){
-	$.post("ActivityController",
-			{
-				action: "findById",
-				u: value
-			},
-			function(data, status){
-				
-	});
-}

@@ -146,9 +146,8 @@ public class ActivityController extends HttpServlet {
 				}
 				
 				if(action.equalsIgnoreCase("findById")){
-					String id = (String)request.getParameter("u");
-					int id1 = Integer.parseInt(id);
-					Activity activity = model.findByKey(id1);
+					int id = (int) session.getAttribute("userId");
+					Activity activity = model.findByKey(id);
 					if(activity != null){
 						String servizio;
 						String articoli;

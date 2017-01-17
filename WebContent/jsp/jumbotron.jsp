@@ -1,6 +1,6 @@
 <div class="jumbotron color" style="padding-bottom: 50px;">
 	<div align="center">
-	<img src="icon/logo.png" width="200px" height="150px">
+	<img src="${pageContext.request.contextPath}/ImageProxyController?name=logo" width="200px" height="150px">
 		<%if(session.getAttribute("user") != null){ %>
 		
 		<h1 id="Title"><%=session.getAttribute("activityName") %></h1>

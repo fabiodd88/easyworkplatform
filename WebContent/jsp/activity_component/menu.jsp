@@ -1,8 +1,8 @@
 <div class="container-fluid screen nav-stacked">
 	<div class="row center">
 		<div id="menu">
-			<div class="col-xs-3 but" onclick="visualizzaDiv(0)">
-				<img alt="" src="icon/cliente.png"><br> <label>Cliente</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Customer')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=cliente"><br> <label>Cliente</label><br>
 			</div>
 
 			<%
@@ -11,11 +11,11 @@
 					if(act.equalsIgnoreCase("lavanderia")){ 
 			%>
 
-			<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-				<img alt="" src="icon/capo.png"><br> <label>Capo</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Article')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=capo"><br> <label>Capo</label><br>
 			</div>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-				<img alt="" src="icon/lavorazione.png"><br> <label>Ricezione</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Service')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=lavorazione"><br> <label>Ricezione</label><br>
 			</div>
 
 			<%
@@ -23,22 +23,22 @@
 				else if(act.equalsIgnoreCase("pizzeria")){
 						
 			%>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-				<img alt="" src="icon/menu.png"><br> <label>Menu</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Article')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=menu"><br> <label>Menu</label><br>
 			</div>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-				<img alt="" src="icon/comanda.png"><br> <label>Comanda</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Service')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=comanda"><br> <label>Comanda</label><br>
 			</div>
 			<%
 				}
 				else if(act.equalsIgnoreCase("Centro Estetico")){
 						
 			%>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-				<img alt="" src="icon/trattamento.png"><br> <label>Trattamento</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Article')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=trattamento"><br> <label>Trattamento</label><br>
 			</div>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-				<img alt="" src="icon/appuntamento.png"><br> <label>Appuntamento</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Service')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=appuntamento"><br> <label>Appuntamento</label><br>
 			</div>
 
 			<%	
@@ -47,12 +47,12 @@
 					
 					
 			%>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-				<img alt="" src="icon/assistenza.png"><br>
+			<div  class="col-xs-3 but" onclick="visualizzaDiv('Article')">
+					<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=assistenza"><br>
 				<label>Servizio Assistenza</label><br>
 			</div>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-				<img alt="" src="icon/riparazione.png"><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Service')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=riparazione"><br>
 				<label>Riparazione</label><br>
 			</div>
 
@@ -63,17 +63,17 @@
 			}
 				else{
 					%>
-					<div class="col-xs-3 but" onclick="visualizzaDiv(2)">
-					<img alt="" src="icon/no.png"><br> <label>Articolo</label><br>
+					<div class="col-xs-3 but" onclick="visualizzaDiv('Article')">
+					<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=no"><br> <label>Articolo</label><br>
 				</div>
-				<div class="col-xs-3 but" onclick="visualizzaDiv(1)">
-					<img alt="" src="icon/no.png"><br> <label>Servizio</label><br>
+				<div class="col-xs-3 but" onclick="visualizzaDiv('Service')">
+					<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=no"><br> <label>Servizio</label><br>
 				</div>
 				<%
 				}
 			%>
-			<div class="col-xs-3 but" onclick="visualizzaDiv(3)">
-				<img alt="" src="icon/pagamento2.png"><br> <label>Pagamento</label><br>
+			<div class="col-xs-3 but" onclick="visualizzaDiv('Payment')">
+				<img alt="" src="${pageContext.request.contextPath}/ImageProxyController?name=pagamento"><br> <label>Pagamento</label><br>
 			</div>
 		</div>
 	</div>

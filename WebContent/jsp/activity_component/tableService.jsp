@@ -1,7 +1,7 @@
 <%@page import="javax.sql.rowset.serial.SerialArray"%>
 <%@page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Service"%>
-<script src="js/tab.js"></script>
+<script src="js/table.js"></script>
 
 <div class="container container-table" id="list-service">
 	<div class="row-374">

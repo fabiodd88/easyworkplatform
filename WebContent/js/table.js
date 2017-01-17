@@ -1,4 +1,6 @@
-
+/**
+ * This function display a search bar in a relative table and prepare filter function on it. 
+ */
 (function(){
     'use strict';
 	var $ = jQuery;
@@ -33,6 +35,11 @@
 	$('[data-action="filter"]').filterTable();
 })(jQuery);
 
+
+
+/**
+ * Function filter for all table
+ */
 $(function(){
 	$('[data-action="filter"]').filterTable();
 	

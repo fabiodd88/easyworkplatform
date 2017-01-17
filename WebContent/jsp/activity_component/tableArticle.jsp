@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Article"%>
-<script src="js/tab.js"></script>
+<script src="js/table.js"></script>
 
 
 

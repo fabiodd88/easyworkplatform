@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"
 	import="java.util.* ,it.unisa.studenti.easyworkplatform.model.Payment"%>
-<script src="js/tab.js"></script>
+<script src="js/table.js"></script>
 <div class="container container-table" id="list-payment">
 	<div class="row-374">
 		<div class="col-md-12">
