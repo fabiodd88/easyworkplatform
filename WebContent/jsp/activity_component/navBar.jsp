@@ -10,15 +10,16 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
-						<li class="col-xs-10" onclick="visualizzaDiv(0)"><a	style="color: white;" href="#">Cliente</a></li>
-						<li class="col-xs-10" onclick="visualizzaDiv(1)"><a style="color: white;" href="#">Servizio</a></li>
-						<li class="col-xs-10" onclick="visualizzaDiv(2)"><a	style="color: white;" href="#">Articolo</a></li>
-						<li class="col-xs-10" onclick="visualizzaDiv(3)"><a	style="color: white;" href="#">Pagamento</a></li>
+						<li class="col-xs-10" onclick="visualizzaDiv('Customer')"><a	style="color: white;" href="#">Cliente</a></li>
+						<li class="col-xs-10" onclick="visualizzaDiv('Article')"><a	style="color: white;" href="#">Articolo</a></li>
+						<li class="col-xs-10" onclick="visualizzaDiv('Service')"><a style="color: white;" href="#">Servizio</a></li>
+						<li class="col-xs-10" onclick="visualizzaDiv('Payment')"><a	style="color: white;" href="#">Pagamento</a></li>
 			</ul>
 			<div style="border-top: solid black 1px;"></div>
 			<ul class="nav navbar-nav">
-				<li><a href="#" style="color: white;"><span class="glyphicon glyphicon-user"></span>Modifica Utente</a></li>
-				<li><a href="#" style="color: white;"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+				<li><a href="#" style="color: white;"class="but" role="button" data-toggle="modal"
+					data-target="#modalUser"><span class="glyphicon glyphicon-user"></span>Modifica Utente</a></li>
+				<li><a href="#" style="color: white;" onclick="$('#logoutForm').submit();"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
 			</ul>
 		</div>
 	</div>
