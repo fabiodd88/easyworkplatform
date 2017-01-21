@@ -2,16 +2,18 @@ package it.unisa.studenti.easyworkplatform.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import it.unisa.studendi.easyworkplatform.proxy.ProxyImage;
 
 /**
  * Servlet implementation class ImageProxy
@@ -32,25 +34,28 @@ public class ImageProxyController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
 		String name 	= request.getParameter("name");
+		Path iconPath	= Paths.get(realPath(request)).resolve("../../icon/").resolve(name + ".png");
+		File f 	= null;
+		InputStream in = null;
+		ProxyImage prox  = null;
 		
-		Path iconPath = Paths.get(realPath(request)).resolve("../../icon/").resolve(name + ".png");
-		File f = null;
-		
-		try{
+		if(iconPath.toFile().exists()){
+//			f = iconPath.toFile();
+			prox = new ProxyImage(iconPath);
+			
+		}
+		else{
+			iconPath = Paths.get(realPath(request)).resolve("../../icon/").resolve("default.png");
 			f = iconPath.toFile();
 		}
-		catch (Exception e) {
-			iconPath = Paths.get(realPath(request)).resolve("../../icon/").resolve("default.png");
-		}
 		
-        InputStream in = new FileInputStream(f);
-
+		
+		in = prox.toStream();
         byte[] buff = new byte[8000];
-
         int bytesRead = 0;
-
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
 
         while((bytesRead = in.read(buff)) != -1) {
