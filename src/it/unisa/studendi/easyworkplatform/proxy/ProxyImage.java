@@ -13,11 +13,11 @@ public class ProxyImage implements Image{
 	}
 
 	@Override
-	public InputStream toStream() {
+	public InputStream display() {
 		if(realImage == null){
 			realImage = new RealImage(iconPath);
 		}
-		return realImage.toStream();
+		return realImage.display();
 		
 	}
 }

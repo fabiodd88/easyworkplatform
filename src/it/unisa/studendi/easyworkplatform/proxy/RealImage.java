@@ -16,7 +16,7 @@ public class RealImage implements Image {
 	}
 
 	@Override
-	public InputStream toStream() {
+	public InputStream display() {
 		InputStream in = null;
 		try {
 			in = new FileInputStream(f);

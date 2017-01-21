@@ -53,7 +53,7 @@ public class ImageProxyController extends HttpServlet {
 		}
 		
 		
-		in = prox.toStream();
+		in = prox.display();
         byte[] buff = new byte[8000];
         int bytesRead = 0;
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
