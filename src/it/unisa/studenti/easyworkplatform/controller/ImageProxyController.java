@@ -36,8 +36,15 @@ public class ImageProxyController extends HttpServlet {
 		String name 	= request.getParameter("name");
 		
 		Path iconPath = Paths.get(realPath(request)).resolve("../../icon/").resolve(name + ".png");
+		File f = null;
 		
-		File f = iconPath.toFile();
+		try{
+			f = iconPath.toFile();
+		}
+		catch (Exception e) {
+			iconPath = Paths.get(realPath(request)).resolve("../../icon/").resolve("default.png");
+		}
+		
         InputStream in = new FileInputStream(f);
 
         byte[] buff = new byte[8000];
