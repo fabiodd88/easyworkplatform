@@ -81,7 +81,7 @@ function sendForm(type, form, mod,e){
 			
 			if( name==""	||surname==""	||birthDate==""		||birthPlace==""||
 				province==""||address==""	||civicNumber==""	||city==""		||
-				phone==""	||prov==""		||cap==""			||email==""			)
+				phone==""	||province==""		||cap==""			||email==""			)
 			{
 				alert("<strong>Warning!</strong>  Campi vuoti o non conformi!!");
 				return;		
