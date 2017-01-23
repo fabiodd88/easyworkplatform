@@ -91,17 +91,6 @@ public class ActivityController extends HttpServlet {
 					String activityCap		= request.getParameter("activityCap"); 
 					String activityProvince	= request.getParameter("activityProvince");
 					String address			= activityAddress+", "+activityCivicNumber;
-//
-//					//Control if empty
-//					if (
-//							activityName.equals("")	||	vatCode.equals("")				|| 
-//							tipology.equals("") 	||	activityAddress.equals("") 		|| 
-//							activityCity.equals("") ||	activityCivicNumber.equals("")	||
-//							activityCap.equals("")	||	activityProvince.equals("")		
-//							){
-//						sendMessage("empty", response);
-//						return;
-//					}
 
 
 					int userId 	= Integer.parseInt(uid);
