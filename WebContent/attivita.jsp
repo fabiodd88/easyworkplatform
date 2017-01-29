@@ -43,7 +43,10 @@
 	<%@include file="/jsp/activity_component/modalPayment.jsp"%>
 	<%@include file="/jsp/activity_component/modalCustomer.jsp"%>
 	<%@include file="/jsp/activity_component/modalUpdateUser.jsp"%>
-
+	<%@include file="/jsp/modal_guide/add.jsp"%>
+	<%@include file="/jsp/modal_guide/update.jsp"%>
+	<%@include file="/jsp/modal_guide/remove.jsp"%>
+	<%@include file="/jsp/modal_guide/search.jsp"%>
 
 
 </body>
