@@ -47,6 +47,7 @@
 	<%@include file="/jsp/modal_guide/update.jsp"%>
 	<%@include file="/jsp/modal_guide/remove.jsp"%>
 	<%@include file="/jsp/modal_guide/search.jsp"%>
+	<%@include file="/jsp/modal_guide/contattaci.jsp"%>
 
 
 </body>

@@ -17,6 +17,9 @@
 					<li><a href="#" data-toggle="modal" data-target="#modifica">Come modificare un servizio</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#rimuovi" >Come rimuovere  un servizio</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#ricerca" >Come ricercare  un servizio</a></li>
+					<div class="divider"></div>
+					<li><a href="#" data-toggle="modal" data-target="#contact" >Contattaci</a></li>
+					
 				</ul>
 			</div>
 		<div class="dropdown" style="float: right;">
@@ -33,7 +36,7 @@
 			<ul class="dropdown-menu" role="menu">
 				<li href="#" class="but" role="button" data-toggle="modal"
 					data-target="#modalUser"><a data-toggle="tooltip"
-						title="Modifica i tuoi dati personali">Modifica dati</a></li>
+						title="Modifica i tuoi dati personali">Modifica dati Personali</a></li>
 
 				<li class="but" role="button" type="submit"
 					onclick="$('#logoutForm').submit();"><a

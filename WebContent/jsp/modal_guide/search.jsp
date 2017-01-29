@@ -13,7 +13,7 @@
 						<img src="icon/aggiungi_solo.jpg" class="img-responsive center-block"><br><br>
 						<a>Successivamente apparirà un barra di input dove bisognerà inserire la parola ricercata,</a><br><br>
 						<img alt="" src="icon/search.jpg" class="img-responsive center-block"><br><br>
-						<a>il filtro di ricerca inizierà a filtrare tutti i record in base alla parola inserita,</a>
+						<a>il filtro di ricerca inizierà a filtrare tutti i record in base alla parola inserita,</a><br><br>
 						<img alt="" src="icon/searchF.jpg" class="img-responsive center-block"><br><br>
 						<a>in fine bastera cancellare la parola per rivisualizzare la lista completa.</a>
 					</div>
