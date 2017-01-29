@@ -30,7 +30,9 @@
 		<div id="list-a"></div>
 		<div id="list-s"></div>
 		<div id="list-p"></div>
+		<%@include file="jsp/footer.jsp"%>
 	</div>
+	
 	<%@include file="jsp/confirmModal.jsp"%>
 	<%@include file="jsp/question.jsp"%>
 	<%@include file="/jsp/activity_component/modalAddCustomer.jsp"%>
@@ -41,7 +43,7 @@
 	<%@include file="/jsp/activity_component/modalPayment.jsp"%>
 	<%@include file="/jsp/activity_component/modalCustomer.jsp"%>
 	<%@include file="/jsp/activity_component/modalUpdateUser.jsp"%>
-	<%@include file="jsp/footer.jsp"%>
+
 
 
 </body>

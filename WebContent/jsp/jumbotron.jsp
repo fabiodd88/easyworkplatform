@@ -17,11 +17,11 @@
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="#" class="but" role="button" data-toggle="modal"
-					data-target="#modalUser">Modifica dati</a>
+					data-target="#modalUser" ><label data-toggle="tooltip" title="Modifica i tuoi dati personali">Modifica dati</label></a>
 				</li>
 
 				<li><a class="but" role="button" type="submit"
-					onclick="$('#logoutForm').submit();">Logout</a></li>
+					onclick="$('#logoutForm').submit();"><label data-toggle="tooltip" title="Effettua la logout">Logout</label></a></li>
 			</ul>
 		</div>
 		
